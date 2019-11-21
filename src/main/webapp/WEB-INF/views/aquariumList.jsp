@@ -49,6 +49,7 @@
                     <div>
                         <div class="float-right">
                             <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="reset" class="btn btn-warning text-white">Cancel</button>
                         </div>
                     </div>
                 </form:form>
@@ -110,7 +111,13 @@
                                 <td ng-bind="t.type"></td>
                                 <td ng-bind="t.gallon"></td>
                                 <td ng-bind="t.notes"></td>
+                                <td> 
+                                	<button type="button" ng-click="ctrl.view(t)" class="btn btn-info">View</button>
+                                	<button type="button" ng-click="ctrl.edit()" class="btn btn-success">Edit</button>
+                                	<button type="button" ng-click="ctrl.delete()" class="btn btn-danger">Delete</button>
+                                </td>
                             </tr>
+                            
                         </tbody>
                     </table>
                     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>

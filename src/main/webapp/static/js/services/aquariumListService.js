@@ -7,12 +7,12 @@ aquariumListService.$inject = [ '$http' ];
 	function aquariumListService($http) {
 		var baseURI = '/AquariumBuilder/';
 
-	var data = {
+	var factory = {
 		fetchAllAquariums : fetchAllAquariums,
 		createAquarium : createAquarium
 	};
 
-	return data;
+	return factory;
 
 	function fetchAllAquariums() {
 		return $http.get(baseURI + "aquariums").then(function(response) {

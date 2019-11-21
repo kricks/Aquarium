@@ -36,6 +36,8 @@
 				<td>${notes}</td>
 			</tr>
 		</table>
+		
+		<div ng-controller="aquariumListController as ctrl" ng-repeat="pickedAqua in value.val"></div>
 
 </body>
 </html>

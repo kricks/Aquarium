@@ -1,0 +1,8 @@
+mvc\services\AquariumService.class
+mvc\services\AquariumServiceImpl.class
+mvc\configuration\CORS.class
+mvc\controller\AquariumSynController.class
+mvc\controller\AquariumAsyncController.class
+mvc\configuration\AquariumConfig.class
+mvc\model\Aquarium.class
+mvc\configuration\AquariumInit.class

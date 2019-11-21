@@ -1,72 +1,72 @@
 'use strict';
 
 angular.module('myApp').controller(
-    'TankListController', ['$scope','tankListService',
-        function($scope, tankListService) {
+    'AquariumListController', ['$scope','aquariumListService',
+        function($scope, aquariumListService) {
 
             var self = this;
-            self.tanks = [];
+            self.aquariums = [];
 
             self.submit = submit;
             self.edit = edit;
             self.reset = reset;
 
-            fetchAllTanks();
+            fetchAllAquariums();
 
-            function fetchAllTanks() {
-            	tankListService.fetchAllTanks().then(function(d) {
-                    self.tanks = d;
+            function fetchAllAquariums() {
+            	aquariumListService.fetchAllAquariums().then(function(d) {
+                    self.aquariums = d;
                     return d;
                 }, function(errResponse) {
-                    console.error('Error while fetching Tanks');
+                    console.error('Error while fetching Aquariums');
                 });
             }
 
-            function createTank(tank) {
-            	tankListService.createTank(tank).then(fetchAllTanks,
+            function createAquarium(aquarium) {
+            	aquariumListService.createAquarium(aquarium).then(fetchAllAquariums,
                     function(errResponse) {
-                        console.error('Error while creating Tank');
+                        console.error('Error while creating Aquarium');
                     });
             }
 
-            function updateTank(tank, id) {
-            	tankListService.updateTank(tank, id).then(
-                    fetchAllTanks,
+            function updateAquarium(aquarium, id) {
+            	aquariumListService.updateAquarium(aquarium, id).then(
+                    fetchAllAquariums,
                     function(errResponse) {
-                        console.error('Error while updating Tank');
+                        console.error('Error while updating Aquarium');
                     });
             }
 
             function submit() {
-                if (self.tank.id === null) {
-                    console.log('Saving New TAnk', self.tank);
-                    createTank(self.tank);
+                if (self.aquarium.id === null) {
+                    console.log('Saving New TAnk', self.aquarium);
+                    createAquarium(self.aquarium);
                 } else {
-                    updateTank(self.tank, self.tank.id);
-                    console.log('tank updated with id ', self.tank.id);
+                    updateAquarium(self.aquarium, self.aquarium.id);
+                    console.log('aquarium updated with id ', self.aquarium.id);
                 }
                 reset();
             }
 
             function edit(id) {
                 console.log('id to be edited', id);
-                for (var i = 0; i < self.tanks.length; i++) {
-                    if (self.tanks[i].id === id) {
-                        self.tank = angular.copy(self.tanks[i]);
+                for (var i = 0; i < self.aquariums.length; i++) {
+                    if (self.aquariums[i].id === id) {
+                        self.aquarium = angular.copy(self.aquariums[i]);
                         break;
                     }
                 }
             }
 
             function reset() {
-                self.tank = {
+                self.aquarium = {
                     id: null,
                     name: '',
                     type: '',
                     gallons: '',
                     notes: ''
                 };
-                $scope.tankForm.$setPristine();
+                $scope.aquariumForm.$setPristine();
             }
 
         }

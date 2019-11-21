@@ -16,7 +16,7 @@
 </head>
 <body class="container">
 	<h1>Welcome to Aquarium Builder</h1>
-	<a href="tank-list">
+	<a href="aquarium-list">
 		<button class="btn btn-primary"> Click here to get started! </button>
 	</a>
 </body>

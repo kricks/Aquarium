@@ -9,13 +9,13 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<title>Tank Details</title>
+<title>Aquarium Details</title>
 </head>
 <body ng-app="myApp" class="container">
 <br>
 
-	<a href="tank-list">
-		<button class="btn btn-primary">Go Back to Tank List</button>
+	<a href="aquarium-list">
+		<button class="btn btn-primary">Go Back to Aquarium List</button>
 	</a>
 
 
@@ -79,7 +79,7 @@
 	<br>
 
 	<div class="border px-3 py-2">
-		<h4 class="text-center">Tank List</h4>
+		<h4 class="text-center">Aquarium List</h4>
 		<table class="table">
 			<thead>
 				<tr>

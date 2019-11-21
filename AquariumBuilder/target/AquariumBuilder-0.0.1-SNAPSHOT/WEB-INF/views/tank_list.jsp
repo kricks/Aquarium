@@ -16,10 +16,10 @@
 <title>Insert title here</title>
 </head>
 <body ng-app="myApp" class="container ng-cloak">
-	<h3>Welcome, Enter The Tank Details</h3>
+	<h3>Welcome, Enter The Aquarium Details</h3>
 
 	<h4>Synchronous:</h4>
-	<form:form method="POST" action="tank-details" modelAttribute="tank">
+	<form:form method="POST" action="aquarium-details" modelAttribute="aquarium">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label>Name</label>
@@ -61,18 +61,18 @@
 
 	<h4>Asynchronous:</h4>
 
-	<div ng-controller="TankListController as ctrl">
-		<form ng-submit="ctrl.submit()" name="tankForm">
-			<input type="hidden" ng-model="ctrl.tank.id" />
+	<div ng-controller="AquariumListController as ctrl">
+		<form ng-submit="ctrl.submit()" name="aquariumForm">
+			<input type="hidden" ng-model="ctrl.aquarium.id" />
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="tname">Name</label> <input type="text"
-						ng-model="ctrl.tank.name" name="tName" class="form-control"
+						ng-model="ctrl.aquarium.name" name="tName" class="form-control"
 						placeholder="Enter Name" required>
 				</div>
 				<div class="form-group col-md-6">
 					<label for="type">Type</label> <select name="tType"
-						class="form-control" id="type" ng-model="ctrl.tank.type">
+						class="form-control" id="type" ng-model="ctrl.aquarium.type">
 						<option>Fresh Water</option>
 						<option>Salt Water</option>
 						<option>Brackish Water</option>
@@ -82,19 +82,19 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="gallons">Gallons</label> <input type="number"
-						ng-model="ctrl.tank.gallons" name="tGal" class="form-control"
+						ng-model="ctrl.aquarium.gallons" name="tGal" class="form-control"
 						id="gallon" placeholder="Enter Gallons">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="notes">Notes</label> <input type="text"
-						ng-model="ctrl.tank.notes" name="tNotes" class="form-control"
+						ng-model="ctrl.aquarium.notes" name="tNotes" class="form-control"
 						id="notes" placeholder="Enter Notes">
 				</div>
 			</div>
 			<div class="row">
 				<div class="float-right">
 					<button type="submit" class="btn btn-primary"
-						value="{{!ctrl.tank.id ? 'Add' : 'Update'}}">Add</button>
+						value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}">Add</button>
 					<button type="button" ng-click="ctrl.reset()"
 						class="btn btn-warning text-white">Cancel</button>
 				</div>
@@ -104,10 +104,10 @@
 		<br>
 		
 		<div class="border px-3 py-2">
-		<h4 class="text-center">Tank List</h4>
+		<h4 class="text-center">Aquarium List</h4>
 
 		<ul class="list-group ">
-			<li ng-repeat="t in ctrl.tanks" class="list-group-item list-group-item-action m-1">
+			<li ng-repeat="t in ctrl.aquariums" class="list-group-item list-group-item-action m-1">
 					<span ng-bind="t.id"></span> 
 					<span ng-bind="t.name"></span> 
 					<span ng-bind="t.type"></span> 
@@ -131,9 +131,9 @@
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
 	<script src="<c:url value='/static/js/app.js' />"></script>
 	<script
-		src="<c:url value='/static/js/services/tank-list_service.js' />"></script>
+		src="<c:url value='/static/js/services/aquarium-list_service.js' />"></script>
 	<script
-		src="<c:url value='/static/js/controller/tank-list_controller.js' />"></script>
+		src="<c:url value='/static/js/controller/aquarium-list_controller.js' />"></script>
 
 </body>
 </html>

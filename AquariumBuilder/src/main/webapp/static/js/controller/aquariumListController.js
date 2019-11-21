@@ -1,49 +1,48 @@
 'use strict';
 
-angular.module('myApp').controller('tankListController', ['$scope','tankListService',
-        function($scope, tankListService) {
-//
+angular.module('myApp').controller('aquariumListController', ['$scope','aquariumListService',
+        function($scope, aquariumListService) {
+
             var self = this;
-            self.tanks = [];
+            self.aquariums = [];
 
             self.submit = submit;
             self.reset = reset;
 
-            fetchAllTanks();
+            fetchAllAquariums();
 
-            function fetchAllTanks() {
-            	tankListService.fetchAllTanks().then(function(d) {
-                    self.tanks = d;
+            function fetchAllAquariums() {
+            	aquariumListService.fetchAllAquariums().then(function(d) {
+                    self.aquariums = d;
                     return d;
                 }, function(errResponse) {
                     console.error('Error while fetching Aquarium');
                 });
             }
 
-            function createTank(tank) {
-            	tankListService.createTank(tank).then(fetchAllTanks,
+            function createAquarium(aquarium) {
+            	aquariumListService.createAquarium(aquarium).then(fetchAllAquariums,
                     function(errResponse) {
                         console.error('Error while creating Aquarium');
                     });
             }
             
             function submit() {
-                    console.log('Saving New Aquarium', self.tank);
-                    createTank(self.tank);
+                    console.log('Saving New Aquarium', self.aquarium);
+                    createAquarium(self.aquarium);
                 
                 reset();
             }
 
-
             function reset() {
-                self.tank = {
+                self.aquarium = {
                     id: null,
                     name: '',
                     type: '',
                     gallons: '',
                     notes: ''
                 };
-                $scope.tankForm.$setPristine();
+                $scope.aquariumForm.$setPristine();
             }
 
         }

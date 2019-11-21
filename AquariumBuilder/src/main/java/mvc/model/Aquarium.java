@@ -1,6 +1,6 @@
 package mvc.model;
 
-public class Tank {
+public class Aquarium {
 
 	private Long id;
 	private String name;
@@ -8,11 +8,11 @@ public class Tank {
 	private Integer gallon;
 	private String notes;
 	
-	public Tank() {
+	public Aquarium() {
 		
 	}
 	
-	public Tank(Long id, String name, String type, Integer gallon, String notes) {
+	public Aquarium(Long id, String name, String type, Integer gallon, String notes) {
 		this.id = id;
 		this.name = name;
 		this.type = type;

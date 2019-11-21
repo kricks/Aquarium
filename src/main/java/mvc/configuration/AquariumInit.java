@@ -24,9 +24,4 @@ public class AquariumInit extends AbstractAnnotationConfigDispatcherServletIniti
 		return new String[] {"/"};
 	}
 	
-	@Override
-    protected Filter[] getServletFilters() {
-        Filter [] singleton = { new CORS() };
-        return singleton;
-    }
 }

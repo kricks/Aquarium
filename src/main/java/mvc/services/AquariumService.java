@@ -14,7 +14,11 @@ public interface AquariumService {
 
 	void updateAquarium(Aquarium aquarium);
 
+	void deleteAquariumById(Long id);
+
 	List<Aquarium> findAllAquariums();
+
+	void deleteAllAquariums();
 
 	public boolean isAquariumExist(Aquarium aquarium);
 

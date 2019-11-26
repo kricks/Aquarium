@@ -1,72 +1,60 @@
 package mvc.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import mvc.dao.AquariumDao;
 import mvc.model.Aquarium;
 
 @Service
+@Transactional
 public class AquariumServiceImpl implements AquariumService {
+	
+	@Autowired
+	AquariumDao aquariumDao;
 
-	private static final AtomicLong counter = new AtomicLong();
-
-	private static List<Aquarium> aquariums;
-
-	static {
-		aquariums = populateDummyAquariums();
-	}
-
+	@Override
 	public List<Aquarium> findAllAquariums() {
-		return aquariums;
+		return aquariumDao.findAllAquariums();
 	}
 
+	@Override
 	public Aquarium findById(Long id) {
-		for (Aquarium aquarium : aquariums) {
-			if (aquarium.getId() == id) {
-				return aquarium;
-			}
-		}
-		return null;
+		return aquariumDao.findById(id);
 	}
 
+	@Override
 	public Aquarium findByName(String name) {
-		for (Aquarium aquarium : aquariums) {
-			if (aquarium.getName().equalsIgnoreCase(name)) {
-				return aquarium;
-			}
-		}
-		return null;
+		return aquariumDao.findByName(name);
 	}
 
+	@Override
 	public void saveAquarium(Aquarium aquarium) {
-		aquarium.setId(counter.incrementAndGet());
-		aquariums.add(aquarium);
-
+		aquariumDao.saveAquarium(aquarium);
 	}
 
+	@Override
 	public void updateAquarium(Aquarium aquarium) {
-		int index = aquariums.indexOf(aquarium);
-		aquariums.set(index, aquarium);
-
+		aquariumDao.updateAquarium(aquarium);
 	}
 
+	@Override
 	public boolean isAquariumExist(Aquarium aquarium) {
 		return findByName(aquarium.getName()) != null;
 	}
 
-	public static List<Aquarium> populateDummyAquariums() {
-		List<Aquarium> aquariums = new ArrayList<Aquarium>();
-		aquariums.add(new Aquarium(counter.incrementAndGet(), "Clown Harem", "Salt Water", 30, "Living Room"));
-		aquariums.add(new Aquarium(counter.incrementAndGet(), "Predator Aquarium", "Salt Water", 500, "Study"));
-		aquariums.add(new Aquarium(counter.incrementAndGet(), "Cichlids", "Fresh Water", 50, "Study"));
-		aquariums.add(new Aquarium(counter.incrementAndGet(), "Corals", "Salt Water", 100, "Garage"));
-		
-		System.out.println("THIS IS TANKSERVICEIMPL: " + aquariums);
+	@Override
+	public void deleteAquariumById(Long id) {
+		aquariumDao.deleteAquariumById(id);
+	}
 
-		return aquariums;
+	@Override
+	public void deleteAllAquariums() {
+		aquariumDao.deleteAllAquariums();
+
 	}
 
 }

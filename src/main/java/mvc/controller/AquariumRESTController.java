@@ -13,19 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import mvc.manager.AquariumManager;
 import mvc.model.Aquarium;
-import mvc.services.AquariumService;
 
 @RestController
 public class AquariumRESTController {
+	
 	@Autowired
-	AquariumService aquariumService;
+	AquariumManager aquariumManager;
 
 	// ------ Retrieve All Aquariums ---- //
 	@RequestMapping(value = "/aquariums", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Aquarium>> listAllAquariums() {
 		System.out.print("HELLO FROM JAVA CONTROLLER");
-		List<Aquarium> aquariums = aquariumService.findAllAquariums();
+		List<Aquarium> aquariums = aquariumManager.findAllAquariums();
 		if(aquariums.isEmpty()){
             return new ResponseEntity<List<Aquarium>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
@@ -39,12 +40,12 @@ public class AquariumRESTController {
 	public ResponseEntity<Void> createAquarium(@RequestBody Aquarium aquarium, UriComponentsBuilder ucBuilder) {
 		System.out.println("Creating Aquarium " + aquarium.getName());
 
-		if (aquariumService.isAquariumExist(aquarium)) {
+		if (aquariumManager.isAquariumExist(aquarium)) {
 			System.out.println("A Aquarium with name " + aquarium.getName() + " already exist");
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 
-		aquariumService.saveAquarium(aquarium);
+		aquariumManager.saveAquarium(aquarium);
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/aquarium/{id}").buildAndExpand(aquarium.getId()).toUri());

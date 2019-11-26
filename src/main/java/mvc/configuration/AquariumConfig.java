@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "mvc" })
+@ComponentScan({"mvc"})
 
 public class AquariumConfig extends WebMvcConfigurerAdapter {
 	

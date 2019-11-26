@@ -3,10 +3,13 @@ package mvc.manager;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import mvc.model.Aquarium;
 import mvc.services.AquariumService;
 
+@Service
 public class AquariumManagerImpl implements AquariumManager {
 	
 	@Autowired
@@ -19,32 +22,37 @@ public class AquariumManagerImpl implements AquariumManager {
 
 	@Override
 	public Aquarium findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return aquariumService.findByName(name);
 	}
 
 	@Override
 	public void saveAquarium(Aquarium aquarium) {
-		// TODO Auto-generated method stub
-
+		aquariumService.saveAquarium(aquarium);
 	}
 
 	@Override
 	public void updateAquarium(Aquarium aquarium) {
-		// TODO Auto-generated method stub
-
+		aquariumService.updateAquarium(aquarium);
 	}
 
 	@Override
 	public List<Aquarium> findAllAquariums() {
-		// TODO Auto-generated method stub
-		return null;
+		return aquariumService.findAllAquariums();
 	}
 
 	@Override
 	public boolean isAquariumExist(Aquarium aquarium) {
-		// TODO Auto-generated method stub
-		return false;
+		return aquariumService.isAquariumExist(aquarium);
+	}
+
+	@Override
+	public void deleteAquariumById(Long id) {
+		aquariumService.deleteAquariumById(id);
+	}
+
+	@Override
+	public void deleteAllAquariums() {
+		aquariumService.deleteAllAquariums();
 	}
 
 }

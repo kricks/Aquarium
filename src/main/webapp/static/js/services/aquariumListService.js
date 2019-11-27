@@ -9,7 +9,9 @@ aquariumListService.$inject = [ '$http' ];
 
 	var factory = {
 		fetchAllAquariums : fetchAllAquariums,
-		createAquarium : createAquarium
+		createAquarium : createAquarium,
+		updateAquarium : updateAquarium,
+		deleteAquarium : deleteAquarium
 	};
 
 	return factory;
@@ -17,11 +19,23 @@ aquariumListService.$inject = [ '$http' ];
 	function fetchAllAquariums() {
 		return $http.get(baseURI + "aquariums").then(function(response) {
 			return response.data;
-		})
+		});
 	}
 
 	function createAquarium(aquarium) {
 		return $http.post(baseURI + "aquariums/aquarium", aquarium);
 		console.log("This is create: " + aquarium);
 	}
+	
+	function updateAquarium(aquarium, id) {
+        return $http.put(baseURI + id, aquarium).then(function (response) {
+                return (response.data);
+            });
+    }
+	
+	function deleteAquarium(id) {
+		return $http.delete(baseURI + id).then(function(response) {
+                return response.data;
+		});
+    }
 };

@@ -32,8 +32,8 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public void saveAquarium(Aquarium aquarium) {
-		aquariumDao.saveAquarium(aquarium);
+	public void addAquarium(Aquarium aquarium) {
+		aquariumDao.addAquarium(aquarium);
 	}
 
 	@Override

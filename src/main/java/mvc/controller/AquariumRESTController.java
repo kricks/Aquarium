@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +26,7 @@ public class AquariumRESTController {
 	// ------ Retrieve All Aquariums ---- //
 	@RequestMapping(value = "/aquariums", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Aquarium>> listAllAquariums() {
-		System.out.print("HELLO FROM JAVA CONTROLLER");
+		System.out.println("HELLO FROM REST CONTROLLER");
 		List<Aquarium> aquariums = aquariumManager.findAllAquariums();
 		if(aquariums.isEmpty()){
             return new ResponseEntity<List<Aquarium>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
@@ -33,8 +34,21 @@ public class AquariumRESTController {
         return new ResponseEntity<List<Aquarium>>(aquariums, HttpStatus.OK);
 	}
 	
+	 //-------------------Retrieve Single User---------------------------- //
+    
+    @RequestMapping(value = "/aquarium/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Aquarium> getAquarium(@PathVariable("id") long id) {
+        System.out.println("Fetching Aquarium with id " + id);
+        Aquarium aquarium = aquariumManager.findById(id);
+        if (aquarium == null) {
+            System.out.println("Aquarium with id " + id + " not found");
+            return new ResponseEntity<Aquarium>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Aquarium>(aquarium, HttpStatus.OK);
+    }
+	
 
-	// -------------------Create an aquarium
+	// -------------------Create an aquarium ------ //
 
 	@RequestMapping(value = "/aquariums/aquarium", method = RequestMethod.POST)
 	public ResponseEntity<Void> createAquarium(@RequestBody Aquarium aquarium, UriComponentsBuilder ucBuilder) {
@@ -45,11 +59,65 @@ public class AquariumRESTController {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 
-		aquariumManager.saveAquarium(aquarium);
+		System.out.println(aquarium);
+		aquariumManager.addAquarium(aquarium);
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(ucBuilder.path("/aquarium/{id}").buildAndExpand(aquarium.getId()).toUri());
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		
 	}
+	
+	//------------------- Update a aquarium ----------------------------- //
+    
+    @RequestMapping(value = "/aquarium/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Aquarium> updateAquarium(@PathVariable("id") long id, @RequestBody Aquarium aquarium) {
+        System.out.println("Updating Aquarium " + id);
+          
+        Aquarium currentAquarium = aquariumManager.findById(id);
+          
+        if (currentAquarium==null) {
+            System.out.println("Aquarium with id " + id + " not found");
+            return new ResponseEntity<Aquarium>(HttpStatus.NOT_FOUND);
+        }
+  
+        currentAquarium.setName(aquarium.getName());
+        currentAquarium.setType(aquarium.getType());
+        currentAquarium.setGallon(aquarium.getGallon());
+        currentAquarium.setNotes(aquarium.getNotes());
+          
+        aquariumManager.updateAquarium(currentAquarium);
+        return new ResponseEntity<Aquarium>(currentAquarium, HttpStatus.OK);
+    }
+  
+     
+     
+    //------------------- Delete a aquarium --------------------------------------------------------
+      
+    @RequestMapping(value = "/aquarium/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Aquarium> deleteAquarium(@PathVariable("id") long id) {
+        System.out.println("Fetching & Deleting aquarium with id " + id);
+  
+        Aquarium aquarium = aquariumManager.findById(id);
+        if (aquarium == null) {
+            System.out.println("Unable to delete. Aquarium with id " + id + " not found");
+            return new ResponseEntity<Aquarium>(HttpStatus.NOT_FOUND);
+        }
+  
+        aquariumManager.deleteAquariumById(id);
+        return new ResponseEntity<Aquarium>(HttpStatus.NO_CONTENT);
+    }
+  
+      
+     
+    //------------------- Delete All aquarium --------------------------------------------------------
+      
+    @RequestMapping(value = "/aquariums", method = RequestMethod.DELETE)
+    public ResponseEntity<Aquarium> deleteAllAquariums() {
+        System.out.println("Deleting All aquariums");
+  
+        aquariumManager.deleteAllAquariums();
+        return new ResponseEntity<Aquarium>(HttpStatus.NO_CONTENT);
+    }
 	
 }

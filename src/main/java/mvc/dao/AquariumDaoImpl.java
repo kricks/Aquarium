@@ -32,7 +32,7 @@ public class AquariumDaoImpl implements AquariumDao {
 	}
 	
 	@Override
-	public void saveAquarium(Aquarium aquarium) {
+	public void addAquarium(Aquarium aquarium) {
 		persist(aquarium);
 	}
 
@@ -41,7 +41,6 @@ public class AquariumDaoImpl implements AquariumDao {
 	public List<Aquarium> findAllAquariums() {
 		Criteria criteria = getSession().createCriteria(Aquarium.class);
 		return (List<Aquarium>) criteria.list();
-
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class AquariumDaoImpl implements AquariumDao {
 	public Aquarium findByName(String name) {
 		Criteria criteria = getSession().createCriteria(Aquarium.class);
 		criteria.add(Restrictions.eq("name", name));
-		return (Aquarium) criteria.list();
+		return (Aquarium) criteria.uniqueResult();
 	}
 	
 	@Override

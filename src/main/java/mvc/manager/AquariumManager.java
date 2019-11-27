@@ -10,7 +10,7 @@ public interface AquariumManager {
 
 	Aquarium findByName(String name);
 
-	void saveAquarium(Aquarium aquarium);
+	void addAquarium(Aquarium aquarium);
 
 	void updateAquarium(Aquarium aquarium);
 

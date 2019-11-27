@@ -1,13 +1,7 @@
+mvc\dao\AquariumDaoImpl.class
 mvc\manager\AquariumManager.class
 mvc\services\AquariumServiceImpl.class
-mvc\manager\AquariumManagerImpl.class
-mvc\services\AquariumService.class
-mvc\controller\AquariumSyncController.class
-mvc\configuration\AquariumInit.class
-mvc\dao\AquariumDaoImpl.class
-mvc\controller\AquariumRESTController.class
 mvc\dao\AquariumDao.class
 mvc\model\Aquarium.class
-mvc\dao\AquariumAbstractDao.class
-mvc\configuration\AquariumConfig.class
-mvc\configuration\HibernateConfig.class
+mvc\services\AquariumService.class
+mvc\controller\AquariumSyncController.class

@@ -24,7 +24,7 @@
 		modelAttribute="aquarium">
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<label>* Name</label>
+				<label>Name<span class="text-danger">*</span></label>
 				<form:input path="name" type="text" class="form-control" id="name"
 					placeholder="Enter Name" required="required"></form:input>
 			</div>
@@ -65,7 +65,7 @@
 			<input type="hidden" ng-model="ctrl.aquarium.id" />
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="tname">* Name</label> <input type="text"
+					<label for="tname">Name <span class="text-danger">*</span></label> <input type="text"
 						ng-model="ctrl.aquarium.name" name="tName" class="form-control"
 						placeholder="Enter Name" required>
 				</div>
@@ -93,7 +93,8 @@
 			<div>
 				<div class="float-right">
 					<button type="submit" class="btn btn-primary">Add</button>
-					<button type="button" ng-click="ctrl.reset()"
+					<button type="button" ng-click="ctrl.updateAquarium(id)" class="btn btn-info">Update</button>
+					<button type="reset"
 						class="btn btn-warning text-white">Cancel</button>
 				</div>
 			</div>
@@ -119,17 +120,16 @@
 					<td ng-bind="t.gallon"></td>
 					<td ng-bind="t.notes"></td>
 					<td>
-						<button type="button" ng-click="ctrl.view(t)" class="btn btn-info">View</button>
-						<button type="button" ng-click="ctrl.edit()"
+						<!-- <button type="button" ng-click="ctrl.view(t)" class="btn btn-info">View</button> -->
+						<button type="button" ng-click="ctrl.edit(t.id)"
 							class="btn btn-success">Edit</button>
-						<button type="button" ng-click="ctrl.delete()"
+						<button type="button" ng-click="ctrl.remove(t.id)"
 							class="btn btn-danger">Delete</button>
 					</td>
 				</tr>
 			</tbody>
-
 		</table>
-
+	</div>
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
 		<script src="<c:url value='/static/js/app.js' />"></script>

@@ -1,16 +1,14 @@
 package mvc.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Table;
-
-@SuppressWarnings("deprecation")
 @Entity
-@Table(appliesTo = "AQUARIUM")
+@Table(name = "AQUARIUM")
 public class Aquarium {
 	
 	@Id
@@ -20,7 +18,7 @@ public class Aquarium {
 	@Column(name = "NAME", nullable = false)
 	private String name;
 	
-	@Column(name = "TYPE", nullable = false)
+	@Column(name = "TYPE", nullable = true)
 	private String type;
 	
 	@Column(name = "GALLON", nullable = true)
@@ -80,17 +78,9 @@ public class Aquarium {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
-	@Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-	public String toString() {
-		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes;
-	}
+//
+//	public String toString() {
+//		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes;
+//	}
 
 }

@@ -10,7 +10,7 @@ public interface AquariumDao {
 
 	Aquarium findByName(String name);
 
-	void saveAquarium(Aquarium aquarium);
+	void addAquarium(Aquarium aquarium);
 
 	List<Aquarium> findAllAquariums();
 

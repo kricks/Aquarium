@@ -11,6 +11,7 @@ angular
 
                 var self = this;
                 self.aquariums = [];
+
                 self.submit = submit;
                 self.edit = edit;
                 self.remove = remove;
@@ -64,18 +65,17 @@ angular
                             })
                 }
 
-                function remove(id) {
-                    console.log('id to be deleted', id);
-                    if (self.aquarium.id === id) { //clean form if the aquarium to be deleted is shown there.
-                        reset();
-                    }
-                    deleteAquarium(id);
-                }
-                
                 function submit() {
-                    console.log('Saving New Aquarium',
-                        self.aquarium);
-                    createAquarium(self.aquarium);
+                    if (self.aquarium.id === null) {
+                        console.log('Saving New aquarium',
+                            self.aquarium);
+                        createAquarium(self.aquarium);
+                    } else {
+                        updateAquarium(self.aquarium, self.aquarium.id);
+                        console.log('aquarium updated with id ',
+                            self.aquarium.id);
+                    }
+                    reset();
                 }
 
                 function edit(id) {
@@ -87,6 +87,14 @@ angular
                             break;
                         }
                     }
+                }
+
+                function remove(id) {
+                    console.log('id to be deleted', id);
+                    if (self.aquarium.id === id) { //clean form if the aquarium to be deleted is shown there.
+                        reset();
+                    }
+                    deleteAquarium(id);
                 }
 
                 function reset() {

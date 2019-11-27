@@ -92,10 +92,9 @@
 			</div>
 			<div>
 				<div class="float-right">
-					<button type="submit" class="btn btn-primary">Add</button>
-					<button type="button" ng-click="ctrl.updateAquarium(id)" class="btn btn-info">Update</button>
-					<button type="reset"
-						class="btn btn-warning text-white">Cancel</button>
+				<input type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary">
+					<!-- <button type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary"></button> -->
+					<button type="reset" class="btn btn-warning text-white">Cancel</button>
 				</div>
 			</div>
 		</form>

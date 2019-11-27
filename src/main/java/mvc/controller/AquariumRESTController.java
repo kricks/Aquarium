@@ -17,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import mvc.manager.AquariumManager;
 import mvc.model.Aquarium;
 
+
 @RestController
 public class AquariumRESTController {
 	
@@ -50,7 +51,7 @@ public class AquariumRESTController {
 
 	// -------------------Create an aquarium ------ //
 
-	@RequestMapping(value = "/aquariums/aquarium", method = RequestMethod.POST)
+	@RequestMapping(value = "/aquarium", method = RequestMethod.POST)
 	public ResponseEntity<Void> createAquarium(@RequestBody Aquarium aquarium, UriComponentsBuilder ucBuilder) {
 		System.out.println("Creating Aquarium " + aquarium.getName());
 

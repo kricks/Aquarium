@@ -47,7 +47,7 @@ public class AquariumDaoImpl implements AquariumDao {
 	public Aquarium findById(Long id) {
 		Criteria criteria = getSession().createCriteria(Aquarium.class);
 		criteria.add(Restrictions.eq("id", id));
-		return (Aquarium) criteria.list();
+		return (Aquarium) criteria.uniqueResult();
 	}
 	
 	@Override

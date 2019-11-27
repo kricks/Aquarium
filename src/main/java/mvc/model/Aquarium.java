@@ -78,9 +78,9 @@ public class Aquarium {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-//
-//	public String toString() {
-//		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes;
-//	}
+
+	public String toString() {
+		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes;
+	}
 
 }

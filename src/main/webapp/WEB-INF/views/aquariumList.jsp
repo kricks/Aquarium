@@ -93,7 +93,6 @@
 			<div>
 				<div class="float-right">
 				<input type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary">
-					<!-- <button type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary"></button> -->
 					<button type="reset" class="btn btn-warning text-white">Cancel</button>
 				</div>
 			</div>

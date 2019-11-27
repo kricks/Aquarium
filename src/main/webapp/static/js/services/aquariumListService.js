@@ -33,12 +33,6 @@ aquariumListService.$inject = [ '$http' ];
             });
     }
 	
-//	function deleteAquarium(id) {
-//		return $http.delete(baseURI + 'aquarium/' + id).then(function(response) {
-//                return response.data;
-//		});
-//    }
-	
 	function deleteAquarium(id) {
         return $http.delete(baseURI + 'aquarium/' + id).then(function (response) {
                 return response.data;

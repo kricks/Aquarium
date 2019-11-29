@@ -10,6 +10,7 @@ angular
             function($scope, aquariumListService) {
 
                 var self = this;
+                self.aquarium = {id:null, name:'', type:'', gallon:'', notes:''};
                 self.aquariums = [];
 
                 self.submit = submit;
@@ -44,6 +45,7 @@ angular
                 }
 
                 function updateAquarium(aquarium, id) {
+                    console.log(id);
                     aquariumListService
                         .updateAquarium(aquarium, id)
                         .then(
@@ -70,7 +72,8 @@ angular
                         console.log('Saving New aquarium',
                             self.aquarium);
                         createAquarium(self.aquarium);
-                    } else {
+                    } 
+                    else {
                         updateAquarium(self.aquarium, self.aquarium.id);
                         console.log('aquarium updated with id ',
                             self.aquarium.id);

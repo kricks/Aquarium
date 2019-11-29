@@ -63,6 +63,13 @@
 	<div ng-controller="aquariumListController as ctrl">
 		<form ng-submit="ctrl.submit()" name="aquariumForm">
 			<input type="hidden" ng-model="ctrl.aquarium.id" />
+			
+		<!-- 	<div class="form-group col-md-6">
+					<label for="tId">Id <span class="text-danger">*</span></label> <input type="text"
+						ng-model="ctrl.aquarium.id" name="tId" class="form-control"
+						placeholder="Enter Id" required>
+				</div> -->
+			
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="tname">Name <span class="text-danger">*</span></label> <input type="text"
@@ -92,7 +99,8 @@
 			</div>
 			<div>
 				<div class="float-right">
-				<input type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary">
+				<input type="submit" value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-info">
+				<button type="submit" class="btn btn-primary text-white">Add</button>
 					<button type="reset" class="btn btn-warning text-white">Cancel</button>
 				</div>
 			</div>

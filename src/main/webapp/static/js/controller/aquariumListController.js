@@ -16,6 +16,7 @@ angular
                 self.submit = submit;
                 self.edit = edit;
                 self.remove = remove;
+                self.reset = reset;
 
                 fetchAllAquariums();
 
@@ -108,7 +109,7 @@ angular
                         gallon: '',
                         notes: ''
                     };
-                    $scope.aquariumForm.$setPristine(); //reset Form
+                    $scope.aquariumForm; //reset Form
                 }
 
             }

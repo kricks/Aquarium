@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 
 <head>
 <meta charset="ISO-8859-1">
@@ -16,7 +16,7 @@
 <title>Aquarium List</title>
 </head>
 
-<body ng-app="myApp" class="container ng-cloak">
+<body class="container">
 	<h3 class="text-center">Welcome, Enter the Aquarium Details</h3>
 	<br>
 	<h4 class="pt-2 ">Synchronous:</h4>
@@ -63,13 +63,7 @@
 	<div ng-controller="aquariumListController as ctrl">
 		<form ng-submit="ctrl.submit()" name="aquariumForm">
 			<input type="hidden" ng-model="ctrl.aquarium.id" />
-			
-		<!-- 	<div class="form-group col-md-6">
-					<label for="tId">Id <span class="text-danger">*</span></label> <input type="text"
-						ng-model="ctrl.aquarium.id" name="tId" class="form-control"
-						placeholder="Enter Id" required>
-				</div> -->
-			
+		
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="tname">Name <span class="text-danger">*</span></label> <input type="text"
@@ -99,9 +93,8 @@
 			</div>
 			<div>
 				<div class="float-right">
-				<input type="submit" value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-info">
-				<button type="submit" class="btn btn-primary text-white">Add</button>
-					<button type="reset" class="btn btn-warning text-white">Cancel</button>
+				<input type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary">
+				<button type="button" ng-click="ctrl.reset()" class="btn btn-warning text-white">Cancel</button>
 				</div>
 			</div>
 		</form>
@@ -126,8 +119,8 @@
 					<td ng-bind="t.gallon"></td>
 					<td ng-bind="t.notes"></td>
 					<td>
-						<!-- <button type="button" ng-click="ctrl.view(t)" class="btn btn-info">View</button> -->
-						<button type="button" ng-click="ctrl.edit(t.id)"
+						<!-- <button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button> -->
+						<button type="button" ng-click="ctrl.edit(t.id)"s
 							class="btn btn-success">Edit</button>
 						<button type="button" ng-click="ctrl.remove(t.id)"
 							class="btn btn-danger">Delete</button>

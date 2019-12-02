@@ -59,8 +59,6 @@ public class AquariumRESTController {
 			System.out.println("A Aquarium with name " + aquarium.getName() + " already exist");
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
-
-		System.out.println(aquarium);
 		aquariumManager.addAquarium(aquarium);
 
 		HttpHeaders headers = new HttpHeaders();

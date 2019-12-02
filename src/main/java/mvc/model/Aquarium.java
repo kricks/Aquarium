@@ -1,5 +1,7 @@
 package mvc.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,33 +12,37 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "AQUARIUM")
 public class Aquarium {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "NAME", nullable = false)
 	private String name;
-	
+
 	@Column(name = "TYPE", nullable = true)
 	private String type;
-	
+
 	@Column(name = "GALLON", nullable = true)
 	private Integer gallon;
-	
+
 	@Column(name = "NOTES", nullable = true)
 	private String notes;
+
+	@Column(name = "Date", nullable = false)
+	private Date date;
 
 	public Aquarium() {
 
 	}
 
-	public Aquarium(Long id, String name, String type, Integer gallon, String notes) {
+	public Aquarium(Long id, String name, String type, Integer gallon, String notes, Date date) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.gallon = gallon;
 		this.notes = notes;
+		this.date = date;
 	}
 
 	public Long getId() {
@@ -79,8 +85,17 @@ public class Aquarium {
 		this.notes = notes;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public String toString() {
-		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes;
+		return "Id = " + id + ", name = " + name + ", type = " + type + 
+				", gallons = " + gallon + ", notes = " + notes + ", date = " + date;
 	}
 
 }

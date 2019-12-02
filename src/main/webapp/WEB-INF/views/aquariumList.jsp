@@ -71,7 +71,8 @@
 						placeholder="Enter Name" required>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="type">Type</label> <select name="tType"
+					<label for="type">Type</label> 
+					<select name="tType"
 						class="form-control" id="type" ng-model="ctrl.aquarium.type">
 						<option>Fresh Water</option>
 						<option>Salt Water</option>
@@ -91,6 +92,15 @@
 						id="notes" placeholder="Enter Notes">
 				</div>
 			</div>
+			
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="date">Date <span class="text-danger">*</span></label> 
+					<input type="date" ng-model="ctrl.aquarium.date" 
+					name="tDate"class="form-control" id="date" required>
+				</div>
+			</div>
+					
 			<div>
 				<div class="float-right">
 				<input type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary">
@@ -100,7 +110,7 @@
 		</form>
 		<br>
 		<h4 class="text-center pt-3">Aquarium List</h4>
-		<table class="table">
+		<table class="table no-gutters">
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
@@ -108,6 +118,7 @@
 					<th scope="col">Type</th>
 					<th scope="col">Gallons</th>
 					<th scope="col">Notes</th>
+					<th scope="col">Date</th>
 				</tr>
 			</thead>
 
@@ -118,11 +129,14 @@
 					<td ng-bind="t.type"></td>
 					<td ng-bind="t.gallon"></td>
 					<td ng-bind="t.notes"></td>
+					<td ng-bind="t.date | date:'MM/dd/yy'"></td>
 					<td>
 						<!-- <button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button> -->
 						<button type="button" ng-click="ctrl.edit(t.id)"s
 							class="btn btn-success">Edit</button>
-						<button type="button" ng-click="ctrl.remove(t.id)"
+					</td>
+					<td>
+					<button type="button" ng-click="ctrl.remove(t.id)"
 							class="btn btn-danger">Delete</button>
 					</td>
 				</tr>

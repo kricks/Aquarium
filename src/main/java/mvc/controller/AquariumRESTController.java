@@ -86,6 +86,7 @@ public class AquariumRESTController {
         currentAquarium.setType(aquarium.getType());
         currentAquarium.setGallon(aquarium.getGallon());
         currentAquarium.setNotes(aquarium.getNotes());
+        currentAquarium.setDate(aquarium.getDate());
           
         aquariumManager.updateAquarium(currentAquarium);
         return new ResponseEntity<Aquarium>(currentAquarium, HttpStatus.OK);

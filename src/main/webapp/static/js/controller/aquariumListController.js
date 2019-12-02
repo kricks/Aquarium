@@ -5,12 +5,19 @@ angular
     .controller(
         'aquariumListController',
         [
-            '$scope',
             'aquariumListService',
-            function($scope, aquariumListService) {
+            function(aquariumListService) {
 
                 var self = this;
-                self.aquarium = {id:null, name:'', type:'', gallon:'', notes:''};
+                self.aquarium = {
+                    id: null,
+                    name: '',
+                    type: 'Fresh Water',
+                    gallon: '',
+                    notes: '',
+                    date: null
+                };
+
                 self.aquariums = [];
 
                 self.submit = submit;
@@ -73,9 +80,9 @@ angular
                         console.log('Saving New aquarium',
                             self.aquarium);
                         createAquarium(self.aquarium);
-                    } 
-                    else {
-                        updateAquarium(self.aquarium, self.aquarium.id);
+                    } else {
+                        updateAquarium(self.aquarium,
+                            self.aquarium.id);
                         console.log('aquarium updated with id ',
                             self.aquarium.id);
                     }
@@ -83,19 +90,18 @@ angular
                 }
 
                 function edit(id) {
-                    console.log('id to be edited', id);
+                    console.log('id to be edited' + id);
                     for (var i = 0; i < self.aquariums.length; i++) {
                         if (self.aquariums[i].id === id) {
-                            self.aquarium = angular
-                                .copy(self.aquariums[i]);
-                            break;
+                            self.aquarium = angular.copy(self.aquariums[i]);
+                            self.aquarium.date = new Date(self.aquarium.date);
                         }
                     }
                 }
 
                 function remove(id) {
                     console.log('id to be deleted', id);
-                    if (self.aquarium.id === id) { //clean form if the aquarium to be deleted is shown there.
+                    if (self.aquarium.id === id) {
                         reset();
                     }
                     deleteAquarium(id);
@@ -105,11 +111,12 @@ angular
                     self.aquarium = {
                         id: null,
                         name: '',
-                        type: '',
+                        type: 'Fresh Water',
                         gallon: '',
-                        notes: ''
+                        notes: '',
+                        date: null
                     };
-                    $scope.aquariumForm; //reset Form
+                    aquariumForm;
                 }
 
             }

@@ -35,10 +35,10 @@ public class AquariumRESTController {
         return new ResponseEntity<List<Aquarium>>(aquariums, HttpStatus.OK);
 	}
 	
-	 //-------------------Retrieve Single User---------------------------- //
+	 //-------------------Retrieve Single Aquarium---------------------------- //
     
     @RequestMapping(value = "/aquarium/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Aquarium> getAquarium(@PathVariable("id") long id) {
+    public ResponseEntity<Aquarium> getAquarium(@PathVariable("id") Integer id) {
         System.out.println("Fetching Aquarium with id " + id);
         Aquarium aquarium = aquariumManager.findById(id);
         if (aquarium == null) {
@@ -61,16 +61,14 @@ public class AquariumRESTController {
 		}
 		aquariumManager.addAquarium(aquarium);
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(ucBuilder.path("/aquarium/{id}").buildAndExpand(aquarium.getId()).toUri());
-		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
 		
 	}
 	
 	//------------------- Update a aquarium ----------------------------- //
     
     @RequestMapping(value = "/aquarium/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Aquarium> updateAquarium(@PathVariable("id") long id, @RequestBody Aquarium aquarium) {
+    public ResponseEntity<Aquarium> updateAquarium(@PathVariable("id") Integer id, @RequestBody Aquarium aquarium) {
         System.out.println("Updating Aquarium " + id);
           
         Aquarium currentAquarium = aquariumManager.findById(id);
@@ -95,7 +93,7 @@ public class AquariumRESTController {
     //------------------- Delete a aquarium --------------------------------------------------------
       
     @RequestMapping(value = "/aquarium/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Aquarium> deleteAquarium(@PathVariable("id") long id) {
+    public ResponseEntity<Aquarium> deleteAquarium(@PathVariable("id") int id) {
         System.out.println("Fetching & Deleting aquarium with id " + id);
   
         Aquarium aquarium = aquariumManager.findById(id);

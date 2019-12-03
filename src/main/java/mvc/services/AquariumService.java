@@ -6,15 +6,15 @@ import mvc.model.Aquarium;
 
 public interface AquariumService {
 
-	Aquarium findById(Long id);
+	Aquarium findById(Integer id);
 
 	Aquarium findByName(String name);
 
-	void addAquarium(Aquarium aquarium);
+	boolean addAquarium(Aquarium aquarium);
 
-	void updateAquarium(Aquarium aquarium);
+	boolean updateAquarium(Aquarium aquarium);
 
-	void deleteAquariumById(Long id);
+	boolean deleteAquariumById(Integer id);
 
 	List<Aquarium> findAllAquariums();
 

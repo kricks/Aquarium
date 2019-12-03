@@ -22,7 +22,7 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public Aquarium findById(Long id) {
+	public Aquarium findById(Integer id) {
 		return aquariumDao.findById(id);
 	}
 
@@ -32,13 +32,13 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public void addAquarium(Aquarium aquarium) {
-		aquariumDao.addAquarium(aquarium);
+	public boolean addAquarium(Aquarium aquarium) {
+		return aquariumDao.addAquarium(aquarium);
 	}
 
 	@Override
-	public void updateAquarium(Aquarium aquarium) {
-		aquariumDao.updateAquarium(aquarium);
+	public boolean updateAquarium(Aquarium aquarium) {
+		return aquariumDao.updateAquarium(aquarium);
 	}
 
 	@Override
@@ -47,8 +47,8 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public void deleteAquariumById(Long id) {
-		aquariumDao.deleteAquariumById(id);
+	public boolean deleteAquariumById(Integer id) {
+		return aquariumDao.deleteAquariumById(id);
 	}
 
 

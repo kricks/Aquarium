@@ -12,10 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import mvc.model.Aquarium;
 
-
 @Repository
 public class AquariumDaoImpl implements AquariumDao {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -23,17 +22,18 @@ public class AquariumDaoImpl implements AquariumDao {
 		return sessionFactory.getCurrentSession();
 	}
 
-	public void persist(Object entity) {
-		getSession().persist(entity);
-	}
-
-	public void delete(Object entity) {
-		getSession().delete(entity);
-	}
-	
 	@Override
-	public void addAquarium(Aquarium aquarium) {
-		persist(aquarium);
+	public boolean addAquarium(Aquarium aquarium) {
+		try {
+			getSession().persist(aquarium);
+			System.out.println("Add Aquarium Successful");
+			return true;
+		} 
+		catch (Exception e) {
+			System.out.println("Add Aquarium Failed");
+			return false;
+		}
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -44,29 +44,47 @@ public class AquariumDaoImpl implements AquariumDao {
 	}
 
 	@Override
-	public Aquarium findById(Long id) {
+	public Aquarium findById(Integer id) {
 		Criteria criteria = getSession().createCriteria(Aquarium.class);
 		criteria.add(Restrictions.eq("id", id));
 		return (Aquarium) criteria.uniqueResult();
 	}
-	
+
 	@Override
 	public Aquarium findByName(String name) {
 		Criteria criteria = getSession().createCriteria(Aquarium.class);
 		criteria.add(Restrictions.eq("name", name));
 		return (Aquarium) criteria.uniqueResult();
 	}
-	
+
 	@Override
-	public void updateAquarium(Aquarium aquarium) {
-		getSession().update(aquarium);
+	public boolean updateAquarium(Aquarium aquarium) {
+		;
+		try {
+			getSession().update(aquarium);
+			System.out.println("DAO Update Successful");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DAO Update Failed");
+			return false;
+		}
 	}
 
 	@Override
-	public void deleteAquariumById(Long id) {
-		Query query = getSession().createQuery("DELETE FROM Aquarium WHERE id = :id");
-		query.setLong("id", id);
-		query.executeUpdate();
+	public boolean deleteAquariumById(Integer id) {
+		try {
+			Query query = getSession().createQuery("DELETE FROM Aquarium WHERE id = :id");
+			query.setInteger("id", id);
+			query.executeUpdate();
+			System.out.println("DAO Delete Successful");
+			return true;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("DAO Delete Failed");
+			return false;
+		}
 	}
 
 }

@@ -15,7 +15,7 @@ public class Aquarium {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	@Column(name = "NAME", nullable = false)
 	private String name;
@@ -36,7 +36,7 @@ public class Aquarium {
 
 	}
 
-	public Aquarium(Long id, String name, String type, Integer gallon, String notes, Date date) {
+	public Aquarium(Integer id, String name, String type, Integer gallon, String notes, Date date) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -45,11 +45,11 @@ public class Aquarium {
 		this.date = date;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

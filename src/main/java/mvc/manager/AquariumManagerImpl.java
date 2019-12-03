@@ -15,7 +15,7 @@ public class AquariumManagerImpl implements AquariumManager {
 	AquariumService aquariumService;
 
 	@Override
-	public Aquarium findById(Long id) {
+	public Aquarium findById(Integer id) {
 		return aquariumService.findById(id);
 	}
 
@@ -25,16 +25,14 @@ public class AquariumManagerImpl implements AquariumManager {
 	}
 
 	@Override
-	public void addAquarium(Aquarium aquarium) {
-		aquariumService.addAquarium(aquarium);
+	public boolean addAquarium(Aquarium aquarium) {
+		return aquariumService.addAquarium(aquarium);
 	}
 
 	@Override
-	public void updateAquarium(Aquarium aquarium) {
-		aquariumService.updateAquarium(aquarium);
+	public boolean updateAquarium(Aquarium aquarium) {
+		return aquariumService.updateAquarium(aquarium);
 	}
-
-	@Override
 	public List<Aquarium> findAllAquariums() {
 		return aquariumService.findAllAquariums();
 	}
@@ -45,8 +43,9 @@ public class AquariumManagerImpl implements AquariumManager {
 	}
 
 	@Override
-	public void deleteAquariumById(Long id) {
-		aquariumService.deleteAquariumById(id);
+	public boolean deleteAquariumById(Integer id) {
+		return aquariumService.deleteAquariumById(id);
+
 	}
 
 }

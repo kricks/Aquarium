@@ -51,10 +51,6 @@ public class AquariumServiceImpl implements AquariumService {
 		aquariumDao.deleteAquariumById(id);
 	}
 
-	@Override
-	public void deleteAllAquariums() {
-		aquariumDao.deleteAllAquariums();
 
-	}
 
 }

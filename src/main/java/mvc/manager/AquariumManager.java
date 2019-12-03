@@ -18,7 +18,5 @@ public interface AquariumManager {
 
 	List<Aquarium> findAllAquariums();
 
-	void deleteAllAquariums();
-
 	public boolean isAquariumExist(Aquarium aquarium);
 }

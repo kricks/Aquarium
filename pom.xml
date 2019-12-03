@@ -30,6 +30,8 @@
 		<javaxservletapi.version>4.0.1</javaxservletapi.version>
 		<javaxjstl.version>1.2</javaxjstl.version>
 		<taglibs.version>1.2.5</taglibs.version>
+		<hibernate.version>5.1.17.Final</hibernate.version>
+		<mysql.version>8.0.18</mysql.version>
 	</properties>
 
 	<dependencies>
@@ -77,14 +79,14 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.1.17.Final</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 
 		<!-- MYSQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.18</version>
+			<version>${mysql.version}</version>
 		</dependency>
 
 	</dependencies>

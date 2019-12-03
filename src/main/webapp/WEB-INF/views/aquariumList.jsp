@@ -132,9 +132,12 @@
 					<td ng-bind="t.date | date:'MM/dd/yy'"></td>
 					<td>
 						<!-- <button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button> -->
-						<button type="button" class="btn btn-info">View</button>
-						<button type="button" ng-click="ctrl.edit(t.id)" class="btn btn-success">Edit</button>
-						<button type="button" ng-click="ctrl.remove(t.id)" class="btn btn-danger">Delete</button>
+						<button type="button" ng-click="ctrl.edit(t.id)"s
+							class="btn btn-success">Edit</button>
+					</td>
+					<td>
+					<button type="button" ng-click="ctrl.remove(t.id)"
+							class="btn btn-danger">Delete</button>
 					</td>
 				</tr>
 			</tbody>

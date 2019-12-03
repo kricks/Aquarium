@@ -69,9 +69,4 @@ public class AquariumDaoImpl implements AquariumDao {
 		query.executeUpdate();
 	}
 
-	@Override
-	public void deleteAllAquariums() {
-		Query query = getSession().createQuery("DELETE FROM Aquarium");
-		query.executeUpdate();
-	}
 }

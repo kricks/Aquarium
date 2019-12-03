@@ -108,16 +108,5 @@ public class AquariumRESTController {
         return new ResponseEntity<Aquarium>(HttpStatus.NO_CONTENT);
     }
   
-      
-     
-    //------------------- Delete All aquarium --------------------------------------------------------
-      
-    @RequestMapping(value = "/aquariums", method = RequestMethod.DELETE)
-    public ResponseEntity<Aquarium> deleteAllAquariums() {
-        System.out.println("Deleting All aquariums");
-  
-        aquariumManager.deleteAllAquariums();
-        return new ResponseEntity<Aquarium>(HttpStatus.NO_CONTENT);
-    }
 	
 }

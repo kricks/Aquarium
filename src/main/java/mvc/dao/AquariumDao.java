@@ -18,6 +18,4 @@ public interface AquariumDao {
 
 	void deleteAquariumById(Long id);
 
-	void deleteAllAquariums();
-
 }

@@ -49,9 +49,4 @@ public class AquariumManagerImpl implements AquariumManager {
 		aquariumService.deleteAquariumById(id);
 	}
 
-	@Override
-	public void deleteAllAquariums() {
-		aquariumService.deleteAllAquariums();
-	}
-
 }

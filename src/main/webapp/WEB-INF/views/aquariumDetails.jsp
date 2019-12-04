@@ -12,32 +12,30 @@
 <title>Aquarium Details</title>
 </head>
 <body ng-app="myApp" class="container">
-<br>
+	<br>
 
 	<a href="aquarium-list">
 		<button class="btn btn-primary">Go Back to Aquarium List</button>
 	</a>
 
-		<table class="mt-3 p-3">
-			<tr>
-				<td>Name :</td>
-				<td>${name}</td>
-			</tr>
-			<tr>
-				<td>Type :</td>
-				<td>${type}</td>
-			</tr>
-			<tr>
-				<td>Gallons :</td>
-				<td>${gallon}</td>
-			</tr>
-			<tr>
-				<td>Notes :</td>
-				<td>${notes}</td>
-			</tr>
-		</table>
-		
-		<div ng-controller="aquariumListController as ctrl" ng-repeat="pickedAqua in value.val"></div>
+	<table class="mt-3 p-3">
+		<tr>
+			<td>Name :</td>
+			<td>${name}</td>
+		</tr>
+		<tr>
+			<td>Type :</td>
+			<td>${type}</td>
+		</tr>
+		<tr>
+			<td>Gallons :</td>
+			<td>${gallon}</td>
+		</tr>
+		<tr>
+			<td>Notes :</td>
+			<td>${notes}</td>
+		</tr>
+	</table>
 
 </body>
 </html>

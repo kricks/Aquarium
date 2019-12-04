@@ -5,7 +5,7 @@ import java.util.List;
 import mvc.model.Aquarium;
 
 public interface AquariumManager {
-	
+
 	Aquarium findById(Integer id);
 
 	Aquarium findByName(String name);

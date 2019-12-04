@@ -63,16 +63,15 @@
 	<div ng-controller="aquariumListController as ctrl">
 		<form ng-submit="ctrl.submit()" name="aquariumForm">
 			<input type="hidden" ng-model="ctrl.aquarium.id" />
-		
+
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="tname">Name <span class="text-danger">*</span></label> <input type="text"
-						ng-model="ctrl.aquarium.name" name="tName" class="form-control"
-						placeholder="Enter Name" required>
+					<label for="tname">Name <span class="text-danger">*</span></label>
+					<input type="text" ng-model="ctrl.aquarium.name" name="tName"
+						class="form-control" placeholder="Enter Name" required>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="type">Type</label> 
-					<select name="tType"
+					<label for="type">Type</label> <select name="tType"
 						class="form-control" id="type" ng-model="ctrl.aquarium.type">
 						<option>Fresh Water</option>
 						<option>Salt Water</option>
@@ -92,19 +91,22 @@
 						id="notes" placeholder="Enter Notes">
 				</div>
 			</div>
-			
+
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="date">Date <span class="text-danger">*</span></label> 
-					<input type="date" ng-model="ctrl.aquarium.date" 
-					name="tDate"class="form-control" id="date" required>
+					<label for="date">Date <span class="text-danger">*</span></label> <input
+						type="date" ng-model="ctrl.aquarium.date" name="tDate"
+						class="form-control" id="date" required>
 				</div>
 			</div>
-					
+
 			<div>
 				<div class="float-right">
-				<input type="submit" value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}" class="btn btn-primary">
-				<button type="button" ng-click="ctrl.reset()" class="btn btn-warning text-white">Cancel</button>
+					<input type="submit"
+						value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}"
+						class="btn btn-primary">
+					<button type="button" ng-click="ctrl.reset()"
+						class="btn btn-warning text-white">Cancel</button>
 				</div>
 			</div>
 		</form>
@@ -132,24 +134,24 @@
 					<td ng-bind="t.date | date:'MM/dd/yy'"></td>
 					<td>
 						<!-- <button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button> -->
-						<button type="button" ng-click="ctrl.edit(t.id)"s
+						<button type="button" ng-click="ctrl.edit(t.id)" s
 							class="btn btn-success">Edit</button>
 					</td>
 					<td>
-					<button type="button" ng-click="ctrl.remove(t.id)"
+						<button type="button" ng-click="ctrl.remove(t.id)"
 							class="btn btn-danger">Delete</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-		<script src="<c:url value='/static/js/app.js' />"></script>
-		<script
-			src="<c:url value='/static/js/services/aquariumListService.js' />"></script>
-		<script
-			src="<c:url value='/static/js/controller/aquariumListController.js' />"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+	<script src="<c:url value='/static/js/app.js' />"></script>
+	<script
+		src="<c:url value='/static/js/services/aquariumListService.js' />"></script>
+	<script
+		src="<c:url value='/static/js/controller/aquariumListController.js' />"></script>
 </body>
 
 </html>

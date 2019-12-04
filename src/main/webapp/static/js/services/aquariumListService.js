@@ -23,23 +23,22 @@ aquariumListService.$inject = [ '$http' ];
 	}
 
 	function createAquarium(aquarium) {
-		return $http.post(baseURI + 'aquarium', aquarium);
 		console.log("This is create: " + aquarium);
+		return $http.post(baseURI + 'aquariums/create', aquarium);
 	}
 	
 	function updateAquarium(aquarium, id) {
-        return $http.put(baseURI + 'aquarium/' + id, aquarium).then(function (response) {
+        return $http.put(baseURI + 'aquariums/update/' + id, aquarium).then(function (response) {
                 return (response.data);
             });
     }
 	
 	function deleteAquarium(id) {
-        return $http.delete(baseURI + 'aquarium/' + id).then(function (response) {
+        return $http.delete(baseURI + 'aquariums/delete/' + id).then(function (response) {
                 return response.data;
             },
             function(errResponse){
                 console.error('Error while deleting User');
             });
     }
-	
 };

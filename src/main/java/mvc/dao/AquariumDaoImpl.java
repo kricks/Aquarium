@@ -28,12 +28,11 @@ public class AquariumDaoImpl implements AquariumDao {
 			getSession().persist(aquarium);
 			System.out.println("Add Aquarium Successful");
 			return true;
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Add Aquarium Failed");
 			return false;
 		}
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -79,8 +78,7 @@ public class AquariumDaoImpl implements AquariumDao {
 			query.executeUpdate();
 			System.out.println("DAO Delete Successful");
 			return true;
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("DAO Delete Failed");
 			return false;

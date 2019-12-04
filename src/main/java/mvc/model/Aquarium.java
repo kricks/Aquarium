@@ -29,7 +29,7 @@ public class Aquarium {
 	@Column(name = "NOTES", nullable = true)
 	private String notes;
 
-	@Column(name = "Date", nullable = false)
+	@Column(name = "DATE", nullable = false)
 	private Date date;
 
 	public Aquarium() {
@@ -94,8 +94,8 @@ public class Aquarium {
 	}
 
 	public String toString() {
-		return "Id = " + id + ", name = " + name + ", type = " + type + 
-				", gallons = " + gallon + ", notes = " + notes + ", date = " + date;
+		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes
+				+ ", date = " + date;
 	}
 
 }

@@ -10,9 +10,9 @@ import mvc.services.AquariumService;
 
 @Service
 public class AquariumManagerImpl implements AquariumManager {
-	
+
 	@Autowired
-	AquariumService aquariumService;
+	private AquariumService aquariumService;
 
 	@Override
 	public Aquarium findById(Integer id) {
@@ -33,6 +33,7 @@ public class AquariumManagerImpl implements AquariumManager {
 	public boolean updateAquarium(Aquarium aquarium) {
 		return aquariumService.updateAquarium(aquarium);
 	}
+
 	public List<Aquarium> findAllAquariums() {
 		return aquariumService.findAllAquariums();
 	}

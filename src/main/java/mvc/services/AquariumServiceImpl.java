@@ -12,9 +12,9 @@ import mvc.model.Aquarium;
 @Service
 @Transactional
 public class AquariumServiceImpl implements AquariumService {
-	
+
 	@Autowired
-	AquariumDao aquariumDao;
+	private AquariumDao aquariumDao;
 
 	@Override
 	public List<Aquarium> findAllAquariums() {
@@ -50,7 +50,5 @@ public class AquariumServiceImpl implements AquariumService {
 	public boolean deleteAquariumById(Integer id) {
 		return aquariumDao.deleteAquariumById(id);
 	}
-
-
 
 }

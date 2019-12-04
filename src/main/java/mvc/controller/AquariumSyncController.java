@@ -2,22 +2,22 @@ package mvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import mvc.model.Aquarium;
 
 @Controller
-public class AquariumSyncController<AquariumService> {
+public class AquariumSyncController {
 
-	@RequestMapping(value = "/aquarium-list", method = RequestMethod.GET)
+	@GetMapping(value = "/aquarium-list")
 	public ModelAndView display() {
 		return new ModelAndView("aquariumList", "aquarium", new Aquarium());
 	}
 
-	@RequestMapping(value = "/aquarium-details", method = RequestMethod.POST)
+	@PostMapping(value = "/aquarium-details")
 	public String addNewAquarium(@ModelAttribute("aquarium") Aquarium aquarium, ModelMap model) {
 		model.addAttribute("name", aquarium.getName());
 		model.addAttribute("type", aquarium.getType());

@@ -20,7 +20,7 @@ import mvc.model.Aquarium;
 
 @RequestMapping(value = "/aquariums")
 @Controller
-public class AquariumRESTController {
+public class AquariumAsyncController {
 
 	@Autowired
 	private AquariumManager aquariumManager;

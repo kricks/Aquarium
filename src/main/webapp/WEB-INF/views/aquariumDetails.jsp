@@ -21,19 +21,19 @@
 	<table class="mt-3 p-3">
 		<tr>
 			<td>Name :</td>
-			<td>${name}</td>
+			<td>${aquarium.name}</td>
 		</tr>
 		<tr>
 			<td>Type :</td>
-			<td>${type}</td>
+			<td>${aquarium.type}</td>
 		</tr>
 		<tr>
 			<td>Gallons :</td>
-			<td>${gallon}</td>
+			<td>${aquarium.gallon}</td>
 		</tr>
 		<tr>
 			<td>Notes :</td>
-			<td>${notes}</td>
+			<td>${aquarium.notes}</td>
 		</tr>
 	</table>
 

@@ -10,10 +10,10 @@ angular
                 
                 self.aquarium = {
                     id: null,
-                    name: '',
+                    name: undefined,
                     type: 'Fresh Water',
-                    gallon: '',
-                    notes: '',
+                    gallon: undefined,
+                    notes: undefined,
                     date: null
                 };
 
@@ -93,10 +93,10 @@ angular
                 function reset() {
                     self.aquarium = {
                         id: null,
-                        name: '',
+                        name: undefined,
                         type: 'Fresh Water',
-                        gallon: '',
-                        notes: '',
+                        gallon: undefined,
+                        notes: undefined,
                         date: null
                     };
                 }

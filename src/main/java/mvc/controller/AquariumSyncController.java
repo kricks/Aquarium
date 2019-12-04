@@ -16,15 +16,10 @@ public class AquariumSyncController {
 	public ModelAndView display() {
 		return new ModelAndView("aquariumList", "aquarium", new Aquarium());
 	}
-
-	@PostMapping(value = "/aquarium-details")
-	public String addNewAquarium(@ModelAttribute("aquarium") Aquarium aquarium, ModelMap model) {
-		model.addAttribute("name", aquarium.getName());
-		model.addAttribute("type", aquarium.getType());
-		model.addAttribute("gallon", aquarium.getGallon());
-		model.addAttribute("notes", aquarium.getNotes());
-
-		return "aquariumDetails";
+	
+	@PostMapping (value = "/aquarium-details")
+	public ModelAndView addNewAquarium(@ModelAttribute("aquarium") Aquarium aquarium) {
+		return new ModelAndView("aquariumDetails", "aquarium", aquarium);
 	}
 
 }

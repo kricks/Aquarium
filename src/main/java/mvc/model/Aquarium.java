@@ -32,19 +32,6 @@ public class Aquarium {
 	@Column(name = "DATE", nullable = false)
 	private Date date;
 
-	public Aquarium() {
-
-	}
-
-	public Aquarium(Integer id, String name, String type, Integer gallon, String notes, Date date) {
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.gallon = gallon;
-		this.notes = notes;
-		this.date = date;
-	}
-
 	public Integer getId() {
 		return id;
 	}

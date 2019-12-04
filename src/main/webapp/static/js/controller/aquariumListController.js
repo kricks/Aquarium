@@ -4,11 +4,10 @@ angular
     .module('myApp')
     .controller(
         'aquariumListController',
-        [
-            'aquariumListService',
-            function(aquariumListService) {
-
-                var self = this;
+        ['aquariumListService', function(aquariumListService) {
+                
+        		var self = this;
+                
                 self.aquarium = {
                     id: null,
                     name: '',
@@ -42,22 +41,14 @@ angular
                 }
 
                 function createAquarium(aquarium) {
-                    aquariumListService
-                        .createAquarium(aquarium)
-                        .then(
-                            fetchAllAquariums,
-                            function(errResponse) {
-                                console
-                                    .error('Error while creating Aquarium');
-                            });
+                    aquariumListService.createAquarium(aquarium).then(fetchAllAquariums);
                 }
 
                 function updateAquarium(aquarium, id) {
                     console.log(id);
                     aquariumListService
                         .updateAquarium(aquarium, id)
-                        .then(
-                            fetchAllAquariums,
+                        .then(fetchAllAquariums,
                             function(errResponse) {
                                 console
                                     .error('Error while updating aquarium');
@@ -67,12 +58,7 @@ angular
                 function deleteAquarium(id) {
                     aquariumListService
                         .deleteAquarium(id)
-                        .then(
-                            fetchAllAquariums,
-                            function(errResponse) {
-                                console
-                                    .log("error while deleting aquarium");
-                            })
+                        .then(fetchAllAquariums);
                 }
 
                 function submit() {
@@ -101,9 +87,6 @@ angular
 
                 function remove(id) {
                     console.log('id to be deleted', id);
-                    if (self.aquarium.id === id) {
-                        reset();
-                    }
                     deleteAquarium(id);
                 }
 
@@ -116,7 +99,6 @@ angular
                         notes: '',
                         date: null
                     };
-                    aquariumForm;
                 }
 
             }

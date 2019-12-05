@@ -14,7 +14,7 @@ public interface AquariumDao {
 
 	List<Aquarium> findAllAquariums();
 
-	boolean updateAquarium(Aquarium aquarium);
+	Aquarium updateAquarium(Aquarium aquarium);
 
 	boolean deleteAquariumById(Integer id);
 

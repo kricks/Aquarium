@@ -30,7 +30,7 @@ public class AquariumManagerImpl implements AquariumManager {
 	}
 
 	@Override
-	public boolean updateAquarium(Aquarium aquarium) {
+	public Aquarium updateAquarium(Aquarium aquarium) {
 		return aquariumService.updateAquarium(aquarium);
 	}
 

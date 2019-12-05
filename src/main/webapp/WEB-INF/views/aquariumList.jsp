@@ -133,8 +133,10 @@
 					<td ng-bind="t.notes"></td>
 					<td ng-bind="t.date | date:'MM/dd/yy'"></td>
 					<td>
-						<!-- <button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button> -->
-						<button type="button" ng-click="ctrl.edit(t.id)" s
+						<button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button>
+					</td>
+					<td>
+						<button type="button" ng-click="ctrl.edit(t.id)"
 							class="btn btn-success">Edit</button>
 					</td>
 					<td>

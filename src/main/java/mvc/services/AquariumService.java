@@ -12,7 +12,7 @@ public interface AquariumService {
 
 	boolean addAquarium(Aquarium aquarium);
 
-	boolean updateAquarium(Aquarium aquarium);
+	Aquarium updateAquarium(Aquarium aquarium);
 
 	boolean deleteAquariumById(Integer id);
 

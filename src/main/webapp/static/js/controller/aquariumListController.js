@@ -74,6 +74,10 @@ angular
                     }
                     reset();
                 }
+                
+                function view(id) {
+                	console.log("view selected" + id);
+                }
 
                 function edit(id) {
                     console.log('id to be edited' + id);

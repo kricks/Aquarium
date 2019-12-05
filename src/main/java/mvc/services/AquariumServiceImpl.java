@@ -37,7 +37,7 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public boolean updateAquarium(Aquarium aquarium) {
+	public Aquarium updateAquarium(Aquarium aquarium) {
 		return aquariumDao.updateAquarium(aquarium);
 	}
 

@@ -57,17 +57,9 @@ public class AquariumDaoImpl implements AquariumDao {
 	}
 
 	@Override
-	public boolean updateAquarium(Aquarium aquarium) {
-		;
-		try {
-			getSession().update(aquarium);
-			System.out.println("DAO Update Successful");
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("DAO Update Failed");
-			return false;
-		}
+	public Aquarium updateAquarium(Aquarium aquarium) {
+		getSession().update(aquarium);
+		return aquarium;
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package mvc.manager;
 
 import java.util.List;
 
-import mvc.model.AquariumImpl;
+import mvc.model.aquarium.AquariumImpl;
 
 public interface AquariumManager {
 

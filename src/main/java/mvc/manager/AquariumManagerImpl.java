@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mvc.model.AquariumImpl;
+import mvc.model.aquarium.AquariumImpl;
 import mvc.services.AquariumService;
 
 @Service
@@ -31,13 +31,6 @@ public class AquariumManagerImpl implements AquariumManager {
 
 	@Override
 	public AquariumImpl updateAquarium(AquariumImpl aquarium) {
-		try {
-			aquariumService.updateAquarium(aquarium);
-			System.out.println("Manager Delete Successful");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Manager Delete Failed");
-		}
 		return aquariumService.updateAquarium(aquarium);
 	}
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import mvc.manager.AquariumManager;
-import mvc.model.AquariumImpl;
+import mvc.model.aquarium.AquariumImpl;
 
 @RequestMapping(value = "/aquariums")
 @Controller

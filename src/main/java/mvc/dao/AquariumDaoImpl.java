@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import mvc.model.AquariumImpl;
+import mvc.model.aquarium.AquariumImpl;
 
 @Repository
 public class AquariumDaoImpl implements AquariumDao {

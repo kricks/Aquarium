@@ -2,29 +2,29 @@ package mvc.model;
 
 import java.util.Date;
 
-public interface Aquarium {
+interface Aquarium {
 
-	public Integer getId();
+	Integer getId();
 
-	public void setId(Integer id);
+	void setId(Integer id);
 
-	public String getName();
+	String getName();
 
-	public void setName(String name);
+	void setName(String name);
 
-	public String getType();
+	String getType();
 
-	public void setType(String type);
+	void setType(String type);
 
-	public Integer getGallon();
+	Integer getGallon();
 
-	public void setGallon(Integer gallon);
+	void setGallon(Integer gallon);
 
-	public String getNotes();
+	String getNotes();
 
-	public void setNotes(String notes);
+	void setNotes(String notes);
 
-	public Date getDate();
+	Date getDate();
 
-	public void setDate(Date date);
+	void setDate(Date date);
 }

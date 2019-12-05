@@ -19,7 +19,7 @@
 <body class="container">
 	<h3 class="text-center">Welcome, Enter the Aquarium Details</h3>
 	<br>
-	<h4 class="pt-2 ">Synchronous:</h4>
+<%-- 	<h4 class="pt-2 ">Synchronous:</h4>
 	<form:form method="POST" action="aquarium-details"
 		modelAttribute="aquarium">
 		<div class="form-row">
@@ -58,10 +58,9 @@
 			</div>
 		</div>
 	</form:form>
-	<br>
-	<h4 class="pt-2">Asynchronous:</h4>
+	<br> --%>
 	<div ng-controller="aquariumListController as ctrl">
-		<form ng-submit="ctrl.submit()" name="aquariumForm">
+		<form ng-submit="ctrl.submit()" name="aquariumForm" class="col">
 			<input type="hidden" ng-model="ctrl.aquarium.id" />
 
 			<div class="form-row">
@@ -132,9 +131,9 @@
 					<td ng-bind="t.gallon"></td>
 					<td ng-bind="t.notes"></td>
 					<td ng-bind="t.date | date:'MM/dd/yy'"></td>
-					<td>
+<!-- 					<td>
 						<button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button>
-					</td>
+					</td> -->
 					<td>
 						<button type="button" ng-click="ctrl.edit(t.id)"
 							class="btn btn-success">Edit</button>

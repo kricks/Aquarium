@@ -31,6 +31,13 @@ public class AquariumManagerImpl implements AquariumManager {
 
 	@Override
 	public AquariumImpl updateAquarium(AquariumImpl aquarium) {
+		try {
+			aquariumService.updateAquarium(aquarium);
+			System.out.println("Manager Delete Successful");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Manager Delete Failed");
+		}
 		return aquariumService.updateAquarium(aquarium);
 	}
 

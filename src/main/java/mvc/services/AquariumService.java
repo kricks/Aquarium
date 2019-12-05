@@ -2,22 +2,22 @@ package mvc.services;
 
 import java.util.List;
 
-import mvc.model.Aquarium;
+import mvc.model.AquariumImpl;
 
 public interface AquariumService {
 
-	Aquarium findById(Integer id);
+	AquariumImpl findById(Integer id);
 
-	Aquarium findByName(String name);
+	AquariumImpl findByName(String name);
 
-	boolean addAquarium(Aquarium aquarium);
+	boolean addAquarium(AquariumImpl aquarium);
 
-	Aquarium updateAquarium(Aquarium aquarium);
+	AquariumImpl updateAquarium(AquariumImpl aquarium);
 
 	boolean deleteAquariumById(Integer id);
 
-	List<Aquarium> findAllAquariums();
+	List<AquariumImpl> findAllAquariums();
 
-	public boolean isAquariumExist(Aquarium aquarium);
+	public boolean isAquariumExist(AquariumImpl aquarium);
 
 }

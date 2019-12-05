@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import mvc.model.Aquarium;
+import mvc.model.AquariumImpl;
 
 @Repository
 public class AquariumDaoImpl implements AquariumDao {
@@ -23,7 +23,7 @@ public class AquariumDaoImpl implements AquariumDao {
 	}
 
 	@Override
-	public boolean addAquarium(Aquarium aquarium) {
+	public boolean addAquarium(AquariumImpl aquarium) {
 		try {
 			getSession().persist(aquarium);
 			System.out.println("Add Aquarium Successful");
@@ -37,27 +37,27 @@ public class AquariumDaoImpl implements AquariumDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Aquarium> findAllAquariums() {
-		Criteria criteria = getSession().createCriteria(Aquarium.class);
-		return (List<Aquarium>) criteria.list();
+	public List<AquariumImpl> findAllAquariums() {
+		Criteria criteria = getSession().createCriteria(AquariumImpl.class);
+		return (List<AquariumImpl>) criteria.list();
 	}
 
 	@Override
-	public Aquarium findById(Integer id) {
-		Criteria criteria = getSession().createCriteria(Aquarium.class);
+	public AquariumImpl findById(Integer id) {
+		Criteria criteria = getSession().createCriteria(AquariumImpl.class);
 		criteria.add(Restrictions.eq("id", id));
-		return (Aquarium) criteria.uniqueResult();
+		return (AquariumImpl) criteria.uniqueResult();
 	}
 
 	@Override
-	public Aquarium findByName(String name) {
-		Criteria criteria = getSession().createCriteria(Aquarium.class);
+	public AquariumImpl findByName(String name) {
+		Criteria criteria = getSession().createCriteria(AquariumImpl.class);
 		criteria.add(Restrictions.eq("name", name));
-		return (Aquarium) criteria.uniqueResult();
+		return (AquariumImpl) criteria.uniqueResult();
 	}
 
 	@Override
-	public Aquarium updateAquarium(Aquarium aquarium) {
+	public AquariumImpl updateAquarium(AquariumImpl aquarium) {
 		getSession().update(aquarium);
 		return aquarium;
 	}
@@ -65,7 +65,7 @@ public class AquariumDaoImpl implements AquariumDao {
 	@Override
 	public boolean deleteAquariumById(Integer id) {
 		try {
-			Query query = getSession().createQuery("DELETE FROM Aquarium WHERE id = :id");
+			Query query = getSession().createQuery("DELETE FROM AquariumImpl WHERE id = :id");
 			query.setInteger("id", id);
 			query.executeUpdate();
 			System.out.println("DAO Delete Successful");

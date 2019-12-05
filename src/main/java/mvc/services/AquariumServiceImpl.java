@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mvc.dao.AquariumDao;
-import mvc.model.Aquarium;
+import mvc.model.AquariumImpl;
 
 @Service
 @Transactional
@@ -17,32 +17,32 @@ public class AquariumServiceImpl implements AquariumService {
 	private AquariumDao aquariumDao;
 
 	@Override
-	public List<Aquarium> findAllAquariums() {
+	public List<AquariumImpl> findAllAquariums() {
 		return aquariumDao.findAllAquariums();
 	}
 
 	@Override
-	public Aquarium findById(Integer id) {
+	public AquariumImpl findById(Integer id) {
 		return aquariumDao.findById(id);
 	}
 
 	@Override
-	public Aquarium findByName(String name) {
+	public AquariumImpl findByName(String name) {
 		return aquariumDao.findByName(name);
 	}
 
 	@Override
-	public boolean addAquarium(Aquarium aquarium) {
+	public boolean addAquarium(AquariumImpl aquarium) {
 		return aquariumDao.addAquarium(aquarium);
 	}
 
 	@Override
-	public Aquarium updateAquarium(Aquarium aquarium) {
+	public AquariumImpl updateAquarium(AquariumImpl aquarium) {
 		return aquariumDao.updateAquarium(aquarium);
 	}
 
 	@Override
-	public boolean isAquariumExist(Aquarium aquarium) {
+	public boolean isAquariumExist(AquariumImpl aquarium) {
 		return findByName(aquarium.getName()) != null;
 	}
 

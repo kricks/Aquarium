@@ -2,19 +2,19 @@ package mvc.dao;
 
 import java.util.List;
 
-import mvc.model.Aquarium;
+import mvc.model.AquariumImpl;
 
 public interface AquariumDao {
 
-	Aquarium findById(Integer id);
+	AquariumImpl findById(Integer id);
 
-	Aquarium findByName(String name);
+	AquariumImpl findByName(String name);
 
-	boolean addAquarium(Aquarium aquarium);
+	boolean addAquarium(AquariumImpl aquarium);
 
-	List<Aquarium> findAllAquariums();
+	List<AquariumImpl> findAllAquariums();
 
-	Aquarium updateAquarium(Aquarium aquarium);
+	AquariumImpl updateAquarium(AquariumImpl aquarium);
 
 	boolean deleteAquariumById(Integer id);
 

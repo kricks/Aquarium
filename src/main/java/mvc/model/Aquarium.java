@@ -2,87 +2,29 @@ package mvc.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public interface Aquarium {
 
-@Entity
-@Table(name = "AQUARIUM")
-public class Aquarium {
+	public Integer getId();
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	public void setId(Integer id);
 
-	@Column(name = "NAME", nullable = false)
-	private String name;
+	public String getName();
 
-	@Column(name = "TYPE", nullable = true)
-	private String type;
+	public void setName(String name);
 
-	@Column(name = "GALLON", nullable = true)
-	private Integer gallon;
+	public String getType();
 
-	@Column(name = "NOTES", nullable = true)
-	private String notes;
+	public void setType(String type);
 
-	@Column(name = "DATE", nullable = false)
-	private Date date;
+	public Integer getGallon();
 
-	public Integer getId() {
-		return id;
-	}
+	public void setGallon(Integer gallon);
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	public String getNotes();
 
-	public String getName() {
-		return name;
-	}
+	public void setNotes(String notes);
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public Date getDate();
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Integer getGallon() {
-		return gallon;
-	}
-
-	public void setGallon(Integer gallon) {
-		this.gallon = gallon;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public String toString() {
-		return "Id = " + id + ", name = " + name + ", type = " + type + ", gallons = " + gallon + ", notes = " + notes
-				+ ", date = " + date;
-	}
-
+	public void setDate(Date date);
 }

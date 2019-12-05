@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mvc.model.Aquarium;
+import mvc.model.AquariumImpl;
 import mvc.services.AquariumService;
 
 @Service
@@ -15,31 +15,31 @@ public class AquariumManagerImpl implements AquariumManager {
 	private AquariumService aquariumService;
 
 	@Override
-	public Aquarium findById(Integer id) {
+	public AquariumImpl findById(Integer id) {
 		return aquariumService.findById(id);
 	}
 
 	@Override
-	public Aquarium findByName(String name) {
+	public AquariumImpl findByName(String name) {
 		return aquariumService.findByName(name);
 	}
 
 	@Override
-	public boolean addAquarium(Aquarium aquarium) {
+	public boolean addAquarium(AquariumImpl aquarium) {
 		return aquariumService.addAquarium(aquarium);
 	}
 
 	@Override
-	public Aquarium updateAquarium(Aquarium aquarium) {
+	public AquariumImpl updateAquarium(AquariumImpl aquarium) {
 		return aquariumService.updateAquarium(aquarium);
 	}
 
-	public List<Aquarium> findAllAquariums() {
+	public List<AquariumImpl> findAllAquariums() {
 		return aquariumService.findAllAquariums();
 	}
 
 	@Override
-	public boolean isAquariumExist(Aquarium aquarium) {
+	public boolean isAquariumExist(AquariumImpl aquarium) {
 		return aquariumService.isAquariumExist(aquarium);
 	}
 

@@ -17,4 +17,7 @@ public abstract class AbstractDao {
 		getSession().persist(entity);
 	}
 
+	public void delete(Object entity) {
+		getSession().delete(entity);
+	}
 }

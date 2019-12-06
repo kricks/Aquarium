@@ -19,7 +19,7 @@
 		<button class="btn btn-primary">Go Back to Aquarium List</button>
 	</a>
 
-	<table class="mt-3 p-3">
+<%-- 	<table class="mt-3 p-3">
 		<tr>
 			<td>Name :</td>
 			<td>${message.name}</td>
@@ -36,7 +36,7 @@
 			<td>Notes :</td>
 			<td>${message.notes}</td>
 		</tr>
-	</table>
+	</table> --%>
 
 
 	<div ng-controller="livestockController as ctrl">

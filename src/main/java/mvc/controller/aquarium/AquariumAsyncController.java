@@ -68,7 +68,8 @@ public class AquariumAsyncController {
 	// ------------------- Update a aquarium ----------------------------- //
 
 	@PutMapping(value = "/update/{id}")
-	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("id") Integer id, @RequestBody AquariumImpl aquarium) {
+	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("id") Integer id,
+			@RequestBody AquariumImpl aquarium) {
 		System.out.println("Updating Aquarium " + id);
 
 		AquariumImpl currentAquarium = aquariumManager.findById(id);

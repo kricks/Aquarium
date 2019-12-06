@@ -47,7 +47,6 @@ angular
 							}
 
 							function updateLivestock(livestock, livestockId) {
-								console.log(livestockId);
 								livestockService
 										.updateLivestock(livestock, livestockId)
 										.then(
@@ -79,12 +78,8 @@ angular
 								reset();
 							}
 
-							function view(livestockId) {
-								console.log("view selected" + livestockId);
-							}
-
 							function edit(livestockId) {
-								console.log('livestockId to be edited'
+								console.log('livestockId to be edited '
 										+ livestockId);
 								for (var i = 0; i < self.livestocks.length; i++) {
 									if (self.livestocks[i].livestockId === livestockId) {

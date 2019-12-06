@@ -2,9 +2,9 @@ package mvc.model.livestock;
 
 public interface Livestock {
 
-	public Integer getLiveStockId();
+	public Integer getLivestockId();
 
-	public void setLiveStockId(Integer livestockId);
+	public void setLivestockId(Integer livestockId);
 
 	public String getName();
 

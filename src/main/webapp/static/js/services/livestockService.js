@@ -28,7 +28,7 @@ livestockService.$inject = [ '$http' ];
 	}
 	
 	function updateLivestock(livestock, livestockId) {
-        return $http.put(baseURI + 'livestocks/update/' + livestock, livestockId).then(function (response) {
+        return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock ).then(function (response) {
                 return (response.data);
             });
     }

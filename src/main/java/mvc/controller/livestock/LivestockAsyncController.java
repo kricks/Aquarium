@@ -85,6 +85,7 @@ public class LivestockAsyncController {
 		currentLivestock.setNotes(livestock.getNotes());
 
 		livestockManager.updateLivestock(currentLivestock);
+		System.out.println("this is update rest: " + currentLivestock);
 		return new ResponseEntity<LivestockImpl>(currentLivestock, HttpStatus.OK);
 	}
 

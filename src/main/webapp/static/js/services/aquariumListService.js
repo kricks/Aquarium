@@ -38,7 +38,7 @@ aquariumListService.$inject = [ '$http' ];
                 return response.data;
             },
             function(errResponse){
-                console.error('Error while deleting User');
+                console.error('Error while deleting Aquarium');
             });
     }
 };

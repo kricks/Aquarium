@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import mvc.model.aquarium.AquariumImpl;
 
 @Entity
 @Table(name = "LIVESTOCK")
@@ -17,7 +13,7 @@ public class LivestockImpl implements Livestock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer liveStockId;
+	private Integer livestockId;
 
 	@Column(name = "NAME", nullable = false)
 	private String name;
@@ -31,16 +27,16 @@ public class LivestockImpl implements Livestock {
 	@Column(name = "NOTES", nullable = true)
 	private String notes;
 
-	@ManyToOne
-	@JoinColumn(name = "AQUARIUM_ID")
-	private AquariumImpl aquarium;
+//	@ManyToOne
+//	@JoinColumn(name = "AQUARIUM_ID")
+//	private AquariumImpl aquarium;
 
 	public Integer getLiveStockId() {
-		return liveStockId;
+		return livestockId;
 	}
 
-	public void setLiveStockId(Integer liveStockId) {
-		this.liveStockId = liveStockId;
+	public void setLiveStockId(Integer livestockId) {
+		this.livestockId = livestockId;
 	}
 
 	public String getName() {
@@ -75,12 +71,12 @@ public class LivestockImpl implements Livestock {
 		this.notes = notes;
 	}
 
-	public AquariumImpl getAquarium() {
-		return aquarium;
-	}
-
-	public void setAquarium(AquariumImpl aquarium) {
-		this.aquarium = aquarium;
-	}
+//	public AquariumImpl getAquarium() {
+//		return aquarium;
+//	}
+//
+//	public void setAquarium(AquariumImpl aquarium) {
+//		this.aquarium = aquarium;
+//	}
 
 }

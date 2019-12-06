@@ -1,12 +1,10 @@
 package mvc.model.livestock;
 
-import mvc.model.aquarium.AquariumImpl;
-
 public interface Livestock {
 
 	public Integer getLiveStockId();
 
-	public void setLiveStockId(Integer liveStockId);
+	public void setLiveStockId(Integer livestockId);
 
 	public String getName();
 
@@ -24,8 +22,8 @@ public interface Livestock {
 
 	public void setNotes(String notes);
 
-	public AquariumImpl getAquarium();
-
-	public void setAquarium(AquariumImpl aquarium);
+//	public AquariumImpl getAquarium();
+//
+//	public void setAquarium(AquariumImpl aquarium);
 
 }

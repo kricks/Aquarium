@@ -1,4 +1,4 @@
-package mvc.manager;
+package mvc.manager.aquarium;
 
 import java.util.List;
 

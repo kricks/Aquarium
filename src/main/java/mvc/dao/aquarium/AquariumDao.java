@@ -1,4 +1,4 @@
-package mvc.dao;
+package mvc.dao.aquarium;
 
 import java.util.List;
 

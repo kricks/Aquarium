@@ -1,31 +1,22 @@
-package mvc.dao;
+package mvc.dao.aquarium;
 
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import mvc.dao.AbstractDao;
 import mvc.model.aquarium.AquariumImpl;
 
 @Repository
-public class AquariumDaoImpl implements AquariumDao {
-
-	@Autowired
-	private SessionFactory sessionFactory;
-
-	protected Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
+public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 
 	@Override
 	public boolean addAquarium(AquariumImpl aquarium) {
 		try {
-			getSession().persist(aquarium);
+			persist(aquarium);
 			System.out.println("Add Aquarium Successful");
 			return true;
 		} catch (Exception e) {

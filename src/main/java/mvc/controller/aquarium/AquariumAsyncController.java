@@ -1,4 +1,4 @@
-package mvc.controller;
+package mvc.controller.aquarium;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import mvc.manager.AquariumManager;
+import mvc.manager.aquarium.AquariumManager;
 import mvc.model.aquarium.AquariumImpl;
 
 @RequestMapping(value = "/aquariums")

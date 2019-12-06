@@ -1,4 +1,4 @@
-package mvc.services;
+package mvc.services.aquarium;
 
 import java.util.List;
 

@@ -16,6 +16,11 @@ public class AquariumSyncController {
 		return new ModelAndView("aquariumList", "aquarium", new AquariumImpl());
 	}
 
+	@GetMapping(value = "/aquarium-details")
+	public ModelAndView displayAD() {
+		return new ModelAndView("aquariumDetails", "aquarium", new AquariumImpl());
+	}
+
 	@PostMapping(value = "/aquarium-details")
 	public ModelAndView addNewAquarium(@ModelAttribute("aquarium") AquariumImpl aquarium) {
 		return new ModelAndView("aquariumDetails", "message", aquarium);

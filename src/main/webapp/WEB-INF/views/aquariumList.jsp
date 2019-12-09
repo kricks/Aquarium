@@ -61,7 +61,7 @@
 	<br> --%>
 	<div ng-controller="aquariumListController as ctrl">
 		<form ng-submit="ctrl.submit()" name="aquariumForm" class="col">
-			<input type="hidden" ng-model="ctrl.aquarium.id" />
+			<input type="hidden" ng-model="ctrl.aquarium.aquariumId" />
 
 			<div class="form-row">
 				<div class="form-group col-md-6">
@@ -102,7 +102,7 @@
 			<div>
 				<div class="float-right">
 					<input type="submit"
-						value="{{!ctrl.aquarium.id ? 'Add' : 'Update'}}"
+						value="{{!ctrl.aquarium.aquariumId ? 'Add' : 'Update'}}"
 						class="btn btn-primary">
 					<button type="button" ng-click="ctrl.reset()"
 						class="btn btn-warning text-white">Cancel</button>
@@ -125,7 +125,7 @@
 
 			<tbody>
 				<tr ng-repeat="t in ctrl.aquariums">
-					<th ng-bind="t.id" scope="row"></th>
+					<th ng-bind="t.aquariumId" scope="row"></th>
 					<td ng-bind="t.name"></td>
 					<td ng-bind="t.type"></td>
 					<td ng-bind="t.gallon"></td>
@@ -135,11 +135,11 @@
 						<button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button>
 					</td> -->
 					<td>
-						<button type="button" ng-click="ctrl.edit(t.id)"
+						<button type="button" ng-click="ctrl.edit(t.aquariumId)"
 							class="btn btn-success">Edit</button>
 					</td>
 					<td>
-						<button type="button" ng-click="ctrl.remove(t.id)"
+						<button type="button" ng-click="ctrl.remove(t.aquariumId)"
 							class="btn btn-danger">Delete</button>
 					</td>
 				</tr>

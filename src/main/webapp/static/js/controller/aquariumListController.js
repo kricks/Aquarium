@@ -11,7 +11,7 @@ angular
 							var self = this;
 
 							self.aquarium = {
-								id : null,
+								aquariumId : null,
 								name : undefined,
 								type : 'Fresh Water',
 								gallon : undefined,
@@ -47,10 +47,10 @@ angular
 										.then(fetchAllAquariums);
 							}
 
-							function updateAquarium(aquarium, id) {
-								console.log(id);
+							function updateAquarium(aquarium, aquariumId) {
+								console.log(aquariumId);
 								aquariumListService
-										.updateAquarium(aquarium, id)
+										.updateAquarium(aquarium, aquariumId)
 										.then(
 												fetchAllAquariums,
 												function(errResponse) {
@@ -59,29 +59,29 @@ angular
 												});
 							}
 
-							function deleteAquarium(id) {
-								aquariumListService.deleteAquarium(id).then(
+							function deleteAquarium(aquariumId) {
+								aquariumListService.deleteAquarium(aquariumId).then(
 										fetchAllAquariums);
 							}
 
 							function submit() {
-								if (self.aquarium.id === null) {
+								if (self.aquarium.aquariumId === null) {
 									console.log('Saving New aquarium',
 											self.aquarium);
 									createAquarium(self.aquarium);
 								} else {
 									updateAquarium(self.aquarium,
-											self.aquarium.id);
-									console.log('aquarium updated with id ',
-											self.aquarium.id);
+											self.aquarium.aquariumId);
+									console.log('aquarium updated with aquariumId ',
+											self.aquarium.aquariumId);
 								}
 								reset();
 							}
 
-							function edit(id) {
-								console.log('id to be edited' + id);
+							function edit(aquariumId) {
+								console.log('aquariumId to be edited' + aquariumId);
 								for (var i = 0; i < self.aquariums.length; i++) {
-									if (self.aquariums[i].id === id) {
+									if (self.aquariums[i].aquariumId === aquariumId) {
 										self.aquarium = angular
 												.copy(self.aquariums[i]);
 										self.aquarium.date = new Date(
@@ -90,14 +90,14 @@ angular
 								}
 							}
 
-							function remove(id) {
-								console.log('id to be deleted', id);
-								deleteAquarium(id);
+							function remove(aquariumId) {
+								console.log('aquariumId to be deleted', aquariumId);
+								deleteAquarium(aquariumId);
 							}
 
 							function reset() {
 								self.aquarium = {
-									id : null,
+									aquariumId : null,
 									name : undefined,
 									type : 'Fresh Water',
 									gallon : undefined,

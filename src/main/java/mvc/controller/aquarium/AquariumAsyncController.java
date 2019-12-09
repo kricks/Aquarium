@@ -38,12 +38,12 @@ public class AquariumAsyncController {
 
 	// -------------------Retrieve Single Aquarium---------------------------- //
 
-	@GetMapping(value = "/aquarium/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AquariumImpl> getAquarium(@PathVariable("id") Integer id) {
-		System.out.println("Fetching Aquarium with id " + id);
-		AquariumImpl aquarium = aquariumManager.findById(id);
+	@GetMapping(value = "/aquarium/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<AquariumImpl> getAquarium(@PathVariable("aquariumId") Integer aquariumId) {
+		System.out.println("Fetching Aquarium with aquariumId " + aquariumId);
+		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
-			System.out.println("Aquarium with id " + id + " not found");
+			System.out.println("Aquarium with aquariumId " + aquariumId + " not found");
 			return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<AquariumImpl>(aquarium, HttpStatus.OK);
@@ -67,15 +67,15 @@ public class AquariumAsyncController {
 
 	// ------------------- Update a aquarium ----------------------------- //
 
-	@PutMapping(value = "/update/{id}")
-	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("id") Integer id,
+	@PutMapping(value = "/update/{aquariumId}")
+	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,
 			@RequestBody AquariumImpl aquarium) {
-		System.out.println("Updating Aquarium " + id);
+		System.out.println("Updating Aquarium " + aquariumId);
 
-		AquariumImpl currentAquarium = aquariumManager.findById(id);
+		AquariumImpl currentAquarium = aquariumManager.findById(aquariumId);
 
 		if (currentAquarium == null) {
-			System.out.println("Aquarium with id " + id + " not found");
+			System.out.println("Aquarium with aquariumId " + aquariumId + " not found");
 			return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 		}
 
@@ -91,17 +91,17 @@ public class AquariumAsyncController {
 
 	// ------------------- Delete a aquarium ----------- //
 
-	@DeleteMapping(value = "/delete/{id}")
-	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("id") int id) {
-		System.out.println("Fetching & Deleting aquarium with id " + id);
+	@DeleteMapping(value = "/delete/{aquariumId}")
+	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("aquariumId") int aquariumId) {
+		System.out.println("Fetching & Deleting aquarium with aquariumId " + aquariumId);
 
-		AquariumImpl aquarium = aquariumManager.findById(id);
+		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
-			System.out.println("Unable to delete. Aquarium with id " + id + " not found");
+			System.out.println("Unable to delete. Aquarium with aquariumId " + aquariumId + " not found");
 			return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 		}
 
-		aquariumManager.deleteAquariumById(id);
+		aquariumManager.deleteAquariumById(aquariumId);
 		return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 	}
 

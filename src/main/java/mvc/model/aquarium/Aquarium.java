@@ -1,12 +1,15 @@
 package mvc.model.aquarium;
 
 import java.util.Date;
+import java.util.Set;
+
+import mvc.model.livestock.LivestockImpl;
 
 interface Aquarium {
 
-	Integer getId();
+	public Integer getAquariumId();
 
-	void setId(Integer id);
+	public void setAquariumId(Integer aquariumId);
 
 	String getName();
 
@@ -28,7 +31,8 @@ interface Aquarium {
 
 	void setDate(Date date);
 
-//	public Set<LivestockImpl> getLivestock();
-//
-//	public void setLivestock(Set<LivestockImpl> livestock);
+	public Set<LivestockImpl> getLivestock();
+
+	public void setLivestock(Set<LivestockImpl> livestock);
+
 }

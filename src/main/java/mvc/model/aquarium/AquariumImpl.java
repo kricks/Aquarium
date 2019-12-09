@@ -1,13 +1,18 @@
 package mvc.model.aquarium;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import mvc.model.livestock.LivestockImpl;
 
 @Entity
 @Table(name = "AQUARIUM")
@@ -15,7 +20,7 @@ public class AquariumImpl implements Aquarium {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer aquariumId;
 
 	@Column(name = "NAME", nullable = false)
 	private String name;
@@ -32,15 +37,15 @@ public class AquariumImpl implements Aquarium {
 	@Column(name = "DATE", nullable = false)
 	private Date date;
 
-//	@OneToMany(mappedBy = "aquarium", cascade = CascadeType.ALL)
-//	private Set<LivestockImpl> livestock;
+	@OneToMany(mappedBy = "aquarium", cascade = CascadeType.ALL)
+	private Set<LivestockImpl> livestock;
 
-	public Integer getId() {
-		return id;
+	public Integer getAquariumId() {
+		return aquariumId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setAquariumId(Integer aquariumId) {
+		this.aquariumId = aquariumId;
 	}
 
 	public String getName() {
@@ -83,12 +88,12 @@ public class AquariumImpl implements Aquarium {
 		this.date = date;
 	}
 
-//	public Set<LivestockImpl> getLivestock() {
-//		return livestock;
-//	}
-//
-//	public void setLivestock(Set<LivestockImpl> livestock) {
-//		this.livestock = livestock;
-//	}
+	public Set<LivestockImpl> getLivestock() {
+		return livestock;
+	}
+
+	public void setLivestock(Set<LivestockImpl> livestock) {
+		this.livestock = livestock;
+	}
 
 }

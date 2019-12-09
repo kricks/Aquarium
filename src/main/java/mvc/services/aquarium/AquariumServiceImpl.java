@@ -22,8 +22,8 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public AquariumImpl findById(Integer id) {
-		return aquariumDao.findById(id);
+	public AquariumImpl findById(Integer aquariumId) {
+		return aquariumDao.findById(aquariumId);
 	}
 
 	@Override
@@ -47,8 +47,8 @@ public class AquariumServiceImpl implements AquariumService {
 	}
 
 	@Override
-	public boolean deleteAquariumById(Integer id) {
-		return aquariumDao.deleteAquariumById(id);
+	public boolean deleteAquariumById(Integer aquariumId) {
+		return aquariumDao.deleteAquariumById(aquariumId);
 	}
 
 }

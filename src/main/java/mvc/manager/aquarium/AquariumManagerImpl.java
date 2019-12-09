@@ -15,8 +15,8 @@ public class AquariumManagerImpl implements AquariumManager {
 	private AquariumService aquariumService;
 
 	@Override
-	public AquariumImpl findById(Integer id) {
-		return aquariumService.findById(id);
+	public AquariumImpl findById(Integer aquariumId) {
+		return aquariumService.findById(aquariumId);
 	}
 
 	@Override
@@ -44,8 +44,8 @@ public class AquariumManagerImpl implements AquariumManager {
 	}
 
 	@Override
-	public boolean deleteAquariumById(Integer id) {
-		return aquariumService.deleteAquariumById(id);
+	public boolean deleteAquariumById(Integer aquariumId) {
+		return aquariumService.deleteAquariumById(aquariumId);
 
 	}
 

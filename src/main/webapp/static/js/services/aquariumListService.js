@@ -27,14 +27,14 @@ aquariumListService.$inject = [ '$http' ];
 		return $http.post(baseURI + 'aquariums/create', aquarium);
 	}
 	
-	function updateAquarium(aquarium, id) {
-        return $http.put(baseURI + 'aquariums/update/' + id, aquarium).then(function (response) {
+	function updateAquarium(aquarium, aquariumId) {
+        return $http.put(baseURI + 'aquariums/update/' + aquariumId, aquarium).then(function (response) {
                 return (response.data);
             });
     }
 	
-	function deleteAquarium(id) {
-        return $http.delete(baseURI + 'aquariums/delete/' + id).then(function (response) {
+	function deleteAquarium(aquariumId) {
+        return $http.delete(baseURI + 'aquariums/delete/' + aquariumId).then(function (response) {
                 return response.data;
             },
             function(errResponse){

@@ -6,7 +6,7 @@ import mvc.model.aquarium.AquariumImpl;
 
 public interface AquariumManager {
 
-	AquariumImpl findById(Integer id);
+	AquariumImpl findById(Integer aquariumId);
 
 	AquariumImpl findByName(String name);
 
@@ -14,7 +14,7 @@ public interface AquariumManager {
 
 	AquariumImpl updateAquarium(AquariumImpl aquarium);
 
-	boolean deleteAquariumById(Integer id);
+	boolean deleteAquariumById(Integer aquariumId);
 
 	List<AquariumImpl> findAllAquariums();
 

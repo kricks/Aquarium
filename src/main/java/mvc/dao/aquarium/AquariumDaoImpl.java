@@ -34,9 +34,9 @@ public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 	}
 
 	@Override
-	public AquariumImpl findById(Integer id) {
+	public AquariumImpl findById(Integer aquariumId) {
 		Criteria criteria = getSession().createCriteria(AquariumImpl.class);
-		criteria.add(Restrictions.eq("id", id));
+		criteria.add(Restrictions.eq("aquariumId", aquariumId));
 		return (AquariumImpl) criteria.uniqueResult();
 	}
 
@@ -54,10 +54,10 @@ public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 	}
 
 	@Override
-	public boolean deleteAquariumById(Integer id) {
+	public boolean deleteAquariumById(Integer aquariumId) {
 		try {
-			Query query = getSession().createQuery("DELETE FROM AquariumImpl WHERE id = :id");
-			query.setInteger("id", id);
+			Query query = getSession().createQuery("DELETE FROM AquariumImpl WHERE aquariumId = :aquariumId");
+			query.setInteger("aquariumId", aquariumId);
 			query.executeUpdate();
 			System.out.println("DAO Delete Successful");
 			return true;

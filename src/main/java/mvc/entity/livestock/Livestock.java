@@ -26,4 +26,8 @@ public interface Livestock {
 
 	public void setAquariumId(Integer aquariumId);
 
+//	public AquariumImpl getAquariumImpl();
+//
+//	public void setAquariumImpl(AquariumImpl aquariumImpl);
+
 }

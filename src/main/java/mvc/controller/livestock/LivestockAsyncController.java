@@ -25,7 +25,6 @@ public class LivestockAsyncController {
 	@Autowired
 	private LivestockManager livestockManager;
 
-	// ------ Retrieve All Livestock ---- //
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LivestockImpl>> listAllLivestock() {
 		System.out.println("HELLO FROM REST CONTROLLER");
@@ -35,8 +34,6 @@ public class LivestockAsyncController {
 		}
 		return new ResponseEntity<List<LivestockImpl>>(livestock, HttpStatus.OK);
 	}
-
-	// -------------------Retrieve Single Livestock---------------------------- //
 
 	@GetMapping(value = "/livestock/{livestockId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<LivestockImpl> getLivestock(@PathVariable("livestockId") Integer livestockId) {
@@ -48,8 +45,6 @@ public class LivestockAsyncController {
 		}
 		return new ResponseEntity<LivestockImpl>(livestock, HttpStatus.OK);
 	}
-
-	// -------------------Create an livestock ------ //
 
 	@PostMapping(value = "/create")
 	public ResponseEntity<Void> createLivestock(@RequestBody LivestockImpl livestock) {
@@ -64,8 +59,6 @@ public class LivestockAsyncController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 
 	}
-
-	// ------------------- Update a livestock ----------------------------- //
 
 	@PutMapping(value = "/update/{livestockId}")
 	public ResponseEntity<LivestockImpl> updateLivestock(@PathVariable("livestockId") Integer livestockId,
@@ -88,8 +81,6 @@ public class LivestockAsyncController {
 		System.out.println("this is update rest: " + currentLivestock);
 		return new ResponseEntity<LivestockImpl>(currentLivestock, HttpStatus.OK);
 	}
-
-	// ------------------- Delete a livestock ----------- //
 
 	@DeleteMapping(value = "/delete/{livestockId}")
 	public ResponseEntity<LivestockImpl> deleteLivestock(@PathVariable("livestockId") int livestockId) {

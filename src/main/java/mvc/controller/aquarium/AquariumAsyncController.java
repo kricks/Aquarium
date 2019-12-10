@@ -25,7 +25,6 @@ public class AquariumAsyncController {
 	@Autowired
 	private AquariumManager aquariumManager;
 
-	// ------ Retrieve All Aquariums ---- //
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AquariumImpl>> listAllAquariums() {
 		System.out.println("HELLO FROM REST CONTROLLER");
@@ -35,8 +34,6 @@ public class AquariumAsyncController {
 		}
 		return new ResponseEntity<List<AquariumImpl>>(aquariums, HttpStatus.OK);
 	}
-
-	// -------------------Retrieve Single Aquarium---------------------------- //
 
 	@GetMapping(value = "/aquarium/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AquariumImpl> getAquarium(@PathVariable("aquariumId") Integer aquariumId) {
@@ -48,8 +45,6 @@ public class AquariumAsyncController {
 		}
 		return new ResponseEntity<AquariumImpl>(aquarium, HttpStatus.OK);
 	}
-
-	// -------------------Create an aquarium ------ //
 
 	@PostMapping(value = "/create")
 	public ResponseEntity<Void> createAquarium(@RequestBody AquariumImpl aquarium) {
@@ -64,8 +59,6 @@ public class AquariumAsyncController {
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 
 	}
-
-	// ------------------- Update a aquarium ----------------------------- //
 
 	@PutMapping(value = "/update/{aquariumId}")
 	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,
@@ -88,8 +81,6 @@ public class AquariumAsyncController {
 		aquariumManager.updateAquarium(currentAquarium);
 		return new ResponseEntity<AquariumImpl>(currentAquarium, HttpStatus.OK);
 	}
-
-	// ------------------- Delete a aquarium ----------- //
 
 	@DeleteMapping(value = "/delete/{aquariumId}")
 	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("aquariumId") int aquariumId) {

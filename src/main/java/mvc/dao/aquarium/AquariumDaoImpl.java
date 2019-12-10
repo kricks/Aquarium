@@ -1,6 +1,8 @@
 package mvc.dao.aquarium;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -13,14 +15,16 @@ import mvc.entity.aquarium.AquariumImpl;
 @Repository
 public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 
+	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
+
 	@Override
 	public boolean addAquarium(AquariumImpl aquarium) {
 		try {
 			persist(aquarium);
-			System.out.println("Add Aquarium Successful");
+			logger.log(Level.INFO, "Add Aquarium Successful");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Add Aquarium Failed");
+			logger.log(Level.INFO, "Add Aquarium Failed");
 			return false;
 		}
 
@@ -59,11 +63,11 @@ public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 			Query query = getSession().createQuery("DELETE FROM AquariumImpl WHERE aquariumId = :aquariumId");
 			query.setInteger("aquariumId", aquariumId);
 			query.executeUpdate();
-			System.out.println("DAO Delete Successful");
+			logger.log(Level.INFO, "DAO Delete Successful");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DAO Delete Failed");
+			logger.log(Level.INFO, "DAO Delete Failed");
 			return false;
 		}
 	}

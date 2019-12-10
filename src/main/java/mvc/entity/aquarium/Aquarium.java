@@ -1,9 +1,9 @@
-package mvc.model.aquarium;
+package mvc.entity.aquarium;
 
 import java.util.Date;
 import java.util.Set;
 
-import mvc.model.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockImpl;
 
 interface Aquarium {
 

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mvc.entity.livestock.LivestockImpl;
 import mvc.manager.livestock.LivestockManager;
-import mvc.model.livestock.LivestockImpl;
 
 @RequestMapping(value = "/livestocks")
 @Controller

@@ -1,4 +1,4 @@
-package mvc.model.aquarium;
+package mvc.entity.aquarium;
 
 import java.util.Date;
 import java.util.Set;
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import mvc.model.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockImpl;
 
 @Entity
 @Table(name = "AQUARIUM")

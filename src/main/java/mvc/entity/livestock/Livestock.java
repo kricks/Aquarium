@@ -1,4 +1,4 @@
-package mvc.model.livestock;
+package mvc.entity.livestock;
 
 public interface Livestock {
 

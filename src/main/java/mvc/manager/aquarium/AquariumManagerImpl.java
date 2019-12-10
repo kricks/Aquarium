@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mvc.model.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumImpl;
 import mvc.services.aquarium.AquariumService;
 
 @Service

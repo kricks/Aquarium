@@ -2,7 +2,7 @@ package mvc.dao.livestock;
 
 import java.util.List;
 
-import mvc.model.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockImpl;
 
 public interface LivestockDao {
 

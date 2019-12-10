@@ -2,7 +2,7 @@ package mvc.dao.aquarium;
 
 import java.util.List;
 
-import mvc.model.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumImpl;
 
 public interface AquariumDao {
 

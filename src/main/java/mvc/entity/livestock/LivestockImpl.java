@@ -1,4 +1,4 @@
-package mvc.model.livestock;
+package mvc.entity.livestock;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import mvc.model.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumImpl;
 
 @Entity
 @Table(name = "LIVESTOCK")

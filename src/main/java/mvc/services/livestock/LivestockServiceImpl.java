@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import mvc.dao.livestock.LivestockDao;
-import mvc.model.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockImpl;
 
 @Service
 @Transactional

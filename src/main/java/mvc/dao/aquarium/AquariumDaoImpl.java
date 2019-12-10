@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import mvc.dao.AbstractDao;
-import mvc.model.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumImpl;
 
 @Repository
 public class AquariumDaoImpl extends AbstractDao implements AquariumDao {

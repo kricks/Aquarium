@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import mvc.dao.AbstractDao;
-import mvc.model.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockImpl;
 
 @Repository
 public class LivestockDaoImpl extends AbstractDao implements LivestockDao {

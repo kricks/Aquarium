@@ -1,6 +1,8 @@
 package mvc.controller.aquarium;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mvc.dao.aquarium.AquariumDaoImpl;
 import mvc.entity.aquarium.AquariumImpl;
 import mvc.manager.aquarium.AquariumManager;
 
@@ -22,12 +25,13 @@ import mvc.manager.aquarium.AquariumManager;
 @Controller
 public class AquariumAsyncController {
 
+	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
+
 	@Autowired
 	private AquariumManager aquariumManager;
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<AquariumImpl>> listAllAquariums() {
-		System.out.println("HELLO FROM REST CONTROLLER");
 		List<AquariumImpl> aquariums = aquariumManager.findAllAquariums();
 		if (aquariums.isEmpty()) {
 			return new ResponseEntity<List<AquariumImpl>>(HttpStatus.NO_CONTENT);
@@ -40,7 +44,7 @@ public class AquariumAsyncController {
 		System.out.println("Fetching Aquarium with aquariumId " + aquariumId);
 		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
-			System.out.println("Aquarium with aquariumId " + aquariumId + " not found");
+			logger.log(Level.INFO, "Aquarium with aquariumId " + aquariumId + " not found");
 			return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<AquariumImpl>(aquarium, HttpStatus.OK);
@@ -48,10 +52,10 @@ public class AquariumAsyncController {
 
 	@PostMapping(value = "/create")
 	public ResponseEntity<Void> createAquarium(@RequestBody AquariumImpl aquarium) {
-		System.out.println("Creating Aquarium " + aquarium.getName());
+		logger.log(Level.INFO, "Creating Aquarium " + aquarium.getName());
 
 		if (aquariumManager.isAquariumExist(aquarium)) {
-			System.out.println("A Aquarium with name " + aquarium.getName() + " already exist");
+			logger.log(Level.INFO, "A Aquarium with name " + aquarium.getName() + " already exist");
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 		aquariumManager.addAquarium(aquarium);
@@ -63,12 +67,12 @@ public class AquariumAsyncController {
 	@PutMapping(value = "/update/{aquariumId}")
 	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,
 			@RequestBody AquariumImpl aquarium) {
-		System.out.println("Updating Aquarium " + aquariumId);
+		logger.log(Level.INFO, "Updating Aquarium " + aquariumId);
 
 		AquariumImpl currentAquarium = aquariumManager.findById(aquariumId);
 
 		if (currentAquarium == null) {
-			System.out.println("Aquarium with aquariumId " + aquariumId + " not found");
+			logger.log(Level.INFO, "Aquarium with aquariumId " + aquariumId + " not found");
 			return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 		}
 
@@ -84,11 +88,11 @@ public class AquariumAsyncController {
 
 	@DeleteMapping(value = "/delete/{aquariumId}")
 	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("aquariumId") int aquariumId) {
-		System.out.println("Fetching & Deleting aquarium with aquariumId " + aquariumId);
+		logger.log(Level.INFO, "Fetching & Deleting aquarium with aquariumId " + aquariumId);
 
 		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
-			System.out.println("Unable to delete. Aquarium with aquariumId " + aquariumId + " not found");
+			logger.log(Level.INFO, "Unable to delete. Aquarium with aquariumId " + aquariumId + " not found");
 			return new ResponseEntity<AquariumImpl>(HttpStatus.NO_CONTENT);
 		}
 

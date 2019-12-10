@@ -1,6 +1,8 @@
 package mvc.controller.livestock;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mvc.dao.aquarium.AquariumDaoImpl;
 import mvc.entity.livestock.LivestockImpl;
 import mvc.manager.livestock.LivestockManager;
 
@@ -22,12 +25,13 @@ import mvc.manager.livestock.LivestockManager;
 @Controller
 public class LivestockAsyncController {
 
+	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
+
 	@Autowired
 	private LivestockManager livestockManager;
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LivestockImpl>> listAllLivestock() {
-		System.out.println("HELLO FROM REST CONTROLLER");
 		List<LivestockImpl> livestock = livestockManager.findAllLivestock();
 		if (livestock.isEmpty()) {
 			return new ResponseEntity<List<LivestockImpl>>(HttpStatus.NO_CONTENT);
@@ -40,7 +44,7 @@ public class LivestockAsyncController {
 		System.out.println("Fetching Livestock with livestockId " + livestockId);
 		LivestockImpl livestock = livestockManager.findById(livestockId);
 		if (livestock == null) {
-			System.out.println("Livestock with livestockId " + livestockId + " not found");
+			logger.log(Level.INFO, "Livestock with livestockId " + livestockId + " not found");
 			return new ResponseEntity<LivestockImpl>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<LivestockImpl>(livestock, HttpStatus.OK);
@@ -48,10 +52,10 @@ public class LivestockAsyncController {
 
 	@PostMapping(value = "/create")
 	public ResponseEntity<Void> createLivestock(@RequestBody LivestockImpl livestock) {
-		System.out.println("Creating Livestock " + livestock.getName());
+		logger.log(Level.INFO, "Creating Livestock " + livestock.getName());
 
 		if (livestockManager.isLivestockExist(livestock)) {
-			System.out.println("A Livestock with name " + livestock.getName() + " already exist");
+			logger.log(Level.INFO, "A Livestock with name " + livestock.getName() + " already exist");
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 		livestockManager.addLivestock(livestock);
@@ -63,12 +67,12 @@ public class LivestockAsyncController {
 	@PutMapping(value = "/update/{livestockId}")
 	public ResponseEntity<LivestockImpl> updateLivestock(@PathVariable("livestockId") Integer livestockId,
 			@RequestBody LivestockImpl livestock) {
-		System.out.println("Updating Livestock " + livestockId);
+		logger.log(Level.INFO, "Updating Livestock " + livestockId);
 
 		LivestockImpl currentLivestock = livestockManager.findById(livestockId);
 
 		if (currentLivestock == null) {
-			System.out.println("Livestock with livestockId " + livestockId + " not found");
+			logger.log(Level.INFO, "Livestock with livestockId " + livestockId + " not found");
 			return new ResponseEntity<LivestockImpl>(HttpStatus.NO_CONTENT);
 		}
 
@@ -78,13 +82,13 @@ public class LivestockAsyncController {
 		currentLivestock.setNotes(livestock.getNotes());
 
 		livestockManager.updateLivestock(currentLivestock);
-		System.out.println("this is update rest: " + currentLivestock);
+		logger.log(Level.INFO, "this is update rest: " + currentLivestock);
 		return new ResponseEntity<LivestockImpl>(currentLivestock, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/delete/{livestockId}")
 	public ResponseEntity<LivestockImpl> deleteLivestock(@PathVariable("livestockId") int livestockId) {
-		System.out.println("Fetching & Deleting livestock with livestockId " + livestockId);
+		logger.log(Level.INFO, "Fetching & Deleting livestock with livestockId " + livestockId);
 
 		LivestockImpl livestock = livestockManager.findById(livestockId);
 		if (livestock == null) {

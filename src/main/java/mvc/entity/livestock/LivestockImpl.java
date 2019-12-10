@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import mvc.entity.aquarium.AquariumImpl;
 
 @Entity
 @Table(name = "LIVESTOCK")
@@ -31,9 +27,8 @@ public class LivestockImpl implements Livestock {
 	@Column(name = "NOTES", nullable = true)
 	private String notes;
 
-	@ManyToOne
-	@JoinColumn(name = "AQUARIUMID")
-	private AquariumImpl aquarium;
+	@Column(name = "aquariumId", nullable = true)
+	private Integer aquariumId;
 
 	public Integer getLivestockId() {
 		return livestockId;
@@ -75,11 +70,12 @@ public class LivestockImpl implements Livestock {
 		this.notes = notes;
 	}
 
-	public AquariumImpl getAquarium() {
-		return aquarium;
+	public Integer getAquariumId() {
+		return aquariumId;
 	}
 
-	public void setAquarium(AquariumImpl aquarium) {
-		this.aquarium = aquarium;
+	public void setAquariumId(Integer aquariumId) {
+		this.aquariumId = aquariumId;
 	}
+
 }

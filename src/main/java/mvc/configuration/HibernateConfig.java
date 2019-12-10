@@ -29,7 +29,7 @@ public class HibernateConfig {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "mvc.model" });
+		sessionFactory.setPackagesToScan(new String[] { "mvc.entity" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 

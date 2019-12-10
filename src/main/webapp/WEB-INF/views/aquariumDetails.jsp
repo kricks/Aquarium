@@ -19,26 +19,6 @@
 		<button class="btn btn-primary">Go Back to Aquarium List</button>
 	</a>
 
-<%-- 	<table class="mt-3 p-3">
-		<tr>
-			<td>Name :</td>
-			<td>${message.name}</td>
-		</tr>
-		<tr>
-			<td>Type :</td>
-			<td>${message.type}</td>
-		</tr>
-		<tr>
-			<td>Gallons :</td>
-			<td>${message.gallon}</td>
-		</tr>
-		<tr>
-			<td>Notes :</td>
-			<td>${message.notes}</td>
-		</tr>
-	</table> --%>
-
-
 	<div ng-controller="livestockController as ctrl">
 		<form ng-submit="ctrl.submit()" name="livestockForm" class="col">
 			<input type="hidden" ng-model="ctrl.livestock.livestockId" />
@@ -87,6 +67,7 @@
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
+					<th scope="col">aqID</th>
 					<th scope="col">Name</th>
 					<th scope="col">Species</th>
 					<th scope="col">Gender</th>
@@ -97,6 +78,7 @@
 			<tbody>
 				<tr ng-repeat="t in ctrl.livestocks">
 					<th ng-bind="t.livestockId" scope="row"></th>
+					<td ng-bind="t.aquariumId"></td>
 					<td ng-bind="t.name"></td>
 					<td ng-bind="t.species"></td>
 					<td ng-bind="t.gender"></td>

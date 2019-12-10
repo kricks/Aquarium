@@ -19,46 +19,6 @@
 <body class="container">
 	<h3 class="text-center">Welcome, Enter the Aquarium Details</h3>
 	<br>
-	<%-- 	<h4 class="pt-2 ">Synchronous:</h4>
-	<form:form method="POST" action="aquarium-details"
-		modelAttribute="aquarium">
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Name<span class="text-danger">*</span></label>
-				<form:input path="name" type="text" class="form-control" id="name"
-					placeholder="Enter Name" required="required"></form:input>
-			</div>
-
-			<div class="form-group col-md-6">
-				<label>Type</label>
-				<form:select path="type" class="form-control">
-					<option>Fresh Water</option>
-					<option>Salt Water</option>
-					<option>Brackish Water</option>
-				</form:select>
-			</div>
-
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Gallons</label>
-				<form:input path="gallon" type="number" min="0" class="form-control"
-					id="inputGallons" placeholder="Enter Gallons"></form:input>
-			</div>
-			<div class="form-group col-md-6">
-				<label>Notes</label>
-				<form:input path="notes" type="text" class="form-control"
-					id="inputDesc" placeholder="Enter Description"></form:input>
-			</div>
-		</div>
-		<div>
-			<div class="float-right">
-				<button type="submit" class="btn btn-primary">Add</button>
-				<button type="reset" class="btn btn-warning text-white">Cancel</button>
-			</div>
-		</div>
-	</form:form>
-	<br> --%>
 	<div ng-controller="aquariumListController as ctrl">
 		<form ng-submit="ctrl.submit()" name="aquariumForm" class="col">
 			<input type="hidden" ng-model="ctrl.aquarium.aquariumId" />
@@ -111,40 +71,30 @@
 		</form>
 		<br>
 		<h4 class="text-center pt-3">Aquarium List</h4>
-		<table class="table no-gutters">
-			<thead>
-				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Name</th>
-					<th scope="col">Type</th>
-					<th scope="col">Gallons</th>
-					<th scope="col">Notes</th>
-					<th scope="col">Date</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr ng-repeat="t in ctrl.aquariums">
-					<th ng-bind="t.aquariumId" scope="row"></th>
-					<td ng-bind="t.name"></td>
-					<td ng-bind="t.type"></td>
-					<td ng-bind="t.gallon"></td>
-					<td ng-bind="t.notes"></td>
-					<td ng-bind="t.date | date:'MM/dd/yy'"></td>
-					<!-- 					<td>
-						<button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button>
-					</td> -->
-					<td>
-						<button type="button" ng-click="ctrl.edit(t.aquariumId)"
-							class="btn btn-success">Edit</button>
-					</td>
-					<td>
-						<button type="button" ng-click="ctrl.remove(t.aquariumId)"
-							class="btn btn-danger">Delete</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		
+<div class="row">
+  <div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
+    <div class="card">
+    <div class="card-header font-weight-bold" ng-bind="t.name"></div>
+      <div class="card-body">
+        <p class="card-text">
+        	<ul class="list-unstyled">
+        		<li ng-bind="t.type"></li>
+        		<li ng-bind="t.gallon"></li>
+        		<li ng-bind="t.notes"></li>
+        		<li ng-bind="t.date | date:'MM/dd/yy'"></li>
+        	</ul>
+        </p>
+      </div>
+      <div class="card-footer text-center">
+      	<button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button>
+      	<button type="button" ng-click="ctrl.edit(t.aquariumId)" class="btn btn-success">Edit</button>
+		<button type="button" ng-click="ctrl.remove(t.aquariumId)" class="btn btn-danger">Delete</button>					
+      </div>
+    </div>
+  </div>
+</div>
+		
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>

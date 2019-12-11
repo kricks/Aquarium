@@ -9,7 +9,7 @@ aquariumListService.$inject = [ '$http' ];
 
 	var factory = {
 		fetchAllAquariums : fetchAllAquariums,
-		createAquarium : createAquarium,
+		// createAquarium : createAquarium,
 		updateAquarium : updateAquarium,
 		deleteAquarium : deleteAquarium
 	};
@@ -22,10 +22,10 @@ aquariumListService.$inject = [ '$http' ];
 		});
 	}
 
-	function createAquarium(aquarium) {
-		console.log("This is create: " + aquarium);
-		return $http.post(baseURI + 'aquariums/create', aquarium);
-	}
+	// function createAquarium(aquarium) {
+	// 	console.log("This is create: " + aquarium);
+	// 	return $http.post(baseURI + 'aquariums/create', aquarium);
+	// }
 	
 	function updateAquarium(aquarium, aquariumId) {
         return $http.put(baseURI + 'aquariums/update/' + aquariumId, aquarium).then(function (response) {
@@ -41,4 +41,4 @@ aquariumListService.$inject = [ '$http' ];
                 console.error('Error while deleting Aquarium');
             });
     }
-};
+}

@@ -60,6 +60,7 @@ public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 	@Override
 	public boolean deleteAquariumById(Integer aquariumId) {
 		try {
+			// TODO need to delete all children before deleting aquarium
 			Query query = getSession().createQuery("DELETE FROM AquariumImpl WHERE aquariumId = :aquariumId");
 			query.setInteger("aquariumId", aquariumId);
 			query.executeUpdate();

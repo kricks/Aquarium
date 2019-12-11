@@ -1,108 +1,102 @@
 'use strict';
 
 angular
-		.module('myApp')
-		.controller(
-				'livestockController',
-				[
-						'livestockService',
-						function(livestockService) {
+	.module('myApp')
+	.controller('livestockController', livestockController);
+livestockController.$inject = ['livestockService', '$window'];
 
-							var self = this;
+function livestockController(livestockService) {
 
-							self.livestock = {
-								livestockId : null,
-								name : undefined,
-								species : undefined,
-								gender : 'Male',
-								notes : undefined
-							};
+	var self = this;
 
-							self.livestocks = [];
+	self.livestock = {
+		livestockId: null,
+		name: undefined,
+		species: undefined,
+		gender: 'Male',
+		notes: undefined
+	};
 
-							self.submit = submit;
-							self.edit = edit;
-							self.remove = remove;
-							self.reset = reset;
+	self.livestocks = [];
 
-							fetchAllLivestock();
+	self.edit = edit;
+	self.remove = remove;
+	self.reset = reset;
+	self.update = update;
 
-							function fetchAllLivestock() {
-								livestockService
-										.fetchAllLivestock()
-										.then(
-												function(d) {
-													self.livestocks = d;
-													return d;
-												},
-												function(errResponse) {
-													console
-															.error('Error while fetching Livestock');
-												});
-							}
+	fetchAllLivestock();
 
-							function createLivestock(livestock) {
-								livestockService.createLivestock(livestock)
-										.then(fetchAllLivestock);
-							}
+	function fetchAllLivestock() {
+		livestockService
+			.fetchAllLivestock()
+			.then(
+				function (d) {
+					self.livestocks = d;
+					return d;
+				},
+				function (errResponse) {
+					console
+						.error('Error while fetching Livestock');
+				});
+	}
 
-							function updateLivestock(livestock, livestockId) {
-								livestockService
-										.updateLivestock(livestock, livestockId)
-										.then(
-												fetchAllLivestock,
-												function(errResponse) {
-													console
-															.error('Error while updating livestock');
-												});
-							}
 
-							function deleteLivestock(livestockId) {
-								livestockService.deleteLivestock(livestockId)
-										.then(fetchAllLivestock);
-							}
+	// function createLivestock(livestock) {
+	// 	livestockService.createLivestock(livestock)
+	// 		.then(fetchAllLivestock);
+	// }
 
-							function submit() {
-								if (self.livestock.livestockId === null) {
-									console.log('Saving New livestock',
-											self.livestock);
-									createLivestock(self.livestock);
-								} else {
-									updateLivestock(self.livestock,
-											self.livestock.livestockId);
-									console
-											.log(
-													'livestock updated with livestockId ',
-													self.livestock.livestockId);
-								}
-								reset();
-							}
+	function updateLivestock(livestock, livestockId) {
+		livestockService
+			.updateLivestock(livestock, livestockId)
+			.then(
+				fetchAllLivestock,
+				function (errResponse) {
+					console
+						.error('Error while updating livestock');
+				});
+	}
 
-							function edit(livestockId) {
-								console.log('livestockId to be edited '
-										+ livestockId);
-								for (var i = 0; i < self.livestocks.length; i++) {
-									if (self.livestocks[i].livestockId === livestockId) {
-										self.livestock = angular
-												.copy(self.livestocks[i]);
-									}
-								}
-							}
+	function deleteLivestock(livestockId) {
+		livestockService.deleteLivestock(livestockId)
+			.then(fetchAllLivestock);
+	}
 
-							function remove(livestockId) {
-								console.log('livestockId to be deleted',
-										livestockId);
-								deleteLivestock(livestockId);
-							}
+	function update() {
+			updateLivestock(self.livestock,
+				self.livestock.livestockId);
+			console
+				.log(
+					'livestock updated with livestockId ',
+					self.livestock.livestockId);
+		reset();
+	}
 
-							function reset() {
-								self.livestock = {
-									livestockId : null,
-									name : undefined,
-									species : undefined,
-									gender : 'Male',
-									notes : undefined
-								};
-							}
+	function edit(livestockId) {
+		console.log('livestockId to be edited ' +
+			livestockId);
+		for (var i = 0; i < self.livestocks.length; i++) {
+			if (self.livestocks[i].livestockId === livestockId) {
+				self.livestock = angular
+					.copy(self.livestocks[i]);
+			}
+		}
+	}
 
-						} ]);
+	function remove(livestockId) {
+		console.log('livestockId to be deleted',
+			livestockId);
+		deleteLivestock(livestockId);
+	}
+
+	function reset() {
+		self.livestock = {
+			livestockId: null,
+			name: undefined,
+			species: undefined,
+			gender: 'Male',
+			notes: undefined
+		};
+	}
+
+}

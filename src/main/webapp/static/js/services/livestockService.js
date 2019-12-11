@@ -2,43 +2,44 @@
 
 angular.module('myApp').factory('livestockService', livestockService);
 
-livestockService.$inject = [ '$http' ];
+livestockService.$inject = ['$http', '$log'];
 
-	function livestockService($http) {
-		var baseURI = '/AquariumBuilder/';
+function livestockService($http, $log) {
+	var baseURI = '/AquariumBuilder/';
 
 	var factory = {
-		fetchAllLivestock : fetchAllLivestock,
-		createLivestock : createLivestock,
+		fetchAllLivestock: fetchAllLivestock,
+		// createLivestock: createLivestock,
 		updateLivestock: updateLivestock,
-		deleteLivestock : deleteLivestock
+		deleteLivestock: deleteLivestock
 	};
 
 	return factory;
 
 	function fetchAllLivestock() {
-		return $http.get(baseURI + "livestocks").then(function(response) {
+		return $http.get(baseURI + "livestocks").then(function (response) {
 			return response.data;
 		});
 	}
 
-	function createLivestock(livestock) {
-		console.log("This is create: " + livestock);
-		return $http.post(baseURI + 'livestocks/create', livestock);
-	}
-	
+	// function createLivestock(livestock) {
+	// 	console.log("This is create: " + livestock);
+	// 	return $http.post(baseURI + 'livestocks/create', livestock);
+	// }
+
 	function updateLivestock(livestock, livestockId) {
-        return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock ).then(function (response) {
-                return (response.data);
-            });
-    }
-	
+		return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock).then(function (response) {
+			return (response.data);
+		});
+	}
+
 	function deleteLivestock(livestockId) {
-        return $http.delete(baseURI + 'livestocks/delete/' + livestockId).then(function (response) {
-                return response.data;
-            },
-            function(errResponse){
-                console.error('Error while deleting Livestock');
-            });
-    }
-};
+		return $http.delete(baseURI + 'livestocks/delete/' + livestockId).then(function (response) {
+				return response.data;
+			},
+			function (errResponse) {
+				$log('Error while deleting Livestock');
+			});
+	}
+
+}

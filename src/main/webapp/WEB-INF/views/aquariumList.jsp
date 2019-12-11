@@ -20,7 +20,8 @@
 	<h3 class="text-center">Welcome, Enter the Aquarium Details</h3>
 	<br>
 	<div ng-controller="aquariumListController as ctrl">
-		<form ng-submit="ctrl.submit()" name="aquariumForm" class="col">
+		<form ng-submit="ctrl.submit()" id="top" name="aquariumForm"
+			class="col">
 			<input type="hidden" ng-model="ctrl.aquarium.aquariumId" />
 
 			<div class="form-row">
@@ -71,31 +72,35 @@
 		</form>
 		<br>
 		<h4 class="text-center pt-3">Aquarium List</h4>
-		
-<div class="row">
-  <div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
-    <div class="card">
-    <div class="card-header font-weight-bold" ng-bind="t.name"></div>
-      <div class="card-body">
-        <p class="card-text">
-        	<ul class="list-unstyled">
-        		<li ng-bind="t.type"></li>
-        		<li ng-bind="t.gallon"></li>
-        		<li ng-bind="t.notes"></li>
-        		<li ng-bind="t.date | date:'MM/dd/yy'"></li>
-        	</ul>
-        </p>
-      </div>
-      <div class="card-footer text-center">
-      	<button type="button" ng-click="ctrl.view(t.id)" class="btn btn-info">View</button>
-      	<button type="button" ng-click="ctrl.edit(t.aquariumId)" class="btn btn-success">Edit</button>
-		<button type="button" ng-click="ctrl.remove(t.aquariumId)" class="btn btn-danger">Delete</button>					
-      </div>
-    </div>
-  </div>
-</div>
-		
+
+		<div class="row">
+			<div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
+				<div class="card">
+					<div class="card-header font-weight-bold" ng-bind="t.name"></div>
+					<div class="card-body">
+						<p class="card-text">
+						<ul class="list-unstyled">
+							<li ng-bind="t.type"></li>
+							<li ng-bind="t.gallon"></li>
+							<li ng-bind="t.notes"></li>
+							<li ng-bind="t.date | date:'MM/dd/yy'"></li>
+						</ul>
+						</p>
+					</div>
+					<div class="card-footer text-center">
+						<a ng-href="aquarium-details"><button type="button"
+								class="btn btn-info">View</button></a>
+						<button type="button" ng-click="ctrl.edit(t.aquariumId)"
+							class="btn btn-success">Edit</button>
+						<button type="button" ng-click="ctrl.remove(t.aquariumId)"
+							class="btn btn-danger">Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
 	<script src="<c:url value='/static/js/app.js' />"></script>

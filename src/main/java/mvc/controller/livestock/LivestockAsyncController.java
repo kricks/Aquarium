@@ -51,6 +51,20 @@ public class LivestockAsyncController {
 		return new ResponseEntity<LivestockImpl>(livestock, HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/livestock/aq/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<LivestockImpl>> fetchLivestockByAquariumId(
+			@PathVariable("aquariumId") Integer aquariumId) {
+		logger.log(Level.INFO, "Fetching Livestock with livestockId " + aquariumId);
+
+		List<LivestockImpl> aqId = livestockManager.findLivestockByAquariumId(aquariumId);
+
+		if (aqId == null) {
+			logger.log(Level.INFO, "Livestock with aquariumId " + aquariumId + " not found");
+			return new ResponseEntity<List<LivestockImpl>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<LivestockImpl>>(aqId, HttpStatus.OK);
+	}
+
 	@PutMapping(value = "/update/{livestockId}")
 	public ResponseEntity<LivestockImpl> updateLivestock(@PathVariable("livestockId") Integer livestockId,
 			@RequestBody LivestockImpl livestock) {
@@ -74,7 +88,7 @@ public class LivestockAsyncController {
 	}
 
 	@DeleteMapping(value = "/delete/{livestockId}")
-	public ResponseEntity<LivestockImpl> deleteLivestock(@PathVariable("livestockId") Integer livestockId) {
+	public ResponseEntity<LivestockImpl> deleteLivestock(@PathVariable("livestockId") int livestockId) {
 		logger.log(Level.INFO, "Fetching & Deleting livestock with livestockId " + livestockId);
 
 		LivestockImpl livestock = livestockManager.findById(livestockId);
@@ -85,19 +99,6 @@ public class LivestockAsyncController {
 
 		livestockManager.deleteLivestockById(livestockId);
 		return new ResponseEntity<LivestockImpl>(HttpStatus.NO_CONTENT);
-	}
-
-	@GetMapping(value = "/livestock/aq/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<LivestockImpl> fetchLivestockByAquariumId(@PathVariable("aquariumId") Integer aquariumId) {
-		logger.log(Level.INFO, "Fetching Livestock with livestockId " + aquariumId);
-
-		Integer aqId = livestockManager.findLivestockByAquariumId(aquariumId);
-
-		if (aqId == null) {
-			logger.log(Level.INFO, "Livestock with aquariumId " + aquariumId + " not found");
-			return new ResponseEntity<LivestockImpl>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<LivestockImpl>(HttpStatus.OK);
 	}
 
 }

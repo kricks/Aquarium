@@ -52,7 +52,7 @@ public class LivestockServiceImpl implements LivestockService {
 	}
 
 	@Override
-	public Integer findLivestockByAquariumId(Integer aquariumId) {
+	public List<LivestockImpl> findLivestockByAquariumId(Integer aquariumId) {
 		return livestockDao.findLivestockByAquariumId(aquariumId);
 	}
 

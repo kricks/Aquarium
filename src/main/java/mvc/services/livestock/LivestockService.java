@@ -20,6 +20,6 @@ public interface LivestockService {
 
 	public boolean isLivestockExist(LivestockImpl livestock);
 
-	public Integer findLivestockByAquariumId(Integer aquariumId);
+	public List<LivestockImpl> findLivestockByAquariumId(Integer aquariumId);
 
 }

@@ -37,8 +37,8 @@ function livestockService($http, $log) {
 			});
 	}
 
-	function fetchAllLivestockByAquariumId(aquariumId, livestockId) {
-		return $http.get(baseURI + 'livestocks/aq/aquariumId/' + aquariumId, livestockId)
+	function fetchAllLivestockByAquariumId(aquariumId) {
+		return $http.get(baseURI + 'livestocks/aq/aquariumId' + aquariumId)
 		.then(function (response) {
 				return response.data;
 			},

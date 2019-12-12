@@ -51,9 +51,9 @@ function livestockController(livestockService) {
 				});
 	}
 
-	// function fetchAllLivestockByAquariumId(aquariumId) {
-	// 	aquariumListService.fetchAllLivestockByAquariumId(aquariumId);
-	// }
+	function fetchAllLivestockByAquariumId(aquariumId) {
+		aquariumListService.fetchAllLivestockByAquariumId(aquariumId);
+	}
 
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)

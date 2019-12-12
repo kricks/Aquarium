@@ -9,9 +9,9 @@ function livestockService($http, $log) {
 
 	var factory = {
 		fetchAllLivestock: fetchAllLivestock,
-		// createLivestock: createLivestock,
 		updateLivestock: updateLivestock,
-		deleteLivestock: deleteLivestock
+		deleteLivestock: deleteLivestock,
+		fetchAllLivestockByAquariumId : fetchAllLivestockByAquariumId
 	};
 
 	return factory;
@@ -21,11 +21,6 @@ function livestockService($http, $log) {
 			return response.data;
 		});
 	}
-
-	// function createLivestock(livestock) {
-	// 	console.log("This is create: " + livestock);
-	// 	return $http.post(baseURI + 'livestocks/create', livestock);
-	// }
 
 	function updateLivestock(livestock, livestockId) {
 		return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock).then(function (response) {
@@ -39,6 +34,16 @@ function livestockService($http, $log) {
 			},
 			function (errResponse) {
 				$log('Error while deleting Livestock');
+			});
+	}
+
+	function fetchAllLivestockByAquariumId(aquariumId, livestockId) {
+		return $http.get(baseURI + 'livestocks/aq/aquariumId/' + aquariumId, livestockId)
+		.then(function (response) {
+				return response.data;
+			},
+			function (errResponse) {
+				$log('Error while fetching livestock by aquariumID');
 			});
 	}
 

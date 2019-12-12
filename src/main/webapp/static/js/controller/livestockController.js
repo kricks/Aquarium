@@ -3,7 +3,7 @@
 angular
 	.module('myApp')
 	.controller('livestockController', livestockController);
-livestockController.$inject = ['livestockService', '$window'];
+livestockController.$inject = ['livestockService'];
 
 function livestockController(livestockService) {
 
@@ -40,12 +40,6 @@ function livestockController(livestockService) {
 				});
 	}
 
-
-	// function createLivestock(livestock) {
-	// 	livestockService.createLivestock(livestock)
-	// 		.then(fetchAllLivestock);
-	// }
-
 	function updateLivestock(livestock, livestockId) {
 		livestockService
 			.updateLivestock(livestock, livestockId)
@@ -57,18 +51,22 @@ function livestockController(livestockService) {
 				});
 	}
 
+	// function fetchAllLivestockByAquariumId(aquariumId) {
+	// 	aquariumListService.fetchAllLivestockByAquariumId(aquariumId);
+	// }
+
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)
 			.then(fetchAllLivestock);
 	}
 
 	function update() {
-			updateLivestock(self.livestock,
+		updateLivestock(self.livestock,
+			self.livestock.livestockId);
+		console
+			.log(
+				'livestock updated with livestockId ',
 				self.livestock.livestockId);
-			console
-				.log(
-					'livestock updated with livestockId ',
-					self.livestock.livestockId);
 		reset();
 	}
 

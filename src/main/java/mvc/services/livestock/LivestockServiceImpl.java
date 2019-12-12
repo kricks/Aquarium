@@ -51,4 +51,9 @@ public class LivestockServiceImpl implements LivestockService {
 		return findByName(livestock.getName()) != null;
 	}
 
+	@Override
+	public Integer findLivestockByAquariumId(Integer aquariumId) {
+		return livestockDao.findLivestockByAquariumId(aquariumId);
+	}
+
 }

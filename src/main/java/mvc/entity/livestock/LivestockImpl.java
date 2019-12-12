@@ -27,12 +27,8 @@ public class LivestockImpl implements Livestock {
 	@Column(name = "NOTES", nullable = true)
 	private String notes;
 
-//	@Column(name = "aquariumId", nullable = false)
-//	private Integer aquariumId;
-
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "aquariumId")
-//	private AquariumImpl aquariumImpl;
+	@Column(name = "fk_aquarium_id", nullable = false)
+	private Integer aquariumId;
 
 	public Integer getLivestockId() {
 		return livestockId;
@@ -74,20 +70,12 @@ public class LivestockImpl implements Livestock {
 		this.notes = notes;
 	}
 
-//	public Integer getAquariumId() {
-//		return aquariumId;
-//	}
-//
-//	public void setAquariumId(Integer aquariumId) {
-//		this.aquariumId = aquariumId;
-//	}
+	public Integer getAquariumId() {
+		return aquariumId;
+	}
 
-//	public AquariumImpl getAquariumImpl() {
-//		return aquariumImpl;
-//	}
-//
-//	public void setAquariumImpl(AquariumImpl aquariumImpl) {
-//		this.aquariumImpl = aquariumImpl;
-//	}
+	public void setAquariumId(Integer aquariumId) {
+		this.aquariumId = aquariumId;
+	}
 
 }

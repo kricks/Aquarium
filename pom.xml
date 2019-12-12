@@ -68,12 +68,6 @@
 		</dependency>
 
 		<!-- APACHE -->
-		<dependency>
-			<groupId>org.apache.taglibs</groupId>
-			<artifactId>taglibs-standard</artifactId>
-			<version>${taglibs.version}</version>
-			<type>pom</type>
-		</dependency>
 
 		<!-- HIBERNATE -->
 		<dependency>

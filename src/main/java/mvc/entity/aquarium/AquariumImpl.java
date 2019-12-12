@@ -1,13 +1,20 @@
 package mvc.entity.aquarium;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import mvc.entity.livestock.LivestockImpl;
 
 @Entity
 @Table(name = "AQUARIUM")
@@ -32,8 +39,8 @@ public class AquariumImpl implements Aquarium {
 	@Column(name = "DATE", nullable = false)
 	private Date date;
 
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aquariumId", cascade = CascadeType.ALL)
-//	private List<LivestockImpl> livestock = new ArrayList<>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aquariumId", cascade = CascadeType.ALL)
+	private List<LivestockImpl> livestock = new ArrayList<>();
 
 	public Integer getAquariumId() {
 		return aquariumId;

@@ -2,43 +2,50 @@
 
 angular.module('myApp').factory('aquariumListService', aquariumListService);
 
-aquariumListService.$inject = [ '$http' ];
+aquariumListService.$inject = ['$http'];
 
-	function aquariumListService($http) {
-		var baseURI = '/AquariumBuilder/';
+function aquariumListService($http) {
+	var baseURI = '/AquariumBuilder/';
 
 	var factory = {
-		fetchAllAquariums : fetchAllAquariums,
-		// createAquarium : createAquarium,
-		updateAquarium : updateAquarium,
-		deleteAquarium : deleteAquarium
+		fetchAllAquariums: fetchAllAquariums,
+		fetchAquariumById : fetchAquariumById,
+		createAquarium: createAquarium,
+		updateAquarium: updateAquarium,
+		deleteAquarium: deleteAquarium
 	};
 
 	return factory;
 
 	function fetchAllAquariums() {
-		return $http.get(baseURI + "aquariums").then(function(response) {
+		return $http.get(baseURI + "aquariums").then(function (response) {
 			return response.data;
 		});
 	}
 
-	// function createAquarium(aquarium) {
-	// 	console.log("This is create: " + aquarium);
-	// 	return $http.post(baseURI + 'aquariums/create', aquarium);
-	// }
-	
+	function fetchAquariumById(aquariumId) {
+		return $http.get(baseURI + 'aquariums/' + aquariumId).then(function (response) {
+			return response.data;
+		});
+	}
+
+	function createAquarium(aquarium) {
+		console.log("This is create: " + aquarium);
+		return $http.post(baseURI + 'aquariums/create', aquarium);
+	}
+
 	function updateAquarium(aquarium, aquariumId) {
-        return $http.put(baseURI + 'aquariums/update/' + aquariumId, aquarium).then(function (response) {
-                return (response.data);
-            });
-    }
-	
+		return $http.put(baseURI + 'aquariums/update/' + aquariumId, aquarium).then(function (response) {
+			return (response.data);
+		});
+	}
+
 	function deleteAquarium(aquariumId) {
-        return $http.delete(baseURI + 'aquariums/delete/' + aquariumId).then(function (response) {
-                return response.data;
-            },
-            function(errResponse){
-                console.error('Error while deleting Aquarium');
-            });
-    }
+		return $http.delete(baseURI + 'aquariums/delete/' + aquariumId).then(function (response) {
+			return response.data;
+		},
+			function (errResponse) {
+				console.error('Error while deleting Aquarium');
+			});
+	}
 }

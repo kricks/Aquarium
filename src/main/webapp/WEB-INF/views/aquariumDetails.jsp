@@ -79,12 +79,12 @@
 			</div>
 		</form>
 		<br>
-		<h4 class="text-center pt-3">Aquarium List</h4>
+		<h4 class="text-center pt-3">Livestock List</h4>
 		<table class="table no-gutters">
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
-<!-- 					<th scope="col">aqID</th> -->
+					<th scope="col">aqID</th>
 					<th scope="col">Name</th>
 					<th scope="col">Species</th>
 					<th scope="col">Gender</th>
@@ -95,7 +95,7 @@
 			<tbody>
 				<tr ng-repeat="t in ctrl.livestocks">
 					<th ng-bind="t.livestockId" scope="row"></th>
-<!-- 					<td ng-bind="t.aquariumId"></td> -->
+					<td ng-bind="t.aquariumId"></td>
 					<td ng-bind="t.name"></td>
 					<td ng-bind="t.species"></td>
 					<td ng-bind="t.gender"></td>
@@ -121,4 +121,7 @@
 	<script
 		src="<c:url value='/static/js/controller/livestockController.js' />"></script>
 </body>
+
+<%@ include file="footer.jsp" %>
+
 </html>

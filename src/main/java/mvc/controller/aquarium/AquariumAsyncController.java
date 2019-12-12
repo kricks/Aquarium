@@ -39,9 +39,9 @@ public class AquariumAsyncController {
 		return new ResponseEntity<List<AquariumImpl>>(aquariums, HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/aquarium/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AquariumImpl> getAquarium(@PathVariable("aquariumId") Integer aquariumId) {
-		System.out.println("Fetching Aquarium with aquariumId " + aquariumId);
+		logger.log(Level.INFO, "Fetching Aquarium with aquariumId " + aquariumId);
 		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
 			logger.log(Level.INFO, "Aquarium with aquariumId " + aquariumId + " not found");

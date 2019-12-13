@@ -23,23 +23,28 @@ function livestockController(livestockService) {
 	self.remove = remove;
 	self.reset = reset;
 	self.update = update;
+	self.init = init;
 
 	// fetchAllLivestock();
-	fetchAllLivestockByAquariumId(aquariumId);
+	
 
-	// function fetchAllLivestock() {
-	// 	livestockService
-	// 		.fetchAllLivestock()
-	// 		.then(
-	// 			function (d) {
-	// 				self.livestocks = d;
-	// 				return d;
-	// 			},
-	// 			function (errResponse) {
-	// 				console
-	// 					.error('Error while fetching Livestock');
-	// 			});
-	// }
+	function init(aquariumId) {
+		fetchAllLivestockByAquariumId(aquariumId);
+	} 
+
+	function fetchAllLivestockByAquariumId(aquariumId) {
+		livestockService
+			.fetchAllLivestockByAquariumId(aquariumId)
+			.then(
+				function (d) {
+					self.livestocks = d;
+					return d;
+				},
+				function (errResponse) {
+					console
+						.error('Error while fetching Livestock');
+				});
+	}
 
 	function updateLivestock(livestock, livestockId) {
 		livestockService
@@ -52,9 +57,9 @@ function livestockController(livestockService) {
 				});
 	}
 
-	function fetchAllLivestockByAquariumId(aquariumId) {
-		aquariumListService.fetchAllLivestockByAquariumId(aquariumId);
-	}
+	// function fetchAllLivestockByAquariumId(aquariumId) {
+	// 	aquariumListService.fetchAllLivestockByAquariumId(aquariumId);
+	// }
 
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)

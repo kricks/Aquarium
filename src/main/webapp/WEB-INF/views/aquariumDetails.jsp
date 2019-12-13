@@ -18,7 +18,7 @@
 		<button class="btn btn-primary">Go Back to Aquarium List</button>
 	</a>
 
-	<div ng-controller="livestockController as ctrl">
+	<div ng-controller="livestockController as ctrl" ng-init="ctrl.init(${aquariumId})">
 		<form method="POST" action="livestock-confirmation"
 			modelAttribute="livestock"
 			name="livestockForm" 

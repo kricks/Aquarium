@@ -51,7 +51,7 @@ public class LivestockAsyncController {
 		return new ResponseEntity<LivestockImpl>(livestock, HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/livestock/aq/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/aq/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LivestockImpl>> fetchLivestockByAquariumId(
 			@PathVariable("aquariumId") Integer aquariumId) {
 		logger.log(Level.INFO, "Fetching Livestock with livestockId " + aquariumId);

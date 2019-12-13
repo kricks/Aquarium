@@ -40,8 +40,10 @@ public class AquariumAsyncController {
 	}
 
 	@GetMapping(value = "/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AquariumImpl> getAquarium(@PathVariable("aquariumId") Integer aquariumId) {
+	public ResponseEntity<AquariumImpl> getLivestockByAquariumId(@PathVariable("aquariumId") Integer aquariumId) {
+		// this method should go into livestock controller
 		logger.log(Level.INFO, "Fetching Aquarium with aquariumId " + aquariumId);
+		System.out.println(aquariumId);
 		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
 			logger.log(Level.INFO, "Aquarium with aquariumId " + aquariumId + " not found");

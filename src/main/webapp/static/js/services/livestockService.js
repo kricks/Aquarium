@@ -33,17 +33,17 @@ function livestockService($http, $log) {
 				return response.data;
 			},
 			function (errResponse) {
-				$log('Error while deleting Livestock');
+				// $log('Error while deleting Livestock');
 			});
 	}
 
 	function fetchAllLivestockByAquariumId(aquariumId) {
-		return $http.get(baseURI + 'livestocks/aq/aquariumId' + aquariumId)
+		return $http.get(baseURI + 'livestocks/aq/' + aquariumId)
 		.then(function (response) {
 				return response.data;
 			},
 			function (errResponse) {
-				$log('Error while fetching livestock by aquariumID');
+				// $log('Error while fetching livestock by aquariumID');
 			});
 	}
 

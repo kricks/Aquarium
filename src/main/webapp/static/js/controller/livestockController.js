@@ -24,27 +24,28 @@ function livestockController(livestockService) {
 	self.reset = reset;
 	self.update = update;
 
-	fetchAllLivestock();
+	// fetchAllLivestock();
+	fetchAllLivestockByAquariumId(aquariumId);
 
-	function fetchAllLivestock() {
-		livestockService
-			.fetchAllLivestock()
-			.then(
-				function (d) {
-					self.livestocks = d;
-					return d;
-				},
-				function (errResponse) {
-					console
-						.error('Error while fetching Livestock');
-				});
-	}
+	// function fetchAllLivestock() {
+	// 	livestockService
+	// 		.fetchAllLivestock()
+	// 		.then(
+	// 			function (d) {
+	// 				self.livestocks = d;
+	// 				return d;
+	// 			},
+	// 			function (errResponse) {
+	// 				console
+	// 					.error('Error while fetching Livestock');
+	// 			});
+	// }
 
 	function updateLivestock(livestock, livestockId) {
 		livestockService
 			.updateLivestock(livestock, livestockId)
 			.then(
-				fetchAllLivestock,
+				fetchAllLivestockByAquariumId,
 				function (errResponse) {
 					console
 						.error('Error while updating livestock');
@@ -57,7 +58,7 @@ function livestockController(livestockService) {
 
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)
-			.then(fetchAllLivestock);
+			.then(fetchAllLivestockByAquariumId);
 	}
 
 	function update() {

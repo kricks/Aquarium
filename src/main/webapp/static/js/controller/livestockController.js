@@ -20,10 +20,10 @@ function livestockController(livestockService) {
 
 	self.livestocks = [];
 
+	self.submit = submit;
 	self.edit = edit;
 	self.remove = remove;
 	self.reset = reset;
-	self.update = update;
 	self.init = init;
 
 	function init(aquariumId) {
@@ -62,18 +62,32 @@ function livestockController(livestockService) {
 			.then(fetchAllLivestockByAquariumId);
 	}
 
-	function update() {
+	/* function update() {
 		updateLivestock(self.livestock, self.livestock.livestockId);
 		console.log('livestock updated with livestockId ', self.livestock.livestockId);
 		console.log(self.livestock);
 		init(self.livestock.aquariumId);
 		reset();
+	} */
+
+	function createLivestock(livestock) {
+		livestockService.createLivestock(livestock)
+			.then(fetchAllLivestockByAquariumId);
 	}
 
-	// function createAquarium(aquarium) {
-	// 	aquariumListService.createAquarium(aquarium)
-	// 		.then(fetchAllAquariums);
-	// }
+	function submit() {
+		if (self.livestock.livestockId === null) {
+			console.log('Saving New aquarium',
+				self.livestock);
+			createLivestock(self.livestock);
+		} else {
+			updateLivestock(self.livestock,
+				self.livestock.livestockId);
+			console.log('aquarium updated with aquariumId ',
+				self.livestock.livestockId);
+		}
+		reset();
+	}
 
 	function edit(livestockId, aquariumId) {
 		console.log('livestockId to be edited ' +

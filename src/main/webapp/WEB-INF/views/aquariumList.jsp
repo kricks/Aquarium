@@ -70,7 +70,7 @@
 					<div class="card">
 						<div class="card-header font-weight-bold" ng-bind="t.name"></div>
 						<div class="card-body">
-							<p class="card-text">View View
+							<p class="card-text">
 							<ul class="list-unstyled">
 								<li ng-bind="t.type"></li>
 								<li ng-bind="t.gallon"></li>

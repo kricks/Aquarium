@@ -9,9 +9,10 @@ function livestockService($http, $log) {
 
 	var factory = {
 		fetchAllLivestock: fetchAllLivestock,
+		createLivestock: createLivestock,
 		updateLivestock: updateLivestock,
 		deleteLivestock: deleteLivestock,
-		fetchAllLivestockByAquariumId : fetchAllLivestockByAquariumId
+		fetchAllLivestockByAquariumId: fetchAllLivestockByAquariumId
 	};
 
 	return factory;
@@ -20,6 +21,11 @@ function livestockService($http, $log) {
 		return $http.get(baseURI + "livestocks").then(function (response) {
 			return response.data;
 		});
+	}
+
+	function createLivestock(livestock) {
+		console.log("This is create: " + livestock);
+		return $http.post(baseURI + 'livestocks/create', livestock);
 	}
 
 	function updateLivestock(livestock, livestockId) {
@@ -32,15 +38,15 @@ function livestockService($http, $log) {
 
 	function deleteLivestock(livestockId) {
 		return $http.delete(baseURI + 'livestocks/delete/' + livestockId).then(function (response) {
-				return response.data;
-			});
+			return response.data;
+		});
 	}
 
 	function fetchAllLivestockByAquariumId(aquariumId) {
 		return $http.get(baseURI + 'livestocks/aq/' + aquariumId)
-		.then(function (response) {
+			.then(function (response) {
 				return response.data;
-		});
+			});
 	}
 
 }

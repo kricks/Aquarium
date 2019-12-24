@@ -41,16 +41,4 @@ public class AppController {
 		return new ModelAndView(aquariumConfirmation, "message", aquarium);
 	}
 
-//	@GetMapping(value = "/livestock-list/{aquariumId}")
-//	public ModelAndView displayLivestockByAquariumId(@PathVariable Integer aquariumId) {
-//		ModelAndView mv = new ModelAndView(livestockList, "aquarium", new AquariumImpl());
-//		mv.addObject("aquariumId", aquariumId);
-//		return mv;
-//	}
-//
-//	@PostMapping(value = "/livestock-list/{aquariumId}")
-//	public ModelAndView addNewAquarium(@ModelAttribute("aquarium") AquariumImpl aquarium) {
-//		return new ModelAndView(livestockList, "message", aquarium);
-//	}
-
 }

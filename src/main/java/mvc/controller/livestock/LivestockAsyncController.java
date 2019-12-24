@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,6 +69,20 @@ public class LivestockAsyncController {
 			return new ResponseEntity<List<LivestockImpl>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<LivestockImpl>>(aqId, HttpStatus.OK);
+	}
+
+	@PostMapping(value = "/create")
+	public ResponseEntity<Void> createLivestock(@RequestBody LivestockImpl livestock) {
+		logger.log(Level.INFO, "Creating Livestock " + livestock.getName());
+
+		if (livestockManager.isLivestockExist(livestock)) {
+			logger.log(Level.INFO, "A Aquarium with name " + livestock.getName() + " already exist");
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+		}
+		livestockManager.addLivestock(livestock);
+
+		return new ResponseEntity<Void>(HttpStatus.CREATED);
+
 	}
 
 	// update livestock by lsid

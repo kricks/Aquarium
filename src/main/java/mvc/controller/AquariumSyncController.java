@@ -39,7 +39,7 @@ public class AquariumSyncController {
 		return mv;
 	}
 
-	@PostMapping(value = "/aquarium-details")
+	@PostMapping(value = "/aquarium-details/{aquariumId}")
 	public ModelAndView addNewAquarium(@ModelAttribute("aquarium") AquariumImpl aquarium) {
 		return new ModelAndView(aquariumDetails, "message", aquarium);
 	}

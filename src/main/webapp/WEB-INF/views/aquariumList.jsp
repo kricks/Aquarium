@@ -73,11 +73,12 @@
 							</p>
 						</div>
 						<div class="card-footer text-center">
-							
-							<a ng-href="aquarium-details/{{t.aquariumId}}"><button type="button" class="btn btn-info">View</button></a>
-							
-							<button type="button" ng-click="ctrl.view(t.aquariumId)" class="btn btn-info">View2</button>
-							
+							<a ng-href="aquarium-details/{{t.aquariumId}}">
+								<buttontype="button" class="btn btn-info">View</button>
+							</a>
+
+							<!-- <button type="button" ng-click="ctrl.view(t.aquariumId)" class="btn btn-info">View2</button> -->
+
 							<button type="button" ng-click="ctrl.edit(t.aquariumId)"
 								class="btn btn-success">Edit</button>
 							<button type="button" ng-click="ctrl.remove(t.aquariumId)"

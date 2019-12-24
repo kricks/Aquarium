@@ -11,6 +11,7 @@ function livestockController(livestockService) {
 
 	self.livestock = {
 		livestockId: null,
+		aquariumId: null,
 		name: undefined,
 		species: undefined,
 		gender: 'Male',
@@ -25,18 +26,16 @@ function livestockController(livestockService) {
 	self.update = update;
 	self.init = init;
 
-	// fetchAllLivestock();
-	
-
 	function init(aquariumId) {
 		fetchAllLivestockByAquariumId(aquariumId);
-	} 
+	}
 
 	function fetchAllLivestockByAquariumId(aquariumId) {
 		livestockService
 			.fetchAllLivestockByAquariumId(aquariumId)
 			.then(
 				function (d) {
+					console.log("1");
 					self.livestocks = d;
 					return d;
 				},
@@ -47,19 +46,16 @@ function livestockController(livestockService) {
 	}
 
 	function updateLivestock(livestock, livestockId) {
+		console.log("2");
 		livestockService
 			.updateLivestock(livestock, livestockId)
-			.then(
-				fetchAllLivestockByAquariumId,
-				function (errResponse) {
-					console
-						.error('Error while updating livestock');
-				});
+		.then(
+			fetchAllLivestockByAquariumId.livestock.aquariumId,
+			function (errResponse) {
+				console
+					.error('Error while updating livestock');
+			});
 	}
-
-	// function fetchAllLivestockByAquariumId(aquariumId) {
-	// 	aquariumListService.fetchAllLivestockByAquariumId(aquariumId);
-	// }
 
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)
@@ -67,22 +63,24 @@ function livestockController(livestockService) {
 	}
 
 	function update() {
-		updateLivestock(self.livestock,
-			self.livestock.livestockId);
-		console
-			.log(
-				'livestock updated with livestockId ',
-				self.livestock.livestockId);
+		updateLivestock(self.livestock, self.livestock.livestockId);
+		console.log('livestock updated with livestockId ', self.livestock.livestockId);
+		console.log(self.livestock);
+		init(self.livestock.aquariumId);
 		reset();
 	}
 
-	function edit(livestockId) {
+	function createAquarium(aquarium) {
+		aquariumListService.createAquarium(aquarium)
+			.then(fetchAllAquariums);
+	}
+
+	function edit(livestockId, aquariumId) {
 		console.log('livestockId to be edited ' +
 			livestockId);
 		for (var i = 0; i < self.livestocks.length; i++) {
 			if (self.livestocks[i].livestockId === livestockId) {
-				self.livestock = angular
-					.copy(self.livestocks[i]);
+				self.livestock = angular.copy(self.livestocks[i]);
 			}
 		}
 	}

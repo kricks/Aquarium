@@ -29,6 +29,7 @@ public class LivestockAsyncController {
 	@Autowired
 	private LivestockManager livestockManager;
 
+	// get all
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LivestockImpl>> listAllLivestock() {
 		List<LivestockImpl> livestock = livestockManager.findAllLivestock();
@@ -38,6 +39,7 @@ public class LivestockAsyncController {
 		return new ResponseEntity<List<LivestockImpl>>(livestock, HttpStatus.OK);
 	}
 
+	// get livestock by id
 	@GetMapping(value = "/livestock/{livestockId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<LivestockImpl> getLivestock(@PathVariable("livestockId") Integer livestockId) {
 		logger.log(Level.INFO, "Fetching Livestock with livestockId " + livestockId);
@@ -51,8 +53,11 @@ public class LivestockAsyncController {
 		return new ResponseEntity<LivestockImpl>(livestock, HttpStatus.OK);
 	}
 
+	// get livesstock by aquariumID
+
 	@GetMapping(value = "/aq/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<LivestockImpl>> fetchLivestockByAquariumId(
+
 			@PathVariable("aquariumId") Integer aquariumId) {
 		logger.log(Level.INFO, "Fetching Livestock with livestockId " + aquariumId);
 
@@ -65,10 +70,14 @@ public class LivestockAsyncController {
 		return new ResponseEntity<List<LivestockImpl>>(aqId, HttpStatus.OK);
 	}
 
+	// update livestock by lsid
 	@PutMapping(value = "/update/{livestockId}")
 	public ResponseEntity<LivestockImpl> updateLivestock(@PathVariable("livestockId") Integer livestockId,
 			@RequestBody LivestockImpl livestock) {
 		logger.log(Level.INFO, "Updating Livestock " + livestockId);
+
+		System.out.println("asdfjkasdkflj;lakdjsf " + livestock.getAquariumId());
+		System.out.println("aasssd " + livestock.getName());
 
 		LivestockImpl currentLivestock = livestockManager.findById(livestockId);
 
@@ -76,11 +85,14 @@ public class LivestockAsyncController {
 			logger.log(Level.INFO, "Livestock with livestockId " + livestockId + " not found");
 			return new ResponseEntity<LivestockImpl>(HttpStatus.NO_CONTENT);
 		}
-
+		currentLivestock.setAquariumId(livestock.getAquariumId());
 		currentLivestock.setName(livestock.getName());
 		currentLivestock.setSpecies(livestock.getSpecies());
 		currentLivestock.setGender(livestock.getGender());
 		currentLivestock.setNotes(livestock.getNotes());
+
+		System.out.println("asdfjkasdkflj;lakdjsf 122121 " + currentLivestock.getAquariumId());
+		System.out.println("aasssd 2222" + currentLivestock.getName());
 
 		livestockManager.updateLivestock(currentLivestock);
 		logger.log(Level.INFO, "this is update rest: " + currentLivestock);

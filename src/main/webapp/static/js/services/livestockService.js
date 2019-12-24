@@ -24,6 +24,8 @@ function livestockService($http, $log) {
 
 	function updateLivestock(livestock, livestockId) {
 		return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock).then(function (response) {
+			console.log(livestock);
+			console.log(livestockId);
 			return (response.data);
 		});
 	}
@@ -31,9 +33,6 @@ function livestockService($http, $log) {
 	function deleteLivestock(livestockId) {
 		return $http.delete(baseURI + 'livestocks/delete/' + livestockId).then(function (response) {
 				return response.data;
-			},
-			function (errResponse) {
-				// $log('Error while deleting Livestock');
 			});
 	}
 
@@ -41,10 +40,7 @@ function livestockService($http, $log) {
 		return $http.get(baseURI + 'livestocks/aq/' + aquariumId)
 		.then(function (response) {
 				return response.data;
-			},
-			function (errResponse) {
-				// $log('Error while fetching livestock by aquariumID');
-			});
+		});
 	}
 
 }

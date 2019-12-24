@@ -18,61 +18,50 @@
 		<button class="btn btn-primary">Go Back to Aquarium List</button>
 	</a>
 
-	<div ng-controller="livestockController as ctrl" ng-init="ctrl.init(${aquariumId})">
+	<div ng-controller="livestockController as ctrl"
+		ng-init="ctrl.init(${aquariumId})">
 		<form method="POST" action="livestock-confirmation"
-			modelAttribute="livestock"
-			name="livestockForm" 
-			class="col">
+			modelAttribute="livestock" name="livestockForm" class="col">
 			<input type="hidden" ng-model="ctrl.livestock.livestockId" />
 
+			<!-- <div class="form-group col-md-6">
+				<label for="aqId">aqId <span class="text-danger">*</span></label> <input
+					type="text" ng-model="ctrl.livestock.aquariumId" name="aqId"
+					class="form-control" placeholder="Enter aqId" required="required"></input>
+			</div> -->
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="tname">Name <span class="text-danger">*</span></label>
-					<input type="text" 
-					 	ng-model="ctrl.livestock.name" 
-						name="name" 
-						class="form-control" 
-						placeholder="Enter Name" 
-						required="required"></input>
+					<input type="text" ng-model="ctrl.livestock.name" name="name"
+						class="form-control" placeholder="Enter Name" required="required"></input>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="species">Species</label>
-					<input type="text" 
-						name="species"
-						ng-model="ctrl.livestock.species" 
-						class="form-control" 
-						id="species" 
-						placeholder="Enter Species"></input>
+					<label for="species">Species</label> <input type="text"
+						name="species" ng-model="ctrl.livestock.species"
+						class="form-control" id="species" placeholder="Enter Species"></input>
 				</div>
 
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="type">Gender</label>
-					<select
-						name="gender" 
-						class="form-control"
-						id="type" 
-						ng-model="ctrl.livestock.gender">
+					<label for="type">Gender</label> <select name="gender"
+						class="form-control" id="type" ng-model="ctrl.livestock.gender">
 						<option>Male</option>
 						<option>Female</option>
 						<option>N/A</option>
 					</select>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="notes">Notes</label>
-					<input type="text" 
-						name="notes"
-						ng-model="ctrl.livestock.notes"  
-						class="form-control"
-						id="notes" 
+					<label for="notes">Notes</label> <input type="text" name="notes"
+						ng-model="ctrl.livestock.notes" class="form-control" id="notes"
 						placeholder="Enter Notes"></input>
 				</div>
 			</div>
 			<div>
 				<div class="float-right">
 					<input type="submit" value="Add" class="btn btn-primary">
-					<button type="button" ng-click="ctrl.update()" class="btn btn-warning text-white">Update</button>
+					<button type="button" ng-click="ctrl.update()"
+						class="btn btn-warning text-white">Update</button>
 					<button type="button" ng-click="ctrl.reset()"
 						class="btn btn-danger">Cancel</button>
 				</div>
@@ -84,7 +73,7 @@
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
-					<th scope="col">aqID</th>
+					<!-- <th scope="col">aqID</th> -->
 					<th scope="col">Name</th>
 					<th scope="col">Species</th>
 					<th scope="col">Gender</th>
@@ -95,7 +84,7 @@
 			<tbody>
 				<tr ng-repeat="t in ctrl.livestocks">
 					<th ng-bind="t.livestockId" scope="row"></th>
-					<td ng-bind="t.aquariumId"></td>
+					<!-- <td ng-bind="t.aquariumId"></td> -->
 					<td ng-bind="t.name"></td>
 					<td ng-bind="t.species"></td>
 					<td ng-bind="t.gender"></td>
@@ -122,6 +111,6 @@
 		src="<c:url value='/static/js/controller/livestockController.js' />"></script>
 </body>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp"%>
 
 </html>

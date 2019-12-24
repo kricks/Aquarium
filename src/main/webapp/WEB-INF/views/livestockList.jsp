@@ -58,9 +58,9 @@
 				</div>
 				<div>
 					<div class="float-right">
-						<input type="submit" value="Add" class="btn btn-primary">
-						<button type="button" ng-click="ctrl.update()"
-							class="btn btn-warning text-white">Update</button>
+						<input type="submit"
+						value="{{!ctrl.livestock.livestockId ? 'Add' : 'Update'}}"
+						class="btn btn-primary">
 						<button type="button" ng-click="ctrl.reset()"
 							class="btn btn-danger">Cancel</button>
 					</div>

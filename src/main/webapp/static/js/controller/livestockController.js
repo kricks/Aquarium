@@ -50,7 +50,7 @@ function livestockController(livestockService) {
 		livestockService
 			.updateLivestock(livestock, livestockId)
 		.then(
-			fetchAllLivestockByAquariumId.livestock.aquariumId,
+			fetchAllLivestockByAquariumId(self.aquariumId),
 			function (errResponse) {
 				console
 					.error('Error while updating livestock');

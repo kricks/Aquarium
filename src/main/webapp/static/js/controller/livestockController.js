@@ -70,10 +70,10 @@ function livestockController(livestockService) {
 		reset();
 	}
 
-	function createAquarium(aquarium) {
-		aquariumListService.createAquarium(aquarium)
-			.then(fetchAllAquariums);
-	}
+	// function createAquarium(aquarium) {
+	// 	aquariumListService.createAquarium(aquarium)
+	// 		.then(fetchAllAquariums);
+	// }
 
 	function edit(livestockId, aquariumId) {
 		console.log('livestockId to be edited ' +

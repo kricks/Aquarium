@@ -9,7 +9,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<title>Aquarium Details</title>
+<title>Livestock List</title>
 </head>
 <body ng-app="myApp" class="container">
 	<br>
@@ -20,6 +20,7 @@
 
 	<div ng-controller="livestockController as ctrl"
 		ng-init="ctrl.init(${aquariumId})">
+		
 		<form method="POST" action="livestock-confirmation"
 			modelAttribute="livestock" name="livestockForm" class="col">
 			<input type="hidden" ng-model="ctrl.livestock.livestockId" />

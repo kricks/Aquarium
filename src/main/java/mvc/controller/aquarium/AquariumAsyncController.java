@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,19 +51,19 @@ public class AquariumAsyncController {
 		return new ResponseEntity<AquariumImpl>(aquarium, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/create")
-	public ResponseEntity<Void> createAquarium(@RequestBody AquariumImpl aquarium) {
-		logger.log(Level.INFO, "Creating Aquarium " + aquarium.getName());
-
-		if (aquariumManager.isAquariumExist(aquarium)) {
-			logger.log(Level.INFO, "A Aquarium with name " + aquarium.getName() + " already exist");
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-		}
-		aquariumManager.addAquarium(aquarium);
-
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
-
-	}
+//	@PostMapping(value = "/create")
+//	public ResponseEntity<Void> createAquarium(@RequestBody AquariumImpl aquarium) {
+//		logger.log(Level.INFO, "Creating Aquarium " + aquarium.getName());
+//
+//		if (aquariumManager.isAquariumExist(aquarium)) {
+//			logger.log(Level.INFO, "A Aquarium with name " + aquarium.getName() + " already exist");
+//			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+//		}
+//		aquariumManager.addAquarium(aquarium);
+//
+//		return new ResponseEntity<Void>(HttpStatus.CREATED);
+//
+//	}
 
 	@PutMapping(value = "/update/{aquariumId}")
 	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,

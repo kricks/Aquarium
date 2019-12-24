@@ -19,10 +19,11 @@ function aquariumListController(aquariumListService, $log) {
 
 	self.aquariums = [];
 
-	self.submit = submit;
+	// self.submit = submit;
 	self.edit = edit;
 	self.remove = remove;
 	self.reset = reset;
+	self.update = update;
 	self.view = view;
 
 	fetchAllAquariums();
@@ -45,10 +46,10 @@ function aquariumListController(aquariumListService, $log) {
 		aquariumListService.fetchAquariumById(aquariumId);
 	}
 
-	function createAquarium(aquarium) {
-		aquariumListService.createAquarium(aquarium)
-			.then(fetchAllAquariums);
-	}
+	// function createAquarium(aquarium) {
+	// 	aquariumListService.createAquarium(aquarium)
+	// 		.then(fetchAllAquariums);
+	// }
 
 	function updateAquarium(aquarium, aquariumId) {
 		console.log(aquariumId);
@@ -67,17 +68,22 @@ function aquariumListController(aquariumListService, $log) {
 			fetchAllAquariums);
 	}
 
-	function submit() {
-		if (self.aquarium.aquariumId === null) {
-			console.log('Saving New aquarium',
-				self.aquarium);
-			createAquarium(self.aquarium);
-		} else {
-			updateAquarium(self.aquarium,
-				self.aquarium.aquariumId);
-			console.log('aquarium updated with aquariumId ',
-				self.aquarium.aquariumId);
-		}
+	// function submit() {
+	// 	if (self.aquarium.aquariumId === null) {
+	// 		console.log('Saving New aquarium',
+	// 			self.aquarium);
+	// 		createAquarium(self.aquarium);
+	// 	} else {
+	// 		updateAquarium(self.aquarium,
+	// 			self.aquarium.aquariumId);
+	// 		console.log('aquarium updated with aquariumId ',
+	// 			self.aquarium.aquariumId);
+	// 	}
+	// 	reset();
+	// }
+
+	function update() {
+		updateAquarium(self.aquarium, self.aquarium.aquariumId);
 		reset();
 	}
 

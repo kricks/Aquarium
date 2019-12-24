@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan({ "mvc" })
 
-public class AquariumConfig extends WebMvcConfigurerAdapter {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {

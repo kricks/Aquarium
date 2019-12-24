@@ -29,7 +29,7 @@ public class AquariumImpl implements Aquarium {
 	@Column(name = "NOTES", nullable = true)
 	private String notes;
 
-	@Column(name = "DATE", nullable = false)
+	@Column(name = "DATE", nullable = true)
 	private Date date;
 
 //	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aquariumId", cascade = CascadeType.ALL)

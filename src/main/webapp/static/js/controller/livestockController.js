@@ -11,7 +11,7 @@ function livestockController(livestockService) {
 
 	self.livestock = {
 		livestockId: null,
-		aquariumId: null,
+		aquariumId: 83,
 		name: undefined,
 		species: undefined,
 		gender: 'Male',
@@ -108,6 +108,7 @@ function livestockController(livestockService) {
 	function reset() {
 		self.livestock = {
 			livestockId: null,
+			aquariumId: 83,
 			name: undefined,
 			species: undefined,
 			gender: 'Male',

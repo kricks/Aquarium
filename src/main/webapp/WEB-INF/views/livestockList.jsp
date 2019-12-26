@@ -23,11 +23,11 @@
 			<form ng-submit="ctrl.submit()" name="livestockForm" class="col">
 				<input type="hidden" ng-model="ctrl.livestock.livestockId" />
 
-				<div class="form-group col-md-6">
+				<!-- <div class="form-group col-md-6">
 				<label for="aqId">aqId <span class="text-danger">*</span></label> <input
 					type="text" ng-model="ctrl.livestock.aquariumId" name="aqId"
 					class="form-control" placeholder="Enter aqId" required="required"></input>
-			</div>
+			</div> -->
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="tname">Name <span class="text-danger">*</span></label>

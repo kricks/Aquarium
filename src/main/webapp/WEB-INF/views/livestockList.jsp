@@ -59,8 +59,8 @@
 				<div>
 					<div class="float-right">
 						<input type="submit"
-						value="{{!ctrl.livestock.livestockId ? 'Add' : 'Update'}}"
-						class="btn btn-primary">
+							value="{{!ctrl.livestock.livestockId ? 'Add' : 'Update'}}"
+							class="btn btn-primary">
 						<button type="button" ng-click="ctrl.reset()"
 							class="btn btn-danger">Cancel</button>
 					</div>
@@ -109,6 +109,10 @@
 			src="<c:url value='/static/js/services/livestockService.js' />"></script>
 		<script
 			src="<c:url value='/static/js/controller/livestockController.js' />"></script>
+		<script
+			src="<c:url value='/static/js/services/aquariumListService.js' />"></script>
+		<script
+			src="<c:url value='/static/js/controller/aquariumListController.js' />"></script>
 	</div>
 </body>
 

@@ -29,11 +29,12 @@ function livestockService($http, $log) {
 	}
 
 	function updateLivestock(livestock, livestockId) {
-		return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock).then(function (response) {
-			console.log(livestock);
-			console.log(livestockId);
-			return (response.data);
-		});
+		return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock);
+		// .then(function (response) {
+		// 	console.log(livestock);
+		// 	console.log(livestockId);
+		// 	return (response.data);
+		// });
 	}
 
 	function deleteLivestock(livestockId) {

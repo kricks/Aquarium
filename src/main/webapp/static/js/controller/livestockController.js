@@ -3,9 +3,9 @@
 angular
 	.module('myApp')
 	.controller('livestockController', livestockController);
-livestockController.$inject = ['livestockService'];
+livestockController.$inject = ['livestockService', 'aquariumListService', '$log'];
 
-function livestockController(livestockService) {
+function livestockController(livestockService, aquariumListService, $log) {
 
 	var self = this;
 
@@ -19,6 +19,7 @@ function livestockController(livestockService) {
 	};
 
 	self.livestocks = [];
+	self.aquariums = [];
 
 	self.submit = submit;
 	self.edit = edit;
@@ -28,7 +29,9 @@ function livestockController(livestockService) {
 
 	function init(aquariumId) {
 		fetchAllLivestockByAquariumId(aquariumId);
+		fetchAquariumById(aquariumId);
 	}
+
 
 	function fetchAllLivestockByAquariumId(aquariumId) {
 		livestockService
@@ -45,12 +48,17 @@ function livestockController(livestockService) {
 				});
 	}
 
+	function fetchAquariumById(aquariumId) {
+		aquariumListService.fetchAquariumById(aquariumId);
+	}
+
 	function updateLivestock(livestock, livestockId) {
 		console.log("2");
+		console.log("hello livestockid" + self.livestock.livestockId);
 		livestockService
-			.updateLivestock(livestock, livestockId)
+			.updateLivestock(self.livestock, self.livestock.livestockId)
 		.then(
-			fetchAllLivestockByAquariumId(self.aquariumId),
+			fetchAllLivestockByAquariumId(self.livestock.aquariumId),
 			function (errResponse) {
 				console
 					.error('Error while updating livestock');

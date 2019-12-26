@@ -48,9 +48,9 @@ public class LivestockDaoImpl extends AbstractDao implements LivestockDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<LivestockImpl> findLivestockByAquariumId(Integer aquariumId) {
+	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId) {
 		Criteria criteria = getSession().createCriteria(LivestockImpl.class);
-		criteria.add(Restrictions.eq("aquariumId", aquariumId));
+		criteria.add(Restrictions.eq("fkAquariumId", fkAquariumId));
 		return (List<LivestockImpl>) criteria.list();
 	}
 

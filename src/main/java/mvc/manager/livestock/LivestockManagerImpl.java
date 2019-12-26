@@ -25,8 +25,8 @@ public class LivestockManagerImpl implements LivestockManager {
 	}
 
 	@Override
-	public List<LivestockImpl> findLivestockByAquariumId(Integer aquariumId) {
-		return livestockService.findLivestockByAquariumId(aquariumId);
+	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId) {
+		return livestockService.findLivestockByFkAquariumId(fkAquariumId);
 	}
 
 	@Override

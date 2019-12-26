@@ -28,7 +28,7 @@ public class LivestockImpl implements Livestock {
 	private String notes;
 
 	@Column(name = "fk_aquarium_id", nullable = false)
-	private Integer aquariumId;
+	private Integer fkAquariumId;
 
 	public Integer getLivestockId() {
 		return livestockId;
@@ -70,12 +70,12 @@ public class LivestockImpl implements Livestock {
 		this.notes = notes;
 	}
 
-	public Integer getAquariumId() {
-		return aquariumId;
+	public Integer getFkAquariumId() {
+		return fkAquariumId;
 	}
 
-	public void setAquariumId(Integer aquariumId) {
-		this.aquariumId = aquariumId;
+	public void setFkAquariumId(Integer fkAquariumId) {
+		this.fkAquariumId = fkAquariumId;
 	}
 
 }

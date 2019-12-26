@@ -22,8 +22,8 @@ public interface Livestock {
 
 	public void setNotes(String notes);
 
-	public Integer getAquariumId();
+	public Integer getFkAquariumId();
 
-	public void setAquariumId(Integer aquariumId);
+	public void setFkAquariumId(Integer fkAquariumId);
 
 }

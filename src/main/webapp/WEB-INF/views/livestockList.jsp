@@ -18,7 +18,7 @@
 		</a>
 
 		<div ng-controller="livestockController as ctrl"
-			ng-init="ctrl.init(${aquariumId})">
+			ng-init="ctrl.init(${fkAquariumId})">
 
 			<form ng-submit="ctrl.submit()" name="livestockForm" class="col">
 				<input type="hidden" ng-model="ctrl.livestock.livestockId" />
@@ -83,7 +83,7 @@
 				<tbody>
 					<tr ng-repeat="t in ctrl.livestocks">
 						<th ng-bind="t.livestockId" scope="row"></th>
-						<!-- <td ng-bind="t.aquariumId"></td> -->
+						<!-- <td ng-bind="t.fkAquariumId"></td> -->
 						<td ng-bind="t.name"></td>
 						<td ng-bind="t.species"></td>
 						<td ng-bind="t.gender"></td>

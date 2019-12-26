@@ -26,10 +26,10 @@ public class LivestockSyncController {
 //		return new ModelAndView(livestockList, "aquarium", new AquariumImpl());
 //	}
 
-	@GetMapping(value = "/livestock-list/{aquariumId}")
-	public ModelAndView displayLivestockByAquariumId(@PathVariable Integer aquariumId) {
+	@GetMapping(value = "/livestock-list/{fkAquariumId}")
+	public ModelAndView displayLivestockByFkAquariumId(@PathVariable Integer fkAquariumId) {
 		ModelAndView mv = new ModelAndView(livestockList, "aquarium", new AquariumImpl());
-		mv.addObject("aquariumId", aquariumId);
+		mv.addObject("fkAquariumId", fkAquariumId);
 		return mv;
 	}
 

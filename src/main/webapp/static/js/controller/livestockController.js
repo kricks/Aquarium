@@ -11,7 +11,7 @@ function livestockController(livestockService, aquariumListService, $log) {
 
 	self.livestock = {
 		livestockId: null,
-		aquariumId: 83,
+		fkAquariumId: 83,
 		name: undefined,
 		species: undefined,
 		gender: 'Male',
@@ -27,15 +27,15 @@ function livestockController(livestockService, aquariumListService, $log) {
 	self.reset = reset;
 	self.init = init;
 
-	function init(aquariumId) {
-		fetchAllLivestockByAquariumId(aquariumId);
-		fetchAquariumById(aquariumId);
+	function init(fkAquariumId) {
+		fetchAllLivestockByAquariumId(fkAquariumId);
+		fetchAquariumById(fkAquariumId);
 	}
 
 
-	function fetchAllLivestockByAquariumId(aquariumId) {
+	function fetchAllLivestockByAquariumId(fkAquariumId) {
 		livestockService
-			.fetchAllLivestockByAquariumId(aquariumId)
+			.fetchAllLivestockByAquariumId(fkAquariumId)
 			.then(
 				function (d) {
 					console.log("1");
@@ -48,8 +48,8 @@ function livestockController(livestockService, aquariumListService, $log) {
 				});
 	}
 
-	function fetchAquariumById(aquariumId) {
-		aquariumListService.fetchAquariumById(aquariumId);
+	function fetchAquariumById(fkAquariumId) {
+		aquariumListService.fetchAquariumById(fkAquariumId);
 	}
 
 	function updateLivestock(livestock, livestockId) {
@@ -58,7 +58,7 @@ function livestockController(livestockService, aquariumListService, $log) {
 		livestockService
 			.updateLivestock(self.livestock, self.livestock.livestockId)
 		.then(
-			fetchAllLivestockByAquariumId(self.livestock.aquariumId),
+			fetchAllLivestockByAquariumId(self.livestock.fkAquariumId),
 			function (errResponse) {
 				console
 					.error('Error while updating livestock');
@@ -74,7 +74,7 @@ function livestockController(livestockService, aquariumListService, $log) {
 		updateLivestock(self.livestock, self.livestock.livestockId);
 		console.log('livestock updated with livestockId ', self.livestock.livestockId);
 		console.log(self.livestock);
-		init(self.livestock.aquariumId);
+		init(self.livestock.fkAquariumId);
 		reset();
 	} */
 
@@ -91,13 +91,13 @@ function livestockController(livestockService, aquariumListService, $log) {
 		} else {
 			updateLivestock(self.livestock,
 				self.livestock.livestockId);
-			console.log('aquarium updated with aquariumId ',
+			console.log('aquarium updated with fkAquariumId ',
 				self.livestock.livestockId);
 		}
 		reset();
 	}
 
-	function edit(livestockId, aquariumId) {
+	function edit(livestockId, fkAquariumId) {
 		console.log('livestockId to be edited ' +
 			livestockId);
 		for (var i = 0; i < self.livestocks.length; i++) {
@@ -116,7 +116,7 @@ function livestockController(livestockService, aquariumListService, $log) {
 	function reset() {
 		self.livestock = {
 			livestockId: null,
-			aquariumId: 83,
+			fkAquariumId: 83,
 			name: undefined,
 			species: undefined,
 			gender: 'Male',

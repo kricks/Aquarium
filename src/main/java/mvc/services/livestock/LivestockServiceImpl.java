@@ -52,8 +52,8 @@ public class LivestockServiceImpl implements LivestockService {
 	}
 
 	@Override
-	public List<LivestockImpl> findLivestockByAquariumId(Integer aquariumId) {
-		return livestockDao.findLivestockByAquariumId(aquariumId);
+	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId) {
+		return livestockDao.findLivestockByFkAquariumId(fkAquariumId);
 	}
 
 }

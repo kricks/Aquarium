@@ -56,16 +56,16 @@ public class LivestockAsyncController {
 
 	// get livesstock by aquariumID
 
-	@GetMapping(value = "/aq/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<LivestockImpl>> fetchLivestockByAquariumId(
+	@GetMapping(value = "/aq/{fkAquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<LivestockImpl>> findLivestockByFkAquariumId(
 
-			@PathVariable("aquariumId") Integer aquariumId) {
-		logger.log(Level.INFO, "Fetching Livestock with livestockId " + aquariumId);
+			@PathVariable("fkAquariumId") Integer fkAquariumId) {
+		logger.log(Level.INFO, "Fetching Livestock with livestockId " + fkAquariumId);
 
-		List<LivestockImpl> aqId = livestockManager.findLivestockByAquariumId(aquariumId);
+		List<LivestockImpl> aqId = livestockManager.findLivestockByFkAquariumId(fkAquariumId);
 
 		if (aqId == null) {
-			logger.log(Level.INFO, "Livestock with aquariumId " + aquariumId + " not found");
+			logger.log(Level.INFO, "Livestock with fkAquariumId " + fkAquariumId + " not found");
 			return new ResponseEntity<List<LivestockImpl>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<LivestockImpl>>(aqId, HttpStatus.OK);
@@ -91,7 +91,7 @@ public class LivestockAsyncController {
 			@RequestBody LivestockImpl livestock) {
 		logger.log(Level.INFO, "Updating Livestock " + livestockId);
 
-		System.out.println("asdfjkasdkflj;lakdjsf " + livestock.getAquariumId());
+		System.out.println("asdfjkasdkflj;lakdjsf " + livestock.getFkAquariumId());
 		System.out.println("aasssd " + livestock.getName());
 
 		LivestockImpl currentLivestock = livestockManager.findById(livestockId);
@@ -100,13 +100,13 @@ public class LivestockAsyncController {
 			logger.log(Level.INFO, "Livestock with livestockId " + livestockId + " not found");
 			return new ResponseEntity<LivestockImpl>(HttpStatus.NO_CONTENT);
 		}
-		currentLivestock.setAquariumId(livestock.getAquariumId());
+		currentLivestock.setFkAquariumId(livestock.getFkAquariumId());
 		currentLivestock.setName(livestock.getName());
 		currentLivestock.setSpecies(livestock.getSpecies());
 		currentLivestock.setGender(livestock.getGender());
 		currentLivestock.setNotes(livestock.getNotes());
 
-		System.out.println("asdfjkasdkflj;lakdjsf 122121 " + currentLivestock.getAquariumId());
+		System.out.println("asdfjkasdkflj;lakdjsf 122121 " + currentLivestock.getFkAquariumId());
 		System.out.println("aasssd 2222" + currentLivestock.getName());
 
 		livestockManager.updateLivestock(currentLivestock);

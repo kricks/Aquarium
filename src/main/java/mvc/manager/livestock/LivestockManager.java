@@ -20,6 +20,6 @@ public interface LivestockManager {
 
 	public boolean isLivestockExist(LivestockImpl livestock);
 
-	public List<LivestockImpl> findLivestockByAquariumId(Integer aquariumId);
+	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId);
 
 }

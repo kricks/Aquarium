@@ -14,13 +14,13 @@
 <body ng-app="myApp">
 	<div class="container mb-3">
 		<a href="aquarium-list">
-			<button class="btn btn-primary">Go Back to Aquarium List</button>
+			<button class="btn btn-primary">Go Back to c Aquarium List</button>
 		</a>
 
 		<div ng-controller="livestockController as ctrl"
 			ng-init="ctrl.init(${fkAquariumId})">
 
-			<form ng-submit="ctrl.submit()" name="livestockForm" class="col">
+			<form ng-submit="ctrl.submit(${fkAquariumId})" name="livestockForm" class="col">
 				<input type="hidden" ng-model="ctrl.livestock.livestockId" />
 
 				<!-- <div class="form-group col-md-6">

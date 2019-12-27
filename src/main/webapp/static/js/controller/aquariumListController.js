@@ -6,9 +6,9 @@ angular
 aquariumListController.$inject = ['aquariumListService', '$log'];
 
 function aquariumListController(aquariumListService, $log) {
-	var self = this;
+	var vm = this;
 
-	self.aquarium = {
+	vm.aquarium = {
 		aquariumId: null,
 		name: undefined,
 		type: 'Fresh Water',
@@ -17,14 +17,14 @@ function aquariumListController(aquariumListService, $log) {
 		date: null
 	};
 
-	self.aquariums = [];
+	vm.aquariums = [];
 
-	// self.submit = submit;
-	self.edit = edit;
-	self.remove = remove;
-	self.reset = reset;
-	self.update = update;
-	self.view = view;
+	// vm.submit = submit;
+	vm.edit = edit;
+	vm.remove = remove;
+	vm.reset = reset;
+	vm.update = update;
+	vm.view = view;
 
 	fetchAllAquariums();
 
@@ -33,7 +33,7 @@ function aquariumListController(aquariumListService, $log) {
 			.fetchAllAquariums()
 			.then(
 				function (d) {
-					self.aquariums = d;
+					vm.aquariums = d;
 					return d;
 				},
 				function (errResponse) {
@@ -69,21 +69,21 @@ function aquariumListController(aquariumListService, $log) {
 	}
 
 	// function submit() {
-	// 	if (self.aquarium.aquariumId === null) {
+	// 	if (vm.aquarium.aquariumId === null) {
 	// 		console.log('Saving New aquarium',
-	// 			self.aquarium);
-	// 		createAquarium(self.aquarium);
+	// 			vm.aquarium);
+	// 		createAquarium(vm.aquarium);
 	// 	} else {
-	// 		updateAquarium(self.aquarium,
-	// 			self.aquarium.aquariumId);
+	// 		updateAquarium(vm.aquarium,
+	// 			vm.aquarium.aquariumId);
 	// 		console.log('aquarium updated with aquariumId ',
-	// 			self.aquarium.aquariumId);
+	// 			vm.aquarium.aquariumId);
 	// 	}
 	// 	reset();
 	// }
 
 	function update() {
-		updateAquarium(self.aquarium, self.aquarium.aquariumId);
+		updateAquarium(vm.aquarium, vm.aquarium.aquariumId);
 		reset();
 	}
 
@@ -94,12 +94,12 @@ function aquariumListController(aquariumListService, $log) {
 
 	function edit(aquariumId) {
 		console.log('aquariumId to be edited' + aquariumId);
-		for (var i = 0; i < self.aquariums.length; i++) {
-			if (self.aquariums[i].aquariumId === aquariumId) {
-				self.aquarium = angular
-					.copy(self.aquariums[i]);
-				self.aquarium.date = new Date(
-					self.aquarium.date);
+		for (var i = 0; i < vm.aquariums.length; i++) {
+			if (vm.aquariums[i].aquariumId === aquariumId) {
+				vm.aquarium = angular
+					.copy(vm.aquariums[i]);
+				vm.aquarium.date = new Date(
+					vm.aquarium.date);
 			}
 		}
 	}
@@ -110,7 +110,7 @@ function aquariumListController(aquariumListService, $log) {
 	}
 
 	function reset() {
-		self.aquarium = {
+		vm.aquarium = {
 			aquariumId: null,
 			name: undefined,
 			type: 'Fresh Water',

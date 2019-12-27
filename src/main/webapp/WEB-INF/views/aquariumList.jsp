@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</form>
-			
+
 			<br>
 			<h4 class="text-center pt-3">Aquarium List</h4>
 
@@ -80,7 +80,9 @@
 							</p>
 						</div>
 						<div class="card-footer text-center">
-							<a ng-href="livestock-list/{{t.aquariumId}}"> <buttontype="button" class="btn btn-info">View</button></a>
+							<a ng-href="livestock-list/{{t.aquariumId}}">
+								<button type="button" class="btn btn-info">View</button>
+							</a>
 
 							<button type="button" ng-click="ctrl.edit(t.aquariumId)"
 								class="btn btn-success">Edit</button>

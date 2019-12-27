@@ -23,8 +23,14 @@ function livestockService($http, $log) {
 		});
 	}
 
+	function fetchAllLivestockByAquariumId(fkAquariumId) {
+		return $http.get(baseURI + 'livestocks/aq/' + fkAquariumId)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
 	function createLivestock(livestock) {
-		console.log("This is create: " + livestock);
 		return $http.post(baseURI + 'livestocks/create', livestock);
 	}
 
@@ -42,12 +48,4 @@ function livestockService($http, $log) {
 			return response.data;
 		});
 	}
-
-	function fetchAllLivestockByAquariumId(fkAquariumId) {
-		return $http.get(baseURI + 'livestocks/aq/' + fkAquariumId)
-			.then(function (response) {
-				return response.data;
-			});
-	}
-
 }

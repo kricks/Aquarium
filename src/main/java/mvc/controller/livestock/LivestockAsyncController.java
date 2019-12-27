@@ -90,10 +90,6 @@ public class LivestockAsyncController {
 	public ResponseEntity<LivestockImpl> updateLivestock(@PathVariable("livestockId") Integer livestockId,
 			@RequestBody LivestockImpl livestock) {
 		logger.log(Level.INFO, "Updating Livestock " + livestockId);
-
-		System.out.println("asdfjkasdkflj;lakdjsf " + livestock.getFkAquariumId());
-		System.out.println("aasssd " + livestock.getName());
-
 		LivestockImpl currentLivestock = livestockManager.findById(livestockId);
 
 		if (currentLivestock == null) {

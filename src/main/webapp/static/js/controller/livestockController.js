@@ -3,7 +3,7 @@
 angular
 	.module('myApp')
 	.controller('livestockController', livestockController);
-livestockController.$inject = ['livestockService', 'aquariumListService', '$log', '$scope'];
+livestockController.$inject = ['livestockService', '$log'];
 
 function livestockController(livestockService, $log) {
 
@@ -28,65 +28,56 @@ function livestockController(livestockService, $log) {
 
 	function init(fkAquariumId) {
 		fetchAllLivestockByAquariumId(fkAquariumId);
-		getLivestockByPkAquariumId();
 	}
 
 	function fetchAllLivestockByAquariumId(fkAquariumId) {
-		livestockService
-			.fetchAllLivestockByAquariumId(fkAquariumId)
+		livestockService.fetchAllLivestockByAquariumId(fkAquariumId)
 			.then(
 				function (d) {
-					console.log("1");
 					vm.livestocks = d;
 					return d;
 				},
 				function (errResponse) {
-					console
-						.error('Error while fetching Livestock');
+					$log.error('Error while fetching Livestock');
 				});
 	}
 
+	function createLivestock(livestock) {
+		livestockService.createLivestock(livestock)
+			.then(fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId));
+		$log.info("this is create fetch " + vm.livestock.fkAquariumId);
+	}
+
 	function updateLivestock(livestock, livestockId) {
-		console.log("2");
-		console.log("hello livestockid" + vm.livestock.livestockId);
 		livestockService
 			.updateLivestock(livestock, livestockId)
 			.then(
-				fetchAllLivestockByAquariumId(vm.fkAquariumId),
+				fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId),
 				function (errResponse) {
-					console
-						.error('Error while updating livestock');
+					$log.error('Error while updating livestock');
 				});
 	}
 
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)
-			.then(fetchAllLivestockByAquariumId);
-	}
-
-	function createLivestock(livestock) {
-		livestockService.createLivestock(livestock)
-			.then(fetchAllLivestockByAquariumId);
+			.then(fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId));
+		$log.info("fkaquariumId " + vm.livestock.fkAquariumId);
 	}
 
 	function submit(fkAquariumId) {
 		if (vm.livestock.livestockId === null) {
-			console.log('Saving New aquarium',
-				vm.livestock);
 			vm.livestock.fkAquariumId = fkAquariumId;
 			createLivestock(vm.livestock);
+			$log.info('Saving New livestock');
 		} else {
-			updateLivestock(vm.livestock,
-				vm.livestock.livestockId);
-			console.log('aquarium updated with fkAquariumId ',
-				vm.livestock.livestockId);
+			updateLivestock(vm.livestock, vm.livestock.livestockId);
+			$log.info('aquarium updated with fkAquariumId ' + vm.livestock.livestockId);
 		}
 		reset();
 	}
 
-	function edit(livestockId, fkAquariumId) {
-		console.log('livestockId to be edited ' +
-			livestockId);
+	function edit(livestockId) {
+		$log.info('livestockId to be edited ' + livestockId);
 		for (var i = 0; i < vm.livestocks.length; i++) {
 			if (vm.livestocks[i].livestockId === livestockId) {
 				vm.livestock = angular.copy(vm.livestocks[i]);
@@ -94,9 +85,10 @@ function livestockController(livestockService, $log) {
 		}
 	}
 
-	function remove(livestockId) {
-		console.log('livestockId to be deleted',
-			livestockId);
+	function remove(livestockId, fkAquariumId) {
+		vm.livestock.fkAquariumId = fkAquariumId;
+		$log.info('livestockId to be deleted', livestockId);
+		$log.info('fkAquariumId to be deleted', fkAquariumId);
 		deleteLivestock(livestockId);
 	}
 

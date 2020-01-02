@@ -1,4 +1,4 @@
-<%@ include file="header.jsp"%>
+<%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body>
 	<div class="row">
 		<div class="col-sm-6 offset-sm-4 col-lg-4 my-2">
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="javascriptInclude.jsp"%>
+	<%@ include file="/WEB-INF/views/modules/jsLivestockInclude.jsp"%>
 
 </body>
-<%@ include file="footer.jsp"%>
+<%@ include file="/WEB-INF/views/modules/footer.jsp"%>

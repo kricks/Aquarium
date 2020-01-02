@@ -30,7 +30,7 @@
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="top">
-	<a class="navbar-brand" href="index.jsp">Aquarium Builder</a>
+	<a class="navbar-brand" href="../../AquariumBuilder/">Aquarium Builder</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNav" aria-controls="navbarNav"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -38,9 +38,8 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="aquarium-list">Aquarium
+			<li class="nav-item"><a class="nav-link" href="../aquarium-list">Aquarium
 					List</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">About</a></li>
 		</ul>
 	</div>
 </nav>

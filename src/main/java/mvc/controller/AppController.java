@@ -20,6 +20,11 @@ public class AppController {
 	private static final String livestockList = "livestockList";
 	private static final String aquariumConfirmation = "aquariumConfirmation";
 
+	@GetMapping(value = { "/", "/home", "/index" })
+	public String getIndex() {
+		return "index";
+	}
+
 	@GetMapping(value = "/aquarium-list")
 	public ModelAndView display() {
 		return new ModelAndView(aquariumList, "aquarium", new AquariumImpl());

@@ -1,8 +1,8 @@
 
-<%@ include file="header.jsp"%>
+<%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
 	<div class="container mb-3">
-		<h3 class="text-center mt-3">Welcome, Enter the Aquarium Details</h3>
+		<h3 class="text-center mt-3">Welcome, Add a New Aquarium</h3>
 		<br>
 		<div ng-controller="aquariumListController as ctrl">
 
@@ -42,8 +42,8 @@
 							id="notes" placeholder="Enter Notes">
 					</div>
 				</div>
-
-				<!-- <div class="form-row">
+<!-- 
+				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="date">Date <span class="text-danger">*</span></label>
 						<input type="date" ng-model="ctrl.aquarium.date" name="date"
@@ -94,8 +94,8 @@
 				</div>
 			</div>
 		</div>
-		<%@ include file="javascriptInclude.jsp"%>
+		<%@ include file="/WEB-INF/views/modules/jsAquariumInclude.jsp"%>
 	</div>
 </body>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="/WEB-INF/views/modules/footer.jsp"%>

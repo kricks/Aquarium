@@ -35,7 +35,6 @@ function livestockController(livestockService, $log) {
 			.then(
 				function (d) {
 					vm.livestocks = d;
-					return d;
 				},
 				function (errResponse) {
 					$log.error('Error while fetching Livestock');
@@ -51,8 +50,7 @@ function livestockController(livestockService, $log) {
 	function updateLivestock(livestock, livestockId) {
 		livestockService
 			.updateLivestock(livestock, livestockId)
-			.then(
-				fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId),
+			.then(fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId),
 				function (errResponse) {
 					$log.error('Error while updating livestock');
 				});
@@ -61,7 +59,8 @@ function livestockController(livestockService, $log) {
 	function deleteLivestock(livestockId) {
 		livestockService.deleteLivestock(livestockId)
 			.then(fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId));
-		$log.info("fkaquariumId " + vm.livestock.fkAquariumId);
+		$log.info("fkAquariumId " + vm.livestock.fkAquariumId);
+		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 	}
 
 	function submit(fkAquariumId) {
@@ -69,10 +68,16 @@ function livestockController(livestockService, $log) {
 			vm.livestock.fkAquariumId = fkAquariumId;
 			createLivestock(vm.livestock);
 			$log.info('Saving New livestock');
+			console.log("1");
+			fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 		} else {
 			updateLivestock(vm.livestock, vm.livestock.livestockId);
 			$log.info('aquarium updated with fkAquariumId ' + vm.livestock.livestockId);
+			console.log("2");
+			fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 		}
+		console.log("3");
+		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 		reset();
 	}
 
@@ -90,6 +95,7 @@ function livestockController(livestockService, $log) {
 		$log.info('livestockId to be deleted', livestockId);
 		$log.info('fkAquariumId to be deleted', fkAquariumId);
 		deleteLivestock(livestockId);
+		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 	}
 
 	function reset() {

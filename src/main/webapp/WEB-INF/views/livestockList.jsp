@@ -1,9 +1,8 @@
-<%@ include file="header.jsp"%>
+<%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
 	<div class="container my-3">
 		<div ng-controller="livestockController as ctrl"
-			ng-init="ctrl.init(${fkAquariumId})"
-			>
+			ng-init="ctrl.init(${fkAquariumId})">
 
 			<form ng-submit="ctrl.submit(${fkAquariumId})" name="livestockForm"
 				class="col">
@@ -86,25 +85,13 @@
 					</tbody>
 				</table>
 			</div>
-			
+
 		</div>
-		<a href="../aquarium-list">
-					<button class="btn btn-primary">Go Back to Aquarium List</button>
-				</a>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-		<script src="<c:url value='/static/js/app.js' />"></script>
-		<script
-			src="<c:url value='/static/js/services/livestockService.js' />"></script>
-		<script
-			src="<c:url value='/static/js/controller/livestockController.js' />"></script>
-		<script
-			src="<c:url value='/static/js/services/aquariumListService.js' />"></script>
-		<script
-			src="<c:url value='/static/js/controller/aquariumListController.js' />"></script>
+
 	</div>
+	<%@ include file="/WEB-INF/views/modules/jsLivestockInclude.jsp"%>
 </body>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="/WEB-INF/views/modules/footer.jsp"%>
 
 </html>

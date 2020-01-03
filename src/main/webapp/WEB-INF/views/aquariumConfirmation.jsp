@@ -1,5 +1,6 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
-<body>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<body ng-app="myApp">
 	<div class="row">
 		<div class="col-sm-6 offset-sm-4 col-lg-4 my-2">
 			<div class="card">
@@ -10,7 +11,8 @@
 						<li>${message.type}</li>
 						<li>${message.gallon}</li>
 						<li>${message.notes}</li>
-						<li>${message.date}</li>
+						<%-- <li>${message.date}</li> --%>
+						<li><fmt:formatDate value="${message.date}" pattern="MM/dd/yyyy" /></li>
 					</ul>
 					</p>
 				</div>

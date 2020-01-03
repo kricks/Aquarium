@@ -19,12 +19,10 @@ function aquariumListController(aquariumListService, $log) {
 
 	vm.aquariums = [];
 
-	// vm.submit = submit;
 	vm.edit = edit;
 	vm.remove = remove;
 	vm.reset = reset;
 	vm.update = update;
-	vm.view = view;
 
 	fetchAllAquariums();
 
@@ -37,75 +35,45 @@ function aquariumListController(aquariumListService, $log) {
 					return d;
 				},
 				function (errResponse) {
-					console
-						.error('Error while fetching Aquarium');
+					$log.error('Error while fetching Aquarium');
 				});
 	}
 
-	function fetchAquariumById(aquariumId) {
-		aquariumListService.fetchAquariumById(aquariumId);
-	}
-
-	// function createAquarium(aquarium) {
-	// 	aquariumListService.createAquarium(aquarium)
-	// 		.then(fetchAllAquariums);
-	// }
-
 	function updateAquarium(aquarium, aquariumId) {
-		console.log(aquariumId);
+		$log.info(aquariumId);
 		aquariumListService
 			.updateAquarium(aquarium, aquariumId)
 			.then(
 				fetchAllAquariums,
 				function (errResponse) {
-					console
-						.error('Error while updating aquarium');
+					$log.error('Error while updating aquarium');
 				});
 	}
 
 	function deleteAquarium(aquariumId) {
-		aquariumListService.deleteAquarium(aquariumId).then(
-			fetchAllAquariums);
+		aquariumListService.deleteAquarium(aquariumId)
+		.then(fetchAllAquariums,
+				function (errResponse) {
+			$log.error('Error while deleting aquarium');
+		});
 	}
-
-	// function submit() {
-	// 	if (vm.aquarium.aquariumId === null) {
-	// 		console.log('Saving New aquarium',
-	// 			vm.aquarium);
-	// 		createAquarium(vm.aquarium);
-	// 	} else {
-	// 		updateAquarium(vm.aquarium,
-	// 			vm.aquarium.aquariumId);
-	// 		console.log('aquarium updated with aquariumId ',
-	// 			vm.aquarium.aquariumId);
-	// 	}
-	// 	reset();
-	// }
 
 	function update() {
 		updateAquarium(vm.aquarium, vm.aquarium.aquariumId);
 		reset();
 	}
 
-	function view(aquariumId) {
-		//TODO route this to aquaurium details page with id
-		fetchAquariumById(aquariumId);
-	}
-
 	function edit(aquariumId) {
-		console.log('aquariumId to be edited' + aquariumId);
+		$log.info('aquariumId to be edited' + aquariumId);
 		for (var i = 0; i < vm.aquariums.length; i++) {
 			if (vm.aquariums[i].aquariumId === aquariumId) {
-				vm.aquarium = angular
-					.copy(vm.aquariums[i]);
-				vm.aquarium.date = new Date(
-					vm.aquarium.date);
+				vm.aquarium = angular.copy(vm.aquariums[i]);
 			}
 		}
 	}
 
 	function remove(aquariumId) {
-		console.log('aquariumId to be deleted', aquariumId);
+		$log.info('AquariumId to be deleted', aquariumId);
 		deleteAquarium(aquariumId);
 	}
 

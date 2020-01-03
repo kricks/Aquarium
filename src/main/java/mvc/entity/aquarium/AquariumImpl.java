@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "AQUARIUM")
 public class AquariumImpl implements Aquarium {
@@ -31,9 +33,6 @@ public class AquariumImpl implements Aquarium {
 
 	@Column(name = "DATE", nullable = true)
 	private Date date;
-
-//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aquariumId", cascade = CascadeType.ALL)
-//	private List<LivestockImpl> livestock = new ArrayList<>();
 
 	public Integer getAquariumId() {
 		return aquariumId;
@@ -75,6 +74,7 @@ public class AquariumImpl implements Aquarium {
 		this.notes = notes;
 	}
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone = "CST")
 	public Date getDate() {
 		return date;
 	}
@@ -82,13 +82,5 @@ public class AquariumImpl implements Aquarium {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-//	public List<LivestockImpl> getLivestock() {
-//		return livestock;
-//	}
-//
-//	public void setLivestock(List<LivestockImpl> livestock) {
-//		this.livestock = livestock;
-//	}
 
 }

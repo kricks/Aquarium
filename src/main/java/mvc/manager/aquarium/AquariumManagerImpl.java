@@ -1,10 +1,12 @@
 package mvc.manager.aquarium;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import mvc.dao.aquarium.AquariumDaoImpl;
 import mvc.entity.aquarium.AquariumImpl;
 import mvc.services.aquarium.AquariumService;
 
@@ -13,6 +15,8 @@ public class AquariumManagerImpl implements AquariumManager {
 
 	@Autowired
 	private AquariumService aquariumService;
+
+	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
 
 	@Override
 	public AquariumImpl findById(Integer aquariumId) {
@@ -46,7 +50,6 @@ public class AquariumManagerImpl implements AquariumManager {
 	@Override
 	public boolean deleteAquariumById(Integer aquariumId) {
 		return aquariumService.deleteAquariumById(aquariumId);
-
 	}
 
 }

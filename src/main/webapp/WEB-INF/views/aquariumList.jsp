@@ -42,14 +42,14 @@
 							id="notes" placeholder="Enter Notes">
 					</div>
 				</div>
-<!-- 
+
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="date">Date <span class="text-danger">*</span></label>
-						<input type="date" ng-model="ctrl.aquarium.date" name="date"
-							class="form-control" id="date" required>
+						<label for="date">Date<span class="text-danger"> *</span></label>
+						<input type="text" ng-model="ctrl.aquarium.date" name="date"
+							class="form-control" id="date" placeholder="MM/dd/yyyy" required>
 					</div>
-				</div> -->
+				</div>
 
 				<div>
 					<div class="float-right">
@@ -68,14 +68,20 @@
 			<div class="row">
 				<div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
 					<div class="card">
-						<div class="card-header font-weight-bold" ng-bind="t.name"></div>
-						<div class="card-body">
-							<p class="card-text">
-							<ul class="list-unstyled">
+						<div class="card-header font-weight-bold text-center" ng-bind="t.name"></div>
+						<div class="card-body row">
+							<p class="card-text ">
+							<ul class="list-unstyled col-4">
+								<li>Type:</li>
+								<li>Gallons:</li>
+								<li>Notes:</li>
+								<li>Date:</li>
+							</ul>
+							<ul class="list-unstyled col-8">
 								<li ng-bind="t.type"></li>
 								<li ng-bind="t.gallon"></li>
 								<li ng-bind="t.notes"></li>
-								<li ng-bind="t.date | date:'MM/dd/yy'"></li>
+								<li ng-bind="t.date | date:'mediumDate'"></li>
 							</ul>
 							</p>
 						</div>

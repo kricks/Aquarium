@@ -28,8 +28,8 @@ interface Aquarium {
 
 	void setDate(Date date);
 
-//	public List<LivestockImpl> getLivestock();
+//	List<LivestockImpl> getLivestock();
 //
-//	public void setLivestock(List<LivestockImpl> livestock);
+//	void setLivestock(List<LivestockImpl> livestock);
 
 }

@@ -18,5 +18,5 @@ public interface AquariumManager {
 
 	List<AquariumImpl> findAllAquariums();
 
-	public boolean isAquariumExist(AquariumImpl aquarium);
+	boolean isAquariumExist(AquariumImpl aquarium);
 }

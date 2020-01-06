@@ -55,19 +55,19 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jacksoncore.version}</version>
 		</dependency>
+		
 		<!-- JAVAX -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${javaxjstl.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${javaxservletapi.version}</version>
 		</dependency>
-
-		<!-- APACHE -->
 
 		<!-- HIBERNATE -->
 		<dependency>

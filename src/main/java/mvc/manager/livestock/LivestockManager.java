@@ -18,8 +18,8 @@ public interface LivestockManager {
 
 	List<LivestockImpl> findAllLivestock();
 
-	public boolean isLivestockExist(LivestockImpl livestock);
+	boolean isLivestockExist(LivestockImpl livestock);
 
-	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId);
+	List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId);
 
 }

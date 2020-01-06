@@ -27,9 +27,4 @@ interface Aquarium {
 	Date getDate();
 
 	void setDate(Date date);
-
-//	List<LivestockImpl> getLivestock();
-//
-//	void setLivestock(List<LivestockImpl> livestock);
-
 }

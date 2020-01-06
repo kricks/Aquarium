@@ -71,7 +71,7 @@ function livestockController(livestockService, $log) {
 			fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 		}
 		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
-		reset();
+		
 	}
 
 	function edit(livestockId) {

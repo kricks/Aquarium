@@ -2,28 +2,28 @@ package mvc.entity.livestock;
 
 public interface Livestock {
 
-	public Integer getLivestockId();
+	Integer getLivestockId();
 
-	public void setLivestockId(Integer livestockId);
+	void setLivestockId(Integer livestockId);
 
-	public String getName();
+	String getName();
 
-	public void setName(String name);
+	void setName(String name);
 
-	public String getSpecies();
+	String getSpecies();
 
-	public void setSpecies(String species);
+	void setSpecies(String species);
 
-	public String getGender();
+	String getGender();
 
-	public void setGender(String gender);
+	void setGender(String gender);
 
-	public String getNotes();
+	String getNotes();
 
-	public void setNotes(String notes);
+	void setNotes(String notes);
 
-	public Integer getFkAquariumId();
+	Integer getFkAquariumId();
 
-	public void setFkAquariumId(Integer fkAquariumId);
+	void setFkAquariumId(Integer fkAquariumId);
 
 }

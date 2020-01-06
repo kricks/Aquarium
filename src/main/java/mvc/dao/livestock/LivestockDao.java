@@ -18,6 +18,6 @@ public interface LivestockDao {
 
 	boolean deleteLivestockById(Integer id);
 
-	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId);
+	List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId);
 
 }

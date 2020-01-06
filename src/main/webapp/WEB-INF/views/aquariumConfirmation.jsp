@@ -2,9 +2,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <body ng-app="myApp">
 	<div class="container">
-		<div class="row mt-4 text text-center">
+		<div class="row mt-4 text-center">
 			<div class="col">
-				<h3>You have added a new aquarium</h3>
+				<h3 class="text">You have added a new aquarium</h3>
 			</div>
 
 		</div>
@@ -21,10 +21,10 @@
 							<li>Date:</li>
 						</ul>
 						<ul class="list-unstyled col-8">
-							<li>${message.type}</li>
-							<li>${message.gallon}</li>
-							<li>${message.notes}</li>
-							<li><fmt:formatDate value="${message.date}"
+							<li>${aquarium.type}</li>
+							<li>${aquarium.gallon}</li>
+							<li>${aquarium.notes}</li>
+							<li><fmt:formatDate value="${aquarium.date}"
 									pattern="MM/dd/yyyy" /></li>
 						</ul>
 						</p>

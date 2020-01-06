@@ -15,7 +15,7 @@ import mvc.entity.aquarium.AquariumImpl;
 @Repository
 public class AquariumDaoImpl extends AbstractDao implements AquariumDao {
 
-	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
+	private Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
 
 	@Override
 	public boolean addAquarium(AquariumImpl aquarium) {

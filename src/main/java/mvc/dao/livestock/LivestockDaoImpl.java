@@ -1,6 +1,8 @@
 package mvc.dao.livestock;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -8,10 +10,13 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import mvc.dao.AbstractDao;
+import mvc.dao.aquarium.AquariumDaoImpl;
 import mvc.entity.livestock.LivestockImpl;
 
 @Repository
 public class LivestockDaoImpl extends AbstractDao implements LivestockDao {
+
+	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
 
 	@Override
 	public LivestockImpl findById(Integer livestockId) {
@@ -31,10 +36,10 @@ public class LivestockDaoImpl extends AbstractDao implements LivestockDao {
 	public boolean addLivestock(LivestockImpl livestock) {
 		try {
 			persist(livestock);
-			System.out.println("Add livestock Successful");
+			logger.log(Level.INFO, "Add livestock Successful");
 			return true;
 		} catch (Exception e) {
-			System.out.println("Add livestock Failed");
+			logger.log(Level.INFO, "Add livestock Failed");
 			return false;
 		}
 	}
@@ -66,11 +71,11 @@ public class LivestockDaoImpl extends AbstractDao implements LivestockDao {
 			Query query = getSession().createQuery("DELETE FROM LivestockImpl WHERE livestockId = :livestockId");
 			query.setInteger("livestockId", livestockId);
 			query.executeUpdate();
-			System.out.println("DAO Delete Successful");
+			logger.log(Level.INFO, "DAO Delete Successful");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DAO Delete Failed");
+			logger.log(Level.INFO, "DAO Delete Failed");
 			return false;
 		}
 	}

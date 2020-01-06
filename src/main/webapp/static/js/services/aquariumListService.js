@@ -2,9 +2,9 @@
 
 angular.module('myApp').factory('aquariumListService', aquariumListService);
 
-aquariumListService.$inject = ['$http'];
+aquariumListService.$inject = ['$http', '$log'];
 
-function aquariumListService($http) {
+function aquariumListService($http, $log) {
 	var baseURI = '/AquariumBuilder/';
 
 	var factory = {
@@ -32,7 +32,7 @@ function aquariumListService($http) {
 			return response.data;
 		},
 			function (errResponse) {
-				console.error('Error while deleting Aquarium');
+				$log.error('Error while deleting Aquarium');
 			});
 	}
 }

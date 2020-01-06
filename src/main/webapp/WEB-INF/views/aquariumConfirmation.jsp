@@ -15,11 +15,11 @@
 					<div class="card-body row">
 						<p class="card-text">
 						<ul class="list-unstyled col-4">
-								<li>Type:</li>
-								<li>Gallons:</li>
-								<li>Notes:</li>
-								<li>Date:</li>
-							</ul>
+							<li>Type:</li>
+							<li>Gallons:</li>
+							<li>Notes:</li>
+							<li>Date:</li>
+						</ul>
 						<ul class="list-unstyled col-8">
 							<li>${message.type}</li>
 							<li>${message.gallon}</li>

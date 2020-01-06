@@ -54,8 +54,10 @@
 
 				<div class="col">
 					<div class="float-right">
-						<input type="submit" ng-hide="ctrl.aquarium.aquariumId" value="Add" class="btn btn-primary">
-						<input type="button" ng-hide="!ctrl.aquarium.aquariumId" ng-click="ctrl.update()" class="btn btn-primary text-white" value="Update">
+						<input type="submit" ng-hide="ctrl.aquarium.aquariumId"
+							value="Add" class="btn btn-primary"> <input type="button"
+							ng-hide="!ctrl.aquarium.aquariumId" ng-click="ctrl.update()"
+							class="btn btn-primary text-white" value="Update">
 						<button type="button" ng-click="ctrl.reset()"
 							class="btn btn-danger">Cancel</button>
 					</div>

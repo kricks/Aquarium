@@ -1,20 +1,19 @@
 'use strict';
 
-angular
-	.module('myApp')
-	.controller('aquariumListController', aquariumListController);
-aquariumListController.$inject = ['aquariumListService', '$log'];
+angular.module('myApp').controller('aquariumListController',
+		aquariumListController);
+aquariumListController.$inject = [ 'aquariumListService', '$log' ];
 
 function aquariumListController(aquariumListService, $log) {
 	var vm = this;
 
 	vm.aquarium = {
-		aquariumId: null,
-		name: undefined,
-		type: 'Fresh Water',
-		gallon: undefined,
-		notes: undefined,
-		date: null
+		aquariumId : null,
+		name : undefined,
+		type : 'Fresh Water',
+		gallon : undefined,
+		notes : undefined,
+		date : null
 	};
 
 	vm.aquariums = [];
@@ -27,35 +26,27 @@ function aquariumListController(aquariumListService, $log) {
 	fetchAllAquariums();
 
 	function fetchAllAquariums() {
-		aquariumListService
-			.fetchAllAquariums()
-			.then(
-				function (d) {
-					vm.aquariums = d;
-					return d;
-				},
-				function (errResponse) {
-					$log.error('Error while fetching Aquarium');
-				});
+		aquariumListService.fetchAllAquariums().then(function(d) {
+			vm.aquariums = d;
+			return d;
+		}, function(errResponse) {
+			$log.error('Error while fetching Aquarium');
+		});
 	}
 
 	function updateAquarium(aquarium, aquariumId) {
 		$log.info(aquariumId);
-		aquariumListService
-			.updateAquarium(aquarium, aquariumId)
-			.then(
-				fetchAllAquariums,
-				function (errResponse) {
+		aquariumListService.updateAquarium(aquarium, aquariumId).then(
+				fetchAllAquariums, function(errResponse) {
 					$log.error('Error while updating aquarium');
 				});
 	}
 
 	function deleteAquarium(aquariumId) {
-		aquariumListService.deleteAquarium(aquariumId)
-		.then(fetchAllAquariums,
-				function (errResponse) {
-			$log.error('Error while deleting aquarium');
-		});
+		aquariumListService.deleteAquarium(aquariumId).then(fetchAllAquariums,
+				function(errResponse) {
+					$log.error('Error while deleting aquarium');
+				});
 	}
 
 	function update() {
@@ -79,12 +70,12 @@ function aquariumListController(aquariumListService, $log) {
 
 	function reset() {
 		vm.aquarium = {
-			aquariumId: null,
-			name: undefined,
-			type: 'Fresh Water',
-			gallon: undefined,
-			notes: undefined,
-			date: null
+			aquariumId : null,
+			name : undefined,
+			type : 'Fresh Water',
+			gallon : undefined,
+			notes : undefined,
+			date : null
 		};
 	}
 

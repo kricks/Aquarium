@@ -2,19 +2,20 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
 	<div class="container mb-3">
-		<h3 class="text-center mt-3">Welcome, Add a New Aquarium</h3>
+		<h3 class="text-center mt-4 text white-background">Welcome, Add a
+			New Aquarium</h3>
 		<br>
 		<div ng-controller="aquariumListController as ctrl">
 
 			<form method="POST" action="aquarium-confirmation" id="top"
 				modelAttribute="aquariumConfirmation" name="aquariumForm"
-				class="col">
+				class="col text">
 
 				<input type="hidden" ng-model="ctrl.aquarium.aquariumId" />
 
-				<div class="form-row">
+				<div class="form-row col">
 					<div class="form-group col-md-6">
-						<label for="tname">Name <span class="text-danger">*</span></label>
+						<label for="tname">Name <strong class="text-danger">*</strong></label>
 						<input type="text" ng-model="ctrl.aquarium.name" id="name"
 							name="name" class="form-control" placeholder="Enter Name"
 							required>
@@ -30,7 +31,7 @@
 				</div>
 
 
-				<div class="form-row">
+				<div class="form-row col">
 					<div class="form-group col-md-6">
 						<label for="gallon">Gallons</label> <input type="number" min="0"
 							ng-model="ctrl.aquarium.gallon" name="gallon"
@@ -43,19 +44,18 @@
 					</div>
 				</div>
 
-				<div class="form-row">
+				<div class="form-row col">
 					<div class="form-group col-md-6">
-						<label for="date">Date<span class="text-danger"> *</span></label>
-						<input type="text" ng-model="ctrl.aquarium.date" name="date"
+						<label for="date">Date<strong class="text-danger">
+								*</strong></label> <input type="text" ng-model="ctrl.aquarium.date" name="date"
 							class="form-control" id="date" placeholder="MM/dd/yyyy" required>
 					</div>
 				</div>
 
-				<div>
+				<div class="col">
 					<div class="float-right">
-						<input type="submit" value="Add" class="btn btn-primary">
-						<button type="button" ng-click="ctrl.update()"
-							class="btn btn-warning text-white">Update</button>
+						<input type="submit" ng-hide="ctrl.aquarium.aquariumId" value="Add" class="btn btn-primary">
+						<input type="button" ng-hide="!ctrl.aquarium.aquariumId" ng-click="ctrl.update()" class="btn btn-primary text-white" value="Update">
 						<button type="button" ng-click="ctrl.reset()"
 							class="btn btn-danger">Cancel</button>
 					</div>
@@ -63,12 +63,13 @@
 			</form>
 
 			<br>
-			<h4 class="text-center pt-3">Aquarium List</h4>
+			<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
 
 			<div class="row">
 				<div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
 					<div class="card">
-						<div class="card-header font-weight-bold text-center" ng-bind="t.name"></div>
+						<div class="card-header font-weight-bold text-center"
+							ng-bind="t.name"></div>
 						<div class="card-body row">
 							<p class="card-text ">
 							<ul class="list-unstyled col-4">

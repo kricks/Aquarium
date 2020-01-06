@@ -1,24 +1,27 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
 	<div class="container my-3">
+		<h3 class="text-center mt-4 text white-background">Add New
+			Livestock</h3>
+		<br>
 		<div ng-controller="livestockController as ctrl"
 			ng-init="ctrl.init(${fkAquariumId})">
 
 			<form ng-submit="ctrl.submit(${fkAquariumId})" name="livestockForm"
-				class="col">
+				class="col text">
 				<input type="hidden" ng-model="ctrl.livestock.livestockId" />
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="tname">Name <span class="text-danger">*</span></label>
+						<label for="tname">Name <strong class="text-danger">*</strong></label>
 						<input type="text" ng-model="ctrl.livestock.name" name="name"
 							class="form-control" placeholder="Enter Name" required="required"></input>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="species">Species</label> <input type="text"
-							name="species" ng-model="ctrl.livestock.species"
-							class="form-control" id="species" placeholder="Enter Species"
-							required="required"></input>
+						<label for="species">Species <strong class="text-danger">*</strong></label>
+						<input type="text" name="species"
+							ng-model="ctrl.livestock.species" class="form-control"
+							id="species" placeholder="Enter Species" required="required"></input>
 					</div>
 
 				</div>
@@ -48,35 +51,30 @@
 				</div>
 			</form>
 			<br>
-			<h4 class="text-center pt-3">Livestock List</h4>
+			<h4 class="mt-4 text-center pt-3 text">Livestock List</h4>
 
-			<div class="container">
-				<table class="table no-gutters">
-					<thead>
+			<div class="container table-responsive">
+				<table class="table-striped table">
+					<thead class="thead-light">
 						<tr>
-							<th scope="col">ID</th>
-							<th scope="col">aqID</th>
 							<th scope="col">Name</th>
 							<th scope="col">Species</th>
 							<th scope="col">Gender</th>
 							<th scope="col">Notes</th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 
 					<tbody>
 						<tr ng-repeat="t in ctrl.livestocks">
-							<th ng-bind="t.livestockId" scope="row"></th>
-							<td ng-bind="t.fkAquariumId"></td>
-							<td ng-bind="t.name"></td>
+							<th scope="row" ng-bind="t.name"></th>
 							<td ng-bind="t.species"></td>
 							<td ng-bind="t.gender"></td>
 							<td ng-bind="t.notes"></td>
-							<td>
+							<td class="float-right">
 
 								<button type="button" ng-click="ctrl.edit(t.livestockId)"
 									class="btn btn-success">Edit</button>
-							</td>
-							<td>
 								<button type="button"
 									ng-click="ctrl.remove(t.livestockId, ${fkAquariumId})"
 									class="btn btn-danger">Delete</button>

@@ -51,20 +51,6 @@ public class AquariumAsyncController {
 		return new ResponseEntity<AquariumImpl>(aquarium, HttpStatus.OK);
 	}
 
-//	@PostMapping(value = "/create")
-//	public ResponseEntity<Void> createAquarium(@RequestBody AquariumImpl aquarium) {
-//		logger.log(Level.INFO, "Creating Aquarium " + aquarium.getName());
-//
-//		if (aquariumManager.isAquariumExist(aquarium)) {
-//			logger.log(Level.INFO, "A Aquarium with name " + aquarium.getName() + " already exist");
-//			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-//		}
-//		aquariumManager.addAquarium(aquarium);
-//
-//		return new ResponseEntity<Void>(HttpStatus.CREATED);
-//
-//	}
-
 	@PutMapping(value = "/update/{aquariumId}")
 	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,
 			@RequestBody AquariumImpl aquarium) {

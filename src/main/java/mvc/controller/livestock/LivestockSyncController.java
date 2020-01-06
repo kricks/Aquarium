@@ -1,4 +1,4 @@
-package mvc.controller;
+package mvc.controller.livestock;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +20,6 @@ public class LivestockSyncController {
 
 	private static final String livestockList = "livestockList";
 	private static final String livestockConfirmation = "livestockConfirmation";
-
-//	@GetMapping(value = "/livestock-list")
-//	public ModelAndView displayAD() {
-//		return new ModelAndView(livestockList, "aquarium", new AquariumImpl());
-//	}
 
 	@GetMapping(value = "/livestock-list/{fkAquariumId}")
 	public ModelAndView displayLivestockByFkAquariumId(@PathVariable Integer fkAquariumId) {

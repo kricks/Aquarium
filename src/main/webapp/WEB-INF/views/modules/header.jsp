@@ -7,6 +7,8 @@
 
 <head>
 <meta charset="ISO-8859-1">
+<!-- Main CSS -->
+<link href="<c:url value="/static/style/main.css" />" rel="stylesheet">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -29,7 +31,7 @@
 <title>Aquarium Builder</title>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="top">
+<nav class="black-background navbar navbar-expand-lg navbar-dark text-white" id="top">
 	<a class="navbar-brand" href="../../AquariumBuilder/">Aquarium Builder</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNav" aria-controls="navbarNav"
@@ -38,7 +40,7 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="../aquarium-list">Aquarium
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/aquarium-list">Aquarium
 					List</a></li>
 		</ul>
 	</div>

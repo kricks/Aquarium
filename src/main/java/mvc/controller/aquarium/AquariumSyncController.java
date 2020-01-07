@@ -14,10 +14,10 @@ import mvc.manager.aquarium.AquariumManager;
 public class AquariumSyncController {
 
 	@Autowired
-	private AquariumManager aquariumManager;
+	AquariumManager aquariumManager;
 
-	private static String aquariumList = "aquariumList";
-	private static String aquariumConfirmation = "aquariumConfirmation";
+	private static final String aquariumList = "aquariumList";
+	private static final String aquariumConfirmation = "aquariumConfirmation";
 
 	@GetMapping(value = "/aquarium-list")
 	public ModelAndView displayAquariumPage() {
@@ -32,6 +32,7 @@ public class AquariumSyncController {
 	@PostMapping(value = "/aquarium-confirmation")
 	public ModelAndView addNewAquarium(@ModelAttribute("aquarium") AquariumImpl aquarium) {
 		aquariumManager.addAquarium(aquarium);
-		return new ModelAndView(aquariumConfirmation, "aquarium", aquarium);
+		return new ModelAndView(aquariumConfirmation, "message", aquarium);
 	}
+
 }

@@ -44,8 +44,5 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link"
-				href="${pageContext.request.contextPath}/aquarium-list">Aquarium
-					List</a></li>
-		</ul>
-	</div>
+				href="${pageContext.request.contextPath}/aquarium-list">Aquarium List </a> </li> </ul> </div>
 </nav>

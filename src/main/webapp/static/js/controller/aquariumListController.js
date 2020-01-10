@@ -56,11 +56,11 @@ function aquariumListController(aquariumListService, $log) {
 
 	function edit(aquariumId) {
 		$log.info('aquariumId to be edited' + aquariumId);
-		for (var i = 0; i < vm.aquariums.length; i++) {
-			if (vm.aquariums[i].aquariumId === aquariumId) {
-				vm.aquarium = angular.copy(vm.aquariums[i]);
-			}
-		}
+//		for (var i = 0; i < vm.aquariums.length; i++) {
+//			if (vm.aquariums[i].aquariumId === aquariumId) {
+//				vm.aquarium = angular.copy(vm.aquariums[i]);
+//			}
+//		}
 	}
 
 	function remove(aquariumId) {

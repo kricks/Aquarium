@@ -13,6 +13,7 @@ public class AquariumView implements Aquarium {
 	private String type;
 	private Integer gallon;
 	private String notes;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone = "CST")
 	private Date date;
 
 	public AquariumView(Aquarium aquarium) {
@@ -59,7 +60,6 @@ public class AquariumView implements Aquarium {
 		this.notes = notes;
 	}
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone = "CST")
 	public Date getDate() {
 		return date;
 	}

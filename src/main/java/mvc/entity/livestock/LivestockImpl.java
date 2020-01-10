@@ -13,6 +13,7 @@ public class LivestockImpl implements Livestock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "livestock_id", nullable = false)
 	private Integer livestockId;
 
 	@Column(name = "NAME", nullable = false)

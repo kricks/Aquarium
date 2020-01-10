@@ -47,7 +47,8 @@
 				<div class="form-row col">
 					<div class="form-group col-md-6">
 						<label for="date">Date<strong class="text-danger">
-								*</strong></label> <input type="text" ng-model="ctrl.aquarium.date" name="date"
+								*</strong></label> 
+								<input type="text" ng-model="ctrl.aquarium.date" name="date"
 							class="form-control" id="date" placeholder="MM/dd/yyyy" required>
 					</div>
 				</div>

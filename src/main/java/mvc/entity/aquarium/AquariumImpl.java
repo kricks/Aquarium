@@ -11,12 +11,15 @@ import javax.persistence.Table;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "AQUARIUM")
 public class AquariumImpl implements Aquarium {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "aquarium_id", nullable = false)
 	private Integer aquariumId;
 
 	@Column(name = "NAME", nullable = false)
@@ -32,6 +35,7 @@ public class AquariumImpl implements Aquarium {
 	private String notes;
 
 	@Column(name = "DATE", nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone = "CST")
 	private Date date;
 
 	public AquariumImpl() {

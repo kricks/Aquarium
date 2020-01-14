@@ -50,7 +50,7 @@ public class AquariumAsyncController {
 	}
 
 	@DeleteMapping(value = "/delete/{aquariumId}")
-	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("aquariumId") int aquariumId) {
+	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("aquariumId") Integer aquariumId) {
 		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
 		if (aquarium == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

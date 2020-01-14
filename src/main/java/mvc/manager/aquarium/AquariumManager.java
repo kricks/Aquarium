@@ -6,17 +6,15 @@ import mvc.entity.aquarium.AquariumImpl;
 
 public interface AquariumManager {
 
+	List<AquariumImpl> findAllAquariums();
+
 	AquariumImpl findById(Integer aquariumId);
 
-	AquariumImpl findByName(String name);
-
-	boolean addAquarium(AquariumImpl aquarium);
+	AquariumImpl addAquarium(AquariumImpl aquarium);
 
 	AquariumImpl updateAquarium(AquariumImpl aquarium);
 
 	boolean deleteAquariumById(Integer aquariumId);
 
-	List<AquariumImpl> findAllAquariums();
-
-	boolean isAquariumExist(AquariumImpl aquarium);
+//	boolean isAquariumExist(AquariumImpl aquarium);
 }

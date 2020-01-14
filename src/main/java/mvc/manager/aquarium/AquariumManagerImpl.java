@@ -1,12 +1,10 @@
 package mvc.manager.aquarium;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mvc.dao.aquarium.AquariumDaoImpl;
 import mvc.entity.aquarium.AquariumImpl;
 import mvc.services.aquarium.AquariumService;
 
@@ -16,7 +14,10 @@ public class AquariumManagerImpl implements AquariumManager {
 	@Autowired
 	private AquariumService aquariumService;
 
-	private final static Logger logger = Logger.getLogger(AquariumDaoImpl.class.getName());
+	@Override
+	public List<AquariumImpl> findAllAquariums() {
+		return aquariumService.findAllAquariums();
+	}
 
 	@Override
 	public AquariumImpl findById(Integer aquariumId) {
@@ -24,12 +25,7 @@ public class AquariumManagerImpl implements AquariumManager {
 	}
 
 	@Override
-	public AquariumImpl findByName(String name) {
-		return aquariumService.findByName(name);
-	}
-
-	@Override
-	public boolean addAquarium(AquariumImpl aquarium) {
+	public AquariumImpl addAquarium(AquariumImpl aquarium) {
 		return aquariumService.addAquarium(aquarium);
 	}
 
@@ -38,14 +34,10 @@ public class AquariumManagerImpl implements AquariumManager {
 		return aquariumService.updateAquarium(aquarium);
 	}
 
-	public List<AquariumImpl> findAllAquariums() {
-		return aquariumService.findAllAquariums();
-	}
-
-	@Override
-	public boolean isAquariumExist(AquariumImpl aquarium) {
-		return aquariumService.isAquariumExist(aquarium);
-	}
+//	@Override
+//	public boolean isAquariumExist(AquariumImpl aquarium) {
+//		return aquariumService.isAquariumExist(aquarium);
+//	}
 
 	@Override
 	public boolean deleteAquariumById(Integer aquariumId) {

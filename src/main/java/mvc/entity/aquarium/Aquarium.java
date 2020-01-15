@@ -2,7 +2,7 @@ package mvc.entity.aquarium;
 
 import java.util.Date;
 
-interface Aquarium {
+public interface Aquarium {
 
 	public Integer getAquariumId();
 

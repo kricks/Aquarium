@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,7 @@ public class AquariumServiceImpl implements AquariumService {
 
 	public static final String BASE_URI = "http://localhost:8080/";
 	public final RestTemplate restTemplate = new RestTemplate();
+	static Logger logger = Logger.getLogger(AquariumServiceImpl.class);
 
 	@Override
 	public List<AquariumImpl> findAllAquariums() {
@@ -56,11 +58,11 @@ public class AquariumServiceImpl implements AquariumService {
 		String uri = BASE_URI + "aquarium/delete/{aquariumId}";
 
 		if (aquariumId == null) {
+			logger.error("Delete aquarium failed");
 			return false;
 		}
-		Map<String, Integer> params = new HashMap<>();
-		params.put("aquariumId", aquariumId);
-		restTemplate.delete(uri, params);
+		restTemplate.delete(uri, Integer.toString(aquariumId), AquariumImpl.class);
+		logger.info("Delete aquarium success");
 		return true;
 	}
 

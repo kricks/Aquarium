@@ -74,13 +74,9 @@ function livestockController(livestockService, $log) {
 		reset();
 	}
 
-	function edit(livestockId) {
-		$log.info('livestockId to be edited ' + livestockId);
-		for (var i = 0; i < vm.livestocks.length; i++) {
-			if (vm.livestocks[i].livestockId === livestockId) {
-				vm.livestock = angular.copy(vm.livestocks[i]);
-			}
-		}
+	function edit(livestock) {
+		$log.info('livestockId to be edited ' + livestock);
+		vm.livestock = angular.copy(livestock);
 	}
 
 	function remove(livestockId, fkAquariumId) {

@@ -18,31 +18,31 @@ function livestockService($http, $log) {
 	return factory;
 
 	function fetchAllLivestock() {
-		return $http.get(baseURI + "livestocks").then(function (response) {
+		return $http.get(baseURI + "livestock").then(function (response) {
 			return response.data;
 		});
 	}
 
 	function fetchAllLivestockByAquariumId(fkAquariumId) {
-		return $http.get(baseURI + 'livestocks/aq/' + fkAquariumId)
+		return $http.get(baseURI + 'livestock/aq/' + fkAquariumId)
 			.then(function (response) {
 				return response.data;
 			});
 	}
 
 	function createLivestock(livestock) {
-		return $http.post(baseURI + 'livestocks/create', livestock);
+		return $http.post(baseURI + 'livestock/create', livestock);
 	}
 
 	function updateLivestock(livestock, livestockId) {
-		return $http.put(baseURI + 'livestocks/update/' + livestockId, livestock)
+		return $http.put(baseURI + 'livestock/update/' + livestockId, livestock)
 		 .then(function (response) {
 		 	return (response.data);
 		 });
 	}
 
 	function deleteLivestock(livestockId) {
-		return $http.delete(baseURI + 'livestocks/delete/' + livestockId).then(function (response) {
+		return $http.delete(baseURI + 'livestock/delete/' + livestockId).then(function (response) {
 			return response.data;
 		});
 	}

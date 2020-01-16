@@ -4,6 +4,8 @@
 		<h3 class="text-center mt-4 text white-background">Add New
 			Livestock</h3>
 		<br>
+		${aquarium.name} ${aquarium.type} ${aquarium.gallon} ${aquarium.notes} ${aquarium.date}
+		<br>
 		<div ng-controller="livestockController as ctrl"
 			ng-init="ctrl.init(${fkAquariumId})">
 
@@ -73,7 +75,7 @@
 							<td ng-bind="t.notes"></td>
 							<td class="float-right">
 
-								<button type="button" ng-click="ctrl.edit(t.livestockId)"
+								<button type="button" ng-click="ctrl.edit(t)"
 									class="btn btn-success">Edit</button>
 								<button type="button"
 									ng-click="ctrl.remove(t.livestockId, ${fkAquariumId})"

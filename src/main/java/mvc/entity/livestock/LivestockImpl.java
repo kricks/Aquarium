@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.BeanUtils;
+
 @Entity
 @Table(name = "LIVESTOCK")
 public class LivestockImpl implements Livestock {
@@ -30,6 +32,14 @@ public class LivestockImpl implements Livestock {
 
 	@Column(name = "fk_aquarium_id", nullable = false)
 	private Integer fkAquariumId;
+
+	public LivestockImpl() {
+
+	}
+
+	public LivestockImpl(Livestock livestock) {
+		BeanUtils.copyProperties(livestock, this, LivestockImpl.class);
+	}
 
 	public Integer getLivestockId() {
 		return livestockId;

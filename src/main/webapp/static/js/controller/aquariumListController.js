@@ -54,13 +54,9 @@ function aquariumListController(aquariumListService, $log) {
 		reset();
 	}
 
-	function edit(aquariumId) {
-		$log.info('aquariumId to be edited' + aquariumId);
-		for (var i = 0; i < vm.aquariums.length; i++) {
-			if (vm.aquariums[i].aquariumId === aquariumId) {
-				vm.aquarium = angular.copy(vm.aquariums[i]);
-			}
-		}
+	function edit(aquarium) {
+		$log.info('aquariumId to be edited hiiii' + aquarium);
+		vm.aquarium = angular.copy(aquarium);
 	}
 
 	function remove(aquariumId) {

@@ -35,7 +35,9 @@ public class AquariumAsyncController {
 
 	@GetMapping(value = "/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AquariumImpl> getLivestockByAquariumId(@PathVariable("aquariumId") Integer aquariumId) {
+		System.out.println("HELLOOO!!!!");
 		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
+		System.out.println("HELLOOO!!!!");
 		if (aquarium == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

@@ -94,7 +94,7 @@
 								<button type="button" class="btn btn-info">View</button>
 							</a>
 
-							<button type="button" ng-click="ctrl.edit(t.aquariumId)"
+							<button type="button" ng-click="ctrl.edit(t)"
 								class="btn btn-success">Edit</button>
 							<button type="button" ng-click="ctrl.remove(t.aquariumId)"
 								class="btn btn-danger">Delete</button>

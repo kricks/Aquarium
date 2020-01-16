@@ -33,9 +33,9 @@ public class LivestockServiceImpl implements LivestockService {
 
 	@Override
 	public ResponseEntity<LivestockImpl> findById(Integer livestockId) {
-		String uri = BASE_URI + "/{livestockId}";
+		String uri = String.join("", BASE_URI, "/{livestockId}");
 		System.out.println("find by id front end: " + livestockId);
-		ResponseEntity<LivestockImpl> response = restTemplate.getForEntity(uri, LivestockImpl.class);
+		ResponseEntity<LivestockImpl> response = restTemplate.getForEntity(uri, LivestockImpl.class, livestockId);
 		return response;
 	}
 

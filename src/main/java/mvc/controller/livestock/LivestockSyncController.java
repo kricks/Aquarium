@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import mvc.entity.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumView;
 import mvc.manager.aquarium.AquariumManager;
 import mvc.manager.livestock.LivestockManager;
 
@@ -23,7 +23,7 @@ public class LivestockSyncController {
 
 	@GetMapping(value = "/livestock-list/{fkAquariumId}")
 	public ModelAndView displayLivestockByFkAquariumId(@PathVariable Integer fkAquariumId) {
-		AquariumImpl aq = aquariumManager.findById(fkAquariumId);
+		AquariumView aq = aquariumManager.findById(fkAquariumId);
 		ModelAndView mv = new ModelAndView(livestockList, "aquarium", aq);
 		mv.addObject("fkAquariumId", fkAquariumId);
 		return mv;

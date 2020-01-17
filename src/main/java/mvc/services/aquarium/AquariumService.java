@@ -2,17 +2,17 @@ package mvc.services.aquarium;
 
 import java.util.List;
 
-import mvc.entity.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumView;
 
 public interface AquariumService {
 
-	List<AquariumImpl> findAllAquariums();
+	List<AquariumView> findAllAquariums();
 
-	AquariumImpl findById(Integer aquariumId);
+	AquariumView findById(Integer aquariumId);
 
-	AquariumImpl addAquarium(AquariumImpl aquarium);
+	AquariumView addAquarium(AquariumView aquarium);
 
-	AquariumImpl updateAquarium(AquariumImpl aquarium);
+	AquariumView updateAquarium(AquariumView aquarium);
 
 	boolean deleteAquariumById(Integer aquariumId);
 

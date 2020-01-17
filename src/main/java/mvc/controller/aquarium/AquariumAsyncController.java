@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import mvc.entity.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumView;
 import mvc.manager.aquarium.AquariumManager;
 
-@RequestMapping(value = "/aquariums")
+@RequestMapping(value = "/aquarium")
 @Controller
 public class AquariumAsyncController {
 
@@ -25,8 +25,10 @@ public class AquariumAsyncController {
 	private AquariumManager aquariumManager;
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<AquariumImpl>> listAllAquariums() {
-		List<AquariumImpl> aquariums = aquariumManager.findAllAquariums();
+	public ResponseEntity<List<AquariumView>> listAllAquariums() {
+		System.out.println("FRont end controller find all");
+		List<AquariumView> aquariums = aquariumManager.findAllAquariums();
+		System.out.println("FRont end controller " + aquariums.toString());
 		if (aquariums.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -34,9 +36,9 @@ public class AquariumAsyncController {
 	}
 
 	@GetMapping(value = "/{aquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<AquariumImpl> getLivestockByAquariumId(@PathVariable("aquariumId") Integer aquariumId) {
+	public ResponseEntity<AquariumView> getLivestockByAquariumId(@PathVariable("aquariumId") Integer aquariumId) {
 		System.out.println("HELLOOO!!!!");
-		AquariumImpl aquarium = aquariumManager.findById(aquariumId);
+		AquariumView aquarium = aquariumManager.findById(aquariumId);
 		System.out.println("HELLOOO!!!!");
 		if (aquarium == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -45,14 +47,14 @@ public class AquariumAsyncController {
 	}
 
 	@PutMapping(value = "/update/{aquariumId}")
-	public ResponseEntity<AquariumImpl> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,
-			@RequestBody AquariumImpl aquarium) {
+	public ResponseEntity<AquariumView> updateAquarium(@PathVariable("aquariumId") Integer aquariumId,
+			@RequestBody AquariumView aquarium) {
 		aquariumManager.updateAquarium(aquarium);
 		return new ResponseEntity<>(aquarium, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/delete/{aquariumId}")
-	public ResponseEntity<AquariumImpl> deleteAquarium(@PathVariable("aquariumId") Integer aquariumId) {
+	public ResponseEntity<AquariumView> deleteAquarium(@PathVariable("aquariumId") Integer aquariumId) {
 		if (aquariumId == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

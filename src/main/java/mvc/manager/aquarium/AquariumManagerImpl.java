@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mvc.entity.aquarium.AquariumImpl;
+import mvc.entity.aquarium.AquariumView;
 import mvc.services.aquarium.AquariumService;
 
 @Service
@@ -15,22 +15,23 @@ public class AquariumManagerImpl implements AquariumManager {
 	private AquariumService aquariumService;
 
 	@Override
-	public List<AquariumImpl> findAllAquariums() {
+	public List<AquariumView> findAllAquariums() {
+		System.out.println("find all manager front end");
 		return aquariumService.findAllAquariums();
 	}
 
 	@Override
-	public AquariumImpl findById(Integer aquariumId) {
+	public AquariumView findById(Integer aquariumId) {
 		return aquariumService.findById(aquariumId);
 	}
 
 	@Override
-	public AquariumImpl addAquarium(AquariumImpl aquarium) {
+	public AquariumView addAquarium(AquariumView aquarium) {
 		return aquariumService.addAquarium(aquarium);
 	}
 
 	@Override
-	public AquariumImpl updateAquarium(AquariumImpl aquarium) {
+	public AquariumView updateAquarium(AquariumView aquarium) {
 		return aquariumService.updateAquarium(aquarium);
 	}
 

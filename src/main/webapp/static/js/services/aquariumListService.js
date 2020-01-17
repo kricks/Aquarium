@@ -16,19 +16,19 @@ function aquariumListService($http, $log) {
 	return factory;
 
 	function fetchAllAquariums() {
-		return $http.get(baseURI + "aquariums").then(function (response) {
+		return $http.get(baseURI + "aquarium").then(function (response) {
 			return response.data;
 		});
 	}
 
 	function updateAquarium(aquarium, aquariumId) {
-		return $http.put(baseURI + 'aquariums/update/' + aquariumId, aquarium).then(function (response) {
+		return $http.put(baseURI + 'aquarium/update/' + aquariumId, aquarium).then(function (response) {
 			return (response.data);
 		});
 	}
 
 	function deleteAquarium(aquariumId) {
-		return $http.delete(baseURI + 'aquariums/delete/' + aquariumId).then(function (response) {
+		return $http.delete(baseURI + 'aquarium/delete/' + aquariumId).then(function (response) {
 			return response.data;
 		},
 			function (errResponse) {

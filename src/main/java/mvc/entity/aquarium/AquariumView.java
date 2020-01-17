@@ -2,8 +2,6 @@ package mvc.entity.aquarium;
 
 import java.util.Date;
 
-import org.springframework.beans.BeanUtils;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AquariumView implements Aquarium {
@@ -16,8 +14,8 @@ public class AquariumView implements Aquarium {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy", timezone = "CST")
 	private Date date;
 
-	public AquariumView(Aquarium aquarium) {
-		BeanUtils.copyProperties(aquarium, this, AquariumImpl.class);
+	public AquariumView() {
+
 	}
 
 	public Integer getAquariumId() {

@@ -1,5 +1,7 @@
 package mvc.entity.livestock;
 
+import org.springframework.beans.BeanUtils;
+
 public class LivestockView implements Livestock {
 
 	private Integer livestockId;
@@ -8,6 +10,10 @@ public class LivestockView implements Livestock {
 	private String gender;
 	private String notes;
 	private Integer fkAquariumId;
+
+	public LivestockView(Livestock livestock) {
+		BeanUtils.copyProperties(livestock, this, LivestockView.class);
+	}
 
 	public Integer getLivestockId() {
 		return livestockId;

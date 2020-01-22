@@ -9,18 +9,16 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import mvc.entity.aquarium.AquariumView;
 
 @Service
-@Transactional
 public class AquariumServiceImpl implements AquariumService {
 
 	public static final String BASE_URI = "http://localhost:8080/aquarium";
 	public final RestTemplate restTemplate = new RestTemplate();
-	static Logger logger = Logger.getLogger(AquariumServiceImpl.class);
+	static final Logger logger = Logger.getLogger(AquariumServiceImpl.class);
 
 	@Override
 	public List<AquariumView> findAllAquariums() {

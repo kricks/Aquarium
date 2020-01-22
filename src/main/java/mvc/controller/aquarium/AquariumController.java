@@ -51,9 +51,6 @@ public class AquariumController {
 
 	@DeleteMapping(value = "/delete/{aquariumId}")
 	public ResponseEntity<AquariumView> deleteAquarium(@PathVariable("aquariumId") Integer aquariumId) {
-		if (aquariumId == null) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
 		aquariumManager.deleteAquariumById(aquariumId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

@@ -9,18 +9,16 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import mvc.entity.livestock.LivestockView;
 
 @Service
-@Transactional
 public class LivestockServiceImpl implements LivestockService {
 
 	public static final String BASE_URI = "http://localhost:8080/livestock";
 	public final RestTemplate restTemplate = new RestTemplate();
-	static Logger logger = Logger.getLogger(LivestockServiceImpl.class);
+	static final Logger logger = Logger.getLogger(LivestockServiceImpl.class);
 
 	@Override
 	public List<LivestockView> findAllLivestock() {

@@ -90,7 +90,7 @@
 						<div class="card-footer text-center">
 							<a ng-href="livestock-list/{{t.aquariumId}}">
 								<button type="button" class="btn btn-info">
-								View  <i class="fa fa-home"></i> <i class='fas fa-fish'>
+									View <img class="ml-1" alt="fish icon" src="https://img.icons8.com/officexs/16/000000/clown-fish.png">
 								</button>
 							</a>
 
@@ -103,37 +103,7 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
-
-			<!-- 			<div class="modal" id="aquariumDelete" tabindex="-1" role="dialog"
-				aria-labelledby="aquariumDeleteLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="aquariumDeleteLabel">Are you
-								sure?</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<p>Are you sure you want to delete {{aquarium.name}} aquarium?
-								Deleting this aquarium will also delete all of the livestock
-								associated with it.</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
-							<button type="button" ng-click="ctrl.remove(aquariumId)"
-								class="btn btn-danger" data-dismiss="modal">Continue
-								to Delete Aquarium</button>
-						</div>
-					</div>
-				</div>
-			</div> -->
-
 		</div>
 
 	</div>

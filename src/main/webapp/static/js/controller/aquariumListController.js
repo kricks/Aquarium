@@ -74,5 +74,4 @@ function aquariumListController(aquariumListService, $log) {
 			date : null
 		};
 	}
-
 }

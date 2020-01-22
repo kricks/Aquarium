@@ -38,5 +38,4 @@ public class AquariumManagerImpl implements AquariumManager {
 	public boolean deleteAquariumById(Integer aquariumId) {
 		return aquariumService.deleteAquariumById(aquariumId);
 	}
-
 }

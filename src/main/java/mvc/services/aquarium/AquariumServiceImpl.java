@@ -24,7 +24,8 @@ public class AquariumServiceImpl implements AquariumService {
 
 	@Override
 	public List<AquariumView> findAllAquariums() {
-		ResponseEntity<List<AquariumView>> response = restTemplate.exchange(BASE_URI + "/all", HttpMethod.GET, null,
+		String uri = String.join("", BASE_URI, "/all");
+		ResponseEntity<List<AquariumView>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<AquariumView>>() {
 				});
 		return response.getBody();
@@ -63,5 +64,4 @@ public class AquariumServiceImpl implements AquariumService {
 		logger.info("Delete aquarium success");
 		return true;
 	}
-
 }

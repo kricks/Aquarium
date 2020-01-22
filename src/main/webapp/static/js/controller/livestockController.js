@@ -97,5 +97,4 @@ function livestockController(livestockService, $log) {
 			notes : undefined
 		};
 	}
-
 }

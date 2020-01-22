@@ -78,5 +78,4 @@ public class LivestockController {
 		livestockManager.deleteLivestockById(livestockId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
 }

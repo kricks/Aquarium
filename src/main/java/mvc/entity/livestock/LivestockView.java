@@ -60,5 +60,4 @@ public class LivestockView {
 	public void setFkAquariumId(Integer fkAquariumId) {
 		this.fkAquariumId = fkAquariumId;
 	}
-
 }

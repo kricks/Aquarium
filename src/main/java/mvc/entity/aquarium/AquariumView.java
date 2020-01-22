@@ -65,5 +65,4 @@ public class AquariumView {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 }

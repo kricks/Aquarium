@@ -74,5 +74,4 @@ public class LivestockServiceImpl implements LivestockService {
 		logger.info("Delete aquarium success");
 		return true;
 	}
-
 }

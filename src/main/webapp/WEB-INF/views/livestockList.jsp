@@ -97,9 +97,7 @@
 					</tbody>
 				</table>
 			</div>
-
 		</div>
-
 	</div>
 	<%@ include file="/WEB-INF/views/modules/jsLivestockInclude.jsp"%>
 </body>

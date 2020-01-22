@@ -16,7 +16,6 @@ public class AquariumManagerImpl implements AquariumManager {
 
 	@Override
 	public List<AquariumView> findAllAquariums() {
-		System.out.println("find all manager front end");
 		return aquariumService.findAllAquariums();
 	}
 
@@ -34,11 +33,6 @@ public class AquariumManagerImpl implements AquariumManager {
 	public AquariumView updateAquarium(AquariumView aquarium) {
 		return aquariumService.updateAquarium(aquarium);
 	}
-
-//	@Override
-//	public boolean isAquariumExist(AquariumImpl aquarium) {
-//		return aquariumService.isAquariumExist(aquarium);
-//	}
 
 	@Override
 	public boolean deleteAquariumById(Integer aquariumId) {

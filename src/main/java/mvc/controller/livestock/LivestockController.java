@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mvc.entity.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockView;
 import mvc.manager.livestock.LivestockManager;
 
 @RequestMapping(value = "/livestock")
 @RestController
-public class LivestockAsyncController {
+public class LivestockController {
 
 	@Autowired
 	private LivestockManager livestockManager;
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<LivestockImpl>> listAllLivestock() {
-		List<LivestockImpl> livestock = livestockManager.findAllLivestock();
+	public ResponseEntity<List<LivestockView>> listAllLivestock() {
+		List<LivestockView> livestock = livestockManager.findAllLivestock();
 		if (livestock.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -35,24 +35,19 @@ public class LivestockAsyncController {
 	}
 
 	@GetMapping(value = "/{livestockId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<LivestockImpl> getLivestock(@PathVariable("livestockId") Integer livestockId) {
-		System.out.println("Livestockid controller : 1" + livestockId);
-		ResponseEntity<LivestockImpl> livestock = livestockManager.findById(livestockId);
-		System.out.println("Livestockid controller : 2 " + livestockId);
-		return livestock;
-//		if (livestock == null) {
-//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		}
-//
-//		return new ResponseEntity<>(livestock, HttpStatus.OK);
+	public ResponseEntity<LivestockView> getLivestock(@PathVariable("livestockId") Integer livestockId) {
+		LivestockView livestock = livestockManager.findById(livestockId);
+
+		if (livestock == null) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(livestock, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/aq/{fkAquariumId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<LivestockImpl>> findLivestockByFkAquariumId(
+	public ResponseEntity<List<LivestockView>> findLivestockByFkAquariumId(
 			@PathVariable("fkAquariumId") Integer fkAquariumId) {
-		System.out.println("Livestock controller : 1 " + fkAquariumId);
-		List<LivestockImpl> aqId = livestockManager.findLivestockByFkAquariumId(fkAquariumId);
-		System.out.println("Livestock controller : 2 " + fkAquariumId);
+		List<LivestockView> aqId = livestockManager.findLivestockByFkAquariumId(fkAquariumId);
 		if (aqId == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -60,28 +55,22 @@ public class LivestockAsyncController {
 	}
 
 	@PostMapping(value = "/create")
-	public ResponseEntity<Void> createLivestock(@RequestBody LivestockImpl livestock) {
-//		if (livestockManager.isLivestockExist(livestock)) {
-//			return new ResponseEntity<>(HttpStatus.CONFLICT);
-//		}
+	public ResponseEntity<Void> createLivestock(@RequestBody LivestockView livestock) {
 		livestockManager.addLivestock(livestock);
-
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/update/{livestockId}")
-	public ResponseEntity<LivestockImpl> updateLivestock(@PathVariable("livestockId") Integer livestockId,
-			@RequestBody LivestockImpl livestock) {
-		System.out.println("update front controller 1");
+	public ResponseEntity<LivestockView> updateLivestock(@PathVariable("livestockId") Integer livestockId,
+			@RequestBody LivestockView livestock) {
 		livestockManager.updateLivestock(livestock);
-		System.out.println("update front controller 2");
 		return new ResponseEntity<>(livestock, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/delete/{livestockId}")
-	public ResponseEntity<LivestockImpl> deleteLivestock(@PathVariable("livestockId") int livestockId) {
+	public ResponseEntity<LivestockView> deleteLivestock(@PathVariable("livestockId") int livestockId) {
 
-		ResponseEntity<LivestockImpl> livestock = livestockManager.findById(livestockId);
+		LivestockView livestock = livestockManager.findById(livestockId);
 		if (livestock == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

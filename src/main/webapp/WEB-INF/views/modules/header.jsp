@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +10,8 @@
 <meta charset="ISO-8859-1">
 <!-- Main CSS -->
 <link href="<c:url value="/static/style/main.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -44,5 +47,8 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link"
-				href="${pageContext.request.contextPath}/aquarium-list">Aquarium List </a> </li> </ul> </div>
+				href="${pageContext.request.contextPath}/aquarium-list">Aquarium
+					List </a></li>
+		</ul>
+	</div>
 </nav>

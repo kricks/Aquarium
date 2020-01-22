@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
-import mvc.entity.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockView;
 
 @Service
 @Transactional
@@ -23,49 +23,43 @@ public class LivestockServiceImpl implements LivestockService {
 	static Logger logger = Logger.getLogger(LivestockServiceImpl.class);
 
 	@Override
-	public List<LivestockImpl> findAllLivestock() {
+	public List<LivestockView> findAllLivestock() {
 		String uri = BASE_URI + "/all";
-		ResponseEntity<List<LivestockImpl>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<LivestockImpl>>() {
+		ResponseEntity<List<LivestockView>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<LivestockView>>() {
 				});
 		return response.getBody();
 	}
 
 	@Override
-	public ResponseEntity<LivestockImpl> findById(Integer livestockId) {
+	public LivestockView findById(Integer livestockId) {
 		String uri = String.join("", BASE_URI, "/{livestockId}");
-		System.out.println("find by id front end: " + livestockId);
-		ResponseEntity<LivestockImpl> response = restTemplate.getForEntity(uri, LivestockImpl.class, livestockId);
-		return response;
-	}
-
-	@Override
-	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId) {
-		final String uri = String.join("", BASE_URI, "/aqFk/{fkAquariumId}");
-		System.out.println("fkaq front end 11 : " + fkAquariumId + uri);
-		ResponseEntity<List<LivestockImpl>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<LivestockImpl>>() {
-				}, fkAquariumId);
-		System.out.println("fkaq front end 22 : " + response.getBody() + fkAquariumId);
+		ResponseEntity<LivestockView> response = restTemplate.getForEntity(uri, LivestockView.class, livestockId);
 		return response.getBody();
 	}
 
 	@Override
-	public LivestockImpl addLivestock(LivestockImpl livestock) {
-		String uri = BASE_URI + "/create";
-		LivestockImpl added = new LivestockImpl(livestock);
-		return restTemplate.postForObject(uri, added, LivestockImpl.class);
+	public List<LivestockView> findLivestockByFkAquariumId(Integer fkAquariumId) {
+		final String uri = String.join("", BASE_URI, "/aqFk/{fkAquariumId}");
+		ResponseEntity<List<LivestockView>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<LivestockView>>() {
+				}, fkAquariumId);
+		return response.getBody();
 	}
 
 	@Override
-	public LivestockImpl updateLivestock(LivestockImpl livestock) {
+	public LivestockView addLivestock(LivestockView livestock) {
+		String uri = BASE_URI + "/create";
+		return restTemplate.postForObject(uri, livestock, LivestockView.class);
+	}
+
+	@Override
+	public LivestockView updateLivestock(LivestockView livestock) {
 		String uri = BASE_URI + "/update/{livestockId}";
 		Integer livestockId = livestock.getLivestockId();
 		Map<String, Integer> params = new HashMap<>();
-		System.out.println("update front 1");
 		params.put("livestockId", livestockId);
 		restTemplate.put(uri, livestock, params);
-		System.out.println("update front 2");
 		return livestock;
 	}
 
@@ -76,15 +70,9 @@ public class LivestockServiceImpl implements LivestockService {
 			logger.error("Delete aquarium failed");
 			return false;
 		}
-		restTemplate.delete(uri, Integer.toString(livestockId), LivestockImpl.class);
+		restTemplate.delete(uri, Integer.toString(livestockId), LivestockView.class);
 		logger.info("Delete aquarium success");
 		return true;
-	}
-
-	@Override
-	public boolean isLivestockExist(LivestockImpl livestock) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

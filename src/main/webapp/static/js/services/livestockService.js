@@ -2,9 +2,9 @@
 
 angular.module('myApp').factory('livestockService', livestockService);
 
-livestockService.$inject = ['$http', '$log'];
+livestockService.$inject = ['$http'];
 
-function livestockService($http, $log) {
+function livestockService($http) {
 	var baseURI = '/AquariumBuilder/';
 
 	var factory = {

@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <body ng-app="myApp">
 	<div class="container">
 		<div class="row mt-4 text-center">

@@ -1,8 +1,6 @@
 package mvc.entity.livestock;
 
-import org.springframework.beans.BeanUtils;
-
-public class LivestockView implements Livestock {
+public class LivestockView {
 
 	private Integer livestockId;
 	private String name;
@@ -11,8 +9,8 @@ public class LivestockView implements Livestock {
 	private String notes;
 	private Integer fkAquariumId;
 
-	public LivestockView(Livestock livestock) {
-		BeanUtils.copyProperties(livestock, this, LivestockView.class);
+	public LivestockView() {
+		// default constructor
 	}
 
 	public Integer getLivestockId() {

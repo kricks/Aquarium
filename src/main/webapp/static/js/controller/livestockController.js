@@ -64,14 +64,14 @@ function livestockController(livestockService, $log) {
 			createLivestock(vm.livestock);
 			$log.info('Saving New livestock');
 			fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
+			reset();
 		} else {
 			updateLivestock(vm.livestock, vm.livestock.livestockId);
 			$log.info('aquarium updated with fkAquariumId '
 					+ vm.livestock.livestockId);
 			fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
+			reset();
 		}
-		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
-		reset();
 	}
 
 	function edit(livestock) {

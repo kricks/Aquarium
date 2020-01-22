@@ -16,6 +16,4 @@ public interface AquariumService {
 
 	boolean deleteAquariumById(Integer aquariumId);
 
-//	boolean isAquariumExist(AquariumImpl aquarium);
-
 }

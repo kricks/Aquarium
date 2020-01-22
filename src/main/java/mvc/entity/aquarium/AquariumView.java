@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class AquariumView implements Aquarium {
+public class AquariumView {
 
 	private Integer aquariumId;
 	private String name;
@@ -15,7 +15,7 @@ public class AquariumView implements Aquarium {
 	private Date date;
 
 	public AquariumView() {
-
+		// default constructor
 	}
 
 	public Integer getAquariumId() {

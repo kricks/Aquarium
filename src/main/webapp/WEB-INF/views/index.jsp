@@ -9,8 +9,8 @@
 				<p>To create an aquarium, enter its details. You can later edit
 					or delete an aquarium.</p>
 				<p>To add livestock to an aquarium, simply click the "View"
-					button. You can add coral, fish, plants, or any other living
-					thing to your aquarium.</p>
+					button. You can add coral, fish, plants, or any other living thing
+					to your aquarium.</p>
 				<p>Enjoy!</p>
 			</div>
 			<div class="row">

@@ -2,24 +2,20 @@ package mvc.manager.livestock;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-
-import mvc.entity.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockView;
 
 public interface LivestockManager {
 
-	ResponseEntity<LivestockImpl> findById(Integer id);
+	LivestockView findById(Integer id);
 
-	LivestockImpl addLivestock(LivestockImpl livestock);
+	LivestockView addLivestock(LivestockView livestock);
 
-	LivestockImpl updateLivestock(LivestockImpl livestock);
+	LivestockView updateLivestock(LivestockView livestock);
 
 	boolean deleteLivestockById(Integer id);
 
-	List<LivestockImpl> findAllLivestock();
+	List<LivestockView> findAllLivestock();
 
-	boolean isLivestockExist(LivestockImpl livestock);
-
-	List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId);
+	List<LivestockView> findLivestockByFkAquariumId(Integer fkAquariumId);
 
 }

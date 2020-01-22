@@ -3,10 +3,9 @@ package mvc.manager.livestock;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import mvc.entity.livestock.LivestockImpl;
+import mvc.entity.livestock.LivestockView;
 import mvc.services.livestock.LivestockService;
 
 @Service
@@ -16,28 +15,27 @@ public class LivestockManagerImpl implements LivestockManager {
 	private LivestockService livestockService;
 
 	@Override
-	public ResponseEntity<LivestockImpl> findById(Integer livestockId) {
+	public LivestockView findById(Integer livestockId) {
 		return livestockService.findById(livestockId);
 	}
 
 	@Override
-	public List<LivestockImpl> findAllLivestock() {
+	public List<LivestockView> findAllLivestock() {
 		return livestockService.findAllLivestock();
 	}
 
 	@Override
-	public List<LivestockImpl> findLivestockByFkAquariumId(Integer fkAquariumId) {
-		System.out.println("helloo from manager: " + fkAquariumId);
+	public List<LivestockView> findLivestockByFkAquariumId(Integer fkAquariumId) {
 		return livestockService.findLivestockByFkAquariumId(fkAquariumId);
 	}
 
 	@Override
-	public LivestockImpl addLivestock(LivestockImpl livestock) {
+	public LivestockView addLivestock(LivestockView livestock) {
 		return livestockService.addLivestock(livestock);
 	}
 
 	@Override
-	public LivestockImpl updateLivestock(LivestockImpl livestock) {
+	public LivestockView updateLivestock(LivestockView livestock) {
 		return livestockService.updateLivestock(livestock);
 	}
 
@@ -45,10 +43,4 @@ public class LivestockManagerImpl implements LivestockManager {
 	public boolean deleteLivestockById(Integer livestockId) {
 		return livestockService.deleteLivestockById(livestockId);
 	}
-
-	@Override
-	public boolean isLivestockExist(LivestockImpl livestock) {
-		return livestockService.isLivestockExist(livestock);
-	}
-
 }

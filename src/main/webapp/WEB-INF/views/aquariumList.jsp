@@ -2,8 +2,7 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
 	<div class="container mb-3">
-		<h3 class="text-center mt-4 text white-background">Welcome, Add a
-			New Aquarium</h3>
+		<h3 class="text-center mt-4 text">Welcome, Add a New Aquarium</h3>
 		<br>
 		<div ng-controller="aquariumListController as ctrl">
 
@@ -47,8 +46,7 @@
 				<div class="form-row col">
 					<div class="form-group col-md-6">
 						<label for="date">Date<strong class="text-danger">
-								*</strong></label> 
-								<input type="text" ng-model="ctrl.aquarium.date" name="date"
+								*</strong></label> <input type="text" ng-model="ctrl.aquarium.date" name="date"
 							class="form-control" id="date" placeholder="MM/dd/yyyy" required>
 					</div>
 				</div>
@@ -91,21 +89,55 @@
 						</div>
 						<div class="card-footer text-center">
 							<a ng-href="livestock-list/{{t.aquariumId}}">
-								<button type="button" class="btn btn-info">View</button>
+								<button type="button" class="btn btn-info">
+								View  <i class="fa fa-home"></i> <i class='fas fa-fish'>
+								</button>
 							</a>
 
 							<button type="button" ng-click="ctrl.edit(t)"
 								class="btn btn-success">Edit</button>
-							<button type="button" ng-click="ctrl.remove(t.aquariumId)"
-								class="btn btn-danger">Delete</button>
+							<button type="button" data-toggle="modal"
+								data-target="#aquariumDelete"
+								ng-click="ctrl.remove(t.aquariumId)" class="btn btn-danger">Delete</button>
 
 						</div>
 					</div>
 				</div>
+
 			</div>
+
+			<!-- 			<div class="modal" id="aquariumDelete" tabindex="-1" role="dialog"
+				aria-labelledby="aquariumDeleteLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="aquariumDeleteLabel">Are you
+								sure?</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Are you sure you want to delete {{aquarium.name}} aquarium?
+								Deleting this aquarium will also delete all of the livestock
+								associated with it.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button type="button" ng-click="ctrl.remove(aquariumId)"
+								class="btn btn-danger" data-dismiss="modal">Continue
+								to Delete Aquarium</button>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
 		</div>
-		<%@ include file="/WEB-INF/views/modules/jsAquariumInclude.jsp"%>
+
 	</div>
+	<%@ include file="/WEB-INF/views/modules/jsAquariumInclude.jsp"%>
 </body>
 
 <%@ include file="/WEB-INF/views/modules/footer.jsp"%>

@@ -24,19 +24,16 @@ public class AquariumServiceImpl implements AquariumService {
 
 	@Override
 	public List<AquariumView> findAllAquariums() {
-		System.out.println("find all front service 1");
 		ResponseEntity<List<AquariumView>> response = restTemplate.exchange(BASE_URI + "/all", HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<AquariumView>>() {
 				});
-		System.out.println("find all front service 2");
 		return response.getBody();
 	}
 
 	@Override
 	public AquariumView findById(Integer aquariumId) {
 		String uri = String.join("", BASE_URI, "/{aquariumId}");
-		System.out.println("aquarium service : " + aquariumId);
-		return restTemplate.getForObject(BASE_URI + "/{aquariumId}", AquariumView.class, aquariumId);
+		return restTemplate.getForObject(uri, AquariumView.class, aquariumId);
 	}
 
 	@Override
@@ -54,11 +51,6 @@ public class AquariumServiceImpl implements AquariumService {
 		return aquarium;
 	}
 
-//	@Override
-//	public boolean isAquariumExist(AquariumView aquarium) {
-//		return findById(aquarium.getId()) != null;
-//	}
-//
 	@Override
 	public boolean deleteAquariumById(Integer aquariumId) {
 		String uri = BASE_URI + "/delete/{aquariumId}";

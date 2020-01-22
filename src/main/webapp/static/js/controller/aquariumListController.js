@@ -9,10 +9,10 @@ function aquariumListController(aquariumListService, $log) {
 
 	vm.aquarium = {
 		aquariumId : null,
-		name : undefined,
+		name : null,
 		type : 'Fresh Water',
-		gallon : undefined,
-		notes : undefined,
+		gallon : null,
+		notes : null,
 		date : null
 	};
 
@@ -40,6 +40,7 @@ function aquariumListController(aquariumListService, $log) {
 				fetchAllAquariums, function(errResponse) {
 					$log.error('Error while updating aquarium');
 				});
+		reset();
 	}
 
 	function deleteAquarium(aquariumId) {
@@ -51,7 +52,6 @@ function aquariumListController(aquariumListService, $log) {
 
 	function update() {
 		updateAquarium(vm.aquarium, vm.aquarium.aquariumId);
-		reset();
 	}
 
 	function edit(aquarium) {
@@ -67,10 +67,10 @@ function aquariumListController(aquariumListService, $log) {
 	function reset() {
 		vm.aquarium = {
 			aquariumId : null,
-			name : undefined,
+			name : null,
 			type : 'Fresh Water',
-			gallon : undefined,
-			notes : undefined,
+			gallon : null,
+			notes : null,
 			date : null
 		};
 	}

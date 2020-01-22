@@ -1,13 +1,27 @@
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
 	<div class="container my-3">
-		<h3 class="text-center mt-4 text white-background">Add New
-			Livestock</h3>
-		<br>
-		${aquarium.name} ${aquarium.type} ${aquarium.gallon} ${aquarium.notes} ${aquarium.date}
+		<div class="text-center my-4 text">
+			<div class="row">
+				<div class="col">
+					<div class="card text-center">
+						<h3 class="card-header font-weight-bold">${aquarium.name}</h3>
+						<div class="card-body">
+							<p class="card-text">
+								${aquarium.type} | ${aquarium.gallon} gallons |
+								${aquarium.notes} |
+								<fmt:formatDate value="${aquarium.date}" pattern="MM/dd/yyyy" />
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<br>
 		<div ng-controller="livestockController as ctrl"
 			ng-init="ctrl.init(${fkAquariumId})">
+
+			<h3 class="text-center text">Add New Livestock</h3>
 
 			<form ng-submit="ctrl.submit(${fkAquariumId})" name="livestockForm"
 				class="col text">
@@ -52,11 +66,9 @@
 					</div>
 				</div>
 			</form>
-			<br>
-			<h4 class="mt-4 text-center pt-3 text">Livestock List</h4>
-
 			<div class="container table-responsive">
-				<table class="table-striped table">
+				<br> <br>
+				<table class="table-striped table mt-4">
 					<thead class="thead-light">
 						<tr>
 							<th scope="col">Name</th>

@@ -57,11 +57,11 @@ public class AquariumServiceImpl implements AquariumService {
 		String uri = BASE_URI + "/delete/{aquariumId}";
 
 		if (aquariumId == null) {
-			logger.error("Delete aquarium failed");
+			logger.error("Delete aquarium failed" + aquariumId);
 			return false;
 		}
 		restTemplate.delete(uri, Integer.toString(aquariumId), AquariumView.class);
-		logger.info("Delete aquarium success");
+		logger.debug("Delete aquarium success" + aquariumId);
 		return true;
 	}
 }

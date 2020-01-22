@@ -55,6 +55,6 @@ public class AquariumController {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		aquariumManager.deleteAquariumById(aquariumId);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

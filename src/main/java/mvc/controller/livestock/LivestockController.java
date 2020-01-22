@@ -69,13 +69,7 @@ public class LivestockController {
 
 	@DeleteMapping(value = "/delete/{livestockId}")
 	public ResponseEntity<LivestockView> deleteLivestock(@PathVariable("livestockId") int livestockId) {
-
-		LivestockView livestock = livestockManager.findById(livestockId);
-		if (livestock == null) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-
 		livestockManager.deleteLivestockById(livestockId);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

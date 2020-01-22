@@ -67,11 +67,11 @@ public class LivestockServiceImpl implements LivestockService {
 	public boolean deleteLivestockById(Integer livestockId) {
 		String uri = BASE_URI + "/delete/{livestockId}";
 		if (livestockId == null) {
-			logger.error("Delete aquarium failed");
+			logger.error("Delete livestock failed" + livestockId);
 			return false;
 		}
 		restTemplate.delete(uri, Integer.toString(livestockId), LivestockView.class);
-		logger.info("Delete aquarium success");
+		logger.debug("Delete livestock success" + livestockId);
 		return true;
 	}
 }

@@ -83,7 +83,7 @@
 								<li ng-bind="t.type"></li>
 								<li ng-bind="t.gallon"></li>
 								<li ng-bind="t.notes"></li>
-								<li ng-bind="t.date | date:'mediumDate'"></li>
+								<li ng-bind="t.date | date:'MM/dd/yyyy'"></li>
 							</ul>
 							</p>
 						</div>
@@ -96,8 +96,7 @@
 
 							<button type="button" ng-click="ctrl.edit(t)"
 								class="btn btn-success">Edit</button>
-							<button type="button" data-toggle="modal"
-								data-target="#aquariumDelete"
+							<button type="button"
 								ng-click="ctrl.remove(t.aquariumId)" class="btn btn-danger">Delete</button>
 
 						</div>

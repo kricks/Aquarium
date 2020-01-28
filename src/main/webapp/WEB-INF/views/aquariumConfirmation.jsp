@@ -13,24 +13,18 @@
 					<div class="card-header font-weight-bold text-center">${message.name}</div>
 					<div class="card-body row">
 						<p class="card-text">
-						<ul class="list-unstyled col-4">
-							<li>Type:</li>
-							<li>Gallons:</li>
-							<li>Notes:</li>
-							<li>Date:</li>
-						</ul>
-						<ul class="list-unstyled col-8">
-							<li>${aquarium.type}</li>
-							<li>${aquarium.gallon}</li>
-							<li>${aquarium.notes}</li>
-							<li><fmt:formatDate value="${aquarium.date}"
+						<ul class="list-unstyled offset-2 col-10">
+							<li>Type : ${aquarium.type}</li>
+							<li>Gallons : ${aquarium.gallon}</li>
+							<li>Notes : ${aquarium.notes}</li>
+							<li> Date : <fmt:formatDate value="${aquarium.date}"
 									pattern="MM/dd/yyyy" /></li>
 						</ul>
 						</p>
 					</div>
 					<div class="card-footer text-center">
 						<a href="aquarium-list">
-							<button type="button" class="btn btn-primary">Go back to
+							<button type="button" class="btn btn-primary" id="backToAqList">Go back to
 								Aquarium List</button>
 						</a>
 

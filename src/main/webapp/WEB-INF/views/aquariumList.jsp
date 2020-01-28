@@ -15,13 +15,13 @@
 				<div class="form-row col">
 					<div class="form-group col-md-6">
 						<label for="tname">Name <strong class="text-danger">*</strong></label>
-						<input type="text" ng-model="ctrl.aquarium.name" id="name"
+						<input type="text" ng-model="ctrl.aquarium.name" id="nameField"
 							name="name" class="form-control" placeholder="Enter Name"
 							required>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="type">Type</label> <select name="type"
-							class="form-control" id="type" ng-model="ctrl.aquarium.type">
+							class="form-control" id="typeField" ng-model="ctrl.aquarium.type">
 							<option>Fresh Water</option>
 							<option>Salt Water</option>
 							<option>Brackish Water</option>
@@ -34,12 +34,12 @@
 					<div class="form-group col-md-6">
 						<label for="gallon">Gallons</label> <input type="number" min="0"
 							ng-model="ctrl.aquarium.gallon" name="gallon"
-							class="form-control" id="gallon" placeholder="Enter Gallons">
+							class="form-control" id="gallonField" placeholder="Enter Gallons">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="notes">Notes</label> <input type="text"
 							ng-model="ctrl.aquarium.notes" name="notes" class="form-control"
-							id="notes" placeholder="Enter Notes">
+							id="notesField" placeholder="Enter Notes">
 					</div>
 				</div>
 
@@ -47,57 +47,56 @@
 					<div class="form-group col-md-6">
 						<label for="date">Date<strong class="text-danger">
 								*</strong></label> <input type="text" ng-model="ctrl.aquarium.date" name="date"
-							class="form-control" id="date" placeholder="MM/dd/yyyy" required>
+							class="form-control" id="dateField" placeholder="MM/dd/yyyy"
+							required>
 					</div>
 				</div>
 
 				<div class="col">
 					<div class="float-right">
-						<input type="submit" ng-hide="ctrl.aquarium.aquariumId"
-							value="Add" class="btn btn-primary"> <input type="button"
-							ng-hide="!ctrl.aquarium.aquariumId" ng-click="ctrl.update()"
-							class="btn btn-primary text-white" value="Update">
-						<button type="button" ng-click="ctrl.reset()"
+						<input type="submit" id="submitButton"
+							ng-hide="ctrl.aquarium.aquariumId" value="Add"
+							class="btn btn-primary"> <input type="button"
+							id="updateButton" ng-hide="!ctrl.aquarium.aquariumId"
+							ng-click="ctrl.update()" class="btn btn-primary text-white"
+							value="Update">
+						<button type="button" id="clearForm" ng-click="ctrl.reset()"
 							class="btn btn-danger">Cancel</button>
 					</div>
 				</div>
 			</form>
-
+			<br>
 			<br>
 			<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
 
 			<div class="row">
 				<div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
-					<div class="card">
+					<div class="card" id="aquariumName-{{t.name}}">
 						<div class="card-header font-weight-bold text-center"
-							ng-bind="t.name"></div>
+							ng-bind="t.name" name="cardName" id="cardName"></div>
 						<div class="card-body row">
 							<p class="card-text ">
-							<ul class="list-unstyled col-4">
-								<li>Type:</li>
-								<li>Gallons:</li>
-								<li>Notes:</li>
-								<li>Date:</li>
-							</ul>
-							<ul class="list-unstyled col-8">
-								<li ng-bind="t.type"></li>
-								<li ng-bind="t.gallon"></li>
-								<li ng-bind="t.notes"></li>
-								<li ng-bind="t.date | date:'MM/dd/yyyy'"></li>
+							<ul class="list-unstyled offset-2 col-10">
+								<li>Type : {{t.type}}</li>
+								<li>Gallons : {{t.gallon}}</li>
+								<li>Notes : {{t.notes}}</li>
+								<li>Date : {{t.date | date:'MM/dd/yyyy'}}</li>
 							</ul>
 							</p>
 						</div>
 						<div class="card-footer text-center">
 							<a ng-href="livestock-list/{{t.aquariumId}}">
-								<button type="button" class="btn btn-info">
-									View <img class="ml-1" alt="fish icon" src="https://img.icons8.com/officexs/16/000000/clown-fish.png">
+								<button type="button" class="btn btn-info"
+									id="view-{{t.aquariumId}}">
+									View <img class="ml-1" alt="fish icon"
+										src="https://img.icons8.com/officexs/16/000000/clown-fish.png">
 								</button>
 							</a>
 
 							<button type="button" ng-click="ctrl.edit(t)"
-								class="btn btn-success">Edit</button>
-							<button type="button"
-								ng-click="ctrl.remove(t.aquariumId)" class="btn btn-danger">Delete</button>
+								class="btn btn-success" id="aquariumEdit-{{t.name}}">Edit</button>
+							<button type="button" ng-click="ctrl.remove(t.aquariumId)"
+								class="btn btn-danger" id="aquariumDelete-{{t.name}}">Delete</button>
 
 						</div>
 					</div>

@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-9">
 					<a class="float-right" href="aquarium-list">
-						<button class="btn btn-primary">Click here to get
+						<button class="btn btn-primary" id="getStarted">Click here to get
 							started!</button>
 					</a>
 				</div>

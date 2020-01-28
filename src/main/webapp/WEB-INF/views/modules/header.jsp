@@ -35,7 +35,7 @@
 <nav
 	class="black-background navbar navbar-expand-lg navbar-dark text-white"
 	id="top">
-	<a class="navbar-brand" href="../../AquariumBuilder/">Aquarium
+	<a id="aquariumBuilder" class="navbar-brand" href="../../AquariumBuilder/">Aquarium
 		Builder</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNav" aria-controls="navbarNav"
@@ -44,7 +44,7 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link"
+			<li class="nav-item"><a id="aquariumList" class="nav-link"
 				href="${pageContext.request.contextPath}/aquarium-list">Aquarium
 					List </a></li>
 		</ul>

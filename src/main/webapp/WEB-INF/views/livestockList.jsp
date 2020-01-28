@@ -31,20 +31,22 @@
 					<div class="form-group col-md-6">
 						<label for="tname">Name <strong class="text-danger">*</strong></label>
 						<input type="text" ng-model="ctrl.livestock.name" name="name"
-							class="form-control" placeholder="Enter Name" required="required"></input>
+							id="nameField" class="form-control" placeholder="Enter Name"
+							required="required"></input>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="species">Species <strong class="text-danger">*</strong></label>
 						<input type="text" name="species"
 							ng-model="ctrl.livestock.species" class="form-control"
-							id="species" placeholder="Enter Species" required="required"></input>
+							id="speciesField" placeholder="Enter Species" required="required"></input>
 					</div>
 
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="type">Gender</label> <select name="gender"
-							class="form-control" id="type" ng-model="ctrl.livestock.gender">
+							id="genderField" class="form-control"
+							ng-model="ctrl.livestock.gender">
 							<option>Male</option>
 							<option>Female</option>
 							<option>N/A</option>
@@ -52,17 +54,17 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="notes">Notes</label> <input type="text" name="notes"
-							ng-model="ctrl.livestock.notes" class="form-control" id="notes"
-							placeholder="Enter Notes"></input>
+							ng-model="ctrl.livestock.notes" class="form-control"
+							id="notesField" placeholder="Enter Notes"></input>
 					</div>
 				</div>
 				<div>
 					<div class="float-right">
-						<input type="submit"
+						<input type="submit" id="submitButton"
 							value="{{!ctrl.livestock.livestockId ? 'Add' : 'Update'}}"
 							class="btn btn-primary">
 						<button type="button" ng-click="ctrl.reset()"
-							class="btn btn-danger">Cancel</button>
+							class="btn btn-danger" id="clearForm">Cancel</button>
 					</div>
 				</div>
 			</form>
@@ -87,11 +89,11 @@
 							<td ng-bind="t.notes"></td>
 							<td class="float-right">
 
-								<button type="button" ng-click="ctrl.edit(t)"
-									class="btn btn-success">Edit</button>
+								<button type="button" id="livestockEdit-{{t.name}}"
+									ng-click="ctrl.edit(t)" class="btn btn-success">Edit</button>
 								<button type="button"
 									ng-click="ctrl.remove(t.livestockId, ${fkAquariumId})"
-									class="btn btn-danger">Delete</button>
+									class="btn btn-danger" id="livestockDelete-{{t.name}}">Delete</button>
 							</td>
 						</tr>
 					</tbody>

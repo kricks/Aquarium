@@ -30,22 +30,22 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="tname">Name <strong class="text-danger">*</strong></label>
-						<input type="text" ng-model="ctrl.livestock.name" name="name"
-							id="nameField" class="form-control" placeholder="Enter Name"
+						<input type="text" ng-model="ctrl.livestock.name" name="nameFieldLS"
+							id="nameFieldLS" class="form-control" placeholder="Enter Name"
 							required="required"></input>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="species">Species <strong class="text-danger">*</strong></label>
 						<input type="text" name="species"
 							ng-model="ctrl.livestock.species" class="form-control"
-							id="speciesField" placeholder="Enter Species" required="required"></input>
+							id="speciesFieldLS" placeholder="Enter Species" required="required"></input>
 					</div>
 
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="type">Gender</label> <select name="gender"
-							id="genderField" class="form-control"
+							id="genderFieldLS" class="form-control"
 							ng-model="ctrl.livestock.gender">
 							<option>Male</option>
 							<option>Female</option>
@@ -55,7 +55,7 @@
 					<div class="form-group col-md-6">
 						<label for="notes">Notes</label> <input type="text" name="notes"
 							ng-model="ctrl.livestock.notes" class="form-control"
-							id="notesField" placeholder="Enter Notes"></input>
+							id="notesFieldLS" placeholder="Enter Notes"></input>
 					</div>
 				</div>
 				<div>

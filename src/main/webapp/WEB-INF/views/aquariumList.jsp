@@ -1,57 +1,63 @@
 
 <%@ include file="/WEB-INF/views/modules/header.jsp"%>
 <body ng-app="myApp">
-	<div class="container mb-3">
+	<div class="container mb-3" id="aquariumList">
 		<h3 class="text-center mt-4 text">Welcome, Add a New Aquarium</h3>
 		<br>
 		<div ng-controller="aquariumListController as ctrl">
 
 			<form method="POST" action="aquarium-confirmation" id="top"
 				modelAttribute="aquariumConfirmation" name="aquariumForm"
-				class="col text">
+				class="col text" autocomplete="off">
+				<div id="test">
+					<input type="hidden" ng-model="ctrl.aquarium.aquariumId" />
 
-				<input type="hidden" ng-model="ctrl.aquarium.aquariumId" />
-
-				<div class="form-row col">
-					<div class="form-group col-md-6">
-						<label for="tname">Name <strong class="text-danger">*</strong></label>
-						<input type="text" ng-model="ctrl.aquarium.name" id="nameField"
-							name="name" class="form-control" placeholder="Enter Name"
-							required>
+					<div class="form-row col">
+						<div class="form-group col-md-6">
+							<label for="tname">Name <strong class="text-danger">*</strong></label>
+							<input type="text" ng-model="ctrl.aquarium.name" id="nameField"
+								name="name" class="form-control" placeholder="Enter Name"
+								required>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="type">Type <strong class="text-danger">*</strong></label> 
+							<select required name="type"
+								class="form-control" id="typeField"
+								ng-model="ctrl.aquarium.type">
+								<option disabled selected value="" hidden>Select Type
+									of Aquarium</option>
+								<option value="Fresh Water">Fresh Water</option>
+								<option value="Salt Water">Salt Water</option>
+								<option value="Brackish Water">Brackish Water</option>
+							</select>
+						</div>
 					</div>
-					<div class="form-group col-md-6">
-						<label for="type">Type</label> <select name="type"
-							class="form-control" id="typeField" ng-model="ctrl.aquarium.type">
-							<option>Fresh Water</option>
-							<option>Salt Water</option>
-							<option>Brackish Water</option>
-						</select>
+
+
+					<div class="form-row col">
+						<div class="form-group col-md-6">
+							<label for="gallon">Gallons</label> <input type="number" min="0"
+								ng-model="ctrl.aquarium.gallon" name="gallon"
+								class="form-control" id="gallonField"
+								placeholder="Enter Gallons">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="notes">Notes</label> <input type="text"
+								ng-model="ctrl.aquarium.notes" name="notes" class="form-control"
+								id="notesField" placeholder="Enter Notes">
+						</div>
+					</div>
+
+					<div class="form-row col">
+						<div class="form-group col-md-6">
+							<label for="date">Date<strong class="text-danger">
+									*</strong></label> 
+								<input type="text" ng-model="ctrl.aquarium.date" name="date"
+								class="form-control" id="dateField" placeholder="MM/dd/yyyy"
+								required ng-change="checkDate(ctrl.aquarium.date)">
+						</div>
 					</div>
 				</div>
-
-
-				<div class="form-row col">
-					<div class="form-group col-md-6">
-						<label for="gallon">Gallons</label> <input type="number" min="0"
-							ng-model="ctrl.aquarium.gallon" name="gallon"
-							class="form-control" id="gallonField" placeholder="Enter Gallons">
-					</div>
-					<div class="form-group col-md-6">
-						<label for="notes">Notes</label> <input type="text"
-							ng-model="ctrl.aquarium.notes" name="notes" class="form-control"
-							id="notesField" placeholder="Enter Notes">
-					</div>
-				</div>
-
-				<div class="form-row col">
-					<div class="form-group col-md-6">
-						<label for="date">Date<strong class="text-danger">
-								*</strong></label> <input type="text" ng-model="ctrl.aquarium.date" name="date"
-							class="form-control" id="dateField" placeholder="MM/dd/yyyy"
-							required>
-					</div>
-				</div>
-
 				<div class="col">
 					<div class="float-right">
 						<input type="submit" id="submitButton"
@@ -65,24 +71,32 @@
 					</div>
 				</div>
 			</form>
-			<br>
-			<br>
+
+			<br> <br>
 			<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
 
 			<div class="row">
 				<div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
-					<div class="card" id="aquariumName-{{t.name}}">
+					<div class="card">
+					<div id="aquariumName-{{t.name}}">
 						<div class="card-header font-weight-bold text-center"
-							ng-bind="t.name" name="cardName" id="cardName"></div>
+							ng-bind="t.name" name="cardName" id="cardName-{{t.name}}"></div>
 						<div class="card-body row">
 							<p class="card-text ">
-							<ul class="list-unstyled offset-2 col-10">
-								<li>Type : {{t.type}}</li>
-								<li>Gallons : {{t.gallon}}</li>
-								<li>Notes : {{t.notes}}</li>
-								<li>Date : {{t.date | date:'MM/dd/yyyy'}}</li>
+							<ul class="list-unstyled col-4">
+								<li>Type:</li>
+								<li>Gallons:</li>
+								<li>Notes:</li>
+								<li>Date:</li>
+							</ul>
+							<ul class="list-unstyled col-8">
+								<li ng-bind="t.type"></li>
+								<li ng-bind="t.gallon"></li>
+								<li ng-bind="t.notes"></li>
+								<li ng-bind="t.date | date:'MM/dd/yyyy'"></li>
 							</ul>
 							</p>
+						</div>
 						</div>
 						<div class="card-footer text-center">
 							<a ng-href="livestock-list/{{t.aquariumId}}">

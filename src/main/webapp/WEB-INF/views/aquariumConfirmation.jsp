@@ -10,14 +10,20 @@
 		<div class="row">
 			<div class="col-sm-6 offset-sm-4 col-lg-4 mt-4">
 				<div class="card">
-					<div class="card-header font-weight-bold text-center">${message.name}</div>
+					<div class="card-header font-weight-bold text-center" id="nameConf">${message.name}</div>
 					<div class="card-body row">
 						<p class="card-text">
-						<ul class="list-unstyled offset-2 col-10">
-							<li>Type : ${aquarium.type}</li>
-							<li>Gallons : ${aquarium.gallon}</li>
-							<li>Notes : ${aquarium.notes}</li>
-							<li> Date : <fmt:formatDate value="${aquarium.date}"
+						<ul class="list-unstyled col-4">
+							<li>Type:</li>
+							<li>Gallons:</li>
+							<li>Notes:</li>
+							<li>Date:</li>
+						</ul>
+						<ul class="list-unstyled col-8">
+							<li id="typeConf">${aquarium.type}</li>
+							<li id="gallonConf">${aquarium.gallon}</li>
+							<li id="notesConf">${aquarium.notes}</li>
+							<li id="dateConf"><fmt:formatDate value="${aquarium.date}"
 									pattern="MM/dd/yyyy" /></li>
 						</ul>
 						</p>

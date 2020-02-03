@@ -10,10 +10,10 @@ function livestockController(livestockService, $log) {
 	vm.livestock = {
 		livestockId : null,
 		fkAquariumId : null,
-		name : undefined,
-		species : undefined,
-		gender : 'Male',
-		notes : undefined
+	// name : undefined,
+	// species : undefined,
+	// gender : 'Male',
+	// notes : undefined
 	};
 
 	vm.livestocks = [];
@@ -32,17 +32,17 @@ function livestockController(livestockService, $log) {
 		livestockService.fetchAllLivestockByAquariumId(fkAquariumId).then(
 				function(d) {
 					vm.livestocks = d;
-				}, function(errResponse) {
-					$log.error('Error while fetching Livestock');
 				});
+		console.log("fetch all function ");
 	}
-
+	
 	function createLivestock(livestock) {
 		livestockService.createLivestock(livestock).then(
 				fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId),
 				function(errResponse) {
 					$log.error('Error while saving livestock');
 				});
+		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 	}
 
@@ -53,6 +53,7 @@ function livestockController(livestockService, $log) {
 					$log.error('Error while updating livestock');
 				});
 		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
+		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 	}
 
 	function deleteLivestock(livestockId) {
@@ -61,6 +62,7 @@ function livestockController(livestockService, $log) {
 				function(errResponse) {
 					$log.error('Error while deleting livestock');
 				});
+		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 		fetchAllLivestockByAquariumId(vm.livestock.fkAquariumId);
 	}
 
@@ -97,10 +99,10 @@ function livestockController(livestockService, $log) {
 		vm.livestock = {
 			livestockId : null,
 			fkAquariumId : null,
-			name : undefined,
-			species : undefined,
-			gender : 'Male',
-			notes : undefined
+		// name : undefined,
+		// species : undefined,
+		// gender : 'Male',
+		// notes : undefined
 		};
 	}
 }

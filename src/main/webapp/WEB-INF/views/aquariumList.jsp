@@ -25,7 +25,7 @@
 								class="form-control" id="typeField"
 								ng-model="ctrl.aquarium.type">
 								<option disabled selected value="" hidden>Select Type
-									of Aquarium</option>
+									of Aquarium : </option>
 								<option value="Fresh Water">Fresh Water</option>
 								<option value="Salt Water">Salt Water</option>
 								<option value="Brackish Water">Brackish Water</option>

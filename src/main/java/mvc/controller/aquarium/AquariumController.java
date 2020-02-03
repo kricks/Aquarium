@@ -20,7 +20,6 @@ import mvc.manager.aquarium.AquariumManager;
 @RequestMapping(value = "/aquarium")
 @RestController
 public class AquariumController {
-	// TODO: think how to handle errors
 
 	@Autowired
 	private AquariumManager aquariumManager;
@@ -30,7 +29,6 @@ public class AquariumController {
 		List<AquariumView> aquariums = aquariumManager.findAllAquariums();
 		if (aquariums.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			// if no content then I can make message here to show instead
 		}
 		return new ResponseEntity<>(aquariums, HttpStatus.OK);
 	}

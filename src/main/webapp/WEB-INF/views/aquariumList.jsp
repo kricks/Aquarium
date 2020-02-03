@@ -38,7 +38,7 @@
 							<label for="gallon">Gallons</label> <input type="number" min="0"
 								ng-model="ctrl.aquarium.gallon" name="gallon"
 								class="form-control" id="gallonField"
-								placeholder="Enter Gallons">
+								placeholder="Enter Gallons : No Negative Numbers">
 						</div>
 						<div class="form-group col-md-6">
 							<label for="notes">Notes</label> <input type="text"

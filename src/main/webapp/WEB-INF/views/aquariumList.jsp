@@ -20,12 +20,11 @@
 								required>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="type">Type <strong class="text-danger">*</strong></label> 
-							<select required name="type"
-								class="form-control" id="typeField"
+							<label for="type">Type <strong class="text-danger">*</strong></label>
+							<select required name="type" class="form-control" id="typeField"
 								ng-model="ctrl.aquarium.type">
 								<option disabled selected value="" hidden>Select Type
-									of Aquarium : </option>
+									of Aquarium :</option>
 								<option value="Fresh Water">Fresh Water</option>
 								<option value="Salt Water">Salt Water</option>
 								<option value="Brackish Water">Brackish Water</option>
@@ -51,18 +50,21 @@
 					<div class="form-row col">
 						<div class="form-group col-md-6">
 							<label for="date">Date<strong class="text-danger">
-									*</strong></label> 
-								<input type="text" ng-model="ctrl.aquarium.date" name="date"
+									*</strong></label> <input type="text" ng-model="ctrl.aquarium.date" name="date"
 								class="form-control" id="dateField" placeholder="MM/dd/yyyy"
-								required ng-change="checkDate(ctrl.aquarium.date)">
+								required
+								ng-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/">
+							<span ng-show="aquariumForm.date.$error.pattern"
+								style="color: red" > Date is not valid. Format date as : MM/dd/yyyy</span>
 						</div>
 					</div>
 				</div>
 				<div class="col">
 					<div class="float-right">
-						<input type="submit" id="submitButton"
+						<input type="submit" id="submitButton" ng-disabled="aquariumForm.$invalid"
 							ng-hide="ctrl.aquarium.aquariumId" value="Add"
-							class="btn btn-primary"> <input type="button"
+							class="btn btn-primary"> 
+						<input type="button" ng-disabled="aquariumForm.$invalid"
 							id="updateButton" ng-hide="!ctrl.aquarium.aquariumId"
 							ng-click="ctrl.update()" class="btn btn-primary text-white"
 							value="Update">
@@ -78,25 +80,25 @@
 			<div class="row">
 				<div class="col-sm-6 col-lg-4 my-2" ng-repeat="t in ctrl.aquariums">
 					<div class="card">
-					<div id="aquariumName-{{t.name}}">
-						<div class="card-header font-weight-bold text-center"
-							ng-bind="t.name" name="cardName" id="cardName-{{t.name}}"></div>
-						<div class="card-body row">
-							<p class="card-text ">
-							<ul class="list-unstyled col-4">
-								<li>Type:</li>
-								<li>Gallons:</li>
-								<li>Notes:</li>
-								<li>Date:</li>
-							</ul>
-							<ul class="list-unstyled col-8">
-								<li ng-bind="t.type"></li>
-								<li ng-bind="t.gallon"></li>
-								<li ng-bind="t.notes"></li>
-								<li ng-bind="t.date | date:'MM/dd/yyyy'"></li>
-							</ul>
-							</p>
-						</div>
+						<div id="aquariumName-{{t.name}}">
+							<div class="card-header font-weight-bold text-center"
+								ng-bind="t.name" name="cardName" id="cardName-{{t.name}}"></div>
+							<div class="card-body row">
+								<p class="card-text ">
+								<ul class="list-unstyled col-4">
+									<li>Type:</li>
+									<li>Gallons:</li>
+									<li>Notes:</li>
+									<li>Date:</li>
+								</ul>
+								<ul class="list-unstyled col-8">
+									<li ng-bind="t.type"></li>
+									<li ng-bind="t.gallon"></li>
+									<li ng-bind="t.notes"></li>
+									<li ng-bind="t.date | date:'MM/dd/yyyy'"></li>
+								</ul>
+								</p>
+							</div>
 						</div>
 						<div class="card-footer text-center">
 							<a ng-href="livestock-list/{{t.aquariumId}}">

@@ -35,10 +35,13 @@
 
 					<div class="form-row col">
 						<div class="form-group col-md-6">
-							<label for="gallon">Gallons</label> <input type="number" min="0"
+							<label for="gallon">Gallons</label> 
+							<input type="number" min="0"
 								ng-model="ctrl.aquarium.gallon" name="gallon"
-								class="form-control" id="gallonField"
-								placeholder="Enter Gallons : No Negative Numbers">
+								class="form-control" id="gallonField" ng-pattern="/^[0-9]*$/"
+								placeholder="Enter Number of Gallons">
+								<span ng-show="aquariumForm.gallon.$error.pattern" id="gallonErrorMessage"
+								style="color: red" >Negative Numbers and Decimals are invalid!</span>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="notes">Notes</label> <input type="text"
@@ -54,7 +57,7 @@
 								class="form-control" id="dateField" placeholder="MM/dd/yyyy"
 								required
 								ng-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/">
-							<span ng-show="aquariumForm.date.$error.pattern"
+							<span ng-show="aquariumForm.date.$error.pattern" id="dateErrorMessage"
 								style="color: red" > Date is not valid. Format date as : MM/dd/yyyy</span>
 						</div>
 					</div>
@@ -85,12 +88,9 @@
 								ng-bind="t.name" name="cardName" id="cardName-{{t.name}}"></div>
 							<div class="card-body row">
 								<p class="card-text ">
-								<ul class="list-unstyled col-4">
-									<li>Type:</li>
-									<li>Gallons:</li>
-									<li>Notes:</li>
-									<li>Date:</li>
-								</ul>
+								<div class="list-unstyled col-4">
+									<img class="image mt-3" src="<c:url value='/static/images/fishBowl.png'/>" alt="fish bowl">
+								</div>
 								<ul class="list-unstyled col-8">
 									<li ng-bind="t.type"></li>
 									<li ng-bind="t.gallon"></li>

@@ -13,12 +13,9 @@
 					<div class="card-header font-weight-bold text-center" id="nameConf">${message.name}</div>
 					<div class="card-body row">
 						<p class="card-text">
-						<ul class="list-unstyled col-4">
-							<li>Type:</li>
-							<li>Gallons:</li>
-							<li>Notes:</li>
-							<li>Date:</li>
-						</ul>
+						<div class="list-unstyled col-4">
+									<img class="image mt-3" src="<c:url value='/static/images/fishBowl.png'/>" alt="fish bowl">
+								</div>
 						<ul class="list-unstyled col-8">
 							<li id="typeConf">${aquarium.type}</li>
 							<li id="gallonConf">${aquarium.gallon}</li>

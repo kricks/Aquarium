@@ -34,6 +34,10 @@ a {
 	flex: 1 0 auto;
 }
 
+.image {
+	width: 100%;
+}
+
 .footer {
 	flex-shrink: 0;
 	background-color: rgba(0, 0, 0, 0.6);

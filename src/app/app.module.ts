@@ -13,7 +13,6 @@ import { LivestockListComponent } from './livestock/livestock-list/livestock-lis
 import { AquariumListComponent } from './aquarium/aquarium-list/aquarium-list.component';
 import { AquariumDetailComponent } from './aquarium/aquarium-detail/aquarium-detail.component';
 import { LivestockDetailComponent } from './livestock/livestock-detail/livestock-detail.component';
-import { AquariumItemComponent } from './aquarium/aquarium-list/aquarium-item/aquarium-item.component';
 import { HomeComponent } from './home/home.component';
 import { AquariumFormComponent } from './aquarium/aquarium-form/aquarium-form.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
     AquariumListComponent,
     AquariumDetailComponent,
     LivestockDetailComponent,
-    AquariumItemComponent,
     HomeComponent,
     AquariumFormComponent
   ],

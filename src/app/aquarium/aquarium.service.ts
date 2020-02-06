@@ -20,9 +20,11 @@ export class AquariumService {
   private baseUri = "http://localhost:8080/aquarium";
   private all = "/all";
   private create = "/create";
+  private update = "/update";
+  private delete = "/delete";
 
   getAllAquariums(): Observable<any> {
-    return this.http.get(this.baseUri+"/all");
+    return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
   getAquariumByID(aquariumId: number) : Observable<any> {
@@ -30,15 +32,15 @@ export class AquariumService {
   }
 
   createAquarium(aquarium: Object) : Observable<any> {
-    return this.http.get(`${this.baseUri}`, aquarium);
+    return this.http.get(`${this.baseUri}/${this.create}`, aquarium);
   }
 
   updateAquarium(aquariumId: number, value: any) : Observable<any> {
-    return this.http.put(`${this.baseUri}/${aquariumId}`, value);
+    return this.http.put(`${this.baseUri}/${this.update}/${aquariumId}`, value);
   }
 
   deleteAquarium(aquariumId: number) : Observable<any> {
-    return this.http.delete(`${this.baseUri}/${aquariumId}`);
+    return this.http.delete(`${this.baseUri}/${this.delete}/${aquariumId}`);
   }
 
 }

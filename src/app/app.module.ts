@@ -1,3 +1,4 @@
+import { AquariumListService } from './aquarium/aquarium-list/aquarium-list.service';
 import { AquariumService } from './aquarium/aquarium.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { LivestockDetailComponent } from './livestock/livestock-detail/livestock
 import { AquariumItemComponent } from './aquarium/aquarium-list/aquarium-item/aquarium-item.component';
 import { HomeComponent } from './home/home.component';
 import { AquariumFormComponent } from './aquarium/aquarium-form/aquarium-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,12 @@ import { AquariumFormComponent } from './aquarium/aquarium-form/aquarium-form.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    AquariumService
+    AquariumService,
+    AquariumListService
   ],
   bootstrap: [AppComponent]
 })

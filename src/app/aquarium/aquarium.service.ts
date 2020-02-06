@@ -1,14 +1,44 @@
+import { Aquarium } from './aquarium.model';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AquariumService {
 
-  constructor() { }
+  constructor(private http: HttpClient){}
 
-  getAquariums() {
-    return ["1", "2", "3"];
+    // Http Headers
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
+  private baseUri = "http://localhost:8080/aquarium";
+  private all = "/all";
+  private create = "/create";
+
+  getAllAquariums(): Observable<any> {
+    return this.http.get(this.baseUri+"/all");
+  }
+
+  getAquariumByID(aquariumId: number) : Observable<any> {
+    return this.http.get(`${this.baseUri}/${aquariumId}`);
+  }
+
+  createAquarium(aquarium: Object) : Observable<any> {
+    return this.http.get(`${this.baseUri}`, aquarium);
+  }
+
+  updateAquarium(aquariumId: number, value: any) : Observable<any> {
+    return this.http.put(`${this.baseUri}/${aquariumId}`, value);
+  }
+
+  deleteAquarium(aquariumId: number) : Observable<any> {
+    return this.http.delete(`${this.baseUri}/${aquariumId}`);
   }
 
 }

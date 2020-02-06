@@ -1,5 +1,12 @@
 <div class="container">
-    <div class="alert alert-primary" role="alert">
-        Aquarium list works!
-    </div>
+    <h3>Aquarium List Component | {{title}} </h3>
+    
+    <ul>Ng for values :
+        <li *ngFor="let t of test">
+            {{t}}
+        </li>
+        end of values
+    </ul>
+
+    <router-outlet></router-outlet>
 </div>

@@ -1,119 +1,127 @@
 export class Aquarium {
-  private _aquairumId: number;
-  private _name: string;
-  private _type: string;
-  private _gallon: number;
-  private _notes: string;
-  private _date: Date;
+  aquariumId: number;
+  name: string;
+  type: string;
+  gallon: number;
+  date: string;
 
-  constructor(
-    aquairumId: number,
-    name: string,
-    type: string,
-    gallon: number,
-    notes: string,
-    date: Date
-  ) {
-    this._aquairumId = aquairumId;
-    this._name = name;
-    this._type = type;
-    this._gallon = gallon;
-    this._notes = notes;
-    this._date = date;
-  }
-  /**
-   * Getter aquairumId
-   * @return {number}
-   */
-  public get aquairumId(): number {
-    return this._aquairumId;
-  }
+  // private _aquairumId: number;
+  // private _name: string;
+  // private _type: string;
+  // private _gallon: number;
+  // private _notes: string;
+  // private _date: string;
 
-  /**
-   * Setter aquairumId
-   * @param {number} value
-   */
-  public set aquairumId(value: number) {
-    this._aquairumId = value;
-  }
+  // constructor(
+  //   aquairumId: number,
+  //   name: string,
+  //   type: string,
+  //   gallon: number,
+  //   notes: string,
+  //   date: string
+  // ) {
+  //   this._aquairumId = aquairumId;
+  //   this._name = name;
+  //   this._type = type;
+  //   this._gallon = gallon;
+  //   this._notes = notes;
+  //   this._date = date;
+  // }
+  //   /**
+  //    * Getter aquairumId
+  //    * @return {number}
+  //    */
+	// public get aquairumId(): number {
+	// 	return this._aquairumId;
+	// }
 
-  /**
-   * Getter name
-   * @return {string}
-   */
-  public get name(): string {
-    return this._name;
-  }
+  //   /**
+  //    * Setter aquairumId
+  //    * @param {number} value
+  //    */
+	// public set aquairumId(value: number) {
+	// 	this._aquairumId = value;
+	// }
 
-  /**
-   * Setter name
-   * @param {string} value
-   */
-  public set name(value: string) {
-    this._name = value;
-  }
+  //   /**
+  //    * Getter name
+  //    * @return {string}
+  //    */
+	// public get name(): string {
+	// 	return this._name;
+	// }
 
-  /**
-   * Getter type
-   * @return {string}
-   */
-  public get type(): string {
-    return this._type;
-  }
+  //   /**
+  //    * Setter name
+  //    * @param {string} value
+  //    */
+	// public set name(value: string) {
+	// 	this._name = value;
+	// }
 
-  /**
-   * Setter type
-   * @param {string} value
-   */
-  public set type(value: string) {
-    this._type = value;
-  }
+  //   /**
+  //    * Getter type
+  //    * @return {string}
+  //    */
+	// public get type(): string {
+	// 	return this._type;
+	// }
 
-  /**
-   * Getter gallon
-   * @return {number}
-   */
-  public get gallon(): number {
-    return this._gallon;
-  }
+  //   /**
+  //    * Setter type
+  //    * @param {string} value
+  //    */
+	// public set type(value: string) {
+	// 	this._type = value;
+	// }
 
-  /**
-   * Setter gallon
-   * @param {number} value
-   */
-  public set gallon(value: number) {
-    this._gallon = value;
-  }
+  //   /**
+  //    * Getter gallon
+  //    * @return {number}
+  //    */
+	// public get gallon(): number {
+	// 	return this._gallon;
+	// }
 
-  /**
-   * Getter notes
-   * @return {string}
-   */
-  public get notes(): string {
-    return this._notes;
-  }
+  //   /**
+  //    * Setter gallon
+  //    * @param {number} value
+  //    */
+	// public set gallon(value: number) {
+	// 	this._gallon = value;
+	// }
 
-  /**
-   * Setter notes
-   * @param {string} value
-   */
-  public set notes(value: string) {
-    this._notes = value;
-  }
+  //   /**
+  //    * Getter notes
+  //    * @return {string}
+  //    */
+	// public get notes(): string {
+	// 	return this._notes;
+	// }
 
-  /**
-   * Getter date
-   * @return {Date}
-   */
-  public get date(): Date {
-    return this._date;
-  }
+  //   /**
+  //    * Setter notes
+  //    * @param {string} value
+  //    */
+	// public set notes(value: string) {
+	// 	this._notes = value;
+	// }
+  //   /**
+  //    * Getter date
+  //    * @return {Date}
+  //    */
+	// public get date(): string {
+	// 	return this._date;
+	// }
 
-  /**
-   * Setter date
-   * @param {Date} value
-   */
-  public set date(value: Date) {
-    this._date = value;
-  }
+  //   /**
+  //    * Setter date
+  //    * @param {Date} value
+  //    */
+	// public set date(value: string) {
+	// 	this._date = value;
+	// }
+
+
+  
 }

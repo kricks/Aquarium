@@ -1,7 +1,21 @@
 <div class="container">
 <h3>Aquarium Component | {{title}} </h3>
+
 <app-aquarium-form></app-aquarium-form>
+
 <router-outlet></router-outlet>
+
+<ul>
+    <li *ngFor="let aq of aquariums | async">
+        {{aq.name}}
+        {{aq.type}}
+        {{aq.gallon}}
+        {{aq.notes}}
+        {{aq.date}}
+    </li>
+</ul>
+
+<app-aquarium-list></app-aquarium-list>
 </div>
 
 

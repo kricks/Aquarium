@@ -19,7 +19,7 @@ export class AquariumService {
 
   private baseUri = "http://localhost:8080/aquarium";
   private all = "/all";
-  private create = "/create";
+  private create = "create";
   private update = "/update";
   private delete = "/delete";
 
@@ -32,7 +32,10 @@ export class AquariumService {
   }
 
   createAquarium(aquarium: Object) : Observable<any> {
-    return this.http.get(`${this.baseUri}/${this.create}`, aquarium);
+    // let date = new Date();
+    // let jsonDate = JSON.stringify(date);
+    // console.log(jsonDate);
+    return this.http.post(`${this.baseUri}/${this.create}`, aquarium);
   }
 
   updateAquarium(aquariumId: number, value: any) : Observable<any> {

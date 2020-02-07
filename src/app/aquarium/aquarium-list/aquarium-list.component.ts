@@ -30,4 +30,16 @@ export class AquariumListComponent implements OnInit {
     //   });
   }
 
+  onEdit() {
+
+  }
+
+  onDelete() {
+
+  }
+
+  onView() {
+    
+  }
+
 }

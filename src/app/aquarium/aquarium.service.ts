@@ -27,14 +27,11 @@ export class AquariumService {
     return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
-  getAquariumByID(aquariumId: number) : Observable<any> {
+  getAquariumById(aquariumId: number) : Observable<any> {
     return this.http.get(`${this.baseUri}/${aquariumId}`);
   }
 
   createAquarium(aquarium: Object) : Observable<any> {
-    // let date = new Date();
-    // let jsonDate = JSON.stringify(date);
-    // console.log(jsonDate);
     return this.http.post(`${this.baseUri}/${this.create}`, aquarium);
   }
 

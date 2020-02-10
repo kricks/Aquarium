@@ -14,6 +14,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
+  aquarium: Aquarium;
 
   constructor(private service: AquariumService, private router: Router) {}
 
@@ -32,6 +33,11 @@ export class AquariumListComponent implements OnInit {
     //   });
   }
 
+  getAquariumById(aquariumId) {
+    this.aquarium = new Aquarium();
+    this.service.getAquariumById(aquariumId)
+  }
+
   onEdit(aquariumId: number, value: any) {
     this.service.updateAquarium(aquariumId, value).subscribe()
   }
@@ -43,8 +49,8 @@ export class AquariumListComponent implements OnInit {
     error => console.log("on delete error"));
   }
 
-  onView(aquariums) {
-    this.router.navigate(['livestock', aquariums]);
+  onView(aquariumId) {
+    this.router.navigate(['livestock', aquariumId]);
   }
 
 }

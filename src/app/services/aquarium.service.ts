@@ -1,4 +1,4 @@
-import { Aquarium } from './aquarium.model';
+import { Aquarium } from '../aquarium/aquarium.model';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,10 +18,10 @@ export class AquariumService {
   }
 
   private baseUri = "http://localhost:8080/aquarium";
-  private all = "/all";
+  private all = "all";
   private create = "create";
-  private update = "/update";
-  private delete = "/delete";
+  private update = "update";
+  private delete = "delete";
 
   getAllAquariums(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);

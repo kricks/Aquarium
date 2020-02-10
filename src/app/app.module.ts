@@ -1,5 +1,5 @@
-import { AquariumListService } from './aquarium/aquarium-list/aquarium-list.service';
-import { AquariumService } from './aquarium/aquarium.service';
+import { LivestockService } from './services/livestock.service';
+import { AquariumService } from './services/aquarium.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AquariumService,
-    AquariumListService
+    LivestockService
   ],
   bootstrap: [AppComponent]
 })

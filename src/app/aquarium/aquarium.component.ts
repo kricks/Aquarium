@@ -1,6 +1,3 @@
-import { Observable } from 'rxjs';
-import { Aquarium } from './aquarium.model';
-import { AquariumService } from './aquarium.service';
 import { Component, OnInit, ɵCodegenComponentFactoryResolver, ViewEncapsulation } from '@angular/core';
 
 @Component({

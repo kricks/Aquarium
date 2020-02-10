@@ -16,8 +16,9 @@ const routes: Routes = [
     // {path: 'id', component:},
     // {path: 'id/edit', component:},
   ]},
-  { path: 'livestock', component: LivestockListComponent, children: [
-      {path: ':aquariumId', component: LivestockListComponent}
+  { path: 'livestock', component: LivestockListComponent},
+  { path: 'livestock/:aquariumId', component: LivestockListComponent, children: [
+     // {path: ':aquariumId', component: LivestockListComponent}
   ]},
 ];
 

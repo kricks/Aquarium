@@ -2,8 +2,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Aquarium } from '../aquarium.model';
 import { Observable } from 'rxjs';
-import { AquariumService } from '../aquarium.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { AquariumService } from 'src/app/services/aquarium.service';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-aquarium-list',
@@ -14,32 +14,36 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
-  aquarium: Aquarium;
+  aquarium: Aquarium = new Aquarium();
 
-  constructor(private service: AquariumService, private router: Router) {}
+  constructor(private service: AquariumService, private sharedService: SharedDataService, private router: Router) {}
 
   ngOnInit() {
     this.reloadData();
+    this.sharedService.sendMessage('hi 1');
+    this.sharedService.message$.subscribe(data => {
+      console.log(data);
+    });
   }
 
   reloadData() {
-    this.aquariums = this.service.getAllAquariums();
+   this.aquariums = this.service.getAllAquariums();
+  }
 
-    // this.service.getAllAquariums().subscribe((res: any) => {
-    //   this.aquariums = res;
-    //   console.log(this.aquariums);
-    //   }, err => {
-    //     console.log(err);
-    //   });
+  onEdit(aquariumId) {
+    this.getAquariumById(aquariumId);
+    console.log("on edit " + aquariumId);
+    this.aquarium = Object.assign([], this.aquarium);
+    console.log(this.aquarium);
+    // here is where i need to figure out how to populate field
+
   }
 
   getAquariumById(aquariumId) {
-    this.aquarium = new Aquarium();
-    this.service.getAquariumById(aquariumId)
-  }
-
-  onEdit(aquariumId: number, value: any) {
-    this.service.updateAquarium(aquariumId, value).subscribe()
+    this.service.getAquariumById(aquariumId).subscribe(data => {
+      this.aquarium = data;
+    },
+    error => console.log("error get aquariumId"));
   }
 
   onDelete(aquariumId: number) {

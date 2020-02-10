@@ -1,1 +1,11 @@
 <p>livestock-list works!</p>
+
+hello
+<ul>
+    <li *ngFor="let ls of livestocks | async">
+        {{ls.name}}
+        {{ls.species}}
+        {{ls.gender}}
+        {{ls.notes}}
+    </li>
+</ul>

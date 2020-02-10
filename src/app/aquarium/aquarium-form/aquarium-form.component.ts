@@ -1,9 +1,7 @@
 import { Router } from '@angular/router';
-import { AquariumService } from './../aquarium.service';
+import { AquariumService } from '../../services/aquarium.service';
 import { Aquarium } from './../aquarium.model';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-aquarium-form',
@@ -35,7 +33,9 @@ export class AquariumFormComponent implements OnInit {
   }
 
   onUpdateAquarium() {
-
+    // this.service.updateAquarium(aquariumId, this.aquarium)
+    // .subscribe(data => console.log("new aquarium " + data),
+    // error => console.log("update error " + error));
   }
 
   onClearForm() {

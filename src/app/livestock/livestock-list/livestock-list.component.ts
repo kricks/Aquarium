@@ -1,7 +1,6 @@
-import { SharedDataService } from 'src/app/services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
@@ -14,10 +13,14 @@ export class LivestockListComponent implements OnInit {
   livestocks: Observable<Livestock[]>;
   livestock: Livestock;
   fkAquariumId: number;
-  constructor(private service: LivestockService, private sharedService: SharedDataService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private service: LivestockService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-   this.displayLivestockList(this.fkAquariumId);
+    this.route.paramMap.subscribe(params => {
+      let fkAquariumId = params.get('fkAquariumId');
+      this.displayLivestockList(fkAquariumId);
+      console.log("value " + fkAquariumId);
+    });
   } 
 
   getAllLivestock() {
@@ -25,7 +28,7 @@ export class LivestockListComponent implements OnInit {
   }
 
   displayLivestockList(fkAquariumId) { 
-   this.livestocks = this.service.getLivestockByFkId(295);
+   this.livestocks = this.service.getLivestockByFkId(fkAquariumId);
   }
 
 }

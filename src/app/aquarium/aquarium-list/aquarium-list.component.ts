@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Aquarium } from '../aquarium.model';
 import { Observable } from 'rxjs';
 import { AquariumService } from 'src/app/services/aquarium.service';
-import { SharedDataService } from 'src/app/services/shared-data.service';
 
 @Component({
   selector: 'app-aquarium-list',
@@ -16,14 +15,10 @@ export class AquariumListComponent implements OnInit {
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
 
-  constructor(private service: AquariumService, private sharedService: SharedDataService, private router: Router) {}
+  constructor(private service: AquariumService, private router: Router) {}
 
   ngOnInit() {
     this.reloadData();
-    this.sharedService.sendMessage('hi 1');
-    this.sharedService.message$.subscribe(data => {
-      console.log(data);
-    });
   }
 
   reloadData() {

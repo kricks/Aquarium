@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Aquarium } from '../aquarium.model';
 import { Observable } from 'rxjs';
 import { AquariumService } from '../aquarium.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-aquarium-list',
@@ -13,7 +15,7 @@ export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
 
-  constructor(private service: AquariumService) {}
+  constructor(private service: AquariumService, private router: Router) {}
 
   ngOnInit() {
     this.reloadData();
@@ -30,16 +32,19 @@ export class AquariumListComponent implements OnInit {
     //   });
   }
 
-  onEdit() {
-
+  onEdit(aquariumId: number, value: any) {
+    this.service.updateAquarium(aquariumId, value).subscribe()
   }
 
-  onDelete() {
-
+  onDelete(aquariumId: number) {
+    this.service.deleteAquarium(aquariumId).subscribe(data => {
+      this.reloadData();
+    },
+    error => console.log("on delete error"));
   }
 
-  onView() {
-    
+  onView(aquariums) {
+    this.router.navigate(['livestock', aquariums]);
   }
 
 }

@@ -21,16 +21,16 @@
                 </div>
                 <div class="card-footer text-center">
                     <a>
-                        <button type="button" (click)="onView(aquarium.aquariumId)" class="btn btn-info"
+                        <button type="button" (click)="onView(aq.aquariumId)" class="btn btn-info"
                             id="view-{{aq.aquariumId}}">
                             View <img class="ml-1" alt="fish icon"
                                 src="https://img.icons8.com/officexs/16/000000/clown-fish.png">
                         </button>
                     </a> 
 
-                    <button type="button" (click)="onEdit(aquarium.aquariumId)"
+                    <button type="button" (click)="onEdit(aq.aquariumId)"
                         class="btn btn-success" id="aquariumEdit-{{aq.name}}">Edit</button>
-                    <button type="button" (click)="onDelete(aquarium.aquariumId)"
+                    <button type="button" (click)="onDelete(aq.aquariumId)"
                         class="btn btn-danger" id="aquariumDelete-{{aq.name}}">Delete</button>
 
                 </div>

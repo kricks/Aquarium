@@ -23,6 +23,7 @@ export class LivestockListComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       let fkAquariumId = params.get("fkAquariumId");
+      this.service.loadAllLivestock(fkAquariumId);
       this.displayLivestockList(fkAquariumId);
       console.log("value " + fkAquariumId);
     });
@@ -38,5 +39,12 @@ export class LivestockListComponent implements OnInit {
 
   onEdit() {}
 
-  onDelete() {}
+  onDelete(livestockId) {
+    this.service.deleteLivestock(livestockId).subscribe(
+      data => {
+        this.ngOnInit();
+      },
+      error => console.log("on delete error")
+    );
+  }
 }

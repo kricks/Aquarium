@@ -17,8 +17,6 @@ export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
-  message = "message from parent"
-  test: number;
 
   constructor(private service: AquariumService, private router: Router) {}
 

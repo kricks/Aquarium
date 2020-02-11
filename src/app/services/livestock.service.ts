@@ -6,6 +6,8 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class LivestockService {
+  livestockList: any = [];
+
   constructor(private http: HttpClient) {}
 
   // Http Headers
@@ -14,7 +16,7 @@ export class LivestockService {
       "Content-Type": "application/json"
     })
   };
-
+  
   private baseUri = "http://localhost:8080/livestock";
   private all = "all";
   private create = "create";
@@ -25,6 +27,13 @@ export class LivestockService {
   getAllLivestock(): Observable<any> {
     console.log("hit from service");
     return this.http.get(`${this.baseUri}/${this.all}`);
+  }
+
+  loadAllLivestock(aquariumFkId) {
+    console.log("hit from service");
+    return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
+      this.livestockList = data;
+    })
   }
 
   getLivestockById(livestockId: number): Observable<any> {

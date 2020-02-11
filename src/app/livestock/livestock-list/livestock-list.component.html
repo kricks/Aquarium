@@ -1,11 +1,30 @@
-<p>livestock-list works!</p>
-
-hello
-<ul>
-    <li *ngFor="let ls of livestocks | async">
-        {{ls.name}}
-        {{ls.species}}
-        {{ls.gender}}
-        {{ls.notes}}
-    </li>
-</ul>
+<div class="">
+  <h3 class="text-center text">Add New Livestock</h3>
+    <table class="table-hover table mt-4" id="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Species</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Notes</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="body">
+        <tr
+          *ngFor="let ls of livestocks | async"
+          name="repeat"
+          id="livestockName-{{ ls.name }}"
+        >
+          <th scope="row" id="nameValue">{{ls.name}}</th>
+          <td id="speciesValue">{{ls.species}}</td>
+          <td id="genderValue">{{ls.gender}}</td>
+          <td id="notesValue">{{ls.notes}}</td>
+          <td class="">
+              <button type="button" class="btn btn-success mr-1" (click)="onEdit()">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

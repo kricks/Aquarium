@@ -1,0 +1,93 @@
+<form
+(ngSubmit)="onAddLivestock()"
+  name="livestockForm"
+  class="col text"
+  autocomplete="off"
+  
+>
+  <input type="hidden" ng-model="" />
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="tname">Name <strong class="text-danger">*</strong></label>
+      <input
+        type="text"
+        [(ngModel)]="livestock.name"
+        name="nameFieldLS"
+        id="nameFieldLS"
+        class="form-control"
+        placeholder="Enter Name"
+        required
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="species"
+        >Species <strong class="text-danger">*</strong></label
+      >
+      <input
+        type="text"
+        name="species"
+        [(ngModel)]="livestock.species"
+        class="form-control"
+        id="speciesFieldLS"
+        placeholder="Enter Species"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="type">Gender <strong class="text-danger">*</strong></label>
+      <select
+        name="gender"
+        id="genderFieldLS"
+        class="form-control"
+        [(ngModel)]="livestock.gender"
+        required
+      >
+      <option [selected]="true" [disabled]="true" [hidden]="true" value = "">Select Gender :</option>
+      <option *ngFor="let op of options" [value]="op">{{op}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="notes">Notes</label>
+      <input
+        type="text"
+        name="notes"
+        [(ngModel)]="livestock.notes"
+        class="form-control"
+        id="notesFieldLS"
+        placeholder="Enter Notes"
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="fkAquariumId"></label>
+      <input
+        type="hidden"
+        name="fkAquariumId"
+        [(ngModel)]="livestock.fkAquariumId"
+        class="form-control"
+        id="fkAquariumIdFieldLS"
+        placeholder="Enter Notes"
+      />
+    </div>
+  </div>
+  <div>
+    <div class="float-right">
+      <input
+        type="submit"
+        id="submitButton"
+        value="{{ !livestockId ? 'Add' : 'Update' }}"
+        class="btn btn-primary"
+      />
+      <button
+        type="button"
+        ng-click="ctrl.reset()"
+        class="btn btn-danger"
+        id="clearForm"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

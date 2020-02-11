@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./livestock.component.scss']
 })
 export class LivestockComponent implements OnInit {
-
+  title="livestock component"
   constructor() { }
 
   ngOnInit() {

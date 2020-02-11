@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class LivestockService {
-
   constructor(private http: HttpClient) {}
 
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     })
-  }
+  };
 
   private baseUri = "http://localhost:8080/livestock";
   private all = "all";
@@ -33,7 +32,9 @@ export class LivestockService {
   }
 
   getLivestockByFkId(aquariumFkId: number): Observable<any> {
-    return this.http.get(`${this.baseUri}/${this.aquariumFkId}/${aquariumFkId}`);
+    return this.http.get(
+      `${this.baseUri}/${this.aquariumFkId}/${aquariumFkId}`
+    );
   }
 
   createLivestock(livestock: Object): Observable<any> {
@@ -41,11 +42,13 @@ export class LivestockService {
   }
 
   updateLivestock(livestockId: number, value: any): Observable<any> {
-    return this.http.put(`${this.baseUri}/${this.update}/${livestockId}`, value);
+    return this.http.put(
+      `${this.baseUri}/${this.update}/${livestockId}`,
+      value
+    );
   }
 
   deleteLivestock(livestockId: number): Observable<any> {
     return this.http.delete(`${this.baseUri}/${this.delete}/${livestockId}`);
   }
-
 }

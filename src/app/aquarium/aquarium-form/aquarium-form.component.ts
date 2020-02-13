@@ -49,8 +49,11 @@ export class AquariumFormComponent implements OnInit {
     this.shared.confirmation = aquarium;
   }
 
-  onUpdateAquarium() {
+  onUpdateAquarium(aquariumId) {
     this.shared.changeAquarium(this.aquarium);
+    this.service.updateAquarium(aquariumId, this.aquarium).subscribe(data => console.log(data),
+    error => console.log(error));
+    this.aquarium = new Aquarium();
   }
 
   onClearForm() {}

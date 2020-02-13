@@ -3,7 +3,7 @@ import { LivestockService } from "./services/livestock.service";
 import { AquariumService } from "./services/aquarium.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./shared/header/header.component";
 import { FooterComponent } from "./shared/footer/footer.component";
@@ -34,7 +34,7 @@ import { LivestockAqDetailsComponent } from './livestock/livestock-aq-details/li
     LivestockFormComponent,
     LivestockAqDetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [AquariumService, LivestockService, SharedDataService, AquariumListComponent],
   bootstrap: [AppComponent]
 })

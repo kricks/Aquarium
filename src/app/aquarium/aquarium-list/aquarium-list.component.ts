@@ -7,10 +7,6 @@ import { AquariumService } from "src/app/services/aquarium.service";
 
 @Component({
   selector: "app-aquarium-list",
-  // template: `
-  //   <h1>hello</h1>
-  //   <app-livestock-form [message]="message"></app-livestock-form>
-  // `,
   templateUrl: "./aquarium-list.component.html",
   styleUrls: ["./aquarium-list.component.scss"]
 })
@@ -34,9 +30,9 @@ export class AquariumListComponent implements OnInit {
   onEdit(aquariumId) {
     this.getAquariumById(aquariumId);
     console.log("on edit " + aquariumId);
-    this.aquarium = Object.assign([], this.aquarium);
-    console.log(this.aquarium);
-    this.shared.changeAquarium(this.aquarium);
+    let test = Object.assign({}, this.aquarium);
+    console.log(test);
+    this.shared.changeAquarium(test);
   }
 
   getAquariumById(aquariumId) {

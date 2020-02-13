@@ -1,3 +1,4 @@
+import { AquariumDetailComponent } from './aquarium/aquarium-detail/aquarium-detail.component';
 import { LivestockFormComponent } from "./livestock/livestock-form/livestock-form.component";
 import { AquariumListComponent } from "./aquarium/aquarium-list/aquarium-list.component";
 import { NgModule } from "@angular/core";
@@ -10,7 +11,10 @@ import { LivestockComponent } from "./livestock/livestock.component";
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
-  { path: "aquarium", component: AquariumComponent },
+  { path: "aquarium", component: AquariumComponent, children: [
+    
+  ]},
+  { path: "confirmation", component: AquariumDetailComponent},
   {
     path: "livestock/:fkAquariumId",
     component: LivestockComponent,

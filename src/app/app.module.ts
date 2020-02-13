@@ -1,3 +1,4 @@
+import { SharedDataService } from './services/shared-data.service';
 import { LivestockService } from "./services/livestock.service";
 import { AquariumService } from "./services/aquarium.service";
 import { BrowserModule } from "@angular/platform-browser";
@@ -16,6 +17,7 @@ import { LivestockListComponent } from "./livestock/livestock-list/livestock-lis
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { LivestockFormComponent } from './livestock/livestock-form/livestock-form.component';
+import { LivestockAqDetailsComponent } from './livestock/livestock-aq-details/livestock-aq-details.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,11 @@ import { LivestockFormComponent } from './livestock/livestock-form/livestock-for
     AquariumFormComponent,
     LivestockComponent,
     LivestockListComponent,
-    LivestockFormComponent
+    LivestockFormComponent,
+    LivestockAqDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [AquariumService, LivestockService],
+  providers: [AquariumService, LivestockService, SharedDataService, AquariumListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

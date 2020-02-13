@@ -53,15 +53,5 @@ export class LivestockFormComponent implements OnInit {
   }
 
   //onUpdate() {}
-
-  // clearForm() {
-  //   this.livestock = {
-  //     livestockId: null,
-  //     name: "",
-  //     species: "",
-  //     gender: "",
-  //     notes: "",
-  //     fkAquariumId: null
-  //   };
-  // }
+  
 }

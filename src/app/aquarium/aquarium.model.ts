@@ -3,6 +3,7 @@ export class Aquarium {
   name: string;
   type: string;
   gallon: number;
+  notes: string;
   date: Date;
 
   constructor() {}

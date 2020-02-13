@@ -1,3 +1,4 @@
+import { SharedDataService } from './../../services/shared-data.service';
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
@@ -13,11 +14,13 @@ export class LivestockListComponent implements OnInit {
   title = "Livestock list";
   livestocks: Observable<Livestock[]>;
   livestock: Livestock;
+  message: string;
 
   constructor(
     private service: LivestockService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private shared: SharedDataService
   ) {}
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class LivestockListComponent implements OnInit {
       this.displayLivestockList(fkAquariumId);
       console.log("value " + fkAquariumId);
     });
+    // this.shared.currentMessage.subscribe(message => this.message = message);
   }
 
   getAllLivestock() {
@@ -46,5 +50,9 @@ export class LivestockListComponent implements OnInit {
       },
       error => console.log("on delete error")
     );
+  }
+
+  newMessage() {
+    // this.shared.changeMessage("hello from livestock Sibling");
   }
 }

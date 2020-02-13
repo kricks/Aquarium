@@ -1,5 +1,5 @@
 <form
-  (ngSubmit)="onAddAquarium()"
+  (ngSubmit)="onAddAquarium(aquarium)"
   id="top"
   name="aquariumForm"
   class="col text"
@@ -31,12 +31,6 @@
         >
         <option [selected]="true" [disabled]="true" [hidden]="true" value = "">Select type of water :</option>
         <option *ngFor="let op of options" [value]="op">{{op}}</option>
-        <!-- <option value="Fresh Water">Fresh Water</option>
-          <option value="Salt Water">Salt Water</option>
-          <option value="Brackish Water">Brackish Water</option> -->
-        
-          <!-- <option disabled selected value="" hidden>Select Type of Aquarium :</option>
-           -->
         </select>
       </div>
     </div>
@@ -54,12 +48,6 @@
           ng-pattern="/^[0-9]*$/"
           placeholder="Enter Number of Gallons"
         />
-        <!-- <span
-          ng-show="aquariumForm.gallon.$error.pattern"
-          id="gallonErrorMessage"
-          style="color: red"
-          >Negative Numbers and Decimals are invalid!</span
-        > -->
       </div>
       <div class="form-group col-md-6">
         <label for="notes">Notes</label>
@@ -85,13 +73,6 @@
           id="dateField"
           placeholder="MM/dd/yyyy"
         />
-        <!-- <span
-          ng-show="aquariumForm.date.$error.pattern"
-          id="dateErrorMessage"
-          style="color: red"
-        >
-          Date is not valid. Format date as : MM/dd/yyyy</span
-        > -->
       </div>
     </div>
   </div>
@@ -100,7 +81,6 @@
       <input
         type="submit"
         id="submitButton"
-        ng-disabled="aquariumForm.$invalid"
         [hidden] = "aquariumId"
         value="Add"
         class="btn btn-primary"
@@ -108,7 +88,6 @@
       <input
         type="button"
         (click)="onUpdateAquairum(aquarium.aquariumId)"
-        ng-disabled="aquariumForm.$invalid"
         id="updateButton"
         [hidden] = "!aquariumId"
         class="btn btn-primary text-white"
@@ -118,7 +97,7 @@
         type="button"
         id="clearForm"
         (click)="onClearForm()"
-        class="btn btn-danger"
+        class="btn btn-danger ml-2"
       >
         Cancel
       </button>

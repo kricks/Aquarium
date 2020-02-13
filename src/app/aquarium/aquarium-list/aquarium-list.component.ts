@@ -1,3 +1,4 @@
+import { SharedDataService } from './../../services/shared-data.service';
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
@@ -13,15 +14,17 @@ import { AquariumService } from "src/app/services/aquarium.service";
   templateUrl: "./aquarium-list.component.html",
   styleUrls: ["./aquarium-list.component.scss"]
 })
+
 export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
 
-  constructor(private service: AquariumService, private router: Router) {}
+  constructor(private service: AquariumService, private router: Router, private shared: SharedDataService) {}
 
   ngOnInit() {
     this.reloadData();
+    this.shared.currentAq.subscribe(aquarium => this.aquarium = aquarium)
   }
 
   reloadData() {
@@ -33,7 +36,7 @@ export class AquariumListComponent implements OnInit {
     console.log("on edit " + aquariumId);
     this.aquarium = Object.assign([], this.aquarium);
     console.log(this.aquarium);
-    // here is where i need to figure out how to populate field
+    this.shared.changeAquarium(this.aquarium);
   }
 
   getAquariumById(aquariumId) {
@@ -57,4 +60,5 @@ export class AquariumListComponent implements OnInit {
   onView(aquariumId) {
     this.router.navigate(["livestock", aquariumId]);
   }
+
 }

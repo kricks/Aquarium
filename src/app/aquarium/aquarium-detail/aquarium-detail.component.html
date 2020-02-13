@@ -1,1 +1,49 @@
-<p>aquarium-confimration page</p>
+
+<div class="container">
+    <div class="row my-4 text-center">
+        <div class="col">
+            <h3 class="text">You have added a new aquarium!</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 offset-sm-4 my-2">
+          <div class="card">
+            <div id="aquariumName-{{aquarium.name}}">
+              <div
+                class="card-header font-weight-bold text-center"
+                name="cardName"
+                id="cardName-{{aquarium.name}}"
+              >
+              {{aquarium.name}}
+              </div>
+              <div class="card-body">
+                <div class="card-text row">
+                  <div class="list-unstyled col-4">
+                    <img
+                      class="image mt-3"
+                      src="../../../assets/images/fishBowl.png"
+                      alt="fish bowl"
+                    />
+                  </div>
+                  <ul class="list-unstyled col-8">
+                    <li>{{aquarium.type}}</li>
+                    <li>{{aquarium.gallons}}</li>
+                    <li>{{aquarium.notes}}</li>
+                    <li>{{ aquarium.date | date: "MM/dd/yyyy" }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="">
+                    <button type="button" class="btn btn-primary" id="backToAqList">Go back to
+                        Aquarium List</button>
+                </a>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+

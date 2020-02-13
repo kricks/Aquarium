@@ -1,43 +1,69 @@
-
-
-
-    <h3>Aquarium List Component | {{title}} </h3>
-    <div class="row">
-        <div class="col-sm-6 col-lg-4 my-2" *ngFor="let aq of aquariums | async">
-            <div class="card">
-                <div id="aquariumName-{{aq.name}}">
-                    <div class="card-header font-weight-bold text-center" name="cardName" id="cardName-{{aq.name}}">{{aq.name}}</div>
-                    <div class="card-body row">
-                        <div class="card-text ">
-                        <div class="list-unstyled col-4">
-                            <img class="image mt-3" src="../../../assets/images/fishBowl.png" alt="fish bowl">
-                        </div>
-                        <ul class="list-unstyled col-8">
-                            <li>{{aq.type}}</li>
-                            <li>{{aq.gallon}}</li>
-                            <li>{{aq.notes}}</li>
-                            <li>{{aq.date | date:'MM/dd/yyyy'}}</li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer text-center">
-                    <a>
-                        <button type="button"  class="btn btn-info" (click)="onView(aq.aquariumId)"
-                            id="view-{{aq.aquariumId}}">
-                            View <img class="ml-1" alt="fish icon"
-                                src="https://img.icons8.com/officexs/16/000000/clown-fish.png">
-                        </button>
-                    </a> 
-
-                    <button type="button" (click)="onEdit(aq.aquariumId)"
-                        class="btn btn-success" id="aquariumEdit-{{aq.name}}">Edit</button>
-                    <button type="button" (click)="onDelete(aq.aquariumId)"
-                        class="btn btn-danger" id="aquariumDelete-{{aq.name}}">Delete</button>
-
-                </div>
-            </div>
+<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
+<div class="row">
+  <div class="col-4 my-2" *ngFor="let aq of aquariums | async">
+    <div class="card">
+      <div id="aquariumName-{{ aq.name }}">
+        <div
+          class="card-header font-weight-bold text-center"
+          name="cardName"
+          id="cardName-{{ aq.name }}"
+        >
+          {{ aq.name }}
         </div>
-    </div>
+        <div class="card-body">
+          <div class="card-text row">
+            <div class="list-unstyled col-4">
+              <img
+                class="image mt-3"
+                src="../../../assets/images/fishBowl.png"
+                alt="fish bowl"
+              />
+            </div>
+            <ul class="list-unstyled col-8">
+              <li>{{ aq.type }}</li>
+              <li>{{ aq.gallon }}</li>
+              <li>{{ aq.notes }}</li>
+              <li>{{ aq.date | date: "MM/dd/yyyy" }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <a>
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="onView(aq.aquariumId)"
+            id="view-{{ aq.aquariumId }}"
+          >
+            View
+            <img
+              class="ml-1"
+              alt="fish icon"
+              src="https://img.icons8.com/officexs/16/000000/clown-fish.png"
+            />
+          </button>
+        </a>
 
-    <router-outlet></router-outlet>
+        <button
+          type="button"
+          (click)="onEdit(aq.aquariumId)"
+          class="btn btn-success mx-2"
+          id="aquariumEdit-{{ aq.name }}"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          (click)="onDelete(aq.aquariumId)"
+          class="btn btn-danger"
+          id="aquariumDelete-{{ aq.name }}"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

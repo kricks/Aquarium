@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { AquariumService } from "../../services/aquarium.service";
 import { Aquarium } from "./../aquarium.model";
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { FormControl, FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-aquarium-form",
@@ -13,13 +14,14 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 export class AquariumFormComponent implements OnInit {
   aquarium: Aquarium = new Aquarium();
   submitted = false;
-  type = "";
+  aquariumForm: FormGroup;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
     private service: AquariumService,
     private router: Router,
-    private shared: SharedDataService
+    private shared: SharedDataService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -31,7 +33,8 @@ export class AquariumFormComponent implements OnInit {
       notes: "",
       date: null
     };
-    // this.shared.currentAq.subscribe(aquarium => this.aquarium = aquarium)
+    //this.shared.currentAq.subscribe(aquarium => (this.aquarium = aquarium));
+    // patchVAlues()
   }
 
   saveAquarium() {
@@ -39,7 +42,6 @@ export class AquariumFormComponent implements OnInit {
       data => console.log(data),
       error => console.log(error)
     );
-    this.aquarium = new Aquarium();
   }
 
   onAddAquarium(aquarium) {
@@ -51,14 +53,31 @@ export class AquariumFormComponent implements OnInit {
 
   onUpdateAquarium(aquariumId) {
     this.shared.changeAquarium(this.aquarium);
-    this.service.updateAquarium(aquariumId, this.aquarium).subscribe(data => console.log(data),
-    error => console.log(error));
-    this.aquarium = new Aquarium();
+    this.service.updateAquarium(aquariumId, this.aquarium).subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    );
   }
 
   onClearForm() {}
 
   aquariumDetails(aquarium) {
     this.router.navigate(["confirmation", aquarium]);
+  }
+
+  isAquariumExist() {
+  //   this.shared.currentAq.subscribe(data => this.aquarium = data);
+  //   if (this.aquarium.aquariumId == null) {
+  //     this.aquarium = {
+  //       aquariumId: null,
+  //       name: "",
+  //       type: "Fresh Water",
+  //       gallon: null,
+  //       notes: "",
+  //       date: null
+  //     };
+  //   } else {
+  //     this.shared.currentAq.subscribe(data => this.aquarium = data);
+  //   }
   }
 }

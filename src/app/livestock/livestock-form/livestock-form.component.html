@@ -1,4 +1,5 @@
 <form
+[formGroup]="form"
 (ngSubmit)="onAddLivestock()"
   name="livestockForm"
   class="col text"
@@ -11,7 +12,7 @@
       <label for="tname">Name <strong class="text-danger">*</strong></label>
       <input
         type="text"
-        [(ngModel)]="livestock.name"
+        formControlName="name"
         name="nameFieldLS"
         id="nameFieldLS"
         class="form-control"
@@ -26,7 +27,7 @@
       <input
         type="text"
         name="species"
-        [(ngModel)]="livestock.species"
+        formControlName="species"
         class="form-control"
         id="speciesFieldLS"
         placeholder="Enter Species"
@@ -41,7 +42,7 @@
         name="gender"
         id="genderFieldLS"
         class="form-control"
-        [(ngModel)]="livestock.gender"
+        formControlName="gender"
         required
       >
       <option [selected]="true" [disabled]="true" [hidden]="true" value = "">Select Gender :</option>
@@ -53,7 +54,7 @@
       <input
         type="text"
         name="notes"
-        [(ngModel)]="livestock.notes"
+        formControlName="notes"
         class="form-control"
         id="notesFieldLS"
         placeholder="Enter Notes"
@@ -64,7 +65,7 @@
       <input
         type="hidden"
         name="fkAquariumId"
-        [(ngModel)]="livestock.fkAquariumId"
+        formControlName="fkAquariumId"
         class="form-control"
         id="fkAquariumIdFieldLS"
         placeholder="Enter Notes"

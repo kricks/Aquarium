@@ -1,5 +1,4 @@
 <form
-  [formGroup] = "aquariumForm"
   (ngSubmit)="onAddAquarium(aquarium)"
   id="top"
   name="aquariumForm"
@@ -13,12 +12,12 @@
         <label for="tname">Name <strong class="text-danger">*</strong></label>
         <input
           type="text"
-          [(ngModel)]="aquarium.name"
           id="nameField"
           name="name"
           class="form-control"
           placeholder="Enter Name"
           required
+          [(ngModel)]="aquarium.name"
         />
       </div>
       <div class="form-group col-md-6">
@@ -42,23 +41,23 @@
         <input
           type="number"
           min="0"
-          [(ngModel)]="aquarium.gallon"
           name="gallon"
           class="form-control"
           id="gallonField"
           ng-pattern="/^[0-9]*$/"
           placeholder="Enter Number of Gallons"
+          [(ngModel)]="aquarium.gallon"
         />
       </div>
       <div class="form-group col-md-6">
         <label for="notes">Notes</label>
         <input
           type="text"
-          [(ngModel)]="aquarium.notes"
           name="notes"
           class="form-control"
           id="notesField"
           placeholder="Enter Notes"
+          [(ngModel)]="aquarium.notes"
         />
       </div>
     </div>
@@ -68,11 +67,11 @@
         <label for="date">Date<strong class="text-danger"> *</strong></label>
         <input
           type="text"
-          [(ngModel)]="aquarium.date"
           name="date"
           class="form-control"
           id="dateField"
           placeholder="MM/dd/yyyy"
+          [(ngModel)]="aquarium.date"
         />
       </div>
     </div>

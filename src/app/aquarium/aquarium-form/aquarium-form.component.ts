@@ -13,28 +13,41 @@ import { FormControl, FormBuilder, FormGroup } from "@angular/forms";
 })
 export class AquariumFormComponent implements OnInit {
   aquarium: Aquarium = new Aquarium();
-  submitted = false;
-  aquariumForm: FormGroup;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
     private service: AquariumService,
     private router: Router,
-    private shared: SharedDataService,
-    private fb: FormBuilder
+    private shared: SharedDataService
   ) {}
 
   ngOnInit() {
-    this.aquarium = {
-      aquariumId: null,
-      name: "",
-      type: "Fresh Water",
-      gallon: null,
-      notes: "",
-      date: null
-    };
-    //this.shared.currentAq.subscribe(aquarium => (this.aquarium = aquarium));
+    this.createForm();
+    // this.shared.currentAq.subscribe(aquarium => (this.aquariumForm = aquarium));
     // patchVAlues()
+  }
+
+  // initForm() {
+  //   let aquariumId = '';
+  //   if (this.editMode) {
+  //     const aq = this.service.getAquariumById(this.id)
+  //     aquariumId = this.
+  //   }
+
+  //   this.aquariumForm = new FormGroup({
+  //     'aquairumId' : new FormControl()
+  //   });
+  // }
+
+  createForm() {
+    this.aquarium = {
+            aquariumId: null,
+            name: "",
+            type: "",
+            gallon: null,
+            notes: "",
+            date: null
+          };
   }
 
   saveAquarium() {
@@ -45,14 +58,13 @@ export class AquariumFormComponent implements OnInit {
   }
 
   onAddAquarium(aquarium) {
-    this.submitted = true;
     this.saveAquarium();
     this.aquariumDetails(this.aquarium);
     this.shared.confirmation = aquarium;
   }
 
   onUpdateAquarium(aquariumId) {
-    this.shared.changeAquarium(this.aquarium);
+    // this.shared.changeAquarium(this.aq);
     this.service.updateAquarium(aquariumId, this.aquarium).subscribe(
       data => console.log(data),
       error => console.log(error)
@@ -63,21 +75,5 @@ export class AquariumFormComponent implements OnInit {
 
   aquariumDetails(aquarium) {
     this.router.navigate(["confirmation", aquarium]);
-  }
-
-  isAquariumExist() {
-  //   this.shared.currentAq.subscribe(data => this.aquarium = data);
-  //   if (this.aquarium.aquariumId == null) {
-  //     this.aquarium = {
-  //       aquariumId: null,
-  //       name: "",
-  //       type: "Fresh Water",
-  //       gallon: null,
-  //       notes: "",
-  //       date: null
-  //     };
-  //   } else {
-  //     this.shared.currentAq.subscribe(data => this.aquarium = data);
-  //   }
   }
 }

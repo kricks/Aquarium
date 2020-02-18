@@ -31,16 +31,8 @@ export class AquariumListComponent implements OnInit {
   }
 
   onEdit(aquarium) {
-    // let id = aquarium.aquariumId;
-    // let name = aquarium.name;
-    // this.getAquariumById(aquariumId);
-    // console.log("on edit " + aquariumId);
-    // let test = Object.assign({}, this.aquarium);
-    // console.log(test);
-    // let test = this.shared.changeAquarium(aquarium);
     console.log("hello from aq list edit : " + aquarium);
-    // this.shared.startedEditing.next(aquarium);
-    this.shared.stuffs.next(aquarium);
+    this.shared.editObject.next(aquarium);
   }
 
   getAquariumById(aquariumId) {

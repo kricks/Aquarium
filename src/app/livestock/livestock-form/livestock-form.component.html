@@ -1,11 +1,17 @@
 <form
-[formGroup]="form"
-(ngSubmit)="onAddLivestock()"
+  [formGroup]="form"
+  (ngSubmit)="onAddLivestock()"
   name="livestockForm"
   class="col text"
   autocomplete="off"
 >
-  <input type="hidden" ng-model="" />
+  <input
+    hidden
+    name="livestockId"
+    formControlName="livestockId"
+    class="form-control"
+    id="livestockIdFieldLS"
+  />
 
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -45,8 +51,10 @@
         formControlName="gender"
         required
       >
-      <option [selected]="true" [disabled]="true" [hidden]="true" value = "">Select Gender :</option>
-      <option *ngFor="let op of options" [value]="op">{{op}}</option>
+        <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+          >Select Gender :</option
+        >
+        <option *ngFor="let op of options" [value]="op">{{ op }}</option>
       </select>
     </div>
     <div class="form-group col-md-6">
@@ -60,25 +68,31 @@
         placeholder="Enter Notes"
       />
     </div>
-    <div class="form-group col-md-6">
-      <label for="fkAquariumId"></label>
-      <input
-        type="hidden"
-        name="fkAquariumId"
-        formControlName="fkAquariumId"
-        class="form-control"
-        id="fkAquariumIdFieldLS"
-        placeholder="Enter Notes"
-      />
-    </div>
+    <input
+      hidden
+      name="fkAquariumId"
+      formControlName="fkAquariumId"
+      class="form-control"
+      id="fkAquariumIdFieldLS"
+      placeholder="Enter Notes"
+    />
   </div>
   <div>
     <div class="float-right">
       <input
         type="submit"
         id="submitButton"
-        value="{{ !livestockId ? 'Add' : 'Update' }}"
+        [hidden]="livestockId"
+        value="Add"
         class="btn btn-primary"
+      />
+      <input
+        type="button"
+        (click)="onUpdate(livestockId)"
+        id="updateButton"
+        [hidden]="livestockId"
+        class="btn btn-primary text-white"
+        value="Update"
       />
       <button
         type="button"

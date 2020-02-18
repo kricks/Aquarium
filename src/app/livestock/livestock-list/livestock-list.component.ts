@@ -41,8 +41,8 @@ export class LivestockListComponent implements OnInit {
     this.livestocks = this.service.getLivestockByFkId(fkAquariumId);
   }
 
-  onEdit() {
-    console.log("ls edit says hello");
+  onEdit(livestock) {
+    this.shared.editObject.next(livestock);
   }
 
   onDelete(livestockId) {

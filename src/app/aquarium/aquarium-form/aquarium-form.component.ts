@@ -1,9 +1,11 @@
+import { logging } from 'protractor';
+import { Subscription } from 'rxjs';
 import { SharedDataService } from "./../../services/shared-data.service";
 import { Router } from "@angular/router";
 import { AquariumService } from "../../services/aquarium.service";
 import { Aquarium } from "./../aquarium.model";
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { FormControl, FormBuilder, FormGroup } from "@angular/forms";
+import { Component, OnInit, ViewEncapsulation, OnDestroy, ViewChild } from "@angular/core";
+import { FormControl, FormBuilder, FormGroup, NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-aquarium-form",
@@ -11,8 +13,10 @@ import { FormControl, FormBuilder, FormGroup } from "@angular/forms";
   styleUrls: ["./aquarium-form.component.scss"],
   encapsulation: ViewEncapsulation.None
 })
-export class AquariumFormComponent implements OnInit {
+export class AquariumFormComponent implements OnInit, OnDestroy {
+ @ViewChild('f', {static: false}) aqForm: NgForm;
   aquarium: Aquarium = new Aquarium();
+  subs: Subscription;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
@@ -23,21 +27,8 @@ export class AquariumFormComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    // this.shared.currentAq.subscribe(aquarium => (this.aquariumForm = aquarium));
-    // patchVAlues()
+    this.isExist();
   }
-
-  // initForm() {
-  //   let aquariumId = '';
-  //   if (this.editMode) {
-  //     const aq = this.service.getAquariumById(this.id)
-  //     aquariumId = this.
-  //   }
-
-  //   this.aquariumForm = new FormGroup({
-  //     'aquairumId' : new FormControl()
-  //   });
-  // }
 
   createForm() {
     this.aquarium = {
@@ -64,16 +55,42 @@ export class AquariumFormComponent implements OnInit {
   }
 
   onUpdateAquarium(aquariumId) {
-    // this.shared.changeAquarium(this.aq);
     this.service.updateAquarium(aquariumId, this.aquarium).subscribe(
       data => console.log(data),
       error => console.log(error)
     );
+    this.onClearForm();
   }
 
-  onClearForm() {}
+  onClearForm() {
+    this.createForm();
+  }
 
   aquariumDetails(aquarium) {
     this.router.navigate(["confirmation", aquarium]);
+  }
+
+  isExist() {
+    this.subs = this.shared.stuffs.subscribe(data => {
+      this.aquarium = data;
+      console.log(this.aquarium);
+      this.aqForm.setValue({
+        aquariumId: this.aquarium.aquariumId,
+        name: this.aquarium.name,
+        type: this.aquarium.type,
+        gallon: this.aquarium.gallon,
+        notes: this.aquarium.notes,
+        date: this.aquarium.date
+      })
+    }
+    // ,
+    // error => {
+    //   console.log(error);
+    // }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 }

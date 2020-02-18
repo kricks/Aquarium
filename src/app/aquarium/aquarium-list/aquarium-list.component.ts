@@ -1,3 +1,4 @@
+import { AquariumFormComponent } from './../aquarium-form/aquarium-form.component';
 import { SharedDataService } from "./../../services/shared-data.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
@@ -18,12 +19,11 @@ export class AquariumListComponent implements OnInit {
   constructor(
     private service: AquariumService,
     private router: Router,
-    private shared: SharedDataService
+    private shared: SharedDataService,
   ) {}
 
   ngOnInit() {
     this.reloadData();
-    this.shared.currentAq.subscribe(aquarium => (this.aquarium = aquarium));
   }
 
   reloadData() {
@@ -31,11 +31,16 @@ export class AquariumListComponent implements OnInit {
   }
 
   onEdit(aquarium) {
+    // let id = aquarium.aquariumId;
+    // let name = aquarium.name;
     // this.getAquariumById(aquariumId);
     // console.log("on edit " + aquariumId);
     // let test = Object.assign({}, this.aquarium);
     // console.log(test);
-    this.shared.changeAquarium(aquarium);
+    // let test = this.shared.changeAquarium(aquarium);
+    console.log("hello from aq list edit : " + aquarium);
+    // this.shared.startedEditing.next(aquarium);
+    this.shared.stuffs.next(aquarium);
   }
 
   getAquariumById(aquariumId) {

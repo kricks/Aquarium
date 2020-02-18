@@ -41,7 +41,9 @@ export class LivestockListComponent implements OnInit {
     this.livestocks = this.service.getLivestockByFkId(fkAquariumId);
   }
 
-  onEdit() {}
+  onEdit() {
+    console.log("ls edit says hello");
+  }
 
   onDelete(livestockId) {
     this.service.deleteLivestock(livestockId).subscribe(
@@ -50,9 +52,5 @@ export class LivestockListComponent implements OnInit {
       },
       error => console.log("on delete error")
     );
-  }
-
-  newMessage() {
-    // this.shared.changeMessage("hello from livestock Sibling");
   }
 }

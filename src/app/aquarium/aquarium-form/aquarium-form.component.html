@@ -1,12 +1,22 @@
 <form
   (ngSubmit)="onAddAquarium(aquarium)"
+  #f='ngForm'
   id="top"
   name="aquariumForm"
   class="col text"
   autocomplete="off"
 >
   <div>
-    <input type="hidden" />
+    <div class="form-group col-md-6">
+      <label for="aquariumId"></label>
+      <input
+        
+        name="aquariumId"
+        class="form-control"
+        id="aquariumId"
+        [(ngModel)]="aquarium.aquariumId"
+      />
+    </div>
     <div class="form-row col">
       <div class="form-group col-md-6">
         <label for="tname">Name <strong class="text-danger">*</strong></label>
@@ -81,15 +91,15 @@
       <input
         type="submit"
         id="submitButton"
-        [hidden] = "aquariumId"
+        [hidden] = "aquarium.aquariumId"
         value="Add"
         class="btn btn-primary"
       />
       <input
         type="button"
-        (click)="onUpdateAquairum(aquarium.aquariumId)"
+        (click)="onUpdateAquarium(aquarium.aquariumId)"
         id="updateButton"
-        [hidden] = "!aquariumId"
+        [hidden] = "!aquarium.aquariumId"
         class="btn btn-primary text-white"
         value="Update"
       />

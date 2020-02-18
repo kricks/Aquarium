@@ -1,4 +1,6 @@
+import { SharedDataService } from './../../services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
+import { Aquarium } from 'src/app/aquarium/aquarium.model';
 
 @Component({
   selector: 'app-livestock-aq-details',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./livestock-aq-details.component.scss']
 })
 export class LivestockAqDetailsComponent implements OnInit {
-
-  constructor() { }
+    aquarium: Aquarium;
+  constructor(private shared: SharedDataService) { }
 
   ngOnInit() {
+    this.aquarium = this.shared.confirmation;
   }
 
 }

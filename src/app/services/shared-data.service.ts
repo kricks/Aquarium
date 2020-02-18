@@ -7,15 +7,23 @@ import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 })
 export class SharedDataService {
   aquarium: Aquarium;
+  test: Aquarium[] = [];
   confirmation;
+  startedEditing = new Subject<any>();
 
-  private aqToUpdate = new BehaviorSubject(this.aquarium);
+  stuffs = new Subject<any>();
+
+  aqToUpdate = new BehaviorSubject(this.test);
   currentAq = this.aqToUpdate.asObservable();
 
   constructor() { }
 
-  changeAquarium(aq: Aquarium) {
+  changeAquarium(aq) {
     this.aqToUpdate.next(aq)
+  }
+
+  getAquariumItem(aquariumId) {
+    return this.test[aquariumId];
   }
 
 

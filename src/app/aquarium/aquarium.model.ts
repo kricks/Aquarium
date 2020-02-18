@@ -7,4 +7,5 @@ export class Aquarium {
   date: Date;
 
   constructor() {}
+
 }

@@ -6,10 +6,12 @@ import { BehaviorSubject, Subject, Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedDataService {
-  confirmation;
+  aquarium: Aquarium;
   editObject = new Subject<any>();
-  details = new Subject<any>();
+  details = new BehaviorSubject<any>(this.aquarium);
 
   constructor() { }
+
+  
 
 }

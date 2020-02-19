@@ -23,7 +23,6 @@ import { FormControl, FormBuilder, FormGroup, NgForm } from "@angular/forms";
 export class AquariumFormComponent implements OnInit, OnDestroy {
   title = 'Add New Aquarium';
   @ViewChild("f", { static: false }) aqForm: NgForm;
-  @Input() test: Aquarium;
   aquarium: Aquarium = new Aquarium();
   subs: Subscription;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
@@ -40,18 +39,18 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    // this.aquarium = {
-    //   aquariumId: null,
-    //   name: "",
-    //   type: "",
-    //   gallon: null,
-    //   notes: "",
-    //   date: null
-    // };
+    this.aquarium = {
+      aquariumId: null,
+      name: "",
+      type: "",
+      gallon: null,
+      notes: "",
+      date: null
+    };
   }
 
   saveAquarium() {
-    this.service.createAquarium(this.aqForm.value).subscribe(
+    this.service.createAquarium(this.aquarium).subscribe(
       data => console.log(data),
       error => console.log(error)
     );
@@ -59,20 +58,21 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
 
   onAddAquarium(aquarium) {
     this.saveAquarium();
-    this.aquariumDetails(this.aquarium);
+    this.aquariumDetails();
+    // this.shared.confirmation = aquarium;
     this.shared.details.next(aquarium);
   }
 
   onUpdateAquarium(aquariumId) {
-    this.service.updateAquarium(aquariumId, this.aqForm.value).subscribe(
+    this.service.updateAquarium(aquariumId, this.aquarium).subscribe(
       data => console.log(data),
       error => console.log(error)
     );
     this.createForm();
   }
 
-  aquariumDetails(aquarium) {
-    this.router.navigate(["confirmation", aquarium]);
+  aquariumDetails() {
+    this.router.navigate(["confirmation"]);
   }
 
   getEditItem() {

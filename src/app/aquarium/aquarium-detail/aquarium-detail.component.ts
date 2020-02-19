@@ -19,6 +19,10 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // this.aquarium = this.shared.confirmation;
+    this.stuff();
+  }
+
+  stuff() {
     this.sub = this.shared.details.subscribe(data => {
       this.aquarium = data;
     })

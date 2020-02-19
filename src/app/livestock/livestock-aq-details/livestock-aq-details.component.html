@@ -1,2 +1,15 @@
-<p>livestock-aq-details works!</p>
-<!-- {{aquarium.name}} -->
+<div class="text-center my-4 text">
+  <div class="row">
+    <div class="col">
+      <div class="card text-center">
+        <h3 class="card-header font-weight-bold">{{ aquarium.name }}</h3>
+        <div class="card-body">
+          <p class="card-text">
+            {{ aquarium.type }} | {{ aquarium.gallon }} gallons |
+            {{ aquarium.notes }} | {{ aquarium.date | date: "MM/dd/yyyy" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 import { AquariumFormComponent } from './../aquarium-form/aquarium-form.component';
 import { SharedDataService } from "./../../services/shared-data.service";
 import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { AquariumService } from "src/app/services/aquarium.service";
 
 @Component({
@@ -11,10 +11,12 @@ import { AquariumService } from "src/app/services/aquarium.service";
   templateUrl: "./aquarium-list.component.html",
   styleUrls: ["./aquarium-list.component.scss"]
 })
-export class AquariumListComponent implements OnInit {
+export class AquariumListComponent implements OnInit{
+  
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
+  subs: Subscription;
 
   constructor(
     private service: AquariumService,
@@ -36,7 +38,7 @@ export class AquariumListComponent implements OnInit {
   }
 
   getAquariumById(aquariumId) {
-    this.service.getAquariumById(aquariumId).subscribe(
+    this.subs = this.service.getAquariumById(aquariumId).subscribe(
       data => {
         this.aquarium = data;
       },
@@ -45,7 +47,7 @@ export class AquariumListComponent implements OnInit {
   }
 
   onDelete(aquariumId: number) {
-    this.service.deleteAquarium(aquariumId).subscribe(
+    this.subs = this.service.deleteAquarium(aquariumId).subscribe(
       data => {
         this.reloadData();
       },
@@ -53,7 +55,13 @@ export class AquariumListComponent implements OnInit {
     );
   }
 
-  onView(aquariumId) {
-    this.router.navigate(["livestock", aquariumId]);
+  onView(aquarium) {
+    let id = aquarium.aquariumId
+    this.shared.confirmation = aquarium;
+    this.router.navigate(["livestock", id]);
   }
+
+  // ngOnDestroy(): void {
+  //   this.subs.unsubscribe();
+  // }
 }

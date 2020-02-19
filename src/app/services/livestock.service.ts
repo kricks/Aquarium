@@ -25,12 +25,10 @@ export class LivestockService {
   private aquariumFkId = "aqFk";
 
   getAllLivestock(): Observable<any> {
-    console.log("hit from service");
     return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
   loadAllLivestock(aquariumFkId) {
-    console.log("hit from service");
     return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
       this.livestockList = data;
     })

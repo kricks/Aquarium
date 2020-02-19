@@ -18,7 +18,6 @@ export class LivestockListComponent implements OnInit {
 
   constructor(
     private service: LivestockService,
-    private router: Router,
     private route: ActivatedRoute,
     private shared: SharedDataService
   ) {}

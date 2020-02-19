@@ -1,5 +1,6 @@
 .footer {
-	flex-shrink: 0;
+	display: flex;
 	background-color: rgba(0, 0, 0, 0.6);
 	padding: 15px;
+	flex-direction: column;
 }

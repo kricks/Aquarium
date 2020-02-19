@@ -21,6 +21,7 @@ import { FormControl, FormBuilder, FormGroup, NgForm } from "@angular/forms";
   encapsulation: ViewEncapsulation.None
 })
 export class AquariumFormComponent implements OnInit, OnDestroy {
+  title = 'Add New Aquarium';
   @ViewChild("f", { static: false }) aqForm: NgForm;
   @Input() test: Aquarium;
   aquarium: Aquarium = new Aquarium();

@@ -8,6 +8,7 @@ import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 export class SharedDataService {
   confirmation;
   editObject = new Subject<any>();
+  details = new Subject<any>();
 
   constructor() { }
 

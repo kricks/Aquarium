@@ -12,7 +12,6 @@ import { AquariumService } from "src/app/services/aquarium.service";
   styleUrls: ["./aquarium-list.component.scss"]
 })
 export class AquariumListComponent implements OnInit{
-  
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
@@ -56,6 +55,7 @@ export class AquariumListComponent implements OnInit{
   }
 
   onView(aquarium) {
+    // this.shared.details.next(aquarium);
     let id = aquarium.aquariumId
     this.shared.confirmation = aquarium;
     this.router.navigate(["livestock", id]);

@@ -1,7 +1,7 @@
 <h2 class="text-center mt-4">{{title}}</h2>
 <form
-  (ngSubmit)="onAddAquarium(aquarium)"
-  #f='ngForm'
+  [formGroup]="form"
+  (ngSubmit)="onAddAquarium()"
   id="top"
   name="aquariumForm"
   class="col text"
@@ -15,7 +15,7 @@
         name="aquariumId"
         class="form-control"
         id="aquariumId"
-        [(ngModel)]="aquarium.aquariumId"
+        formControlName="aquariumId"
       />
     </div>
     <div class="form-row col">
@@ -28,7 +28,7 @@
           class="form-control"
           placeholder="Enter Name"
           required
-          [(ngModel)]="aquarium.name"
+          formControlName="name"
         />
       </div>
       <div class="form-group col-md-6">
@@ -38,7 +38,7 @@
           name="type"
           class="form-control"
           id="typeField"
-          [(ngModel)]="aquarium.type"
+          formControlName="type"
         >
         <option [selected]="true" [disabled]="true" [hidden]="true" value = "">Select type of water :</option>
         <option *ngFor="let op of options" [value]="op">{{op}}</option>
@@ -57,7 +57,7 @@
           id="gallonField"
           ng-pattern="/^[0-9]*$/"
           placeholder="Enter Number of Gallons"
-          [(ngModel)]="aquarium.gallon"
+          formControlName="gallon"
         />
       </div>
       <div class="form-group col-md-6">
@@ -68,7 +68,7 @@
           class="form-control"
           id="notesField"
           placeholder="Enter Notes"
-          [(ngModel)]="aquarium.notes"
+          formControlName="notes"
         />
       </div>
     </div>
@@ -82,7 +82,7 @@
           class="form-control"
           id="dateField"
           placeholder="MM/dd/yyyy"
-          [(ngModel)]="aquarium.date"
+          formControlName="date"
         />
       </div>
     </div>
@@ -98,7 +98,7 @@
       />
       <input
         type="button"
-        (click)="onUpdateAquarium(aquarium.aquariumId)"
+        (click)="onUpdateAquarium(aquariumId)"
         id="updateButton"
         [hidden] = "!aquarium.aquariumId"
         class="btn btn-primary text-white"

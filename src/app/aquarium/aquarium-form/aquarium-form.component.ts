@@ -1,5 +1,5 @@
 import { logging } from "protractor";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
 import { SharedDataService } from "./../../services/shared-data.service";
 import { Router } from "@angular/router";
 import { AquariumService } from "../../services/aquarium.service";
@@ -8,9 +8,7 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
-  OnDestroy,
-  ViewChild,
-  Input
+  OnDestroy
 } from "@angular/core";
 import { FormControl, FormBuilder, FormGroup, NgForm } from "@angular/forms";
 
@@ -22,15 +20,16 @@ import { FormControl, FormBuilder, FormGroup, NgForm } from "@angular/forms";
 })
 export class AquariumFormComponent implements OnInit, OnDestroy {
   title = 'Add New Aquarium';
-  @ViewChild("f", { static: false }) aqForm: NgForm;
   aquarium: Aquarium = new Aquarium();
   subs: Subscription;
+  form: FormGroup;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
     private service: AquariumService,
     private router: Router,
-    private shared: SharedDataService
+    private shared: SharedDataService,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -39,35 +38,34 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    this.aquarium = {
+    this.form = this.fb.group({
       aquariumId: null,
       name: "",
       type: "",
       gallon: null,
       notes: "",
       date: null
-    };
+    });
   }
 
   saveAquarium() {
-    this.service.createAquarium(this.aquarium).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    );
+    this.service.createAquarium(this.form.value).subscribe(
+      data => console.log(data));
   }
 
-  onAddAquarium(aquarium) {
+  onAddAquarium() {
     this.saveAquarium();
     this.aquariumDetails();
-    // this.shared.confirmation = aquarium;
-    this.shared.details.next(aquarium);
+    this.shared.details.next(this.form.value);
   }
 
   onUpdateAquarium(aquariumId) {
-    this.service.updateAquarium(aquariumId, this.aquarium).subscribe(
-      data => console.log(data),
-      error => console.log(error)
-    );
+    this.service.updateAquarium(aquariumId, this.form.value).subscribe(data => {
+      this.service.loadAllAquariums();
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
     this.createForm();
   }
 
@@ -80,7 +78,7 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
       data => {
         this.aquarium = data;
         console.log(this.aquarium);
-        this.aqForm.setValue({
+        this.form.setValue({
           aquariumId: this.aquarium.aquariumId,
           name: this.aquarium.name,
           type: this.aquarium.type,

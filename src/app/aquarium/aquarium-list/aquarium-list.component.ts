@@ -24,10 +24,6 @@ export class AquariumListComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    this.reloadData();
-  }
-
-  reloadData() {
     this.aquariums = this.service.getAllAquariums();
   }
 
@@ -48,7 +44,7 @@ export class AquariumListComponent implements OnInit{
   onDelete(aquariumId: number) {
     this.subs = this.service.deleteAquarium(aquariumId).subscribe(
       data => {
-        this.reloadData();
+        this.ngOnInit();
       },
       error => console.log("on delete error")
     );
@@ -59,8 +55,4 @@ export class AquariumListComponent implements OnInit{
     let id = aquarium.aquariumId
     this.router.navigate(["livestock", id]);
   }
-
-  // ngOnDestroy(): void {
-  //   this.subs.unsubscribe();
-  // }
 }

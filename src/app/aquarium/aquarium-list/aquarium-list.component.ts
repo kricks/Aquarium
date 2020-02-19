@@ -55,9 +55,8 @@ export class AquariumListComponent implements OnInit{
   }
 
   onView(aquarium) {
-    // this.shared.details.next(aquarium);
+    this.shared.details.next(aquarium);
     let id = aquarium.aquariumId
-    this.shared.confirmation = aquarium;
     this.router.navigate(["livestock", id]);
   }
 

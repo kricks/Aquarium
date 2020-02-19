@@ -1,3 +1,4 @@
+import { OnDestroy } from '@angular/core';
 import { SharedDataService } from './../../services/shared-data.service';
 import { AquariumService } from 'src/app/services/aquarium.service';
 import { AquariumListComponent } from './../aquarium-list/aquarium-list.component';
@@ -10,15 +11,21 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './aquarium-detail.component.html',
   styleUrls: ['./aquarium-detail.component.scss']
 })
-export class AquariumDetailComponent implements OnInit {
+export class AquariumDetailComponent implements OnInit, OnDestroy {
   aquarium: Aquarium;
   sub: Subscription;
   
   constructor(private service: AquariumService, private shared: SharedDataService) { }
 
   ngOnInit() {
-    // this.shared.currentAq.subscribe(aquarium => this.aquarium = aquarium)
-    this.aquarium = this.shared.confirmation;
+    // this.aquarium = this.shared.confirmation;
+    this.sub = this.shared.details.subscribe(data => {
+      this.aquarium = data;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

@@ -17,11 +17,7 @@ export class SessionStorageService {
     });
   }
 
-  getStuff(stuff): string {
-     return sessionStorage.getItem('object');
-    // this.shared.details.subscribe(data => {
-    //   stuff = data;
-    //   sessionStorage.getItem(stuff);
-    // });
+  getStuff(): any {
+    return JSON.parse(sessionStorage.getItem('object'));
   }
 }

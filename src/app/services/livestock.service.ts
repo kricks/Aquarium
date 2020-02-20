@@ -16,7 +16,7 @@ export class LivestockService {
       "Content-Type": "application/json"
     })
   };
-  
+
   private baseUri = "http://localhost:8080/livestock";
   private all = "all";
   private create = "create";
@@ -31,6 +31,7 @@ export class LivestockService {
   loadAllLivestock(aquariumFkId) {
     return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
       this.livestockList = data;
+      console.log(this.livestockList);
     });
   }
 

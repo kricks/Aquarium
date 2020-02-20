@@ -48,5 +48,5 @@ export class AquariumService {
       this.aquariumList = data;
     });
   }
-
+  
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AquariumService {
-
+  aquariumList: any = [];
   constructor(private http: HttpClient){}
 
     // Http Headers
@@ -41,6 +41,12 @@ export class AquariumService {
 
   deleteAquarium(aquariumId: number) : Observable<any> {
     return this.http.delete(`${this.baseUri}/${this.delete}/${aquariumId}`);
+  }
+
+  loadAllAquariums() {
+    return this.getAllAquariums().subscribe((data: {}) => {
+      this.aquariumList = data;
+    });
   }
 
 }

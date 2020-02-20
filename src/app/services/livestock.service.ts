@@ -31,7 +31,7 @@ export class LivestockService {
   loadAllLivestock(aquariumFkId) {
     return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
       this.livestockList = data;
-    })
+    });
   }
 
   getLivestockById(livestockId: number): Observable<any> {

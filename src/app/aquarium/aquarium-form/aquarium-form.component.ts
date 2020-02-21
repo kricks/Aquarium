@@ -11,7 +11,7 @@ import {
   NgForm,
   Validators
 } from "@angular/forms";
-import { map, filter, catchError, mergeMap, finalize } from 'rxjs/operators';
+import { map, filter, catchError, mergeMap, finalize } from "rxjs/operators";
 
 @Component({
   selector: "app-aquarium-form",
@@ -39,7 +39,6 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
     this.service.loadAllAquariums();
     this.createForm();
     this.getEditItem();
-    this.toggleButtons();
   }
 
   createForm() {
@@ -47,11 +46,11 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
       aquariumId: null,
       name: ["", Validators.required],
       type: ["", Validators.required],
-      gallon: null,
+      gallon: [null, Validators.min(0)],
       notes: "",
       date: [null, Validators.required]
     });
-    
+
     console.log("clear Form");
     console.log(this.form.value);
   }
@@ -77,12 +76,13 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
       },
       error => {
         console.log(error);
-      }, 
+      },
       () => {
         this.createForm();
         console.log("hi complete");
         console.log(this.aquarium.aquariumId);
-      });
+      }
+    );
   }
 
   aquariumDetails() {
@@ -111,14 +111,6 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
 
   clearForm() {
     this.createForm();
-  }
-
-  toggleButtons() {
-    let id = this.aquarium.aquariumId;
-    if(id) {
-      this.show;
-    }
-    this.show;
   }
 
   ngOnDestroy(): void {

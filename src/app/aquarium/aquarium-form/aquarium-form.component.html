@@ -27,14 +27,17 @@
           name="name"
           class="form-control"
           placeholder="Enter Name"
-          required
           formControlName="name"
         />
+        <span
+          *ngIf="!form.get('name').valid && form.get('name').touched"
+          class="ml-2"
+          >Name is required</span
+        >
       </div>
       <div class="form-group col-md-6">
         <label for="type">Type <strong class="text-danger">*</strong></label>
         <select
-          required
           name="type"
           class="form-control"
           id="typeField"
@@ -79,13 +82,18 @@
       <div class="form-group col-md-6">
         <label for="date">Date<strong class="text-danger"> *</strong></label>
         <input
-          type="text"
+          type="date"
           name="date"
           class="form-control"
           id="dateField"
           placeholder="MM/dd/yyyy"
           formControlName="date"
         />
+        <span
+          *ngIf="!form.get('date').valid && form.get('date').touched"
+          class="ml-2"
+          >Date is required</span
+        >
       </div>
     </div>
   </div>
@@ -96,6 +104,7 @@
         id="submitButton"
         value="Add"
         class="btn btn-primary"
+        [disabled]="!form.valid"
       />
       <input
         type="button"
@@ -103,6 +112,7 @@
         id="updateButton"
         class="btn btn-primary text-white"
         value="Update"
+        [disabled]="!form.valid"
       />
       <button
         type="button"

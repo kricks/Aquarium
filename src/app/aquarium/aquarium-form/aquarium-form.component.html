@@ -1,4 +1,4 @@
-<h2 class="text-center mt-4">{{title}}</h2>
+<h2 class="text-center mt-4">{{ title }}</h2>
 <form
   [formGroup]="form"
   (ngSubmit)="onAddAquarium()"
@@ -11,7 +11,7 @@
     <div class="form-group col-md-6">
       <label for="aquariumId"></label>
       <input
-      hidden
+        hidden
         name="aquariumId"
         class="form-control"
         id="aquariumId"
@@ -40,8 +40,10 @@
           id="typeField"
           formControlName="type"
         >
-        <option [selected]="true" [disabled]="true" [hidden]="true" value = "">Select type of water :</option>
-        <option *ngFor="let op of options" [value]="op">{{op}}</option>
+          <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+            >Select type of water :</option
+          >
+          <option *ngFor="let op of options" [value]="op">{{ op }}</option>
         </select>
       </div>
     </div>
@@ -92,7 +94,6 @@
       <input
         type="submit"
         id="submitButton"
-        [hidden] = "aquarium.aquariumId"
         value="Add"
         class="btn btn-primary"
       />
@@ -100,14 +101,13 @@
         type="button"
         (click)="onUpdateAquarium(aquariumId)"
         id="updateButton"
-        [hidden] = "!aquarium.aquariumId"
         class="btn btn-primary text-white"
         value="Update"
       />
       <button
         type="button"
         id="clearForm"
-        (click)="createForm()"
+        (click)="clearForm()"
         class="btn btn-danger ml-2"
       >
         Cancel
@@ -115,6 +115,4 @@
     </div>
   </div>
 </form>
-<div>
-
-</div>
+<div></div>

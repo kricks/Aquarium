@@ -27,9 +27,7 @@ export class LivestockListComponent implements OnInit {
       let fkAquariumId = params.get("fkAquariumId");
       this.service.loadAllLivestock(fkAquariumId);
       this.displayLivestockList(fkAquariumId);
-      console.log("value " + fkAquariumId);
     });
-    // this.shared.currentMessage.subscribe(message => this.message = message);
   }
 
   getAllLivestock() {

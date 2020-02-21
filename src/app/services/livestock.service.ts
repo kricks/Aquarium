@@ -31,6 +31,7 @@ export class LivestockService {
   loadAllLivestock(aquariumFkId) {
     return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
       this.livestockList = data;
+      console.log("this is ls load");
       console.log(this.livestockList);
     });
   }

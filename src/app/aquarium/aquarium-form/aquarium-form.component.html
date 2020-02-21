@@ -32,8 +32,7 @@
         <span
           *ngIf="!form.get('name').valid && form.get('name').touched"
           class="ml-2"
-          >Name is required</span
-        >
+          >Name is required</span>
       </div>
       <div class="form-group col-md-6">
         <label for="type">Type <strong class="text-danger">*</strong></label>
@@ -48,6 +47,10 @@
           >
           <option *ngFor="let op of options" [value]="op">{{ op }}</option>
         </select>
+        <span
+          *ngIf="!form.get('type').valid && form.get('type').touched"
+          class="ml-2"
+          >Type is required</span>
       </div>
     </div>
 
@@ -56,14 +59,16 @@
         <label for="gallon">Gallons</label>
         <input
           type="number"
-          min="0"
           name="gallon"
           class="form-control"
           id="gallonField"
-          ng-pattern="/^[0-9]*$/"
           placeholder="Enter Number of Gallons"
           formControlName="gallon"
         />
+        <span
+          *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
+          class="ml-2"
+          >Negative numbers are invalid!</span>
       </div>
       <div class="form-group col-md-6">
         <label for="notes">Notes</label>

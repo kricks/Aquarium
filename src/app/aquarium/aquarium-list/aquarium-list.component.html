@@ -1,7 +1,7 @@
 <div>
   <app-delete-modal
     [deleteModal]="showModal"
-    [aquarium]="aquarium"
+    [aquarium]="showAq"
     *ngIf="showModal"
   ></app-delete-modal>
 </div>
@@ -72,7 +72,7 @@
           class="btn btn-danger"
           data-toggle="modal"
           data-target="#exampleModal"
-          (click)="onDelete(aq.aquariumId)"
+          (click)="onDelete(aq)"
         >
           Delete
         </button>

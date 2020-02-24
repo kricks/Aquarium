@@ -1,19 +1,29 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Aquarium } from '../../aquarium.model';
+import { AquariumService } from 'src/app/services/aquarium.service';
+import { Component, OnInit, Input } from "@angular/core";
+import { Aquarium } from "../../aquarium.model";
 
 @Component({
-  selector: 'app-delete-modal',
-  templateUrl: './delete-modal.component.html',
-  styleUrls: ['./delete-modal.component.scss']
+  selector: "app-delete-modal",
+  templateUrl: "./delete-modal.component.html",
+  styleUrls: ["./delete-modal.component.scss"]
 })
 export class DeleteModalComponent implements OnInit {
   @Input() deleteModal: boolean;
   @Input() aquarium: Aquarium;
 
-  constructor() { }
+  constructor(private service: AquariumService) {}
 
   ngOnInit() {
     console.log("hit delete modal");
   }
 
+  onDelete(aquariumId) {
+    this.service.deleteAquarium(aquariumId).subscribe(
+      data => {
+        this.ngOnInit();
+      },
+      error => console.log("on delete error")
+    );
+    console.log("delete model");
+  }
 }

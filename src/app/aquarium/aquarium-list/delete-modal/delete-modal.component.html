@@ -22,14 +22,14 @@
       <div class="modal-body">
         <p>
           Deleting this aquarium will delete all of the livestock associated
-          with it. Are you sure you want to continue to delete?
+          with it. Are you sure you want to continue?
         </p>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="onDelete(aquarium.aquariumId)">Delete</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

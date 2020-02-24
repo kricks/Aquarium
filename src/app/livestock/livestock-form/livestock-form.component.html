@@ -100,6 +100,7 @@
         [disabled]="!form.valid"
         value="Add"
         class="btn btn-primary"
+        *ngIf="!livestock.livestockId"
       />
       <input
         type="button"
@@ -108,12 +109,13 @@
         [disabled]="!form.valid"
         class="btn btn-primary text-white"
         value="Update"
+        *ngIf="livestock.livestockId"
       />
       <button
         type="button"
-        ng-click="ctrl.reset()"
-        class="btn btn-danger"
+        class="btn btn-danger ml-2"
         id="clearForm"
+        (click)="createForm()"
       >
         Cancel
       </button>

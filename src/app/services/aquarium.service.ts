@@ -51,8 +51,6 @@ export class AquariumService {
   loadAllAquariums() {
     return this.getAllAquariums().subscribe((data: {}) => {
       this.aquariumList = data;
-      console.log("this is ls load");
-      console.log(this.aquariumList);
     });
   }
 }

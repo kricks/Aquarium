@@ -3,13 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FormBuilder } from "@angular/forms";
 import { Aquarium } from "./../../aquarium/aquarium.model";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-  Input,
-  OnDestroy
-} from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { LivestockService } from "src/app/services/livestock.service";
 import { Livestock } from "../livestock.model";
 import { Observable, Subscription } from "rxjs";
@@ -52,6 +46,7 @@ export class LivestockFormComponent implements OnInit {
       notes: "",
       fkAquariumId: param
     });
+    this.livestock = this.form.value;
   }
 
   onAddLivestock() {
@@ -86,7 +81,6 @@ export class LivestockFormComponent implements OnInit {
   getEditObject() {
     let subs = this.shared.editObject.subscribe(data => {
       this.livestock = data;
-      console.log(this.livestock);
       this.form = new FormGroup({
         livestockId: new FormControl(this.livestock.livestockId),
         name: new FormControl(this.livestock.name),
@@ -97,8 +91,4 @@ export class LivestockFormComponent implements OnInit {
       });
     });
   }
-
-  // ngOnDestroy(): void {
-  //   this.subs.unsubscribe();
-  // }
 }

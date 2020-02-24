@@ -1,4 +1,4 @@
-<h2 class="text-center mt-4" [attr.id]="top">{{ title }}</h2>
+<h2 class="text-center mt-4">{{ title }}</h2>
 <form
   [formGroup]="form"
   (ngSubmit)="onAddAquarium()"
@@ -32,7 +32,8 @@
         <span
           *ngIf="!form.get('name').valid && form.get('name').touched"
           class="ml-2"
-          >Name is required</span>
+          >Name is required</span
+        >
       </div>
       <div class="form-group col-md-6">
         <label for="type">Type <strong class="text-danger">*</strong></label>
@@ -50,7 +51,8 @@
         <span
           *ngIf="!form.get('type').valid && form.get('type').touched"
           class="ml-2"
-          >Type is required</span>
+          >Type is required</span
+        >
       </div>
     </div>
 
@@ -68,7 +70,8 @@
         <span
           *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
           class="ml-2"
-          >Negative numbers are invalid!</span>
+          >Negative numbers are invalid!</span
+        >
       </div>
       <div class="form-group col-md-6">
         <label for="notes">Notes</label>
@@ -90,7 +93,7 @@
           type="date"
           name="date"
           class="form-control"
-          id="dateField"       
+          id="dateField"
           formControlName="date"
         />
         <span
@@ -109,6 +112,7 @@
         value="Add"
         class="btn btn-primary"
         [disabled]="!form.valid"
+        *ngIf="!aquarium.aquariumId"
       />
       <input
         type="button"
@@ -117,14 +121,15 @@
         class="btn btn-primary text-white"
         value="Update"
         [disabled]="!form.valid"
+        *ngIf="aquarium.aquariumId"
       />
       <button
         type="button"
         id="clearForm"
-        (click)="clearForm()"
+        (click)="createForm()"
         class="btn btn-danger ml-2"
       >
-        Cancel
+        Clear
       </button>
     </div>
   </div>

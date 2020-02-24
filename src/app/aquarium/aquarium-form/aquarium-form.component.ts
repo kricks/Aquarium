@@ -25,7 +25,6 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
   enableUpdate = this.aquarium.aquariumId;
   subs: Subscription;
   form: FormGroup;
-  show = false;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
@@ -51,9 +50,7 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
       notes: "",
       date: [null, Validators.required]
     });
-
-    console.log("clear Form");
-    console.log(this.form.value);
+    this.aquarium = this.form.value;
   }
 
   saveAquarium() {
@@ -73,7 +70,6 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
       data => {
         this.service.loadAllAquariums();
         console.log("update");
-        console.log(data);
       },
       error => {
         console.log(error);
@@ -81,7 +77,6 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
       () => {
         this.createForm();
         console.log("hi complete");
-        console.log(this.aquarium.aquariumId);
       }
     );
   }
@@ -94,7 +89,6 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
     this.subs = this.shared.editObject.subscribe(
       data => {
         this.aquarium = data;
-        // let date = this.datePipe.transform(this.aquarium.date, 'yyyy-MM-dd');
         console.log(this.aquarium);
         this.form = new FormGroup({
           aquariumId: new FormControl(this.aquarium.aquariumId),
@@ -111,11 +105,8 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  clearForm() {
-    this.createForm();
-  }
-
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
+
 }

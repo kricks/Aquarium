@@ -1,3 +1,4 @@
+import { AquariumFormComponent } from './aquarium/aquarium-form/aquarium-form.component';
 import { AquariumDetailComponent } from "./aquarium/aquarium-detail/aquarium-detail.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, ExtraOptions } from "@angular/router";
@@ -17,7 +18,8 @@ const routes: Routes = [
 const routerOptions: ExtraOptions = {
   useHash: false,
   anchorScrolling: 'enabled',
-  onSameUrlNavigation: 'reload'
+  onSameUrlNavigation: 'reload',
+  scrollOffset: [0, 64]
 };
 
 @NgModule({

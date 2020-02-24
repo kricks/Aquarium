@@ -1,4 +1,4 @@
-<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
+<h4 class="mt-4 text text-center pt-3" [attr.id]="test">Aquarium List</h4>
 <div class="row">
   <div class="col-4 my-2" *ngFor="let aq of service.aquariumList">
     <div class="card">
@@ -23,13 +23,12 @@
               <li>{{ aq.type }}</li>
               <li>{{ aq.gallon }}</li>
               <li>{{ aq.notes }}</li>
-              <li>{{ aq.date | date: "mediumDate": "CST" }}</li>
+              <li>{{ aq.date | date: "mediumDate"}}</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="card-footer text-center">
-        <a>
           <button
             type="button"
             class="btn btn-info"
@@ -43,15 +42,12 @@
               src="https://img.icons8.com/officexs/16/000000/clown-fish.png"
             />
           </button>
-        </a>
 
         <button
           type="button"
           (click)="onEdit(aq)"
           class="btn btn-success mx-2"
           id="aquariumEdit-{{ aq.name }}"
-          [routerLink]=""
-          [fragment]="top"
         >
           Edit
         </button>

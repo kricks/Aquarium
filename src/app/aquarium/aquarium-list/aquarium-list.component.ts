@@ -1,6 +1,7 @@
+import { filter } from "rxjs/operators";
 import { AquariumFormComponent } from "./../aquarium-form/aquarium-form.component";
 import { SharedDataService } from "./../../services/shared-data.service";
-import { Router } from "@angular/router";
+import { Router, NavigationEnd, NavigationStart } from "@angular/router";
 import { Component, OnInit, OnDestroy, OnChanges } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
 import { Observable, Subscription } from "rxjs";
@@ -12,11 +13,7 @@ import { SessionStorageService } from "src/app/services/session-storage.service"
   templateUrl: "./aquarium-list.component.html",
   styleUrls: ["./aquarium-list.component.scss"]
 })
-export class AquariumListComponent implements OnInit, OnChanges {
-
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    throw new Error("Method not implemented.");
-  }
+export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
@@ -40,6 +37,7 @@ export class AquariumListComponent implements OnInit, OnChanges {
 
   onEdit(aquarium) {
     this.shared.editObject.next(aquarium);
+    this.ngOnInit();
   }
 
   // getAquariumById(aquariumId) {

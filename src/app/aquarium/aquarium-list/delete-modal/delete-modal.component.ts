@@ -14,13 +14,12 @@ export class DeleteModalComponent implements OnInit {
   constructor(private service: AquariumService) {}
 
   ngOnInit() {
-    console.log("hit delete modal");
   }
 
   onDelete(aquariumId) {
     this.service.deleteAquarium(aquariumId).subscribe(
       data => {
-        this.ngOnInit();
+        this.service.loadAllAquariums();
       },
       error => console.log("on delete error")
     );

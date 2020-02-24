@@ -18,7 +18,7 @@ export class AquariumListComponent implements OnInit {
   aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
   subs: Subscription;
-  showModal = false;
+  showModal;
   showAq;
 
   constructor(
@@ -43,19 +43,9 @@ export class AquariumListComponent implements OnInit {
   }
 
   onDelete(aquarium) {
-    this.showModal =!this.showModal;
+    this.showModal = true;
     this.showAq = aquarium;
     let id = aquarium.aquariumId;
-    console.log(this.showModal);
-    console.log(id);
-    console.log(aquarium);
-    console.log(this.showAq);
-    // this.subs = this.service.deleteAquarium(aquariumId).subscribe(
-    //   data => {
-    //     this.ngOnInit();
-    //   },
-    //   error => console.log("on delete error")
-    // );
   }
 
   onView(aquarium) {

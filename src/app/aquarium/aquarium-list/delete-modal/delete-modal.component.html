@@ -8,8 +8,8 @@
 >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete {{aquarium.name}}</h5>
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLabel">Delete {{aquarium.name}}?</h5>
         <button
           type="button"
           class="close"
@@ -22,11 +22,11 @@
       <div class="modal-body">
         <p>
           Deleting this aquarium will delete all of the livestock associated
-          with it. Are you sure you want to continue?
+          with it. <br> Are you sure you want to continue?
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="onDelete(aquarium.aquariumId)">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(aquarium.aquariumId)" data-dismiss="modal">Delete</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>

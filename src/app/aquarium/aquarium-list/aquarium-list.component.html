@@ -6,7 +6,7 @@
   ></app-delete-modal>
 </div>
 
-<h4 class="mt-4 text text-center pt-3" [attr.id]="test">Aquarium List</h4>
+<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
 <div class="row">
   <div class="col-4 my-2" *ngFor="let aq of service.aquariumList">
     <div class="card">
@@ -59,14 +59,6 @@
         >
           Edit
         </button>
-        <!-- <button
-          type="button"
-          (click)="onDelete(aq.aquariumId)"
-          class="btn btn-danger"
-          id="aquariumDelete-{{ aq.name }}"
-        >
-          Delete
-        </button> -->
         <button
           type="button"
           class="btn btn-danger"
@@ -80,4 +72,3 @@
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>

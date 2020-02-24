@@ -18,6 +18,7 @@ import { AquariumService } from './services/aquarium.service';
 import { LivestockService } from './services/livestock.service';
 import { SharedDataService } from './services/shared-data.service';
 import { BrowserModule } from "@angular/platform-browser";
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { BrowserModule } from "@angular/platform-browser";
     AquariumService,
     LivestockService,
     SharedDataService,
-    AquariumListComponent
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

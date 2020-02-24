@@ -1,4 +1,4 @@
-<h2 class="text-center mt-4">{{ title }}</h2>
+<h2 class="text-center mt-4" [attr.id]="top">{{ title }}</h2>
 <form
   [formGroup]="form"
   (ngSubmit)="onAddAquarium()"
@@ -90,8 +90,7 @@
           type="date"
           name="date"
           class="form-control"
-          id="dateField"
-          placeholder="MM/dd/yyyy"
+          id="dateField"       
           formControlName="date"
         />
         <span

@@ -1,5 +1,5 @@
 import { SharedDataService } from "./../../services/shared-data.service";
-import { FormGroup, FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FormBuilder } from "@angular/forms";
 import { Aquarium } from "./../../aquarium/aquarium.model";
 import { Router, ActivatedRoute, Params } from "@angular/router";
@@ -46,9 +46,9 @@ export class LivestockFormComponent implements OnInit {
   createForm(param) {
     this.form = this.fb.group({
       livestockId: null,
-      name: "",
-      species: "",
-      gender: "",
+      name: ["", Validators.required],
+      species: ["", Validators.required],
+      gender: ["", Validators.required],
       notes: "",
       fkAquariumId: param
     });

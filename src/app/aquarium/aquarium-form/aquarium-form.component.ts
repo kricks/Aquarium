@@ -8,10 +8,10 @@ import {
   FormControl,
   FormBuilder,
   FormGroup,
-  NgForm,
   Validators
 } from "@angular/forms";
 import { map, filter, catchError, mergeMap, finalize } from "rxjs/operators";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: "app-aquarium-form",
@@ -32,7 +32,8 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
     private service: AquariumService,
     private router: Router,
     private shared: SharedDataService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -93,6 +94,7 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
     this.subs = this.shared.editObject.subscribe(
       data => {
         this.aquarium = data;
+        // let date = this.datePipe.transform(this.aquarium.date, 'yyyy-MM-dd');
         console.log(this.aquarium);
         this.form = new FormGroup({
           aquariumId: new FormControl(this.aquarium.aquariumId),

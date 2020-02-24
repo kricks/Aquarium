@@ -16,6 +16,11 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="tname">Name <strong class="text-danger">*</strong></label>
+      <span
+          *ngIf="!form.get('name').valid && form.get('name').touched"
+          class="ml-2"
+          >Name is required</span
+        >
       <input
         type="text"
         formControlName="name"
@@ -30,6 +35,11 @@
       <label for="species"
         >Species <strong class="text-danger">*</strong></label
       >
+      <span
+          *ngIf="!form.get('species').valid && form.get('species').touched"
+          class="ml-2"
+          >Species is required</span
+        >
       <input
         type="text"
         name="species"
@@ -44,6 +54,11 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="type">Gender <strong class="text-danger">*</strong></label>
+      <span
+          *ngIf="!form.get('gender').valid && form.get('gender').touched"
+          class="ml-2"
+          >Gender is required</span
+        >
       <select
         name="gender"
         id="genderFieldLS"
@@ -82,7 +97,7 @@
       <input
         type="submit"
         id="submitButton"
-        [hidden]="livestockId"
+        [disabled]="!form.valid"
         value="Add"
         class="btn btn-primary"
       />
@@ -90,7 +105,7 @@
         type="button"
         (click)="onUpdate(livestockId)"
         id="updateButton"
-        [hidden]="livestockId"
+        [disabled]="!form.valid"
         class="btn btn-primary text-white"
         value="Update"
       />

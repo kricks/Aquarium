@@ -1,18 +1,19 @@
 import { Aquarium } from "../aquarium/aquarium.model";
 import {
-  HttpClientModule,
   HttpClient,
   HttpHeaders
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: "root"
 })
 export class AquariumService {
   aquariumList: any = [];
-  constructor(private http: HttpClient) {}
+  aquarium: Aquarium = new Aquarium();
+  constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   // Http Headers
   httpOptions = {
@@ -49,7 +50,6 @@ export class AquariumService {
 
   loadAllAquariums() {
     return this.getAllAquariums().subscribe((data: {}) => {
-      // to send this_aquariumList
       this.aquariumList = data;
       console.log("this is ls load");
       console.log(this.aquariumList);

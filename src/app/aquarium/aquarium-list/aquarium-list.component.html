@@ -23,7 +23,7 @@
               <li>{{ aq.type }}</li>
               <li>{{ aq.gallon }}</li>
               <li>{{ aq.notes }}</li>
-              <li>{{ aq.date | date: "mediumDate" }}</li>
+              <li>{{ aq.date | date: "mediumDate": "CST" }}</li>
             </ul>
           </div>
         </div>
@@ -50,6 +50,8 @@
           (click)="onEdit(aq)"
           class="btn btn-success mx-2"
           id="aquariumEdit-{{ aq.name }}"
+          [routerLink]=""
+          [fragment]="top"
         >
           Edit
         </button>

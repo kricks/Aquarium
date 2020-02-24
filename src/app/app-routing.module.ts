@@ -1,6 +1,6 @@
 import { AquariumDetailComponent } from "./aquarium/aquarium-detail/aquarium-detail.component";
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, ExtraOptions } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { AquariumComponent } from "./aquarium/aquarium.component";
 
@@ -14,8 +14,14 @@ const routes: Routes = [
   { path: "livestock/:fkAquariumId", component: LivestockComponent }
 ];
 
+const routerOptions: ExtraOptions = {
+  useHash: false,
+  anchorScrolling: 'enabled',
+  onSameUrlNavigation: 'reload'
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

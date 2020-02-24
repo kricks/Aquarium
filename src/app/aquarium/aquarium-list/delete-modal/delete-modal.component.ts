@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Aquarium } from '../../aquarium.model';
 
 @Component({
   selector: 'app-delete-modal',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-modal.component.scss']
 })
 export class DeleteModalComponent implements OnInit {
+  @Input() deleteModal: boolean;
+  @Input() aquarium: Aquarium;
 
   constructor() { }
 
   ngOnInit() {
+    console.log("hit delete modal");
   }
 
 }

@@ -1,8 +1,6 @@
-import { filter } from "rxjs/operators";
-import { AquariumFormComponent } from "./../aquarium-form/aquarium-form.component";
 import { SharedDataService } from "./../../services/shared-data.service";
-import { Router, NavigationEnd, NavigationStart } from "@angular/router";
-import { Component, OnInit, OnDestroy, OnChanges } from "@angular/core";
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
 import { Observable, Subscription } from "rxjs";
 import { AquariumService } from "src/app/services/aquarium.service";
@@ -39,13 +37,13 @@ export class AquariumListComponent implements OnInit {
 
   onEdit(aquarium) {
     this.shared.editObject.next(aquarium);
-    this.ngOnInit();
+    
   }
 
   onDelete(aquarium) {
     this.showModal = true;
     this.showAq = aquarium;
-    let id = aquarium.aquariumId;
+    
   }
 
   onView(aquarium) {

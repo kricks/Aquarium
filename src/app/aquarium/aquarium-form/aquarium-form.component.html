@@ -2,7 +2,6 @@
 <form
   [formGroup]="form"
   (ngSubmit)="onAddAquarium()"
-  id="top"
   name="aquariumForm"
   class="col text"
   autocomplete="off"
@@ -32,8 +31,7 @@
         <span
           *ngIf="!form.get('name').valid && form.get('name').touched"
           class="ml-2"
-          >Name is required</span
-        >
+          >Name is required</span>
       </div>
       <div class="form-group col-md-6">
         <label for="type">Type <strong class="text-danger">*</strong></label>

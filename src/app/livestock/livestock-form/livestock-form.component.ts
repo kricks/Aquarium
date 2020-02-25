@@ -10,11 +10,9 @@ import { Observable, Subscription } from "rxjs";
 @Component({
   selector: "app-livestock-form",
   templateUrl: "./livestock-form.component.html",
-  styleUrls: ["./livestock-form.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ["./livestock-form.component.scss"]
 })
 export class LivestockFormComponent implements OnInit {
-  livestocks: Observable<Livestock[]>;
   livestock: Livestock = new Livestock();
   form: FormGroup;
   subs: Subscription;

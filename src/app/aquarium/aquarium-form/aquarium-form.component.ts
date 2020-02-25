@@ -10,19 +10,16 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
-import { map, filter, catchError, mergeMap, finalize } from "rxjs/operators";
 import { DatePipe } from '@angular/common';
 
 @Component({
   selector: "app-aquarium-form",
   templateUrl: "./aquarium-form.component.html",
-  styleUrls: ["./aquarium-form.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ["./aquarium-form.component.scss"]
 })
 export class AquariumFormComponent implements OnInit, OnDestroy {
   title = "Add New Aquarium";
   aquarium: Aquarium = new Aquarium();
-  enableUpdate = this.aquarium.aquariumId;
   subs: Subscription;
   form: FormGroup;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
@@ -31,8 +28,7 @@ export class AquariumFormComponent implements OnInit, OnDestroy {
     private service: AquariumService,
     private router: Router,
     private shared: SharedDataService,
-    private fb: FormBuilder,
-    private datePipe: DatePipe
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {

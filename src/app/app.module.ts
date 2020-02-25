@@ -19,6 +19,7 @@ import { LivestockService } from './services/livestock.service';
 import { SharedDataService } from './services/shared-data.service';
 import { BrowserModule } from "@angular/platform-browser";
 import { DatePipe } from '@angular/common';
+import { DeleteModalComponent } from './aquarium/aquarium-list/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DatePipe } from '@angular/common';
     LivestockComponent,
     LivestockListComponent,
     LivestockFormComponent,
-    LivestockAqDetailsComponent
+    LivestockAqDetailsComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,

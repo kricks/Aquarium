@@ -3,8 +3,7 @@ import { Component, OnInit, ɵCodegenComponentFactoryResolver, ViewEncapsulation
 @Component({
   selector: 'app-aquarium',
   templateUrl: './aquarium.component.html',
-  styleUrls: ['./aquarium.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./aquarium.component.scss']
 })
 export class AquariumComponent implements OnInit{
   title = 'Add New Aquarium';

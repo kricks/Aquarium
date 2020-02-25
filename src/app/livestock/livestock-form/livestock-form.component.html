@@ -1,123 +1,126 @@
-<form
-  [formGroup]="form"
-  (ngSubmit)="onAddLivestock()"
-  name="livestockForm"
-  class="col text my-4"
-  autocomplete="off"
->
-  <input
-    hidden
-    name="livestockId"
-    formControlName="livestockId"
-    class="form-control"
-    id="livestockIdFieldLS"
-  />
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="tname">Name <strong class="text-danger">*</strong></label>
-      <input
-        type="text"
-        formControlName="name"
-        name="nameFieldLS"
-        id="nameFieldLS"
-        class="form-control"
-        placeholder="Enter Name"
-        required
-      />
-      <span
+<div>
+  <h3 class="text text-center">Add new Livestock</h3>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onAddLivestock()"
+    name="livestockForm"
+    class="col text my-4"
+    autocomplete="off"
+  >
+    <input
+      hidden
+      name="livestockId"
+      formControlName="livestockId"
+      class="form-control"
+      id="livestockIdFieldLS"
+    />
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="tname">Name <strong class="text-danger">*</strong></label>
+        <input
+          type="text"
+          formControlName="name"
+          name="nameFieldLS"
+          id="nameFieldLS"
+          class="form-control"
+          placeholder="Enter Name"
+          required
+        />
+        <span
           *ngIf="!form.get('name').valid && form.get('name').touched"
           class="ml-2"
           >Name is required</span
         >
-    </div>
-    <div class="form-group col-md-6">
-      <label for="species"
-        >Species <strong class="text-danger">*</strong></label
-      >
-      <input
-        type="text"
-        name="species"
-        formControlName="species"
-        class="form-control"
-        id="speciesFieldLS"
-        placeholder="Enter Species"
-        required
-      />
-      <span
+      </div>
+      <div class="form-group col-md-6">
+        <label for="species"
+          >Species <strong class="text-danger">*</strong></label
+        >
+        <input
+          type="text"
+          name="species"
+          formControlName="species"
+          class="form-control"
+          id="speciesFieldLS"
+          placeholder="Enter Species"
+          required
+        />
+        <span
           *ngIf="!form.get('species').valid && form.get('species').touched"
           class="ml-2"
           >Species is required</span
         >
+      </div>
     </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="type">Gender <strong class="text-danger">*</strong></label>
-      <select
-        name="gender"
-        id="genderFieldLS"
-        class="form-control"
-        formControlName="gender"
-        required
-      >
-        <option [selected]="true" [disabled]="true" [hidden]="true" value=""
-          >Select Gender :</option
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="type">Gender <strong class="text-danger">*</strong></label>
+        <select
+          name="gender"
+          id="genderFieldLS"
+          class="form-control"
+          formControlName="gender"
+          required
         >
-        <option *ngFor="let op of options" [value]="op">{{ op }}</option>
-      </select>
-      <span
+          <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+            >Select Gender :</option
+          >
+          <option *ngFor="let op of options" [value]="op">{{ op }}</option>
+        </select>
+        <span
           *ngIf="!form.get('gender').valid && form.get('gender').touched"
           class="ml-2"
           >Gender is required</span
         >
-    </div>
-    <div class="form-group col-md-6">
-      <label for="notes">Notes</label>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="notes">Notes</label>
+        <input
+          type="text"
+          name="notes"
+          formControlName="notes"
+          class="form-control"
+          id="notesFieldLS"
+          placeholder="Enter Notes"
+        />
+      </div>
       <input
-        type="text"
-        name="notes"
-        formControlName="notes"
+        hidden
+        name="fkAquariumId"
+        formControlName="fkAquariumId"
         class="form-control"
-        id="notesFieldLS"
+        id="fkAquariumIdFieldLS"
         placeholder="Enter Notes"
       />
     </div>
-    <input
-      hidden
-      name="fkAquariumId"
-      formControlName="fkAquariumId"
-      class="form-control"
-      id="fkAquariumIdFieldLS"
-      placeholder="Enter Notes"
-    />
-  </div>
-  <div>
-    <div class="float-right">
-      <input
-        type="submit"
-        id="submitButton"
-        [disabled]="!form.valid"
-        value="Add"
-        class="btn btn-primary"
-        *ngIf="!livestock.livestockId"
-      />
-      <input
-        type="button"
-        (click)="onUpdate(livestockId)"
-        id="updateButton"
-        [disabled]="!form.valid"
-        class="btn btn-primary text-white"
-        value="Update"
-        *ngIf="livestock.livestockId"
-      />
-      <button
-        type="button"
-        class="btn btn-danger ml-2"
-        id="clearForm"
-        (click)="createForm()"
-      >
-        Cancel
-      </button>
+    <div class="buttons">
+      <div>
+        <input
+          type="submit"
+          id="submitButton"
+          [disabled]="!form.valid"
+          value="Add"
+          class="btn btn-primary"
+          *ngIf="!livestock.livestockId"
+        />
+        <input
+          type="button"
+          (click)="onUpdate(livestockId)"
+          id="updateButton"
+          [disabled]="!form.valid"
+          class="btn btn-primary text-white"
+          value="Update"
+          *ngIf="livestock.livestockId"
+        />
+        <button
+          type="button"
+          class="btn btn-danger ml-2"
+          id="clearForm"
+          (click)="createForm()"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

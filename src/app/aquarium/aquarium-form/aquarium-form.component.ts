@@ -21,6 +21,7 @@ export class AquariumFormComponent implements OnInit {
   aquarium: Aquarium = new Aquarium();
   subs: Subscription;
   form: FormGroup;
+  updateMessage = false;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
@@ -65,6 +66,7 @@ export class AquariumFormComponent implements OnInit {
       data => {
         this.service.loadAllAquariums();
         console.log("update");
+        this.updateMessage = true;
       },
       error => {
         console.log(error);

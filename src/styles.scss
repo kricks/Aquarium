@@ -1,49 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-	height: 100%;
-	background-image: url(../src/assets/images/sandy.jpg);
-	background-repeat: no-repeat;
-	background-attachment: fixed; background-size : cover;
-	background-color: rgba(255, 255, 255, 0.3);
-	background-size: cover;
+html,
+body {
+  height: max-content;
+  background-image: url(../src/assets/images/sandy.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-size: cover;
 }
 
 body {
-    display: flex;
+  display: flex;
   flex-direction: column;
 }
 
 .container {
-	flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 .image {
-    width: 100%;;
+  width: 100%;
 }
 
-.card, table {
-	background-color: rgba(255, 255, 255, 0.8) !important;
+.card,
+table {
+  background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .text {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-input, select {
-    &.ng-touched, .ng-invalid {
-        border: 2px solid red;
-    }
-    &.ng-valid {
-        border: 2px solid green;
-    }
-    &.ng-untouched {
-        border: 1px solid #ced4da;
-    }
+input,
+select {
+  &.ng-touched,
+  .ng-invalid {
+    border: 2px solid red;
+  }
+  &.ng-valid {
+    border: 2px solid green;
+  }
+  &.ng-untouched {
+    border: 1px solid #ced4da;
+  }
 }
 
 div {
-    span {
-        background-color: rgba(255, 255, 255, 0.3);
-        padding: 10px;
-    }
+  span {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px;
 }

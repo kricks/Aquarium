@@ -6,100 +6,100 @@
   class="col text"
   autocomplete="off"
 >
-  <div>
+  <input
+    hidden
+    name="aquariumId"
+    class="form-control"
+    id="aquariumId"
+    formControlName="aquariumId"
+  />
+  <div class="form-row col">
     <div class="form-group col-md-6">
-      <label for="aquariumId"></label>
+      <label for="tname">Name <strong class="text-danger">*</strong></label>
       <input
-        hidden
-        name="aquariumId"
+        type="text"
+        id="nameField"
+        name="name"
         class="form-control"
-        id="aquariumId"
-        formControlName="aquariumId"
+        placeholder="Enter Name"
+        formControlName="name"
+        required
+      />
+      <span
+        *ngIf="!form.get('name').valid && form.get('name').touched"
+        class="ml-2"
+        >Name is required</span
+      >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="type">Type <strong class="text-danger">*</strong></label>
+      <select
+        name="type"
+        class="form-control"
+        id="typeField"
+        formControlName="type"
+        required
+      >
+        <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+          >Select type of water :</option
+        >
+        <option *ngFor="let op of options" [value]="op">{{ op }}</option>
+      </select>
+      <span
+        *ngIf="!form.get('type').valid && form.get('type').touched"
+        class="ml-2"
+        >Type is required</span
+      >
+    </div>
+  </div>
+
+  <div class="form-row col">
+    <div class="form-group col-md-6">
+      <label for="gallon">Gallons</label>
+      <input
+        type="number"
+        name="gallon"
+        class="form-control"
+        id="gallonField"
+        placeholder="Enter Number of Gallons"
+        formControlName="gallon"
+        required
+      />
+      <span
+        *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
+        class="ml-2"
+        >Negative numbers are invalid!</span
+      >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="notes">Notes</label>
+      <input
+        type="text"
+        name="notes"
+        class="form-control"
+        id="notesField"
+        placeholder="Enter Notes"
+        formControlName="notes"
       />
     </div>
-    <div class="form-row col">
-      <div class="form-group col-md-6">
-        <label for="tname">Name <strong class="text-danger">*</strong></label>
-        <input
-          type="text"
-          id="nameField"
-          name="name"
-          class="form-control"
-          placeholder="Enter Name"
-          formControlName="name"
-        />
-        <span
-          *ngIf="!form.get('name').valid && form.get('name').touched"
-          class="ml-2"
-          >Name is required</span>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="type">Type <strong class="text-danger">*</strong></label>
-        <select
-          name="type"
-          class="form-control"
-          id="typeField"
-          formControlName="type"
-        >
-          <option [selected]="true" [disabled]="true" [hidden]="true" value=""
-            >Select type of water :</option
-          >
-          <option *ngFor="let op of options" [value]="op">{{ op }}</option>
-        </select>
-        <span
-          *ngIf="!form.get('type').valid && form.get('type').touched"
-          class="ml-2"
-          >Type is required</span
-        >
-      </div>
-    </div>
+  </div>
 
-    <div class="form-row col">
-      <div class="form-group col-md-6">
-        <label for="gallon">Gallons</label>
-        <input
-          type="number"
-          name="gallon"
-          class="form-control"
-          id="gallonField"
-          placeholder="Enter Number of Gallons"
-          formControlName="gallon"
-        />
-        <span
-          *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
-          class="ml-2"
-          >Negative numbers are invalid!</span
-        >
-      </div>
-      <div class="form-group col-md-6">
-        <label for="notes">Notes</label>
-        <input
-          type="text"
-          name="notes"
-          class="form-control"
-          id="notesField"
-          placeholder="Enter Notes"
-          formControlName="notes"
-        />
-      </div>
-    </div>
-
-    <div class="form-row col">
-      <div class="form-group col-md-6">
-        <label for="date">Date<strong class="text-danger"> *</strong></label>
-        <input
-          type="date"
-          name="date"
-          class="form-control"
-          id="dateField"
-          formControlName="date"
-        />
-        <span
-          *ngIf="!form.get('date').valid && form.get('date').touched"
-          class="ml-2"
-          >Date is required</span
-        >
-      </div>
+  <div class="form-row col">
+    <div class="form-group col-md-6">
+      <label for="date">Date<strong class="text-danger"> *</strong></label>
+      <input
+        type="date"
+        name="date"
+        class="form-control"
+        id="dateField"
+        formControlName="date"
+        required
+      />
+      <span
+        *ngIf="!form.get('date').valid && form.get('date').touched"
+        class="ml-2"
+        >Date is required</span
+      >
     </div>
   </div>
   <div class="col">

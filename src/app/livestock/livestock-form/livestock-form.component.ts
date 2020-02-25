@@ -77,7 +77,7 @@ export class LivestockFormComponent implements OnInit {
   }
 
   getEditObject() {
-    let subs = this.shared.editObject.subscribe(data => {
+    this.shared.editObject.subscribe(data => {
       this.livestock = data;
       this.form = new FormGroup({
         livestockId: new FormControl(this.livestock.livestockId),

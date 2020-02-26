@@ -10,6 +10,7 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: "app-aquarium-form",
@@ -29,7 +30,8 @@ export class AquariumFormComponent implements OnInit {
     private service: AquariumService,
     private router: Router,
     private shared: SharedDataService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private logger: NGXLogger
   ) {}
 
   ngOnInit() {
@@ -66,15 +68,15 @@ export class AquariumFormComponent implements OnInit {
     this.service.updateAquarium(aquariumId, this.form.value).subscribe(
       data => {
         this.service.loadAllAquariums();
-        console.log("update");
+        this.logger.info("update");
         this.updateMessage = true;
       },
       error => {
-        console.log(error);
+        this.logger.error(error);
       },
       () => {
         this.createForm();
-        console.log("hi complete");
+        this.logger.info("update finally block complete");
       }
     );
   }
@@ -87,7 +89,7 @@ export class AquariumFormComponent implements OnInit {
     this.shared.editObject.subscribe(
       data => {
         this.aquarium = data;
-        console.log(this.aquarium);
+        this.logger.info(this.aquarium);
         this.form = new FormGroup({
           aquariumId: new FormControl(this.aquarium.aquariumId),
           name: new FormControl(this.aquarium.name),
@@ -98,7 +100,7 @@ export class AquariumFormComponent implements OnInit {
         });
       },
       error => {
-        console.log(error);
+        this.logger.error(error);
       }
     );
   }

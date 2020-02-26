@@ -1,3 +1,4 @@
+import { logging } from 'protractor';
 import { OnDestroy } from "@angular/core";
 import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Aquarium } from "../aquarium.model";
@@ -16,13 +17,13 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
   constructor(private shared: SharedDataService) {}
 
   ngOnInit() {
-    this.stuff();
+    this.confirmationDetails();
   }
 
-  stuff() {
+  confirmationDetails() {
     this.sub = this.shared.details.subscribe(data => {
       this.aquarium = data;
-      console.log(this.aquarium);
+      console.log(this.aquarium); 
     });
   }
 

@@ -1,3 +1,4 @@
+import { NgxLoggerLevel, NGXLogger } from 'ngx-logger';
 import { SharedDataService } from "../../../core/services/shared-data.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FormBuilder } from "@angular/forms";
@@ -22,7 +23,8 @@ export class LivestockFormComponent implements OnInit {
     private service: LivestockService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private shared: SharedDataService
+    private shared: SharedDataService,
+    private logger: NGXLogger
   ) {}
 
   ngOnInit() {
@@ -56,10 +58,10 @@ export class LivestockFormComponent implements OnInit {
     this.service.createLivestock(this.form.value).subscribe(
       data => {
         this.ngOnInit();
-        console.log(data);
+        this.logger.info(data);
       },
       error => {
-        console.log(error);
+        this.logger.error(error);
       }
     );
   }
@@ -68,10 +70,10 @@ export class LivestockFormComponent implements OnInit {
     this.service.updateLivestock(livestockId, this.form.value).subscribe(
       data => {
         this.ngOnInit();
-        console.log(data);
+        this.logger.info(data);
       },
       error => {
-        console.log(error);
+        this.logger.error(error);
       }
     );
   }

@@ -10,14 +10,13 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
-import { NGXLogger } from 'ngx-logger';
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-aquarium-form",
   templateUrl: "./aquarium-form.component.html",
   styleUrls: ["./aquarium-form.component.scss"]
 })
-
 export class AquariumFormComponent implements OnInit {
   title = "Add New Aquarium";
   aquarium: Aquarium = new Aquarium();
@@ -55,7 +54,7 @@ export class AquariumFormComponent implements OnInit {
   saveAquarium() {
     this.service
       .createAquarium(this.form.value)
-      .subscribe(data => console.log(data));
+      .subscribe(data => this.logger.info(data));
   }
 
   onAddAquarium() {

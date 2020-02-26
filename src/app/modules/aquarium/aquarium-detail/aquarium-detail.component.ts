@@ -4,6 +4,7 @@ import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Aquarium } from "../aquarium.model";
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: "app-aquarium-detail",
@@ -14,7 +15,7 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
   aquarium: Aquarium;
   sub: Subscription;
 
-  constructor(private shared: SharedDataService) {}
+  constructor(private shared: SharedDataService, private logger: NGXLogger) {}
 
   ngOnInit() {
     this.confirmationDetails();
@@ -23,7 +24,7 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
   confirmationDetails() {
     this.sub = this.shared.details.subscribe(data => {
       this.aquarium = data;
-      console.log(this.aquarium); 
+      this.logger.info(this.aquarium);
     });
   }
 

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { LivestockService } from "src/app/core/services/livestock.service";
 import { Livestock } from "../livestock.model";
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-livestock-list",
@@ -19,7 +20,8 @@ export class LivestockListComponent implements OnInit {
   constructor(
     private service: LivestockService,
     private route: ActivatedRoute,
-    private shared: SharedDataService
+    private shared: SharedDataService,
+    private logger: NGXLogger
   ) {}
 
   ngOnInit() {
@@ -47,7 +49,7 @@ export class LivestockListComponent implements OnInit {
       () => {
         this.ngOnInit();
       },
-      () => console.log("on delete error")
+      error => this.logger.error("on delete error")
     );
   }
 }

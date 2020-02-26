@@ -10,7 +10,6 @@ export class LivestockService {
 
   constructor(private http: HttpClient) {}
 
-  // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"

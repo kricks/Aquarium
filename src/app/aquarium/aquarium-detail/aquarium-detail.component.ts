@@ -1,12 +1,8 @@
-import { browser } from "protractor";
-import { OnDestroy, HostListener } from "@angular/core";
-import { SharedDataService } from "./../../services/shared-data.service";
-import { AquariumService } from "src/app/services/aquarium.service";
-import { AquariumListComponent } from "./../aquarium-list/aquarium-list.component";
+import { OnDestroy } from "@angular/core";
+import { SharedDataService } from "../../core/services/shared-data.service";
 import { Aquarium } from "./../aquarium.model";
-import { Component, OnInit, Input } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
-import { Router, NavigationEnd, NavigationStart } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-aquarium-detail",
@@ -16,14 +12,11 @@ import { Router, NavigationEnd, NavigationStart } from "@angular/router";
 export class AquariumDetailComponent implements OnInit, OnDestroy {
   aquarium: Aquarium;
   sub: Subscription;
-  refresh = false;
 
-  constructor(private shared: SharedDataService, private router: Router) {}
+  constructor(private shared: SharedDataService) {}
 
   ngOnInit() {
-    // this.aquarium = this.shared.confirmation;
     this.stuff();
-    // this.redirectOnRefresh();
   }
 
   stuff() {
@@ -32,19 +25,6 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
       console.log(this.aquarium);
     });
   }
-
-  // @HostListener("window:beforeunload") redirectOnRefresh() {
-  //   this.router.navigate([""]);
-  // }
-
-  // redirectOnRefresh() {
-  //   this.sub = this.router.events.subscribe(event => {
-  //     if (event instanceof NavigationStart) {
-  //       this.refresh = !this.router.navigated;
-  //       this.router.navigate([""]);
-  //     }
-  //   });
-  // }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();

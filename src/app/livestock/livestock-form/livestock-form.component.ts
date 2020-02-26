@@ -1,12 +1,12 @@
-import { SharedDataService } from "./../../services/shared-data.service";
+import { SharedDataService } from "../../core/services/shared-data.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FormBuilder } from "@angular/forms";
-import { Aquarium } from "./../../aquarium/aquarium.model";
-import { Router, ActivatedRoute, Params } from "@angular/router";
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { LivestockService } from "src/app/services/livestock.service";
+import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { LivestockService } from "src/app/core/services/livestock.service";
 import { Livestock } from "../livestock.model";
-import { Observable, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
+
 @Component({
   selector: "app-livestock-form",
   templateUrl: "./livestock-form.component.html",
@@ -16,7 +16,6 @@ export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
   form: FormGroup;
   subs: Subscription;
-  private options = ["Male", "Female", "N/A"];
 
   constructor(
     private service: LivestockService,

@@ -1,9 +1,9 @@
-import { SharedDataService } from './../../services/shared-data.service';
+import { SharedDataService } from "../../core/services/shared-data.service";
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { Router, ActivatedRoute, ParamMap } from "@angular/router";
-import { LivestockService } from "src/app/services/livestock.service";
-import { Livestock } from '../livestock.model';
+import { ActivatedRoute } from "@angular/router";
+import { LivestockService } from "src/app/core/services/livestock.service";
+import { Livestock } from "../livestock.model";
 
 @Component({
   selector: "app-livestock-list",
@@ -44,10 +44,10 @@ export class LivestockListComponent implements OnInit {
 
   onDelete(livestockId) {
     this.service.deleteLivestock(livestockId).subscribe(
-      data => {
+      () => {
         this.ngOnInit();
       },
-      error => console.log("on delete error")
+      () => console.log("on delete error")
     );
   }
 }

@@ -1,10 +1,9 @@
-import { SessionStorageService } from "../../services/session-storage.service";
+import { SessionStorageService } from "../../core/services/session-storage.service";
 import { OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
-import { SharedDataService } from "./../../services/shared-data.service";
+import { SharedDataService } from "../../core/services/shared-data.service";
 import { Component, OnInit } from "@angular/core";
 import { Aquarium } from "src/app/aquarium/aquarium.model";
-import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-livestock-aq-details",
@@ -26,7 +25,6 @@ export class LivestockAqDetailsComponent implements OnInit, OnDestroy {
   getStuffs() {
     this.subs = this.shared.details.subscribe(data => {
       this.aquarium = this.session.getStuff();
-      console.log(this.aquarium);
     });
   }
 

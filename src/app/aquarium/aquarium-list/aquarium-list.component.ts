@@ -1,10 +1,10 @@
-import { SharedDataService } from "./../../services/shared-data.service";
+import { SharedDataService } from "../../core/services/shared-data.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
 import { Observable, Subscription } from "rxjs";
-import { AquariumService } from "src/app/services/aquarium.service";
-import { SessionStorageService } from "src/app/services/session-storage.service";
+import { AquariumService } from "src/app/core/services/aquarium.service";
+import { SessionStorageService } from "src/app/core/services/session-storage.service";
 
 @Component({
   selector: "app-aquarium-list",
@@ -37,13 +37,11 @@ export class AquariumListComponent implements OnInit {
 
   onEdit(aquarium) {
     this.shared.editObject.next(aquarium);
-    
   }
 
   onDelete(aquarium) {
     this.showModal = true;
     this.showAq = aquarium;
-    
   }
 
   onView(aquarium) {

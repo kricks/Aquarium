@@ -6,7 +6,5 @@ export class Aquarium {
   notes: string;
   date: Date;
 
-  constructor() {
-  }
-
+  constructor() {}
 }

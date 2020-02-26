@@ -1,40 +1,36 @@
-  <h3 class="mt-4 text-center text">{{ title }}</h3>
-  <table class="table-hover table-striped table mt-4" id="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Species</th>
-        <th scope="col">Gender</th>
-        <th scope="col">Notes</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody id="body">
-      <tr
-        *ngFor="let ls of service.livestockList"
-        name="repeat"
-        id="livestockName-{{ ls.name }}"
-      >
-        <th scope="row" id="nameValue">{{ ls.name }}</th>
-        <td id="speciesValue">{{ ls.species }}</td>
-        <td id="genderValue">{{ ls.gender }}</td>
-        <td id="notesValue">{{ ls.notes }}</td>
-        <td class="">
-          <button
-            type="button"
-            class="btn btn-success mr-1"
-            (click)="onEdit(ls)"
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            class="btn btn-danger"
-            (click)="onDelete(ls.livestockId)"
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<h3 class="mt-4 text-center text">{{ title }}</h3>
+<table class="table-hover table-striped table mt-4" id="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Species</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Notes</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody id="body">
+    <tr
+      *ngFor="let ls of service.livestockList"
+      name="repeat"
+      id="livestockName-{{ ls.name }}"
+    >
+      <th scope="row" id="nameValue">{{ ls.name }}</th>
+      <td id="speciesValue">{{ ls.species }}</td>
+      <td id="genderValue">{{ ls.gender }}</td>
+      <td id="notesValue">{{ ls.notes }}</td>
+      <td class="">
+        <button type="button" class="btn btn-success mr-1" (click)="onEdit(ls)">
+          Edit
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="onDelete(ls.livestockId)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

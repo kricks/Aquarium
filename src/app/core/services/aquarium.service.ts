@@ -1,11 +1,7 @@
-import { Aquarium } from "../aquarium/aquarium.model";
-import {
-  HttpClient,
-  HttpHeaders
-} from "@angular/common/http";
+import { Aquarium } from "../../aquarium/aquarium.model";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: "root"
@@ -13,9 +9,8 @@ import { DatePipe } from '@angular/common';
 export class AquariumService {
   aquariumList: any = [];
   aquarium: Aquarium = new Aquarium();
-  constructor(private http: HttpClient, private datePipe: DatePipe) {}
+  constructor(private http: HttpClient) {}
 
-  // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"

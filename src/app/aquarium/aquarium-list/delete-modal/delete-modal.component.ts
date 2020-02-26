@@ -1,4 +1,4 @@
-import { AquariumService } from 'src/app/services/aquarium.service';
+import { AquariumService } from "src/app/core/services/aquarium.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Aquarium } from "../../aquarium.model";
 
@@ -13,8 +13,7 @@ export class DeleteModalComponent implements OnInit {
 
   constructor(private service: AquariumService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onDelete(aquariumId) {
     this.service.deleteAquarium(aquariumId).subscribe(

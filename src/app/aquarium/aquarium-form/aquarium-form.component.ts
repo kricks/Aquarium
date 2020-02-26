@@ -1,7 +1,7 @@
 import { Subscription } from "rxjs";
-import { SharedDataService } from "./../../services/shared-data.service";
+import { SharedDataService } from "../../core/services/shared-data.service";
 import { Router } from "@angular/router";
-import { AquariumService } from "../../services/aquarium.service";
+import { AquariumService } from "../../core/services/aquarium.service";
 import { Aquarium } from "./../aquarium.model";
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from "@angular/core";
 import {
@@ -16,6 +16,7 @@ import {
   templateUrl: "./aquarium-form.component.html",
   styleUrls: ["./aquarium-form.component.scss"]
 })
+
 export class AquariumFormComponent implements OnInit {
   title = "Add New Aquarium";
   aquarium: Aquarium = new Aquarium();
@@ -83,7 +84,8 @@ export class AquariumFormComponent implements OnInit {
   }
 
   getEditItem() {
-    this.shared.editObject.subscribe(data => {
+    this.shared.editObject.subscribe(
+      data => {
         this.aquarium = data;
         console.log(this.aquarium);
         this.form = new FormGroup({
@@ -97,6 +99,7 @@ export class AquariumFormComponent implements OnInit {
       },
       error => {
         console.log(error);
-      });
+      }
+    );
   }
 }

@@ -1,18 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-html,
-body {
-  height: max-content;
+
+body{
   background-image: url(../src/assets/images/sandy.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.3);
   background-size: cover;
-}
-
-body {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .container {
@@ -56,11 +53,4 @@ div {
 .buttons {
   display: flex;
   flex-direction: row-reverse;
-}
-
-.footer {
-    position: fixed;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 15px;
 }

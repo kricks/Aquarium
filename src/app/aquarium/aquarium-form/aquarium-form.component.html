@@ -64,11 +64,12 @@
         placeholder="Enter Number of Gallons"
         formControlName="gallon"
         required
+        pattern="^[0-9]{1,6}$"
       />
       <span
         *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
         class="ml-2"
-        >Negative numbers are invalid!</span
+        >Negative and Decimal numbers are invalid!</span
       >
     </div>
     <div class="form-group col-md-6">

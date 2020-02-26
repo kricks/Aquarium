@@ -1,4 +1,4 @@
-import { SharedDataService } from "../../core/services/shared-data.service";
+import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { ActivatedRoute } from "@angular/router";

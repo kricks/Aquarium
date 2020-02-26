@@ -1,4 +1,4 @@
-import { SharedDataService } from "../../core/services/shared-data.service";
+import { SharedDataService } from "../../../core/services/shared-data.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
@@ -16,6 +16,7 @@ export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
   form: FormGroup;
   subs: Subscription;
+  private options = ["Male", "Female", "N/A"];
 
   constructor(
     private service: LivestockService,

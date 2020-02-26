@@ -1,4 +1,4 @@
-import { SharedDataService } from "../../core/services/shared-data.service";
+import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { Aquarium } from "../aquarium.model";

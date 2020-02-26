@@ -1,8 +1,8 @@
 import { Subscription } from "rxjs";
-import { SharedDataService } from "../../core/services/shared-data.service";
+import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Router } from "@angular/router";
-import { AquariumService } from "../../core/services/aquarium.service";
-import { Aquarium } from "./../aquarium.model";
+import { AquariumService } from "../../../core/services/aquarium.service";
+import { Aquarium } from "../aquarium.model";
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from "@angular/core";
 import {
   FormControl,

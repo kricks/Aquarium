@@ -1,4 +1,4 @@
-import { Aquarium } from "../../aquarium/aquarium.model";
+import { Aquarium } from "../../modules/aquarium/aquarium.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";

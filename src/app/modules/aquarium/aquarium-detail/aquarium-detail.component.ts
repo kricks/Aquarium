@@ -1,6 +1,6 @@
 import { OnDestroy } from "@angular/core";
-import { SharedDataService } from "../../core/services/shared-data.service";
-import { Aquarium } from "./../aquarium.model";
+import { SharedDataService } from "../../../core/services/shared-data.service";
+import { Aquarium } from "../aquarium.model";
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 

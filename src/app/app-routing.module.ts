@@ -1,11 +1,11 @@
-import { AquariumFormComponent } from './aquarium/aquarium-form/aquarium-form.component';
-import { AquariumDetailComponent } from "./aquarium/aquarium-detail/aquarium-detail.component";
+import { AquariumFormComponent } from './modules/aquarium/aquarium-form/aquarium-form.component';
+import { AquariumDetailComponent } from "./modules/aquarium/aquarium-detail/aquarium-detail.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, ExtraOptions } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { AquariumComponent } from "./aquarium/aquarium.component";
+import { AquariumComponent } from "./modules/aquarium/aquarium.component";
 
-import { LivestockComponent } from "./livestock/livestock.component";
+import { LivestockComponent } from "./modules/livestock/livestock.component";
+import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },

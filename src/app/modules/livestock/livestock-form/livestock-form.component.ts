@@ -17,6 +17,7 @@ export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
   form: FormGroup;
   subs: Subscription;
+  updateMessage: boolean;
   private options = ["Male", "Female", "N/A"];
 
   constructor(
@@ -71,6 +72,7 @@ export class LivestockFormComponent implements OnInit {
       data => {
         this.ngOnInit();
         this.logger.info(data);
+        this.updateMessage = true;
       },
       error => {
         this.logger.error(error);
@@ -90,5 +92,13 @@ export class LivestockFormComponent implements OnInit {
         fkAquariumId: new FormControl(this.livestock.fkAquariumId)
       });
     });
+  }
+
+  showMessage() {
+    this.updateMessage = false;
+  }
+
+  clearForm() {
+    this.ngOnInit();
   }
 }

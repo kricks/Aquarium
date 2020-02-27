@@ -16,6 +16,7 @@ export class LivestockListComponent implements OnInit {
   livestocks: Observable<Livestock[]>;
   livestock: Livestock;
   message: string;
+  deleteMessage: boolean;
 
   constructor(
     private service: LivestockService,
@@ -44,12 +45,17 @@ export class LivestockListComponent implements OnInit {
     this.shared.editObject.next(livestock);
   }
 
+  showMessage() {
+    this.deleteMessage = false;
+  }
+
   onDelete(livestockId) {
     this.service.deleteLivestock(livestockId).subscribe(
       () => {
         this.ngOnInit();
+        this.deleteMessage = true;
       },
-      error => this.logger.error("on delete error")
+      error => this.logger.error(error)
     );
   }
 }

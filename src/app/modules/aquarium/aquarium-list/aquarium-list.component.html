@@ -6,7 +6,7 @@
   ></app-delete-modal>
 </div>
 
-<h4 class="mt-4 text text-center pt-3">Aquarium List</h4>
+<h4 class="mt-4 text text-center pt-3" id="aquariumList">Aquarium List</h4>
 <div class="row mb-5">
   <div class="col-4 my-2" *ngFor="let aq of service.aquariumList">
     <div class="card">
@@ -66,6 +66,7 @@
           class="btn btn-danger"
           data-toggle="modal"
           data-target="#deleteModal"
+          id="aquariumDelete-{{aq.name}}"
           (click)="onDelete(aq)"
         >
           Delete

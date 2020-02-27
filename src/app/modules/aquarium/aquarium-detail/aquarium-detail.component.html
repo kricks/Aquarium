@@ -11,7 +11,7 @@
           <div
             class="card-header font-weight-bold text-center"
             name="cardName"
-            id="cardName-{{ aquarium.name }}"
+            id="nameConf"
           >
             {{ aquarium.name }}
           </div>
@@ -25,10 +25,10 @@
                 />
               </div>
               <ul class="list-unstyled col-8">
-                <li>{{ aquarium.type }}</li>
-                <li>{{ aquarium.gallon }}</li>
-                <li>{{ aquarium.notes }}</li>
-                <li>{{ aquarium.date | date: "mediumDate" }}</li>
+                <li id="typeConf">{{ aquarium.type }}</li>
+                <li id="gallonConf">{{ aquarium.gallon }}</li>
+                <li id="notesConf">{{ aquarium.notes }}</li>
+                <li id="dateConf">{{ aquarium.date | date: "mediumDate" }}</li>
               </ul>
             </div>
           </div>

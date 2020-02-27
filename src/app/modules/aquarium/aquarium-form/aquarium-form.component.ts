@@ -22,7 +22,7 @@ export class AquariumFormComponent implements OnInit {
   aquarium: Aquarium = new Aquarium();
   subs: Subscription;
   form: FormGroup;
-  updateMessage = false;
+  updateMessage: boolean;
   private options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
@@ -66,22 +66,20 @@ export class AquariumFormComponent implements OnInit {
   onUpdateAquarium(aquariumId) {
     this.service.updateAquarium(aquariumId, this.form.value).subscribe(
       data => {
-        this.service.loadAllAquariums();
-        this.logger.info("update");
+        this.ngOnInit();
         this.updateMessage = true;
       },
       error => {
         this.logger.error(error);
-      },
-      () => {
-        this.createForm();
-        this.logger.info("update finally block complete");
-      }
-    );
+      });
   }
 
   aquariumDetails() {
     this.router.navigate(["confirmation"]);
+  }
+
+  showMessage() {
+    this.updateMessage = false;
   }
 
   getEditItem() {

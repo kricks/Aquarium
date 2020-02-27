@@ -9,6 +9,7 @@ import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "livestock", redirectTo: "aquarium", pathMatch: "full"},
   { path: "home", component: HomeComponent },
   { path: "aquarium", component: AquariumComponent },
   { path: "confirmation", component: AquariumDetailComponent },

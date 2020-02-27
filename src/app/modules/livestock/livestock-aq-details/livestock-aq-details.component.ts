@@ -19,12 +19,12 @@ export class LivestockAqDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.getStuffs();
+    this.getSessionData();
   }
 
-  getStuffs() {
+  getSessionData() {
     this.subs = this.shared.details.subscribe(data => {
-      this.aquarium = this.session.getStuff();
+      this.aquarium = this.session.getItem();
     });
   }
 

@@ -7,14 +7,14 @@ import { Injectable } from "@angular/core";
 export class SessionStorageService {
   constructor(private shared: SharedDataService) {}
 
-  setStuff(saved) {
+  setItem(saved) {
     this.shared.details.subscribe(data => {
       saved = data;
       sessionStorage.setItem("object", JSON.stringify(saved));
     });
   }
 
-  getStuff(): any {
+  getItem(): any {
     return JSON.parse(sessionStorage.getItem("object"));
   }
 }

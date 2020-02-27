@@ -1,3 +1,4 @@
+import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 import { Subscription } from "rxjs";
 import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Router } from "@angular/router";
@@ -30,7 +31,8 @@ export class AquariumFormComponent implements OnInit {
     private router: Router,
     private shared: SharedDataService,
     private fb: FormBuilder,
-    private logger: NGXLogger
+    private logger: NGXLogger,
+    private session: SessionStorageService
   ) {}
 
   ngOnInit() {
@@ -61,6 +63,7 @@ export class AquariumFormComponent implements OnInit {
     this.saveAquarium();
     this.aquariumDetails();
     this.shared.details.next(this.form.value);
+    this.session.setItem(this.form.value);
   }
 
   onUpdateAquarium(aquariumId) {

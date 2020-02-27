@@ -1,10 +1,10 @@
-import { logging } from 'protractor';
+import { SessionStorageService } from "src/app/core/services/session-storage.service";
 import { OnDestroy } from "@angular/core";
 import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Aquarium } from "../aquarium.model";
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { NGXLogger } from 'ngx-logger';
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-aquarium-detail",
@@ -15,7 +15,10 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
   aquarium: Aquarium;
   sub: Subscription;
 
-  constructor(private shared: SharedDataService, private logger: NGXLogger) {}
+  constructor(
+    private shared: SharedDataService,
+    private session: SessionStorageService
+  ) {}
 
   ngOnInit() {
     this.confirmationDetails();
@@ -23,8 +26,7 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
 
   confirmationDetails() {
     this.sub = this.shared.details.subscribe(data => {
-      this.aquarium = data;
-      this.logger.info(this.aquarium);
+      this.aquarium = this.session.getItem();
     });
   }
 

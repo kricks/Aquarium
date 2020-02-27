@@ -39,7 +39,6 @@ export class AquariumListComponent implements OnInit {
     this.shared.editObject.next(aquarium);
   }
 
-
   onDelete(aquarium) {
     this.showModal = true;
     this.showAq = aquarium;
@@ -48,7 +47,7 @@ export class AquariumListComponent implements OnInit {
   onView(aquarium) {
     this.shared.details.next(aquarium);
     let id = aquarium.aquariumId;
-    this.session.setStuff(aquarium);
+    this.session.setItem(aquarium);
     this.router.navigate(["livestock", id]);
   }
 }

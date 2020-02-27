@@ -1,9 +1,10 @@
+import { AquariumService } from "./../../../core/services/aquarium.service";
+import { Aquarium } from "./../../aquarium/aquarium.model";
 import { SessionStorageService } from "../../../core/services/session-storage.service";
 import { OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Component, OnInit } from "@angular/core";
-import { Aquarium } from "src/app/modules/aquarium/aquarium.model";
 
 @Component({
   selector: "app-livestock-aq-details",

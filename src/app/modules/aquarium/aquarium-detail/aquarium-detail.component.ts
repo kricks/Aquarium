@@ -25,7 +25,7 @@ export class AquariumDetailComponent implements OnInit, OnDestroy {
   }
 
   confirmationDetails() {
-    this.sub = this.shared.details.subscribe(data => {
+    this.sub = this.shared.details.subscribe(() => {
       this.aquarium = this.session.getItem();
     });
   }

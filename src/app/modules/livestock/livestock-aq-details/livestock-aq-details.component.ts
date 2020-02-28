@@ -16,7 +16,8 @@ export class LivestockAqDetailsComponent implements OnInit, OnDestroy {
   aquarium: Aquarium;
   constructor(
     private shared: SharedDataService,
-    private session: SessionStorageService
+    private session: SessionStorageService,
+    private service: AquariumService
   ) {}
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class LivestockAqDetailsComponent implements OnInit, OnDestroy {
   }
 
   getSessionData() {
-    this.subs = this.shared.details.subscribe(data => {
+    this.subs = this.shared.details$.subscribe(data => {
       this.aquarium = this.session.getItem();
     });
   }

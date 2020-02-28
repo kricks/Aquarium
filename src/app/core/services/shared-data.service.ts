@@ -1,14 +1,27 @@
+import { FormBuilder} from '@angular/forms';
 import { Aquarium } from "../../modules/aquarium/aquarium.model";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Subject, Subscription } from "rxjs";
+import { BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class SharedDataService {
   aquarium: Aquarium;
-  editObject = new Subject<any>();
-  details = new BehaviorSubject<any>(this.aquarium);
+  
+  private editObject = new Subject<any>();
+  editObject$ = this.editObject.asObservable();
 
-  constructor() {}
+  private details = new BehaviorSubject<any>(this.aquarium);
+  details$ = this.details.asObservable();
+
+  constructor(private fb: FormBuilder) {}
+
+  sendData(data) {
+    this.details.next(data);
+  }
+
+  editItem(item) {
+    this.editObject.next(item);
+  }
 }

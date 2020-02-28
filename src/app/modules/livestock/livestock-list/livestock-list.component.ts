@@ -42,7 +42,7 @@ export class LivestockListComponent implements OnInit {
   }
 
   onEdit(livestock) {
-    this.shared.editObject.next(livestock);
+    this.shared.editItem(livestock);
   }
 
   showMessage() {

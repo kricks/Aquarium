@@ -8,7 +8,7 @@ export class SessionStorageService {
   constructor(private shared: SharedDataService) {}
 
   setItem(saved) {
-    this.shared.details.subscribe(data => {
+    this.shared.details$.subscribe(data => {
       saved = data;
       sessionStorage.setItem("object", JSON.stringify(saved));
     });

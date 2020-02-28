@@ -9,7 +9,7 @@ import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "livestock", redirectTo: "aquarium", pathMatch: "full"},
+  // { path: "livestock", redirectTo: "aquarium", pathMatch: "full"},
   { path: "home", component: HomeComponent },
   { path: "aquarium", component: AquariumComponent },
   { path: "confirmation", component: AquariumDetailComponent },
@@ -19,8 +19,7 @@ const routes: Routes = [
 const routerOptions: ExtraOptions = {
   useHash: false,
   anchorScrolling: 'enabled',
-  onSameUrlNavigation: 'reload',
-  scrollOffset: [0, 64]
+  onSameUrlNavigation: 'reload'
 };
 
 @NgModule({

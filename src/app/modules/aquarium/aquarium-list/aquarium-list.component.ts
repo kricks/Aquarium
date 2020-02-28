@@ -9,7 +9,7 @@ import {
   ViewChild
 } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
-import { Observable, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { AquariumService } from "src/app/core/services/aquarium.service";
 import { SessionStorageService } from "src/app/core/services/session-storage.service";
 

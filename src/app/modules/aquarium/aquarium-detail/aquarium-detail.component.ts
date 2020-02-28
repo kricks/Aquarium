@@ -4,7 +4,6 @@ import { SharedDataService } from "../../../core/services/shared-data.service";
 import { Aquarium } from "../aquarium.model";
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-aquarium-detail",

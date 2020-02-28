@@ -1,5 +1,3 @@
-import { FormBuilder} from '@angular/forms';
-import { Aquarium } from "../../modules/aquarium/aquarium.model";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject} from "rxjs";
 
@@ -15,7 +13,7 @@ export class SharedDataService {
   private details = new BehaviorSubject<any>(this.value);
   details$ = this.details.asObservable();
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
   sendData(data) {
     this.details.next(data);

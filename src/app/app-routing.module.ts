@@ -1,4 +1,3 @@
-import { AquariumFormComponent } from './modules/aquarium/aquarium-form/aquarium-form.component';
 import { AquariumDetailComponent } from "./modules/aquarium/aquarium-detail/aquarium-detail.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, ExtraOptions } from "@angular/router";

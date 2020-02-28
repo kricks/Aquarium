@@ -1,4 +1,3 @@
-import { AquariumFormComponent } from "./../../aquarium-form/aquarium-form.component";
 import { AquariumService } from "src/app/core/services/aquarium.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Aquarium } from "../../aquarium.model";

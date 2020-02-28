@@ -1,10 +1,10 @@
-import { SharedDataService } from './../../../core/services/shared-data.service';
-import { SessionStorageService } from 'src/app/core/services/session-storage.service';
+import { SharedDataService } from "./../../../core/services/shared-data.service";
+import { SessionStorageService } from "src/app/core/services/session-storage.service";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { AquariumService } from "../../../core/services/aquarium.service";
 import { Aquarium } from "../aquarium.model";
-import { Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import {
   FormControl,
   FormBuilder,
@@ -37,7 +37,7 @@ export class AquariumFormComponent implements OnInit {
 
   ngOnInit() {
     this.service.loadAllAquariums();
-   this.createForm();
+    this.createForm();
     this.getEditItem();
   }
 
@@ -59,15 +59,10 @@ export class AquariumFormComponent implements OnInit {
       .subscribe(data => this.logger.info(data));
   }
 
-  // testSubmit() {
-  //   if(isExist)
-  // }
-
   onAddAquarium() {
     this.saveAquarium();
     this.aquariumDetails();
     this.shared.sendData(this.form.value);
-    // this.shared.details.next(this.form.value);
     this.session.setItem(this.form.value);
   }
 
@@ -79,7 +74,8 @@ export class AquariumFormComponent implements OnInit {
       },
       error => {
         this.logger.error(error);
-      });
+      }
+    );
   }
 
   aquariumDetails() {

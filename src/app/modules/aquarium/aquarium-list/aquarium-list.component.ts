@@ -20,7 +20,6 @@ import { SessionStorageService } from "src/app/core/services/session-storage.ser
 })
 export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
-  aquariums: Observable<Aquarium[]>;
   aquarium: Aquarium = new Aquarium();
   subs: Subscription;
   showModal;
@@ -37,7 +36,6 @@ export class AquariumListComponent implements OnInit {
 
   onEdit(aquarium) {
     this.shared.editItem(aquarium);
-    // this.shared.editObject.next(aquarium);
   }
 
   onDelete(aquarium) {
@@ -48,7 +46,6 @@ export class AquariumListComponent implements OnInit {
 
   onView(aquarium) {
     this.shared.sendData(aquarium);
-    // this.shared.details.next(aquarium);
     let id = aquarium.aquariumId;
     this.session.setItem(aquarium);
     this.router.navigate(["livestock", id]);

@@ -7,12 +7,12 @@ import { BehaviorSubject, Subject} from "rxjs";
   providedIn: "root"
 })
 export class SharedDataService {
-  aquarium: Aquarium;
+  value;
   
   private editObject = new Subject<any>();
   editObject$ = this.editObject.asObservable();
 
-  private details = new BehaviorSubject<any>(this.aquarium);
+  private details = new BehaviorSubject<any>(this.value);
   details$ = this.details.asObservable();
 
   constructor(private fb: FormBuilder) {}

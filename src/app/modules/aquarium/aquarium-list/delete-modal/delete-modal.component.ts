@@ -1,8 +1,8 @@
-import { AquariumFormComponent } from './../../aquarium-form/aquarium-form.component';
+import { AquariumFormComponent } from "./../../aquarium-form/aquarium-form.component";
 import { AquariumService } from "src/app/core/services/aquarium.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Aquarium } from "../../aquarium.model";
-import { NGXLogger } from 'ngx-logger';
+import { NGXLogger } from "ngx-logger";
 
 @Component({
   selector: "app-delete-modal",
@@ -15,17 +15,14 @@ export class DeleteModalComponent implements OnInit {
 
   constructor(private service: AquariumService, private logger: NGXLogger) {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   onDelete(aquariumId) {
     this.service.deleteAquarium(aquariumId).subscribe(
       data => {
         this.service.loadAllAquariums();
       },
-      error => this.logger.info("on delete error")
+      error => this.logger.error(error)
     );
-    this.logger.info("delete model");
   }
 }

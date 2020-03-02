@@ -29,13 +29,18 @@ export class LivestockFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getFkAquariumId();
+    this.getEditObject();
+    this.isDelete();
+  }
+
+  getFkAquariumId() {
     this.route.paramMap.subscribe(params => {
       let fkAquariumId = params.get("fkAquariumId");
       this.service.loadAllLivestock(fkAquariumId);
       let param = parseInt(fkAquariumId);
       this.createForm(param);
     });
-    this.getEditObject();
   }
 
   createForm(param) {
@@ -94,11 +99,20 @@ export class LivestockFormComponent implements OnInit {
     });
   }
 
-  showMessage() {
+  closeMessage() {
     this.updateMessage = false;
   }
 
   clearForm() {
-    this.ngOnInit();
+    this.getFkAquariumId();
+  }
+
+  isDelete() {
+    this.shared.deleteAndClearForm$.subscribe(data => {
+      this.shared.isDelete = data;
+      if (this.shared.isDelete == true) {
+        this.clearForm();
+      }
+    });
   }
 }

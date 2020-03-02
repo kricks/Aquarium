@@ -83,7 +83,7 @@ export class AquariumFormComponent implements OnInit {
     this.router.navigate(["confirmation"]);
   }
 
-  showMessage() {
+  closeMessage() {
     this.updateMessage = false;
   }
 

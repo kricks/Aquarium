@@ -20,6 +20,8 @@ export class AquariumListComponent implements OnInit {
   showModal;
   showAq;
 
+  //
+
   constructor(
     private service: AquariumService,
     private router: Router,

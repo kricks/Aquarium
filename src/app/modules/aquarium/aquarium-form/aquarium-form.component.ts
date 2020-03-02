@@ -39,6 +39,7 @@ export class AquariumFormComponent implements OnInit {
     this.service.loadAllAquariums();
     this.createForm();
     this.getEditItem();
+    this.isDelete();
   }
 
   createForm() {
@@ -84,6 +85,15 @@ export class AquariumFormComponent implements OnInit {
 
   showMessage() {
     this.updateMessage = false;
+  }
+
+  isDelete() {
+    this.shared.deleteAndClearForm$.subscribe(data => {
+      this.shared.isDelete = data;
+      if (this.shared.isDelete == true) {
+        this.createForm();
+      }
+    });
   }
 
   getEditItem() {

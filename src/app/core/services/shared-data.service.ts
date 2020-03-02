@@ -6,6 +6,10 @@ import { BehaviorSubject, Subject} from "rxjs";
 })
 export class SharedDataService {
   value;
+  isDelete: boolean;
+
+  private deleteAndClearForm = new BehaviorSubject<any>(this.isDelete);
+  deleteAndClearForm$ = this.deleteAndClearForm.asObservable();
   
   private editObject = new Subject<any>();
   editObject$ = this.editObject.asObservable();
@@ -21,5 +25,9 @@ export class SharedDataService {
 
   editItem(item) {
     this.editObject.next(item);
+  }
+
+  isDeleting(value) {
+    this.deleteAndClearForm.next(value);
   }
 }

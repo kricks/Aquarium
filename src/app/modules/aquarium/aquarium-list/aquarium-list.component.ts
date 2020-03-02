@@ -39,9 +39,9 @@ export class AquariumListComponent implements OnInit {
   }
 
   onDelete(aquarium) {
-    // when user clicks this delete, clear the form
     this.showModal = true;
-    this.showAq = aquarium;
+    this.showAq = aquarium;  
+    this.shared.isDeleting(this.shared.isDelete = true);
   }
 
   onView(aquarium) {

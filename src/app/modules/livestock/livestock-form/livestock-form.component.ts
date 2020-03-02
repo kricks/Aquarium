@@ -16,9 +16,8 @@ import { Subscription } from "rxjs";
 export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
   form: FormGroup;
-  subs: Subscription;
   updateMessage: boolean;
-  private options = ["Male", "Female", "N/A"];
+  options = ["Male", "Female", "N/A"];
 
   constructor(
     private service: LivestockService,

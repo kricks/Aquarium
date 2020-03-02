@@ -21,10 +21,9 @@ import { NGXLogger } from "ngx-logger";
 export class AquariumFormComponent implements OnInit {
   title = "Add New Aquarium";
   aquarium: Aquarium = new Aquarium();
-  subs: Subscription;
   form: FormGroup;
   updateMessage: boolean;
-  private options = ["Fresh Water", "Salt Water", "Brackish Water"];
+  options = ["Fresh Water", "Salt Water", "Brackish Water"];
 
   constructor(
     private service: AquariumService,
@@ -49,9 +48,7 @@ export class AquariumFormComponent implements OnInit {
       type: ["", [Validators.required]],
       gallon: [null, [Validators.min(0), Validators.pattern("^[0-9]{1,6}$")]],
       notes: "",
-      date: [
-        null,
-        [Validators.required, Validators.max(2050), Validators.min(2000)]
+      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]
       ]
     });
     this.aquarium = this.form.value;

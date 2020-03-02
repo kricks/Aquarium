@@ -17,7 +17,6 @@ import { SessionStorageService } from "src/app/core/services/session-storage.ser
 export class AquariumListComponent implements OnInit {
   title = "List of Aquariums";
   aquarium: Aquarium = new Aquarium();
-  subs: Subscription;
   showModal;
   showAq;
 

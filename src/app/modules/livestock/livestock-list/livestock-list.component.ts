@@ -14,8 +14,6 @@ import { NGXLogger } from "ngx-logger";
 export class LivestockListComponent implements OnInit {
   title = "Livestock list";
   livestocks: Observable<Livestock[]>;
-  livestock: Livestock;
-  message: string;
   deleteMessage: boolean;
 
   constructor(

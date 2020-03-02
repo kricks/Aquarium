@@ -46,9 +46,9 @@ export class LivestockFormComponent implements OnInit {
   createForm(param) {
     this.form = this.fb.group({
       livestockId: null,
-      name: ["", Validators.required],
-      species: ["", Validators.required],
-      gender: ["", Validators.required],
+      name: ["", [Validators.required]],
+      species: ["", [Validators.required]],
+      gender: ["", [Validators.required]],
       notes: "",
       fkAquariumId: param
     });

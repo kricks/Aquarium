@@ -9,7 +9,8 @@ import {
   FormControl,
   FormBuilder,
   FormGroup,
-  Validators
+  Validators,
+  PatternValidator
 } from "@angular/forms";
 import { NGXLogger } from "ngx-logger";
 
@@ -45,11 +46,11 @@ export class AquariumFormComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       aquariumId: null,
-      name: ["", Validators.required],
-      type: ["", Validators.required],
-      gallon: [null, Validators.min(0)],
+      name: ["", [Validators.required]],
+      type: ["", [Validators.required]],
+      gallon: [null, [Validators.min(0), Validators.pattern('^[0-9]{1,6}$')]],
       notes: "",
-      date: [null, Validators.required]
+      date: [null, [Validators.required, Validators.max(2050), Validators.min(2000)]],
     });
     this.aquarium = this.form.value;
   }

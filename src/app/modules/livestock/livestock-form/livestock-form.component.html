@@ -24,12 +24,11 @@
           id="nameFieldLS"
           class="form-control"
           placeholder="Enter Name"
-          required
         />
-        <span
+        <div
           *ngIf="!form.get('name').valid && form.get('name').touched"
-          class="ml-2"
-          >Name is required</span
+          class="ml-2 error"
+          >Name is required</div
         >
       </div>
       <div class="form-group col-md-6">
@@ -43,12 +42,11 @@
           class="form-control"
           id="speciesFieldLS"
           placeholder="Enter Species"
-          required
         />
-        <span
+        <div
           *ngIf="!form.get('species').valid && form.get('species').touched"
-          class="ml-2"
-          >Species is required</span
+          class="ml-2 error"
+          >Species is required</div
         >
       </div>
     </div>
@@ -60,17 +58,16 @@
           id="genderFieldLS"
           class="form-control"
           formControlName="gender"
-          required
         >
           <option [selected]="true" [disabled]="true" [hidden]="true" value=""
             >Select Gender :</option
           >
           <option *ngFor="let op of options" [value]="op">{{ op }}</option>
         </select>
-        <span
+        <div
           *ngIf="!form.get('gender').valid && form.get('gender').touched"
-          class="ml-2"
-          >Gender is required</span
+          class="ml-2 error"
+          >Gender is required</div
         >
       </div>
       <div class="form-group col-md-6">

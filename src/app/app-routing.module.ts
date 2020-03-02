@@ -4,11 +4,10 @@ import { Routes, RouterModule, ExtraOptions } from "@angular/router";
 import { AquariumComponent } from "./modules/aquarium/aquarium.component";
 
 import { LivestockComponent } from "./modules/livestock/livestock.component";
-import { HomeComponent } from './modules/home/home.component';
+import { HomeComponent } from "./modules/home/home.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
-  // { path: "livestock", redirectTo: "aquarium", pathMatch: "full"},
   { path: "home", component: HomeComponent },
   { path: "aquarium", component: AquariumComponent },
   { path: "confirmation", component: AquariumDetailComponent },
@@ -17,8 +16,8 @@ const routes: Routes = [
 
 const routerOptions: ExtraOptions = {
   useHash: false,
-  anchorScrolling: 'enabled',
-  onSameUrlNavigation: 'reload'
+  anchorScrolling: "enabled",
+  onSameUrlNavigation: "reload"
 };
 
 @NgModule({

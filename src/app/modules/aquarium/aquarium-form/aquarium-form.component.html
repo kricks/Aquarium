@@ -27,8 +27,9 @@
       <div
         *ngIf="!form.get('name').valid && form.get('name').touched"
         class="ml-2 error"
-        >Name is required</div
       >
+        Name is required
+      </div>
     </div>
     <div class="form-group col-md-6">
       <label for="type">Type <strong class="text-danger">*</strong></label>
@@ -46,8 +47,9 @@
       <div
         *ngIf="!form.get('type').valid && form.get('type').touched"
         class="ml-2 error"
-        >Type is required</div
       >
+        Type is required
+      </div>
     </div>
   </div>
 
@@ -66,8 +68,9 @@
         id="gallonErrorMessage"
         *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
         class="ml-2 error"
-        >Negative and Decimal numbers are invalid!</div
       >
+        Negative and Decimal numbers are invalid!
+      </div>
     </div>
     <div class="form-group col-md-6">
       <label for="notes">Notes</label>
@@ -96,9 +99,10 @@
       <div
         *ngIf="!form.get('date').valid && form.get('date').touched"
         class="ml-2 error"
-        >Date is required. <br>
-        Choose a date between year 2000 to 2050</div
       >
+        Date is required. <br />
+        Choose a date between year 2000 to 2050
+      </div>
     </div>
   </div>
 

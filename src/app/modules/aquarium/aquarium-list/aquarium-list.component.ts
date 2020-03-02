@@ -1,12 +1,8 @@
-import { AquariumFormComponent } from "./../aquarium-form/aquarium-form.component";
 import { SharedDataService } from "../../../core/services/shared-data.service";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router} from "@angular/router";
 import {
   Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  ViewChild
+  OnInit
 } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
 import { Subscription } from "rxjs";
@@ -40,8 +36,8 @@ export class AquariumListComponent implements OnInit {
 
   onDelete(aquarium) {
     this.showModal = true;
-    this.showAq = aquarium;  
-    this.shared.isDeleting(this.shared.isDelete = true);
+    this.showAq = aquarium;
+    this.shared.isDeleting((this.shared.isDelete = true));
   }
 
   onView(aquarium) {

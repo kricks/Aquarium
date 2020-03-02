@@ -50,7 +50,7 @@ export class LivestockListComponent implements OnInit {
   }
 
   onDelete(livestockId) {
-    this.shared.isDeleting(this.shared.isDelete = true);
+    this.shared.isDeleting((this.shared.isDelete = true));
     this.service.deleteLivestock(livestockId).subscribe(
       () => {
         this.ngOnInit();

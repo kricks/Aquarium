@@ -28,8 +28,9 @@
         <div
           *ngIf="!form.get('name').valid && form.get('name').touched"
           class="ml-2 error"
-          >Name is required</div
         >
+          Name is required
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="species"
@@ -46,8 +47,9 @@
         <div
           *ngIf="!form.get('species').valid && form.get('species').touched"
           class="ml-2 error"
-          >Species is required</div
         >
+          Species is required
+        </div>
       </div>
     </div>
     <div class="form-row">
@@ -67,8 +69,9 @@
         <div
           *ngIf="!form.get('gender').valid && form.get('gender').touched"
           class="ml-2 error"
-          >Gender is required</div
         >
+          Gender is required
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="notes">Notes</label>
@@ -123,7 +126,9 @@
 </div>
 <div *ngIf="updateMessage" class="container">
   <div class="mt-3 col alert alert-success alert-dismissible fade show">
-    <button type="button" class="close" (click)="closeMessage()">&times;</button>
+    <button type="button" class="close" (click)="closeMessage()">
+      &times;
+    </button>
     <strong>Update Successful!</strong>
   </div>
 </div>

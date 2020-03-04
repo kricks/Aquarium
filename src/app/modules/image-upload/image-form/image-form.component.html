@@ -1,0 +1,28 @@
+<!-- <form
+[formGroup]="form"
+(ngSubmit)="onAdd()"
+name="imageForm"
+class="col text">
+<div class="form-group col-md-6">
+    <label for="image">Upload Image</label>
+    <input
+      type="file"
+      name="image"
+      id="imageField"
+      formControlName="image"
+      (change)="onFileSelected($event)"
+    />
+  </div>
+</form> -->
+<div class="container">
+    <h3>Image Uploading Module</h3>
+    <div>
+    <input type="file" (change)="onFileSelected($event)">
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+    </div>
+    <input type="button" (click)="onUpload()" value="upload">
+    <hr />
+    Received Image:
+    {{ receivedImageData['image'] | json}}
+    <img [src]="convertedImage">
+</div>

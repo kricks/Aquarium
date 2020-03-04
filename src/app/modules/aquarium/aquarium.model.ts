@@ -4,7 +4,7 @@ export class Aquarium {
   type: string;
   gallon: number;
   notes: string;
-  pic: string;
+  image: File;
   date: Date;
 
   constructor() {}

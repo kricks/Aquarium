@@ -1,3 +1,4 @@
+import { logging } from 'protractor';
 import { SharedDataService } from "./../../../core/services/shared-data.service";
 import { SessionStorageService } from "src/app/core/services/session-storage.service";
 import { Subscription } from "rxjs";
@@ -25,6 +26,9 @@ export class AquariumFormComponent implements OnInit {
   updateMessage: boolean;
   options = ["Fresh Water", "Salt Water", "Brackish Water"];
   selectedFile = null;
+  receivedImage;
+  base64Data;
+  convertedImage;
 
   constructor(
     private service: AquariumService,
@@ -49,15 +53,24 @@ export class AquariumFormComponent implements OnInit {
       type: ["", [Validators.required]],
       gallon: [null, [Validators.min(0), Validators.pattern("^[0-9]{1,6}$")]],
       notes: "",
-      pic: "",
-      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]]
+      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]],
+      image: null
     });
     this.aquarium = this.form.value;
   }
 
   saveAquarium() {
-    this.service.createAquarium(this.form.value).subscribe(data => 
-      data
+    const fd = new FormData();
+    fd.append('image', this.selectedFile)
+
+    this.service.createAquarium(this.form.value).subscribe(data => {
+      this.aquarium = data;
+      this.base64Data = this.aquarium.image;
+      this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
+    },
+    error => {
+      this.logger.error(error);
+    }
       );
   }
 
@@ -117,7 +130,6 @@ export class AquariumFormComponent implements OnInit {
           type: new FormControl(this.aquarium.type),
           gallon: new FormControl(this.aquarium.gallon),
           notes: new FormControl(this.aquarium.notes),
-          pic: new FormControl(this.aquarium.pic),
           date: new FormControl(this.aquarium.date)
         });
       },

@@ -5,7 +5,6 @@ import {
   OnInit
 } from "@angular/core";
 import { Aquarium } from "../aquarium.model";
-import { Subscription } from "rxjs";
 import { AquariumService } from "src/app/core/services/aquarium.service";
 import { SessionStorageService } from "src/app/core/services/session-storage.service";
 
@@ -20,8 +19,6 @@ export class AquariumListComponent implements OnInit {
   showModal;
   showAq;
 
-  //
-
   constructor(
     private service: AquariumService,
     private router: Router,
@@ -29,7 +26,16 @@ export class AquariumListComponent implements OnInit {
     private session: SessionStorageService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.service.loadAllAquariums();
+    
+  }
+
+  // display() {
+  //   this.service.getAllAquariums(data: {}) => {
+  //     this.aqariums.
+  //   }
+  // }
 
   onEdit(aquarium) {
     this.shared.editItem(aquarium);

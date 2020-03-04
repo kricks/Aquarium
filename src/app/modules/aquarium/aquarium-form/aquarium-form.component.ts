@@ -24,6 +24,7 @@ export class AquariumFormComponent implements OnInit {
   form: FormGroup;
   updateMessage: boolean;
   options = ["Fresh Water", "Salt Water", "Brackish Water"];
+  selectedFile = null;
 
   constructor(
     private service: AquariumService,
@@ -48,16 +49,16 @@ export class AquariumFormComponent implements OnInit {
       type: ["", [Validators.required]],
       gallon: [null, [Validators.min(0), Validators.pattern("^[0-9]{1,6}$")]],
       notes: "",
-      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]
-      ]
+      pic: "",
+      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]]
     });
     this.aquarium = this.form.value;
   }
 
   saveAquarium() {
-    this.service
-      .createAquarium(this.form.value)
-      .subscribe(data => this.logger.info(data));
+    this.service.createAquarium(this.form.value).subscribe(data => 
+      data
+      );
   }
 
   onAddAquarium() {
@@ -96,6 +97,15 @@ export class AquariumFormComponent implements OnInit {
     });
   }
 
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(event);
+  }
+
+  upload () {
+    
+  }
+
   getEditItem() {
     this.shared.editObject$.subscribe(
       data => {
@@ -107,6 +117,7 @@ export class AquariumFormComponent implements OnInit {
           type: new FormControl(this.aquarium.type),
           gallon: new FormControl(this.aquarium.gallon),
           notes: new FormControl(this.aquarium.notes),
+          pic: new FormControl(this.aquarium.pic),
           date: new FormControl(this.aquarium.date)
         });
       },

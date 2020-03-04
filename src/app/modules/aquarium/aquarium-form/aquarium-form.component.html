@@ -1,147 +1,168 @@
-<h2 class="text-center mt-4" id="edit">{{ title }}</h2>
-<form
-  [formGroup]="form"
-  (ngSubmit)="onAddAquarium()"
-  name="aquariumForm"
-  class="col text"
-  autocomplete="off"
->
-  <input
-    hidden
-    name="aquariumId"
-    class="form-control"
-    id="aquariumId"
-    formControlName="aquariumId"
-  />
-  <div class="form-row col">
-    <div class="form-group col-md-6">
-      <label for="tname">Name <strong class="text-danger">*</strong></label>
-      <input
-        type="text"
-        id="nameField"
-        name="name"
-        class="form-control"
-        placeholder="Enter Name"
-        formControlName="name"
-      />
-      <div
-        *ngIf="!form.get('name').valid && form.get('name').touched"
-        class="ml-2 error"
-      >
-        Name is required
-      </div>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="type">Type <strong class="text-danger">*</strong></label>
-      <select
-        name="type"
-        class="form-control"
-        id="typeField"
-        formControlName="type"
-      >
-        <option [selected]="true" [disabled]="true" [hidden]="true" value=""
-          >Select type of water :</option
+<div class="container">
+  <h2 class="text-center mt-4" id="edit">{{ title }}</h2>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onAddAquarium()"
+    name="aquariumForm"
+    class="col text"
+    autocomplete="off"
+  >
+    <input
+      hidden
+      name="aquariumId"
+      class="form-control"
+      id="aquariumId"
+      formControlName="aquariumId"
+    />
+    <div class="form-row col">
+      <div class="form-group col-md-6">
+        <label for="tname">Name <strong class="text-danger">*</strong></label>
+        <input
+          type="text"
+          id="nameField"
+          name="name"
+          class="form-control"
+          placeholder="Enter Name"
+          formControlName="name"
+        />
+        <div
+          *ngIf="!form.get('name').valid && form.get('name').touched"
+          class="ml-2 error"
         >
-        <option *ngFor="let op of options" [value]="op">{{ op }}</option>
-      </select>
-      <div
-        *ngIf="!form.get('type').valid && form.get('type').touched"
-        class="ml-2 error"
-      >
-        Type is required
+          Name is required
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="type">Type <strong class="text-danger">*</strong></label>
+        <select
+          name="type"
+          class="form-control"
+          id="typeField"
+          formControlName="type"
+        >
+          <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+            >Select type of water :</option
+          >
+          <option *ngFor="let op of options" [value]="op">{{ op }}</option>
+        </select>
+        <div
+          *ngIf="!form.get('type').valid && form.get('type').touched"
+          class="ml-2 error"
+        >
+          Type is required
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="form-row col">
-    <div class="form-group col-md-6">
-      <label for="gallon">Gallons</label>
-      <input
-        type="number"
-        name="gallon"
-        class="form-control"
-        id="gallonField"
-        placeholder="Enter Number of Gallons"
-        formControlName="gallon"
-      />
-      <div
-        id="gallonErrorMessage"
-        *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
-        class="ml-2 error"
-      >
-        Negative and Decimal numbers are invalid!
+  
+    <div class="form-row col">
+      <div class="form-group col-md-6">
+        <label for="gallon">Gallons</label>
+        <input
+          type="number"
+          name="gallon"
+          class="form-control"
+          id="gallonField"
+          placeholder="Enter Number of Gallons"
+          formControlName="gallon"
+        />
+        <div
+          id="gallonErrorMessage"
+          *ngIf="!form.get('gallon').valid && form.get('gallon').touched"
+          class="ml-2 error"
+        >
+          Negative and Decimal numbers are invalid!
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="notes">Notes</label>
+        <input
+          type="text"
+          name="notes"
+          class="form-control"
+          id="notesField"
+          placeholder="Enter Notes"
+          formControlName="notes"
+        />
       </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="notes">Notes</label>
-      <input
-        type="text"
-        name="notes"
-        class="form-control"
-        id="notesField"
-        placeholder="Enter Notes"
-        formControlName="notes"
-      />
-    </div>
-  </div>
-
-  <div class="form-row col">
-    <div class="form-group col-md-6">
-      <label for="date">Date<strong class="text-danger"> *</strong></label>
-      <input
-        type="date"
-        name="date"
-        class="form-control"
-        id="dateField"
-        formControlName="date"
-        max="2050-01-01"
-      />
-      <div
-        *ngIf="!form.get('date').valid && form.get('date').touched"
-        class="ml-2 error"
-      >
-        Date is required. <br />
-        Choose a date between year 2000 to 2050
+  
+    <div class="form-row col">
+      <div class="form-group col-md-6">
+        <label for="date">Date<strong class="text-danger"> *</strong></label>
+        <input
+          type="date"
+          name="date"
+          class="form-control"
+          id="dateField"
+          formControlName="date"
+          max="2050-01-01"
+        />
+        <div
+          *ngIf="!form.get('date').valid && form.get('date').touched"
+          class="ml-2 error"
+        >
+          Date is required. <br />
+          Choose a date between year 2000 to 2050
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="pic">Upload Image</label>
+        <input
+          type="text"
+          id="picField"
+          name="pic"
+          class="form-control"
+          placeholder="Enter pic"
+          formControlName="pic"
+        />
+        <!-- <input
+          type="file"
+          name="image"
+          id="imageField"
+          formControlName="image"
+          (change)="onFileSelected($event)"
+        /> -->
       </div>
     </div>
-  </div>
-
-  <div class="buttons">
-    <div class="">
-      <input
-        type="submit"
-        id="submitButton"
-        value="Add"
-        class="btn btn-primary"
-        [disabled]="!form.valid"
-        *ngIf="!aquarium.aquariumId"
-      />
-      <input
-        type="button"
-        (click)="onUpdateAquarium(aquariumId)"
-        id="updateButton"
-        class="btn btn-primary text-white"
-        value="Update"
-        [disabled]="!form.valid"
-        *ngIf="aquarium.aquariumId"
-      />
-      <button
-        type="button"
-        id="clearForm"
-        (click)="createForm()"
-        class="btn btn-danger ml-2"
-      >
-        Clear
+  
+    <div class="buttons">
+      <div class="">
+        <input
+          type="submit"
+          id="submitButton"
+          value="Add"
+          class="btn btn-primary"
+          [disabled]="!form.valid"
+          *ngIf="!aquarium.aquariumId"
+        />
+        <input
+          type="button"
+          (click)="onUpdateAquarium(aquariumId)"
+          id="updateButton"
+          class="btn btn-primary text-white"
+          value="Update"
+          [disabled]="!form.valid"
+          *ngIf="aquarium.aquariumId"
+        />
+        <button
+          type="button"
+          id="clearForm"
+          (click)="createForm()"
+          class="btn btn-danger ml-2"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+  </form>
+  
+  <div *ngIf="updateMessage" class="container">
+    <div class="mt-3 col alert alert-success alert-dismissible fade show">
+      <button type="button" class="close" (click)="closeMessage()">
+        &times;
       </button>
+      <strong>Update Successful!</strong>
     </div>
   </div>
-</form>
-
-<div *ngIf="updateMessage" class="container">
-  <div class="mt-3 col alert alert-success alert-dismissible fade show">
-    <button type="button" class="close" (click)="closeMessage()">
-      &times;
-    </button>
-    <strong>Update Successful!</strong>
-  </div>
+  
 </div>

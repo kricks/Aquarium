@@ -17,6 +17,9 @@ export class SharedDataService {
   private details = new BehaviorSubject<any>(this.value);
   details$ = this.details.asObservable();
 
+  private getUpdatedAqList = new Subject<any>();
+  getUpdatedAqList$ = this.getUpdatedAqList.asObservable();
+
   constructor() {}
 
   sendData(data) {
@@ -29,5 +32,9 @@ export class SharedDataService {
 
   isDeleting(value) {
     this.deleteAndClearForm.next(value);
+  }
+
+  getAqList() {
+    this.getUpdatedAqList.next()
   }
 }

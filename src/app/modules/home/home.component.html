@@ -1,29 +1,45 @@
-<div class="container">
-  <div class="card col-8 offset-2 my-4">
-    <h1 class="text-center text mt-3">Welcome to {{ title }}</h1>
-    <div class="mt-4 col-8 offset-2 text">
-      <p>
-        Use Aquarium Builder to create your dream aquarium, or use it to
-        organize and keep track of your current aquariums.
-      </p>
-      <p>
-        To create an aquarium, enter its details. You can later edit or delete
-        an aquarium.
-      </p>
-      <p>
-        To add livestock to an aquarium, simply click the "View" button. You can
-        add coral, fish, plants, or any other living thing to your aquarium.
-      </p>
-      <p>Enjoy!</p>
+<div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" id="first">
+      <!-- <img class="d-block w-100" src="../../../assets/images/coral.jpg" alt="First slide"> -->
+      <div class="first"></div>
     </div>
-    <div class="row mb-3">
-      <div class="col-9">
-        <a class="float-right" href="aquarium">
-          <button class="btn btn-primary" id="getStarted">
-            Click here to get started!
-          </button>
+    <div class="carousel-item" id="second">
+      <!-- <img class="d-block w-100" src="../../../assets/images/coral7.jpg" alt="Second slide"> -->
+    </div>
+    <div class="carousel-item" id="third">
+      <!-- <img class="d-block w-100" src="../../../assets/images/coral4.jpg" alt="Third slide"> -->
+    </div>
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Welcome to {{ title }}</h5>
+      <p>
+        <a id="getStarted" href="aquarium">
+          Click here to get started!
         </a>
-      </div>
+      </p>
     </div>
   </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselIndicators"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselIndicators"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

@@ -16,6 +16,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { DeleteModalComponent } from "./modules/aquarium/aquarium-list/delete-modal/delete-modal.component";
 import { HomeComponent } from "./modules/home/home.component";
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
+import { CarouselComponent } from './shared/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
     LivestockListComponent,
     LivestockFormComponent,
     LivestockAqDetailsComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

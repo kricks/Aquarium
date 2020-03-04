@@ -32,6 +32,7 @@ export class AquariumService {
   }
 
   createAquarium(aquarium: Object): Observable<any> {
+    console.log(aquarium);
     return this.http.post(`${this.baseUri}/${this.create}`, aquarium);
   }
 

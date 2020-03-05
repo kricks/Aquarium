@@ -1,3 +1,4 @@
+import { Image } from './../../modules/image-upload/image.model';
 import { Aquarium } from "../../modules/aquarium/aquarium.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
@@ -8,6 +9,7 @@ import { Observable } from "rxjs";
 })
 export class AquariumService {
   aquariumList: any = [];
+  image: Image = new Image();
   aquarium: Aquarium = new Aquarium();
   constructor(private http: HttpClient) {}
 
@@ -18,6 +20,7 @@ export class AquariumService {
   };
   
   private baseUri = "http://localhost:8080/aquarium";
+  private url = "http://localhost:8080/image";
   private all = "all";
   private create = "create";
   private update = "update";
@@ -42,6 +45,15 @@ export class AquariumService {
 
   deleteAquarium(aquariumId: number): Observable<any> {
     return this.http.delete(`${this.baseUri}/${this.delete}/${aquariumId}`);
+  }
+
+  upload(image: Object): Observable<any> {
+    return this.http.post(`${this.url}/${this.create}`, image);
+  }
+
+  getImage(imageName: string): Observable<any> {
+    return this.http.get(`${this.url}/${imageName}`, {responseType: 'text'});
+
   }
 
   loadAllAquariums() {

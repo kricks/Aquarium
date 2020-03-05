@@ -22,7 +22,27 @@ class="col text">
     </div>
     <input type="button" (click)="onUpload()" value="upload">
     <hr />
-    Received Image:
-    {{ receivedImageData['image'] | json}}
-    <img [src]="convertedImage">
-</div>
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=message>{{message}}</div>
+        </div>
+    </div>
+    
+    <div class="container row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+                name="name" />
+        </div>
+        <div class="col-md-6">
+            <input type="button" (click)="getImage()" value="Get Image">
+    
+        </div>
+    </div>
+    
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=retrievedImage>
+                <img [src]="retrievedImage">
+            </div>
+        </div>
+    </div>

@@ -17,6 +17,9 @@ import { DeleteModalComponent } from "./modules/aquarium/aquarium-list/delete-mo
 import { HomeComponent } from "./modules/home/home.component";
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 import { CarouselComponent } from './shared/carousel/carousel.component';
+import { ImageUploadComponent } from './modules/image-upload/image-upload.component';
+import { ImageFormComponent } from './modules/image-upload/image-form/image-form.component';
+import { ImageListComponent } from './modules/image-upload/image-list/image-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
     LivestockFormComponent,
     LivestockAqDetailsComponent,
     DeleteModalComponent,
-    CarouselComponent
+    CarouselComponent,
+    ImageUploadComponent,
+    ImageFormComponent,
+    ImageListComponent
   ],
   imports: [
     BrowserModule,

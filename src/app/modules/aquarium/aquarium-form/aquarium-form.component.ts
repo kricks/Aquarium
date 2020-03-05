@@ -1,7 +1,5 @@
-import { logging } from 'protractor';
 import { SharedDataService } from "./../../../core/services/shared-data.service";
 import { SessionStorageService } from "src/app/core/services/session-storage.service";
-import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { AquariumService } from "../../../core/services/aquarium.service";
 import { Aquarium } from "../aquarium.model";
@@ -25,10 +23,6 @@ export class AquariumFormComponent implements OnInit {
   form: FormGroup;
   updateMessage: boolean;
   options = ["Fresh Water", "Salt Water", "Brackish Water"];
-  selectedFile = null;
-  receivedImage;
-  base64Data;
-  convertedImage;
 
   constructor(
     private service: AquariumService,
@@ -53,20 +47,14 @@ export class AquariumFormComponent implements OnInit {
       type: ["", [Validators.required]],
       gallon: [null, [Validators.min(0), Validators.pattern("^[0-9]{1,6}$")]],
       notes: "",
-      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]],
-      image: null
+      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]]
     });
     this.aquarium = this.form.value;
   }
 
   saveAquarium() {
-    const fd = new FormData();
-    fd.append('image', this.selectedFile)
-
     this.service.createAquarium(this.form.value).subscribe(data => {
       this.aquarium = data;
-      this.base64Data = this.aquarium.image;
-      this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data;
     },
     error => {
       this.logger.error(error);
@@ -108,15 +96,6 @@ export class AquariumFormComponent implements OnInit {
         this.createForm();
       }
     });
-  }
-
-  onFileSelected(event) {
-    this.selectedFile = event.target.files[0];
-    console.log(event);
-  }
-
-  upload () {
-    
   }
 
   getEditItem() {

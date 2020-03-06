@@ -77,7 +77,6 @@ export class ImageFormComponent implements OnInit {
         this.response = data;
         this.base64Data = this.response.image;
         this.showImage = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.base64Data);
-        console.log(this.showImage)
       },
       error => {
         console.log(error);

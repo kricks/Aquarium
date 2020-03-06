@@ -57,6 +57,10 @@ export class AquariumService {
     return this.http.get(`${this.url}/${imageName}`);
   }
 
+  getAllImages(): Observable<any> {
+    return this.http.get(`${this.url}/${this.all}`);
+  }
+
   loadAllAquariums() {
     return this.getAllAquariums().subscribe((data: {}) => {
       this.aquariumList = data;

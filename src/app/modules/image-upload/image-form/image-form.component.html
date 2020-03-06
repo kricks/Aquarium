@@ -18,7 +18,7 @@ class="col text">
     <h3>Image Uploading Module</h3>
     <div>
     <input type="file" (change)="onFileSelected($event)">
-    <img [src]="imgURL" height="200" *ngIf="imgURL">
+    <img [src]="imgURL" *ngIf="imgURL">
     </div>
     <input type="button" (click)="onUpload()" value="upload">
     <hr />
@@ -42,6 +42,5 @@ class="col text">
     <div class="container row">
         <div class="col-md-12">
           <img [src]="showImage">
-          hi
         </div>
     </div>

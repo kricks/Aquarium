@@ -22,11 +22,11 @@ class="col text">
     </div>
     <input type="button" (click)="onUpload()" value="upload">
     <hr />
-    <div class="container row">
+    <!-- <div class="container row">
         <div class="col-md-12">
             <div *ngIf=message>{{message}}</div>
         </div>
-    </div>
+    </div> -->
     
     <div class="container row">
         <div class="col-md-6">
@@ -41,8 +41,8 @@ class="col text">
     
     <div class="container row">
         <div class="col-md-12">
-            <div *ngIf=retrievedImage>
-                <img [src]="retrievedImage">
-            </div>
+            <!-- {{response['image']|json}} -->
+          <img [src]="showImage">
+          hi
         </div>
     </div>

@@ -2,6 +2,7 @@ import { AquariumService } from "src/app/core/services/aquarium.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-image-form",
@@ -10,15 +11,19 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ImageFormComponent implements OnInit {
   selectedFile: File;
-  receivedImage;
-  base64Data;
-  convertedImage;
   message: string;
   imageName;
-  retrieveResonse;
+  imageUrl;
+  showImage;
+  response;
   retrievedImage;
+  base64Data;
 
-  constructor(private http: HttpClient, private service: AquariumService) {}
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+    private service: AquariumService
+  ) {}
 
   ngOnInit() {}
 
@@ -41,27 +46,37 @@ export class ImageFormComponent implements OnInit {
     });
   }
 
+  readImage(image: Blob) {
+    let reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.onloadend = () => {
+      this.base64Data = reader.result;
+      console.log(this.base64Data);
+      this.showImage = this.sanitizer.bypassSecurityTrustResourceUrl(
+        "data:image/jpeg;base64," + this.base64Data
+      );
+    };
+
+    // reader.addEventListener("load", () => {
+    //   this.imageUrl = reader.result;
+    //   this.showImage = this.sanitizer.bypassSecurityTrustUrl(this.imageUrl);
+    //   console.log(this.showImage);
+    // }, false);
+
+    // if(image) {
+    //   reader.readAsText(image);
+    // }
+  }
+
   // Gets called when the user clicks on retieve image button to get the image from back end
   getImage() {
-    //Make a call to Sprinf Boot to get the Image Bytes.
-    // this.http.get('http://localhost:8080/image/get/' + this.imageName)
-    //   .subscribe(
-    //     res => {
-    //       this.retrieveResonse = res;
-    //       this.base64Data = this.retrieveResonse.picByte;
-    //       this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-    //     }
-    //   );
-    this.service.getImage(this.imageName).subscribe(data => {
-      console.log(data);
-      // this.retrieveResonse = data;
-      // console.log(this.retrieveResonse);
-      // this.base64Data = this.retrieveResonse.imageByte;
-      // this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-
-    },
-    error => {
-      console.log(error);
-    })
+    this.service.getImage(this.imageName).subscribe(
+      data => {
+        this.showImage = this.sanitizer.bypassSecurityTrustUrl(this.imageName);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

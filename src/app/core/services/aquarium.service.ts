@@ -13,11 +13,11 @@ export class AquariumService {
   aquarium: Aquarium = new Aquarium();
   constructor(private http: HttpClient) {}
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      "Content-Type": "application/json"
-    })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     "Content-Type": "application/json"
+  //   })
+  // };
   
   private baseUri = "http://localhost:8080/aquarium";
   private url = "http://localhost:8080/image";
@@ -52,8 +52,9 @@ export class AquariumService {
   }
 
   getImage(imageName: string): Observable<any> {
-    return this.http.get(`${this.url}/${imageName}`, {responseType: 'text'});
-
+    // return this.http.get(`${this.url}/${imageName}`, {responseType: 'blob'});
+    console.log("hit");
+    return this.http.get(`${this.url}/${imageName}`, {responseType: 'blob'});
   }
 
   loadAllAquariums() {

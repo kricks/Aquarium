@@ -54,7 +54,7 @@ export class AquariumService {
   getImage(imageName: string): Observable<any> {
     // return this.http.get(`${this.url}/${imageName}`, {responseType: 'blob'});
     console.log("hit");
-    return this.http.get(`${this.url}/${imageName}`, {responseType: 'blob'});
+    return this.http.get(`${this.url}/${imageName}`);
   }
 
   loadAllAquariums() {

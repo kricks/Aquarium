@@ -1,3 +1,4 @@
+import { Image } from './../image.model';
 import { AquariumService } from "src/app/core/services/aquarium.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { FormBuilder, FormGroup } from "@angular/forms";
@@ -12,6 +13,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class ImageFormComponent implements OnInit {
   selectedFile: File;
   message: string;
+  image: Image = new Image();
   imageName;
   imageUrl;
   showImage;
@@ -72,7 +74,10 @@ export class ImageFormComponent implements OnInit {
   getImage() {
     this.service.getImage(this.imageName).subscribe(
       data => {
-        this.showImage = this.sanitizer.bypassSecurityTrustUrl(this.imageName);
+        this.response = data;
+        this.base64Data = this.response.image;
+        this.showImage = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.base64Data);
+        console.log(this.showImage)
       },
       error => {
         console.log(error);

@@ -23,7 +23,9 @@ export class ImageFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      image: null
+      image: null,
+      name: '',
+      category: ''
     });
     this.image = this.form.value;
   }
@@ -39,10 +41,10 @@ export class ImageFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    const folder = 'uploads';
-    const filePath = `${folder}/${this.selectedFile.name}`;
-    console.log(this.selectedFile);
+  onSubmit(form) {
+    console.log(form);
+    console.log(this.image);
+    const filePath = `${form.category}/${form.name}`;
     console.log(this.form.value);
     this.storage.upload(filePath, this.selectedFile);
   }

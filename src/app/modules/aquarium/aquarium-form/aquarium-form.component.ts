@@ -1,28 +1,28 @@
-import { SharedDataService } from "./../../../core/services/shared-data.service";
-import { SessionStorageService } from "src/app/core/services/session-storage.service";
-import { Router } from "@angular/router";
-import { AquariumService } from "../../../core/services/aquarium.service";
-import { Aquarium } from "../aquarium.model";
-import { Component, OnInit } from "@angular/core";
+import { SharedDataService } from './../../../core/services/shared-data.service';
+import { SessionStorageService } from 'src/app/core/services/session-storage.service';
+import { Router } from '@angular/router';
+import { AquariumService } from '../../../core/services/aquarium.service';
+import { Aquarium } from '../aquarium.model';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormBuilder,
   FormGroup,
   Validators
-} from "@angular/forms";
-import { NGXLogger } from "ngx-logger";
+} from '@angular/forms';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
-  selector: "app-aquarium-form",
-  templateUrl: "./aquarium-form.component.html",
-  styleUrls: ["./aquarium-form.component.scss"]
+  selector: 'app-aquarium-form',
+  templateUrl: './aquarium-form.component.html',
+  styleUrls: ['./aquarium-form.component.scss']
 })
 export class AquariumFormComponent implements OnInit {
-  title = "Add New Aquarium";
+  title = 'Add New Aquarium';
   aquarium: Aquarium = new Aquarium();
   form: FormGroup;
   updateMessage: boolean;
-  options = ["Fresh Water", "Salt Water", "Brackish Water"];
+  options = ['Fresh Water', 'Salt Water', 'Brackish Water'];
 
   constructor(
     private service: AquariumService,
@@ -43,11 +43,11 @@ export class AquariumFormComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       aquariumId: null,
-      name: ["", [Validators.required]],
-      type: ["", [Validators.required]],
-      gallon: [null, [Validators.min(0), Validators.pattern("^[0-9]{1,6}$")]],
-      notes: "",
-      date: [null,[Validators.required, Validators.max(2050), Validators.min(2000)]]
+      name: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      gallon: [null, [Validators.min(0), Validators.pattern('^[0-9]{1,6}$')]],
+      notes: '',
+      date: [null, [Validators.required, Validators.max(2050), Validators.min(2000)]]
     });
     this.aquarium = this.form.value;
   }
@@ -82,7 +82,7 @@ export class AquariumFormComponent implements OnInit {
   }
 
   aquariumDetails() {
-    this.router.navigate(["confirmation"]);
+    this.router.navigate(['confirmation']);
   }
 
   closeMessage() {
@@ -92,7 +92,7 @@ export class AquariumFormComponent implements OnInit {
   isDelete() {
     this.shared.deleteAndClearForm$.subscribe(data => {
       this.shared.isDelete = data;
-      if (this.shared.isDelete == true) {
+      if (this.shared.isDelete === true) {
         this.createForm();
       }
     });

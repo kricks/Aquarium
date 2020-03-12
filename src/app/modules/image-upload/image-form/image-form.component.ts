@@ -1,30 +1,29 @@
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { Component, OnInit } from "@angular/core";
-import { ImageHttpService } from "src/app/core/services/image-http.service";
-import { Image } from "src/app/modules/image-upload/image.model";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Image } from 'src/app/modules/image-upload/image.model';
 import {
   AngularFireStorage,
   AngularFireUploadTask,
   AngularFireStorageReference
-} from "@angular/fire/storage";
-import { Observable } from "rxjs";
-import { finalize, map } from "rxjs/operators";
+} from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-image-form",
-  templateUrl: "./image-form.component.html",
-  styleUrls: ["./image-form.component.scss"]
+  selector: 'app-image-form',
+  templateUrl: './image-form.component.html',
+  styleUrls: ['./image-form.component.scss']
 })
 export class ImageFormComponent implements OnInit {
   form: FormGroup;
-  imgSrc = "../../../../assets/images/placeholder.png";
+  imgSrc = '../../../../assets/images/placeholder.png';
   selectedFile = null;
   image: Image = new Image();
+  options = ['Aquarium', 'Livestock', 'General'];
   uploadProgress: Observable<any>;
-  downloadURL: Observable<any>;
   task: AngularFireUploadTask;
-  message;
+  progress;
   ref: AngularFireStorageReference;
+
 
   constructor(private fb: FormBuilder, private storage: AngularFireStorage) {}
 
@@ -34,9 +33,9 @@ export class ImageFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      image: null,
-      name: "",
-      category: ""
+      image: [null, [Validators.required]],
+      name: ['', [Validators.required]],
+      category: ['', [Validators.required]]
     });
     this.image = this.form.value;
   }
@@ -52,17 +51,14 @@ export class ImageFormComponent implements OnInit {
   }
 
   upload(form) {
+    console.log(form.value);
     const filePath = `${form.category}/${form.name}`;
     this.ref = this.storage.ref(filePath);
     this.task = this.ref.put(this.selectedFile);
     this.uploadProgress = this.task.percentageChanges();
-
-    this.task
-      .snapshotChanges()
-      .pipe(finalize(() => (this.downloadURL = this.ref.getDownloadURL())))
-      .subscribe( data => {
-        this.message = ((data.bytesTransferred / data.totalBytes) * 100);
-      });
+    this.task.snapshotChanges().subscribe(data => {
+      this.progress = (data.bytesTransferred / data.totalBytes) * 100;
+    });
 
     // this.task = this.storage.upload(filePath, this.selectedFile);
     // this.message = this.task

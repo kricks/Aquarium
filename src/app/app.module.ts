@@ -16,7 +16,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DeleteModalComponent } from './modules/aquarium/aquarium-list/delete-modal/delete-modal.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { CarouselComponent } from './shared/carousel/carousel.component';
 import { ImageUploadComponent } from './modules/image-upload/image-upload.component';
 import { ImageFormComponent } from './modules/image-upload/image-form/image-form.component';
 import { ImageListComponent } from './modules/image-upload/image-list/image-list.component';
@@ -39,7 +38,6 @@ import { environment } from 'src/environments/environment';
     LivestockFormComponent,
     LivestockAqDetailsComponent,
     DeleteModalComponent,
-    CarouselComponent,
     ImageUploadComponent,
     ImageFormComponent,
     ImageListComponent

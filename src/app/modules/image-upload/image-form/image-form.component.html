@@ -1,56 +1,74 @@
 <div class="container">
-    <form
+  <form
     [formGroup]="form"
     (ngSubmit)="onSubmit(form.value)"
     name="imageForm"
-    class="text">
-    <div class="col-6">
-        <div class="form-group mt-3 text-center">
-            <img [src]="imgSrc"
-            (click)="fileUploader.click()">
-        </div>
-    
-        <div class="form-group">
-            <label for="image">Select Image to Upload</label>
-            <input type="file"
-            accept="image/*"
-            id="file"
-            class="form-control"
-            formControlName="image"
-            (change)="showPreview($event)"
-            #fileUploader>
-        </div>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text"
-            id="text"
-            class="form-control"
-            formControlName="name">
-        </div>
-        <div class="form-group">
-            <label for="category">Category</label>
-            <input type="text"
-            id="text"
-            class="form-control"
-            formControlName="category">
-        </div>
-    
-        <div class="buttons">
-            <div class="">
-              <input
-                type="submit"
-                id="submitButton"
-                value="Add"
-                class="btn btn-primary"
-              />
-              <button
-                type="button"
-                class="btn btn-danger ml-2"
-              >
-                Clear
-              </button>
-            </div>
+    class="text"
+  >
+    <div class="col-lg-8 col-sm-12 offset-lg-2 border mt-3">
+      <div class="form-group mt-3 text-center">
+        <!-- <label class="col-3" for="image">Select Image to Upload</label> -->
+        <img [src]="imgSrc" (click)="fileUploader.click()" />
+        <div *ngIf="selectedFile != null">
+          <p>{{ selectedFile.name }}</p>
+          <div class="progress" >
+            <div
+              class="progress-bar progress-bar-striped bg-success progress-bar-animated"
+              role="progressbar"
+              [style.width]="(uploadProgress | async) + '%'"
+              [attr.aria-valuenow]="uploadProgress | async"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >{{message}}%</div>
           </div>
-    </div>    
-    </form>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <!-- <label for="image">Select Image to Upload</label> -->
+        <input
+          type="file"
+          accept="image/*"
+          id="file"
+          class="form-control"
+          formControlName="image"
+          (change)="showPreview($event)"
+          #fileUploader
+          hidden
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="text"
+          class="form-control"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input
+          type="text"
+          id="text"
+          class="form-control"
+          formControlName="category"
+        />
+      </div>
+
+      <div class="buttons mb-3">
+        <div class="">
+          <input
+            type="submit"
+            id="submitButton"
+            value="Add"
+            class="btn btn-primary"
+          />
+          <button type="button" class="btn btn-danger ml-2">
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

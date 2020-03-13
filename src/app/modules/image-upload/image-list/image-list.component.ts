@@ -15,6 +15,7 @@ export class ImageListComponent implements OnInit {
   images: any = [];
   stuff;
   test: any = [];
+  goat: any = [];
 
 
   constructor(
@@ -23,21 +24,22 @@ export class ImageListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const boo = this.storage.ref('Aquarium/asd');
-    this.stuff = boo.getDownloadURL();
-    // this.images = this.fb.list('/aquarium');
     const ref = firebase.storage().ref('/Aquarium');
-
     ref.listAll().then( data => {
       this.images = data.items.map( thing => {
-        const xcv = this.storage.ref(thing.fullPath);
-        this.test = xcv.getDownloadURL();
-        return thing.fullPath;
+        const boo = this.storage.ref(thing.fullPath);
+        this.test = boo.getDownloadURL().subscribe( (goat: {}) => {
+          console.log(goat);
+          this.goat = goat;
+        });
+        return this.test;
       });
-      // .map( stuff => {
-      //   stuff.getDownloadURL();
-      //   console.log(stuff.getDownloadURL());
-      // });
     });
   }
+
+  seahorse() {
+    const boo = this.storage.ref('Aquarium/asd');
+    this.stuff = boo.getDownloadURL();
+  }
+
 }

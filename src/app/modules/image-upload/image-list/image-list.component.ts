@@ -15,7 +15,7 @@ export class ImageListComponent implements OnInit {
   images: any = [];
   stuff;
   test: any = [];
-  goat: any = [];
+  url: any = [];
 
 
   constructor(
@@ -29,10 +29,8 @@ export class ImageListComponent implements OnInit {
       this.images = data.items.map( thing => {
         const boo = this.storage.ref(thing.fullPath);
         this.test = boo.getDownloadURL().subscribe( (goat: {}) => {
-          console.log(goat);
-          this.goat = goat;
+          this.url = goat;
         });
-        return this.test;
       });
     });
   }

@@ -56,7 +56,7 @@ import { environment } from 'src/environments/environment';
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

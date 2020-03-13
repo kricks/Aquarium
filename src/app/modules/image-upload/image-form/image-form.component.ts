@@ -15,15 +15,15 @@ import { Observable } from 'rxjs';
 })
 export class ImageFormComponent implements OnInit {
   form: FormGroup;
-  imgSrc = '../../../../assets/images/placeholder.png';
   selectedFile = null;
   image: Image = new Image();
   options = ['Aquarium', 'Livestock', 'General'];
   uploadProgress: Observable<any>;
   task: AngularFireUploadTask;
   progress;
+  message: boolean;
   ref: AngularFireStorageReference;
-
+  imgSrc: string;
 
   constructor(private fb: FormBuilder, private storage: AngularFireStorage) {}
 
@@ -38,6 +38,9 @@ export class ImageFormComponent implements OnInit {
       category: ['', [Validators.required]]
     });
     this.image = this.form.value;
+    this.imgSrc = '../../../../assets/images/placeholder.png';
+    this.message = false;
+    this.progress = false;
   }
 
   showPreview(event) {
@@ -51,7 +54,7 @@ export class ImageFormComponent implements OnInit {
   }
 
   upload(form) {
-    console.log(form.value);
+    this.message = true;
     const filePath = `${form.category}/${form.name}`;
     this.ref = this.storage.ref(filePath);
     this.task = this.ref.put(this.selectedFile);
@@ -59,18 +62,13 @@ export class ImageFormComponent implements OnInit {
     this.task.snapshotChanges().subscribe(data => {
       this.progress = (data.bytesTransferred / data.totalBytes) * 100;
     });
-
-    // this.task = this.storage.upload(filePath, this.selectedFile);
-    // this.message = this.task
-    //   .snapshotChanges()
-    //   .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100));
-    // this.transfer = this.message.bytesTransferred;
-    // this.total = this.message.totalBytes;
-
-    this.createForm();
   }
 
   onSubmit(form) {
     this.upload(form);
+  }
+
+  reset() {
+    this.createForm();
   }
 }

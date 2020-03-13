@@ -1,6 +1,11 @@
 <div class="row">
-    hi
-    <div class="col-6" *ngFor="let im of images">
-        <!-- <img [src]="im"> -->
-    </div>
+  <p>
+    hello
+    <img [src]="stuff | async">
+  </p>
+  <div class="col-6" *ngFor="let im of images">
+    <div>{{im}}</div>
+    <img [src]="im">
+    
+  </div>
 </div>

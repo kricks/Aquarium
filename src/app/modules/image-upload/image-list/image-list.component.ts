@@ -1,8 +1,10 @@
-import { AquariumService } from 'src/app/core/services/aquarium.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Image } from '../image.model';
-import { DomSanitizer } from '@angular/platform-browser';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { FirebaseDatabase } from '@angular/fire';
+import { AngularFireDatabase } from '@angular/fire/database';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-image-list',
@@ -10,16 +12,32 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./image-list.component.scss']
 })
 export class ImageListComponent implements OnInit {
-  images: Observable<Image>[];
-  base64Data;
+  images: any = [];
+  stuff;
+  test: any = [];
 
-  constructor(private service: AquariumService, private sanitizer: DomSanitizer) { }
+
+  constructor(
+    private storage: AngularFireStorage,
+    private fb: AngularFireDatabase
+  ) {}
 
   ngOnInit() {
-    this.service.getAllImages().subscribe(data => {
-      this.base64Data = data;
-      // this.images = 'data:image/jpeg;base64,' + this.base64Data;
-    })
-  }
+    const boo = this.storage.ref('Aquarium/asd');
+    this.stuff = boo.getDownloadURL();
+    // this.images = this.fb.list('/aquarium');
+    const ref = firebase.storage().ref('/Aquarium');
 
+    ref.listAll().then( data => {
+      this.images = data.items.map( thing => {
+        const xcv = this.storage.ref(thing.fullPath);
+        this.test = xcv.getDownloadURL();
+        return thing.fullPath;
+      });
+      // .map( stuff => {
+      //   stuff.getDownloadURL();
+      //   console.log(stuff.getDownloadURL());
+      // });
+    });
+  }
 }

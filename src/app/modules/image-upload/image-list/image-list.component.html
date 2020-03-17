@@ -1,6 +1,15 @@
+<!-- <div class="row">
+  <div class="col-6" *ngFor="let im of row">
+    <div>{{im}}</div>
+    <div>{{im}}</div>
+    <img class="image" [src]="images[3*im].imageURL">
+  </div>
+</div> -->
+
 <div class="row">
-  <div class="col-6" *ngFor="let im of images">
-    <div>{{url}}</div>
-    <img class="image" [src]="url">
+  <div class="col-6" *ngFor="let ls of listRef$ | async">
+    <div>{{ls.category}}</div>
+    <div>{{ls.name}}</div>
+    <img class="image" [src]="ls.imageURL">
   </div>
 </div>

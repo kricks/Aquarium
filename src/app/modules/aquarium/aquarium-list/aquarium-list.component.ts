@@ -28,7 +28,6 @@ export class AquariumListComponent implements OnInit {
 
   ngOnInit() {
     this.service.loadAllAquariums();
-    
   }
 
   // display() {

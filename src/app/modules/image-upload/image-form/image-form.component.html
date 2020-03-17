@@ -1,4 +1,7 @@
 <div class="container">
+
+  {{image.imageURL}}
+
   <form
     [formGroup]="form"
     (ngSubmit)="onSubmit(form.value)"
@@ -47,7 +50,7 @@
           accept="image/*"
           id="file"
           class="form-control"
-          formControlName="image"
+          formControlName="imageURL"
           (change)="showPreview($event)"
           #fileUploader
           hidden

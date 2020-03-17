@@ -22,6 +22,7 @@ import { ImageListComponent } from './modules/image-upload/image-list/image-list
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -57,6 +58,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule.enablePersistence(),
   ],
   providers: [],
   bootstrap: [AppComponent]

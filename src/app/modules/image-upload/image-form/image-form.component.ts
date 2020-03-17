@@ -7,7 +7,8 @@ import {
   AngularFireStorageReference
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-
+import { finalize } from 'rxjs/operators';
+import { ImageHttpService } from 'src/app/core/services/image-http.service';
 @Component({
   selector: 'app-image-form',
   templateUrl: './image-form.component.html',
@@ -25,7 +26,7 @@ export class ImageFormComponent implements OnInit {
   ref: AngularFireStorageReference;
   imgSrc: string;
 
-  constructor(private fb: FormBuilder, private storage: AngularFireStorage) {}
+  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private service: ImageHttpService) {}
 
   ngOnInit() {
     this.createForm();
@@ -33,7 +34,7 @@ export class ImageFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      image: [null, [Validators.required]],
+      imageURL: [null, [Validators.required]],
       name: ['', [Validators.required]],
       category: ['', [Validators.required]]
     });
@@ -56,16 +57,37 @@ export class ImageFormComponent implements OnInit {
   upload(form) {
     this.message = true;
     const filePath = `${form.category}/${form.name}`;
-    this.ref = this.storage.ref(filePath);
-    this.task = this.ref.put(this.selectedFile);
+    const fileRef = this.storage.ref(filePath);
+    this.task = this.storage.upload(filePath, this.selectedFile);
+    this.task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(data => {
+            form.imageURL = data;
+            this.service.pushImage(form);
+          });
+        })
+      )
+      .subscribe();
+    this.progressBar();
+  }
+
+  onSubmit(form) {
+    this.upload(form);
+  }
+
+  progressBar() {
     this.uploadProgress = this.task.percentageChanges();
     this.task.snapshotChanges().subscribe(data => {
       this.progress = (data.bytesTransferred / data.totalBytes) * 100;
     });
   }
 
-  onSubmit(form) {
-    this.upload(form);
+  getDownload() {
+    this.ref.getDownloadURL().subscribe(data => {
+      console.log(data);
+    });
   }
 
   reset() {

@@ -1,7 +1,7 @@
 export class Image {
     name: string;
     category: string;
-    imageUrl: string;
+    imageURL: string;
     image: File;
 
     constructor() {}

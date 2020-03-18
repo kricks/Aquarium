@@ -8,5 +8,10 @@
 form {
     border: 1px solid rgba(0, 0, 0, 0.125);
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: white;
+}
+
+.bg-blue {
+    background-image: linear-gradient(to bottom right, #5085a5, #687864);
+    filter: drop-shadow(2px 4px 6px black);
 }

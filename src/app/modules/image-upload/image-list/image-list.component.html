@@ -1,15 +1,10 @@
-<!-- <div class="row">
-  <div class="col-6" *ngFor="let im of row">
-    <div>{{im}}</div>
-    <div>{{im}}</div>
-    <img class="image" [src]="images[3*im].imageURL">
+  <div class="row">
+    <div class="col-md-6 col-lg-4" *ngFor="let ls of listRef$ | async">
+      <img class="image" [src]="ls.imageURL" />
+      <div class="text-center">
+        <div>{{ ls.category }}</div>
+        <div>{{ ls.name }}</div>
+      </div>
+    </div>
   </div>
-</div> -->
 
-<div class="row">
-  <div class="col-6" *ngFor="let ls of listRef$ | async">
-    <div>{{ls.category}}</div>
-    <div>{{ls.name}}</div>
-    <img class="image" [src]="ls.imageURL">
-  </div>
-</div>

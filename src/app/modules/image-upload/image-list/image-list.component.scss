@@ -1,3 +1,24 @@
-img {
-    width: 80%;
+.image:hover {
+    .img-thumbnail {
+        background-color:rgba(255,255,255,0.3);
+        opacity: .3;
+    }
+}
+
+.image:hover .description {
+    
+}
+
+.image {
+    background: white;
+}
+
+.description {
+    color: white;
+    position: absolute;
+}
+
+.img-thumbnail {
+    transition: .5s ease-in-out;
+    background: white;
 }

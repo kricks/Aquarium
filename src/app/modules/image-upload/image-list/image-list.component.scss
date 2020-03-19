@@ -1,24 +1,32 @@
 .image:hover {
-    .img-thumbnail {
-        background-color:rgba(255,255,255,0.3);
-        opacity: .3;
-    }
-}
-
-.image:hover .description {
-    
+  cursor: pointer;
+  .img-thumbnail {
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 0.3;
+  }
 }
 
 .image {
-    background: white;
+  background: white;
+  text-align: center;
+}
+
+.image:hover .description {
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.5s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .description {
-    color: white;
-    position: absolute;
+  display: none;
 }
 
 .img-thumbnail {
-    transition: .5s ease-in-out;
-    background: white;
+  transition: 0.5s ease-in-out;
+  width: 100%;
 }

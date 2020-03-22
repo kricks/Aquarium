@@ -1,4 +1,4 @@
-<div class="container">
+<div class="row bg-blue">
 
   {{image.imageURL}}
 
@@ -6,9 +6,9 @@
     [formGroup]="form"
     (ngSubmit)="onSubmit(form.value)"
     name="imageForm"
-    class="text"
+    class="text col-12"
   >
-    <div class="col-lg-8 col-sm-12 offset-lg-2 border mt-3">
+    <div class="col-lg-4 col-sm-12 offset-lg-4 border my-3">
       <div class="form-group mt-3 text-center">
         <!-- <label class="col-3" for="image">Select Image to Upload</label> -->
         <img [src]="imgSrc" (click)="fileUploader.click()" />

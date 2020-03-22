@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-6 col-lg-3 mt-4 box" *ngFor="let ls of listRef$ | async">
+<div class="row bg-black">
+  <div class="col-md-6 col-lg-3 my-3 test" *ngFor="let ls of listRef$ | async">
     <div class="image">
       <img class="img-thumbnail" [src]="ls.imageURL" />
       <div class="description text-center">
@@ -7,6 +7,5 @@
         <div>{{ ls.name }}</div>
       </div>
     </div>
-
   </div>
 </div>

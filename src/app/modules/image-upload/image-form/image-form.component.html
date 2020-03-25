@@ -1,6 +1,5 @@
 <div class="row bg-blue">
-
-  {{image.imageURL}}
+  {{ image.imageURL }}
 
   <form
     [formGroup]="form"
@@ -10,10 +9,13 @@
   >
     <div class="col-lg-4 col-sm-12 offset-lg-4 border my-3">
       <div class="form-group mt-3 text-center">
+        <h3 class="header text-center">Select Image to Upload</h3>
         <!-- <label class="col-3" for="image">Select Image to Upload</label> -->
         <img [src]="imgSrc" (click)="fileUploader.click()" />
-        <div *ngIf="message">
+        <div *ngIf="selectedFile">
           <p>{{ selectedFile.name }}</p>
+        </div>
+        <div *ngIf="message">
           <div class="progress">
             <div
               class="progress-bar progress-bar-striped bg-success"

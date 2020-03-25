@@ -16,7 +16,7 @@ import { ImageHttpService } from 'src/app/core/services/image-http.service';
 })
 export class ImageFormComponent implements OnInit {
   form: FormGroup;
-  selectedFile = null;
+  selectedFile;
   image: Image = new Image();
   options = ['Aquarium', 'Livestock', 'General'];
   uploadProgress: Observable<any>;
@@ -26,7 +26,11 @@ export class ImageFormComponent implements OnInit {
   ref: AngularFireStorageReference;
   imgSrc: string;
 
-  constructor(private fb: FormBuilder, private storage: AngularFireStorage, private service: ImageHttpService) {}
+  constructor(
+    private fb: FormBuilder,
+    private storage: AngularFireStorage,
+    private service: ImageHttpService
+  ) {}
 
   ngOnInit() {
     this.createForm();
@@ -42,6 +46,7 @@ export class ImageFormComponent implements OnInit {
     this.imgSrc = '../../../../assets/images/placeholder.png';
     this.message = false;
     this.progress = false;
+    this.selectedFile = null;
   }
 
   showPreview(event) {

@@ -1,4 +1,4 @@
-<div class="text-center my-4 text">
+<!-- <div class="text-center my-4 text">
   <div class="row">
     <div class="col">
       <div class="card text-center">
@@ -12,4 +12,25 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header font-weight-bold text-center" name="cardName">
+      <h4>{{ aquarium.name }}</h4>
+    </div>
+    <div class="card-body">
+      <div class="card-text row">
+        <div class="list-unstyled col-4">
+          <img class="image mt-3" src="../../../assets/images/logo.png" alt="fish bowl" />
+        </div>
+        <ul class="list-unstyled col-8">
+          <li>{{ aquarium.type }}</li>
+          <li>{{ aquarium.gallon }}</li>
+          <li>{{ aquarium.notes }}</li>
+          <li>{{ aquarium.date | date: "mediumDate" }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+

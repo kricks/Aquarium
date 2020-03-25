@@ -1,129 +1,127 @@
-<div>
-  <h3 class="text text-center">Add new Livestock</h3>
-  <form
-    [formGroup]="form"
-    (ngSubmit)="onAddLivestock()"
-    name="livestockForm"
-    class="col text my-4"
-    autocomplete="off"
-  >
-    <input
-      hidden
-      name="livestockId"
-      formControlName="livestockId"
-      class="form-control"
-      id="livestockIdFieldLS"
-    />
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="tname">Name <strong class="text-danger">*</strong></label>
-        <input
-          type="text"
-          formControlName="name"
-          name="nameFieldLS"
-          id="nameFieldLS"
-          class="form-control"
-          placeholder="Enter Name"
-        />
-        <div
-          *ngIf="!form.get('name').valid && form.get('name').touched"
-          class="ml-2 error"
-        >
-          Name is required
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="species"
-          >Species <strong class="text-danger">*</strong></label
-        >
-        <input
-          type="text"
-          name="species"
-          formControlName="species"
-          class="form-control"
-          id="speciesFieldLS"
-          placeholder="Enter Species"
-        />
-        <div
-          *ngIf="!form.get('species').valid && form.get('species').touched"
-          class="ml-2 error"
-        >
-          Species is required
-        </div>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onAddLivestock()"
+  name="livestockForm"
+  class="col text my-4"
+  autocomplete="off"
+>
+  <h3 class="text text-center pb-2 header">Add New Livestock</h3>
+  <input
+    hidden
+    name="livestockId"
+    formControlName="livestockId"
+    class="form-control"
+    id="livestockIdFieldLS"
+  />
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="tname">Name <strong class="text-danger">*</strong></label>
+      <input
+        type="text"
+        formControlName="name"
+        name="nameFieldLS"
+        id="nameFieldLS"
+        class="form-control"
+        placeholder="Enter Name"
+      />
+      <div
+        *ngIf="!form.get('name').valid && form.get('name').touched"
+        class="ml-2 error"
+      >
+        Name is required
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="type">Gender <strong class="text-danger">*</strong></label>
-        <select
-          name="gender"
-          id="genderFieldLS"
-          class="form-control"
-          formControlName="gender"
-        >
-          <option [selected]="true" [disabled]="true" [hidden]="true" value=""
-            >Select Gender :</option
-          >
-          <option *ngFor="let op of options" [value]="op">{{ op }}</option>
-        </select>
-        <div
-          *ngIf="!form.get('gender').valid && form.get('gender').touched"
-          class="ml-2 error"
-        >
-          Gender is required
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="notes">Notes</label>
-        <input
-          type="text"
-          name="notes"
-          formControlName="notes"
-          class="form-control"
-          id="notesFieldLS"
-          placeholder="Enter Notes"
-        />
-      </div>
+    <div class="form-group col-md-6">
+      <label for="species"
+        >Species <strong class="text-danger">*</strong></label
+      >
       <input
-        hidden
-        name="fkAquariumId"
-        formControlName="fkAquariumId"
+        type="text"
+        name="species"
+        formControlName="species"
         class="form-control"
-        id="fkAquariumIdFieldLS"
-        placeholder="Enter fkAquariumId"
+        id="speciesFieldLS"
+        placeholder="Enter Species"
+      />
+      <div
+        *ngIf="!form.get('species').valid && form.get('species').touched"
+        class="ml-2 error"
+      >
+        Species is required
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="type">Gender <strong class="text-danger">*</strong></label>
+      <select
+        name="gender"
+        id="genderFieldLS"
+        class="form-control"
+        formControlName="gender"
+      >
+        <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+          >Select Gender :</option
+        >
+        <option *ngFor="let op of options" [value]="op">{{ op }}</option>
+      </select>
+      <div
+        *ngIf="!form.get('gender').valid && form.get('gender').touched"
+        class="ml-2 error"
+      >
+        Gender is required
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="notes">Notes</label>
+      <input
+        type="text"
+        name="notes"
+        formControlName="notes"
+        class="form-control"
+        id="notesFieldLS"
+        placeholder="Enter Notes"
       />
     </div>
-    <div class="buttons">
-      <div>
-        <input
-          type="submit"
-          id="submitButton"
-          [disabled]="!form.valid"
-          value="Add"
-          class="btn btn-primary"
-          *ngIf="!livestock.livestockId"
-        />
-        <input
-          type="button"
-          (click)="onUpdate(livestockId)"
-          id="updateButton"
-          [disabled]="!form.valid"
-          class="btn btn-primary text-white"
-          value="Update"
-          *ngIf="livestock.livestockId"
-        />
-        <button
-          type="button"
-          class="btn btn-danger ml-2"
-          id="clearForm"
-          (click)="clearForm()"
-        >
-          Clear
-        </button>
-      </div>
+    <input
+      hidden
+      name="fkAquariumId"
+      formControlName="fkAquariumId"
+      class="form-control"
+      id="fkAquariumIdFieldLS"
+      placeholder="Enter fkAquariumId"
+    />
+  </div>
+  <div class="buttons">
+    <div>
+      <input
+        type="submit"
+        id="submitButton"
+        [disabled]="!form.valid"
+        value="Add"
+        class="btn btn-primary"
+        *ngIf="!livestock.livestockId"
+      />
+      <input
+        type="button"
+        (click)="onUpdate(livestockId)"
+        id="updateButton"
+        [disabled]="!form.valid"
+        class="btn btn-primary text-white"
+        value="Update"
+        *ngIf="livestock.livestockId"
+      />
+      <button
+        type="button"
+        class="btn btn-danger ml-2"
+        id="clearForm"
+        (click)="clearForm()"
+      >
+        Clear
+      </button>
     </div>
-  </form>
-</div>
+  </div>
+</form>
 <div *ngIf="updateMessage" class="container">
   <div class="mt-3 col alert alert-success alert-dismissible fade show">
     <button type="button" class="close" (click)="closeMessage()">

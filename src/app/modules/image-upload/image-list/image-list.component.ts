@@ -43,7 +43,7 @@ export class ImageListComponent implements OnInit {
     );
   }
 
-  deleteImage(event, image) {
+  deleteImage(image) {
     this.service.deleteImage(image);
   }
 

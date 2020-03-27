@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { ImageHttpService } from 'src/app/core/services/image-http.service';
+import { ImageService } from 'src/app/core/services/image.service';
 @Component({
   selector: 'app-image-form',
   templateUrl: './image-form.component.html',
@@ -29,7 +29,7 @@ export class ImageFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
-    private service: ImageHttpService
+    private service: ImageService
   ) {}
 
   ngOnInit() {
@@ -70,7 +70,8 @@ export class ImageFormComponent implements OnInit {
         finalize(() => {
           fileRef.getDownloadURL().subscribe(data => {
             form.imageURL = data;
-            this.service.pushImage(form);
+            console.log(form.imageURL);
+            this.service.createImage(form);
           });
         })
       )

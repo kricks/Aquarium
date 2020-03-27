@@ -1,11 +1,13 @@
 <div class="row bg-black">
-  <div class="col-md-6 col-lg-3 my-3 test" *ngFor="let ls of listRef$ | async">
+  <div class="col-md-6 col-lg-3 my-3 test" *ngFor="let ls of images">
     <div class="image">
       <img class="img-thumbnail" [src]="ls.imageURL" />
       <div class="description text-center">
-        <div>{{ ls.category }}</div>
+        <!-- <div>{{ ls.category }}</div> -->
         <div>{{ ls.name }}</div>
+        <div>{{ls.imageId}}</div>
       </div>
+      <div><button (click)="deleteImage($event, ls)">click here</button></div>
     </div>
   </div>
 </div>

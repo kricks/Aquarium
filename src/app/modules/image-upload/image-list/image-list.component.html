@@ -1,10 +1,22 @@
 <div class="row bg-black">
   <div class="col-md-6 col-lg-3 my-3 test" *ngFor="let ls of images">
     <div class="image">
-      <img class="img-thumbnail" [src]="ls.imageURL" />
+      <div class="dropleft">
+        <i
+          class="fas fa-ellipsis-v ellipsis mt-3 mr-3"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        ></i>
+        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" (click)="deleteImage(ls)" type="button">
+            <span>Delete <i class="text-danger far fa-trash-alt ml-3"></i> </span>
+          </button>
+        </div>
+      </div>
+      <img class="img-thumb" [src]="ls.imageURL" />
+
       <div class="description text-center">
-        <i class="fas fa-ellipsis-v"></i>
-        <i class="fas fa-fish"></i>
         <!-- <div>{{ ls.category }}</div> -->
         <div>{{ ls.name }}</div>
       </div>

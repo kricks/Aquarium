@@ -59,9 +59,10 @@ export class ImageFormComponent implements OnInit {
     }
   }
 
-  upload(form) {
+  upload() {
+    this.image = this.form.value;
     this.message = true;
-    const filePath = `${form.category}/${form.name}`;
+    const filePath = `${this.image.category}/${this.image.name}`;
     const fileRef = this.storage.ref(filePath);
     this.task = this.storage.upload(filePath, this.selectedFile);
     this.task
@@ -69,9 +70,11 @@ export class ImageFormComponent implements OnInit {
       .pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(data => {
-            form.imageURL = data;
-            console.log(form.imageURL);
-            this.service.createImage(form);
+            console.log('create');
+            this.image.imageURL = data;
+            this.service.createImage(this.image);
+            console.log(this.image);
+            this.service.postImage(this.image).subscribe();
           });
         })
       )
@@ -79,8 +82,8 @@ export class ImageFormComponent implements OnInit {
     this.progressBar();
   }
 
-  onSubmit(form) {
-    this.upload(form);
+  onSubmit() {
+    this.upload();
   }
 
   progressBar() {

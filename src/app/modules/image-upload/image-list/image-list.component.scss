@@ -1,12 +1,12 @@
 .image:hover {
 
-  .img-thumb {
+  .img-thumbnail {
     background-color: rgba(255, 255, 255, 0.3);
     opacity: 0.3;
   }
   .ellipsis {
     cursor: pointer;
-    z-index: 100;
+    z-index: 1;
     position: absolute;
     color: black;
     right:0;
@@ -20,7 +20,6 @@
 
 .image {
   background-color: white;
-  // text-align: center;
 }
 
 .image:hover .description {
@@ -38,8 +37,8 @@
   display: none;
 }
 
-.img-thumb {
+.img-thumbnail {
   transition: 0.5s ease-in-out;
   width: 100%;
-  z-index: -100;
+  
 }

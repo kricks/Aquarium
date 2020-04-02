@@ -1,9 +1,7 @@
 <div class="row bg-blue">
-  {{ image.imageURL }}
-
   <form
     [formGroup]="form"
-    (ngSubmit)="onSubmit(form.value)"
+    (ngSubmit)="onSubmit()"
     name="imageForm"
     class="text col-12"
   >

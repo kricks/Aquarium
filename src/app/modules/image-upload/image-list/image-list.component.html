@@ -1,3 +1,4 @@
+<app-gallery-filter></app-gallery-filter>
 <div class="row bg-black">
   <div class="col-md-6 col-lg-3 my-3 test" *ngFor="let ls of images">
     <div class="image">
@@ -10,17 +11,17 @@
         ></i>
         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenu2">
           <button class="dropdown-item" (click)="deleteImage(ls)" type="button">
-            <span>Delete <i class="text-danger far fa-trash-alt ml-3"></i> </span>
+            <span
+              >Delete <i class="text-danger far fa-trash-alt ml-3"></i>
+            </span>
           </button>
         </div>
       </div>
-      <img class="img-thumb" [src]="ls.imageURL" />
+      <img class="img-thumbnail" [src]="ls.imageURL" />
 
       <div class="description text-center">
-        <!-- <div>{{ ls.category }}</div> -->
         <div>{{ ls.name }}</div>
       </div>
-      <!-- <div><button class="btn btn-success" (click)="deleteImage(ls)">click here</button></div> -->
     </div>
   </div>
 </div>

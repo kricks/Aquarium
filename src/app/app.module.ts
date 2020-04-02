@@ -24,6 +24,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { GalleryFilterComponent } from './modules/image-upload/gallery-filter/gallery-filter.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from 'src/environments/environment';
     DeleteModalComponent,
     ImageUploadComponent,
     ImageFormComponent,
-    ImageListComponent
+    ImageListComponent,
+    GalleryFilterComponent
   ],
   imports: [
     BrowserModule,

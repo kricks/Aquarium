@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Image } from './../../modules/image-upload/image.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -16,10 +17,16 @@ export class ImageService {
   collection = this.afs.collection('images');
   images: Observable<any[]>;
   imageDoc: AngularFirestoreDocument<Image>;
+  private baseUri = 'http://localhost:8080/image';
+  private all = 'all';
+  private create = 'create';
+  private update = 'update';
+  private delete = 'delete';
 
   constructor(
     private storage: AngularFireStorage,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private http: HttpClient
   ) {}
 
   getAll() {
@@ -34,8 +41,24 @@ export class ImageService {
     }));
   }
 
+  getGeneral() {
+    return this.images = this.afs.collection('images').snapshotChanges().pipe(map( changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.data() as Image;
+        data.imageId = action.payload.doc.id;
+        return data;
+      });
+    }));
+  }
+
   createImage(image) {
     this.collection.add(image);
+  }
+
+  postImage(image: object): Observable<any> {
+    console.log('service hit');
+    console.log(image);
+    return this.http.post(`${this.baseUri}/${this.create}`, image);
   }
 
   deleteImage(image: Image) {

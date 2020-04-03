@@ -72,7 +72,7 @@ export class ImageFormComponent implements OnInit {
           fileRef.getDownloadURL().subscribe(data => {
             console.log('create');
             this.image.imageURL = data;
-            this.service.createImage(this.image);
+            // this.service.createImage(this.image);
             console.log(this.image);
             this.service.postImage(this.image).subscribe();
           });

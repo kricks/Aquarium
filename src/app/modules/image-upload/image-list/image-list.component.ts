@@ -1,12 +1,6 @@
-import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Image } from '../image.model';
-import { AngularFireList } from '@angular/fire/database';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection
-} from '@angular/fire/firestore';
 import { ImageService } from 'src/app/core/services/image.service';
 
 @Component({
@@ -17,26 +11,16 @@ import { ImageService } from 'src/app/core/services/image.service';
 export class ImageListComponent implements OnInit {
   image: Image = new Image();
   url: any = [];
-  list: AngularFireList<any>;
-  row: any = [];
-  images: Image[];
+  images: Observable<Image[]>;
 
-  constructor(
-    private service: ImageService,
-  ) {}
+  constructor(private service: ImageService) {}
 
   ngOnInit() {
-    this.getGeneral();
+    this.getImages();
   }
 
-  getAll() {
-    this.service.getAll().subscribe(images => {
-      this.images = images;
-    });
-  }
-
-  getGeneral() {
-    this.service.getGeneral().subscribe(images => {
+  getImages() {
+    this.service.getAllImages().subscribe(images => {
       this.images = images;
       console.log(this.images);
     });
@@ -57,5 +41,4 @@ export class ImageListComponent implements OnInit {
   deleteImage(image) {
     this.service.deleteImage(image);
   }
-
 }

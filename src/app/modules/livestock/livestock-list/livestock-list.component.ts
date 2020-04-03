@@ -1,18 +1,18 @@
-import { SharedDataService } from "../../../core/services/shared-data.service";
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
-import { LivestockService } from "src/app/core/services/livestock.service";
-import { Livestock } from "../livestock.model";
-import { NGXLogger } from "ngx-logger";
+import { SharedDataService } from '../../../core/services/shared-data.service';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { LivestockService } from 'src/app/core/services/livestock.service';
+import { Livestock } from '../livestock.model';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
-  selector: "app-livestock-list",
-  templateUrl: "./livestock-list.component.html",
-  styleUrls: ["./livestock-list.component.scss"]
+  selector: 'app-livestock-list',
+  templateUrl: './livestock-list.component.html',
+  styleUrls: ['./livestock-list.component.scss']
 })
 export class LivestockListComponent implements OnInit {
-  title = "Livestock list";
+  title = 'Livestock list';
   livestocks: Observable<Livestock[]>;
   deleteMessage: boolean;
 
@@ -25,7 +25,7 @@ export class LivestockListComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      let fkAquariumId = params.get("fkAquariumId");
+      const fkAquariumId = params.get('fkAquariumId');
       this.service.loadAllLivestock(fkAquariumId);
       this.displayLivestockList(fkAquariumId);
     });

@@ -20,6 +20,9 @@ export class SharedDataService {
   private getUpdatedAqList = new Subject<any>();
   getUpdatedAqList$ = this.getUpdatedAqList.asObservable();
 
+  private getCategoryList = new Subject<any>();
+  getCategoryList$ = this.getCategoryList.asObservable();
+
   constructor() {}
 
   sendData(data) {
@@ -35,6 +38,10 @@ export class SharedDataService {
   }
 
   getAqList() {
-    this.getUpdatedAqList.next()
+    this.getUpdatedAqList.next();
+  }
+
+  getCategory(form) {
+    this.getCategoryList.next(form);
   }
 }

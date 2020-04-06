@@ -21,15 +21,19 @@ export class ImageService {
   private create = 'create';
   private update = 'update';
   private delete = 'delete';
+  private category = 'category';
 
   constructor(
-    private storage: AngularFireStorage,
     private afs: AngularFirestore,
     private http: HttpClient
   ) {}
 
   getAllImages(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);
+  }
+
+  getAllByCategory(category): Observable<any> {
+    return this.http.get(`${this.baseUri}/${this.category}/${category}`);
   }
 
   postImage(image: object): Observable<any> {

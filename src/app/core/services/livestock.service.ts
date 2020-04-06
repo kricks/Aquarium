@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class LivestockService {
   livestockList: any = [];
@@ -12,16 +12,16 @@ export class LivestockService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     })
   };
 
-  private baseUri = "http://localhost:8080/livestock";
-  private all = "all";
-  private create = "create";
-  private update = "update";
-  private delete = "delete";
-  private aquariumFkId = "aqFk";
+  private baseUri = 'http://localhost:8080/livestock';
+  private all = 'all';
+  private create = 'create';
+  private update = 'update';
+  private delete = 'delete';
+  private aquariumFkId = 'aqFk';
 
   getAllLivestock(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);

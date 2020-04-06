@@ -39,6 +39,9 @@ export class ImageListComponent implements OnInit {
   }
 
   deleteImage(image) {
-    this.service.deleteImage(image);
+    console.log(image);
+    this.service.deleteImage(image).subscribe(() => {
+      this.ngOnInit();
+    });
   }
 }

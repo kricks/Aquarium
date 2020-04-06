@@ -11,20 +11,14 @@ export class AquariumService {
   aquariumList: any = [];
   image: Image = new Image();
   aquarium: Aquarium = new Aquarium();
-  constructor(private http: HttpClient) {}
-
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     "Content-Type": "application/json"
-  //   })
-  // };
-  
   private baseUri = 'http://localhost:8080/aquarium';
   private url = 'http://localhost:8080/image';
   private all = 'all';
   private create = 'create';
   private update = 'update';
   private delete = 'delete';
+  
+  constructor(private http: HttpClient) {}
 
   getAllAquariums(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);

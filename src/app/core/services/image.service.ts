@@ -28,41 +28,8 @@ export class ImageService {
     private http: HttpClient
   ) {}
 
-  getAll() {
-    // this.images = this.collection.valueChanges({ idField: 'imageId' });
-    // return this.images;
-    return (this.images = this.collection.snapshotChanges().pipe(
-      map(changes => {
-        return changes.map(action => {
-          const data = action.payload.doc.data() as Image;
-          data.imageId = action.payload.doc.id;
-          return data;
-        });
-      })
-    ));
-  }
-
-  getGeneral() {
-    return (this.images = this.afs
-      .collection('images')
-      .snapshotChanges()
-      .pipe(
-        map(changes => {
-          return changes.map(action => {
-            const data = action.payload.doc.data() as Image;
-            data.imageId = action.payload.doc.id;
-            return data;
-          });
-        })
-      ));
-  }
-
   getAllImages(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);
-  }
-
-  createImage(image) {
-    this.collection.add(image);
   }
 
   postImage(image: object): Observable<any> {
@@ -71,9 +38,9 @@ export class ImageService {
     return this.http.post(`${this.baseUri}/${this.create}`, image);
   }
 
-  deleteImage(image: Image) {
-    this.imageDoc = this.afs.doc(`images/${image.imageId}`);
-    this.imageDoc.delete();
-    this.storage.storage.refFromURL(image.imageURL).delete();
+  deleteImage(image: Image): Observable<any> {
+    const imageId = image.imageId;
+    return this.http.delete(`${this.baseUri}/${this.delete}/${imageId}`);
   }
+
 }

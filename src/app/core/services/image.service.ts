@@ -3,19 +3,12 @@ import { Image } from './../../modules/image-upload/image.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument
-} from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
-  collection = this.afs.collection('images');
   images: Observable<any[]>;
-  imageDoc: AngularFirestoreDocument<Image>;
   private baseUri = 'http://localhost:8080/image';
   private all = 'all';
   private create = 'create';
@@ -24,7 +17,7 @@ export class ImageService {
   private category = 'category';
 
   constructor(
-    private afs: AngularFirestore,
+    private storage: AngularFireStorage,
     private http: HttpClient
   ) {}
 
@@ -43,6 +36,7 @@ export class ImageService {
   }
 
   deleteImage(image: Image): Observable<any> {
+    this.storage.storage.refFromURL(image.imageURL).delete();
     const imageId = image.imageId;
     return this.http.delete(`${this.baseUri}/${this.delete}/${imageId}`);
   }

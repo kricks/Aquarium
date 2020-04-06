@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-image-list',
   templateUrl: './image-list.component.html',
-  styleUrls: ['./image-list.component.scss']
+  styleUrls: ['./image-list.component.scss'],
 })
 export class ImageListComponent implements OnInit {
   image: Image = new Image();
@@ -17,15 +17,18 @@ export class ImageListComponent implements OnInit {
   images: Observable<Image[]>;
   filteredList: any = [];
 
-  constructor(private service: ImageService, private shared: SharedDataService) {}
+  constructor(
+    private service: ImageService,
+    private shared: SharedDataService
+  ) {}
 
   ngOnInit() {
-    // this.getImages();
+    this.getImages();
     this.getByCategory();
   }
 
   getImages() {
-    this.service.getAllImages().subscribe(images => {
+    this.service.getAllImages().subscribe((images) => {
       this.images = images;
       console.log(this.images);
     });
@@ -33,8 +36,12 @@ export class ImageListComponent implements OnInit {
   }
 
   getByCategory() {
-    this.shared.getCategoryList$.subscribe(data => {
-      this.service.getAllByCategory(data.category).subscribe(images => {
+    this.shared.getCategoryList$.subscribe((data) => {
+      console.log(data);
+      if (data.category === 'All') {
+        this.getImages();
+      }
+      this.service.getAllByCategory(data.category).subscribe((images) => {
         this.images = images;
         console.log(this.image);
       });
@@ -43,11 +50,11 @@ export class ImageListComponent implements OnInit {
 
   display(imageRef) {
     imageRef.getDownloadURL().then(
-      url => {
+      (url) => {
         this.url = url;
         console.log(url);
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );

@@ -46,10 +46,10 @@
       </li>
     </ul>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-inline my-2 my-lg-0">
-      <select ngModel="category" name="category" class="form-control mr-sm-2" id="category">
-        <option [selected]="true" [disabled]="true" [hidden]="true" value=""
+      <select [(ngModel)]="category" name="category" class="form-control mr-sm-2" id="category">
+        <!-- <option [selected]="true" [disabled]="true" [hidden]="true" value=""
           >Filter by Category :</option
-        >
+        > -->
         <option *ngFor="let op of options" [value]="op">{{ op }}</option>
       </select>
       <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->

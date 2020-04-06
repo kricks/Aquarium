@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery-filter.component.scss']
 })
 export class GalleryFilterComponent implements OnInit {
-  options = ['All', 'Aquarium', 'Livestock', 'General'];
+  options = ['All', 'Aquarium', 'Livestock', 'Other'];
+  category = 'All';
 
   constructor(private shared: SharedDataService) { }
 

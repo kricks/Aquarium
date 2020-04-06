@@ -18,7 +18,7 @@ export class ImageFormComponent implements OnInit {
   form: FormGroup;
   selectedFile;
   image: Image = new Image();
-  options = ['Aquarium', 'Livestock', 'General'];
+  options = ['Aquarium', 'Livestock', 'Other'];
   uploadProgress: Observable<any>;
   task: AngularFireUploadTask;
   progress;

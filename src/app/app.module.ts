@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { AquariumComponent } from './modules/aquarium/aquarium.component';
 import { AquariumListComponent } from './modules/aquarium/aquarium-list/aquarium-list.component';
-import { AquariumDetailComponent } from './modules/aquarium/aquarium-detail/aquarium-detail.component';
+import { ConfirmationComponent } from './modules/aquarium/confirmation/confirmation.component';
 import { AquariumFormComponent } from './modules/aquarium/aquarium-form/aquarium-form.component';
 import { AquariumDashboardComponent } from './modules/aquarium-dashboard/aquarium-dasboard.component';
 import { LivestockListComponent } from './modules/aquarium-dashboard/livestock-list/livestock-list.component';
@@ -33,7 +33,7 @@ import { GalleryFilterComponent } from './modules/gallery/gallery-filter/gallery
     HomeComponent,
     AquariumComponent,
     AquariumListComponent,
-    AquariumDetailComponent,
+    ConfirmationComponent,
     AquariumFormComponent,
     AquariumDashboardComponent,
     LivestockListComponent,

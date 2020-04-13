@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="card">
     <div class="card-header font-weight-bold text-center" name="cardName">
       <h4>{{ aquarium.name }}</h4>
@@ -17,9 +17,11 @@
       </div>
     </div>
     <div class="card-footer text-center">
-      <button class="btn btn-primary">
-        Add Image
-        <i class="ml-2 fas fa-image"></i></button>
+      <a href="aquarium-list">
+        <button type="button" class="btn btn-primary" id="backToAqList">
+          Go back to Aquarium List
+        </button>
+      </a>
     </div>
   </div>
 </div>

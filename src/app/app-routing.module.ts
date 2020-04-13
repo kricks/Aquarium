@@ -1,4 +1,4 @@
-import { AquariumDetailComponent } from './modules/aquarium/aquarium-detail/aquarium-detail.component';
+import { ConfirmationComponent } from './modules/aquarium/confirmation/confirmation.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { AquariumComponent } from './modules/aquarium/aquarium.component';
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'aquarium-list', component: AquariumComponent },
-  { path: 'confirmation', component: AquariumDetailComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: 'aquarium-dashboard/:fkAquariumId', component: AquariumDashboardComponent },
   {
     path: 'gallery',

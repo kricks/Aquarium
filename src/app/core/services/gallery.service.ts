@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Image } from './../../modules/image-upload/image.model';
+import { Image } from '../../modules/gallery/image.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -7,12 +7,11 @@ import { AngularFireStorage } from '@angular/fire/storage';
 @Injectable({
   providedIn: 'root'
 })
-export class ImageService {
+export class GalleryService {
   images: Observable<any[]>;
   private baseUri = 'http://localhost:8080/image';
   private all = 'all';
   private create = 'create';
-  private update = 'update';
   private delete = 'delete';
   private category = 'category';
 

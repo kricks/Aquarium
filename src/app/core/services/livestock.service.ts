@@ -43,7 +43,7 @@ export class LivestockService {
     );
   }
 
-  createLivestock(livestock: Object): Observable<any> {
+  createLivestock(livestock: object): Observable<any> {
     return this.http.post(`${this.baseUri}/${this.create}`, livestock);
   }
 

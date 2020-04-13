@@ -1,24 +1,20 @@
-import { SharedDataService } from './../../../core/services/shared-data.service';
+import { SharedDataService } from '../../../core/services/shared-data.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Image } from '../image.model';
-import { ImageService } from 'src/app/core/services/image.service';
-import { ThrowStmt } from '@angular/compiler';
-import { filter } from 'rxjs/operators';
+import { GalleryService } from 'src/app/core/services/gallery.service';
 
 @Component({
-  selector: 'app-image-list',
-  templateUrl: './image-list.component.html',
-  styleUrls: ['./image-list.component.scss'],
+  selector: 'app-gallery-list',
+  templateUrl: './gallery-list.component.html',
+  styleUrls: ['./gallery-list.component.scss'],
 })
-export class ImageListComponent implements OnInit {
+export class GalleryListComponent implements OnInit {
   image: Image = new Image();
-  url: any = [];
   images: Observable<Image[]>;
-  filteredList: any = [];
 
   constructor(
-    private service: ImageService,
+    private service: GalleryService,
     private shared: SharedDataService
   ) {}
 
@@ -32,7 +28,6 @@ export class ImageListComponent implements OnInit {
       this.images = images;
       console.log(this.images);
     });
-    // this.filter();
   }
 
   getByCategory() {
@@ -46,18 +41,6 @@ export class ImageListComponent implements OnInit {
         console.log(this.image);
       });
     });
-  }
-
-  display(imageRef) {
-    imageRef.getDownloadURL().then(
-      (url) => {
-        this.url = url;
-        console.log(url);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
   }
 
   deleteImage(image) {

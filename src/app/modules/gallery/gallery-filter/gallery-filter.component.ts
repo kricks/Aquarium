@@ -17,12 +17,6 @@ export class GalleryFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  // createForm() {
-  //   this.form = this.fb.group({
-  //     category: ''
-  //   });
-  // }
-
   onSubmit(form: NgForm) {
     console.log(form);
     this.shared.getCategory(form.value);

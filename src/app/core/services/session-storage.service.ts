@@ -1,8 +1,8 @@
-import { SharedDataService } from "./shared-data.service";
-import { Injectable } from "@angular/core";
+import { SharedDataService } from './shared-data.service';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class SessionStorageService {
   constructor(private shared: SharedDataService) {}
@@ -10,11 +10,11 @@ export class SessionStorageService {
   setItem(saved) {
     this.shared.details$.subscribe(data => {
       saved = data;
-      sessionStorage.setItem("object", JSON.stringify(saved));
+      sessionStorage.setItem('object', JSON.stringify(saved));
     });
   }
 
   getItem(): any {
-    return JSON.parse(sessionStorage.getItem("object"));
+    return JSON.parse(sessionStorage.getItem('object'));
   }
 }

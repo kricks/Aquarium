@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Image } from 'src/app/modules/image-upload/image.model';
+import { Image } from 'src/app/modules/gallery/image.model';
 import {
   AngularFireStorage,
   AngularFireUploadTask,
@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { ImageService } from 'src/app/core/services/image.service';
+import { GalleryService } from 'src/app/core/services/gallery.service';
 @Component({
   selector: 'app-image-form',
   templateUrl: './image-form.component.html',
@@ -29,7 +29,7 @@ export class ImageFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
-    private service: ImageService
+    private service: GalleryService
   ) {}
 
   ngOnInit() {

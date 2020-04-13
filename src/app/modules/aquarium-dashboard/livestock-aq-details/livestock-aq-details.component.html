@@ -1,18 +1,3 @@
-<!-- <div class="text-center my-4 text">
-  <div class="row">
-    <div class="col">
-      <div class="card text-center">
-        <h3 class="card-header font-weight-bold">{{ aquarium.name }}</h3>
-        <div class="card-body">
-          <p class="card-text">
-            {{ aquarium.type }} | {{ aquarium.gallon }} gallons |
-            {{ aquarium.notes }} | {{ aquarium.date | date: "mediumDate" }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="container-fluid">
   <div class="card">
     <div class="card-header font-weight-bold text-center" name="cardName">
@@ -30,6 +15,11 @@
           <li>{{ aquarium.date | date: "mediumDate" }}</li>
         </ul>
       </div>
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-primary">
+        Add Image
+        <i class="ml-2 fas fa-image"></i></button>
     </div>
   </div>
 </div>

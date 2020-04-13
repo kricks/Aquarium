@@ -6,12 +6,45 @@
           <app-livestock-aq-details></app-livestock-aq-details>
         </div>
         <div class="col-8">
-          <app-livestock-form></app-livestock-form>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane container active" id="home"> <app-livestock-form></app-livestock-form></div>
+            <div class="tab-pane container fade" id="menu1"><app-livestock-aq-details></app-livestock-aq-details></div>
+            <div class="tab-pane container fade" id="menu2">...</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
-    <app-livestock-list></app-livestock-list>
+    <div class="row">
+      <div class="col-4 border">
+        this is where param list goes
+      </div>
+      <div class="col-8">
+        <app-livestock-list></app-livestock-list>
+        <div class="row">
+          <div class="col-4 border">
+            this is add image area
+          </div>
+          <div class="col-4 border">
+            this is observation list / add
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

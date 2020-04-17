@@ -5,7 +5,7 @@ import {
   OnInit
 } from '@angular/core';
 import { Aquarium } from '../aquarium.model';
-import { AquariumService } from 'src/app/core/services/aquarium.service';
+import { AquariumService } from 'src/app/core/services/http-aquarium.service';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { SharedDataService } from '../../../core/services/shared-data.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Image } from '../image.model';
-import { GalleryService } from 'src/app/core/services/gallery.service';
+import { GalleryService } from 'src/app/core/services/http-gallery.service';
 
 @Component({
   selector: 'app-gallery-list',

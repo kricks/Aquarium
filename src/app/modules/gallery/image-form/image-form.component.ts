@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { GalleryService } from 'src/app/core/services/gallery.service';
+import { GalleryService } from 'src/app/core/services/http-gallery.service';
 @Component({
   selector: 'app-image-form',
   templateUrl: './image-form.component.html',

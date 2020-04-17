@@ -9,13 +9,10 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+              <a class="nav-link active" data-toggle="tab" href="#home">Livestock Form</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+              <a class="nav-link" data-toggle="tab" href="#menu1">Parameter Form</a>
             </li>
           </ul>
 
@@ -39,9 +36,15 @@
         <div class="row">
           <div class="col-4 border">
             this is add image area
+            <a href="image/add">
+              <button type="button" class="btn btn-info" id="toImage">
+                Add Image
+              </button>
+            </a>
           </div>
           <div class="col-4 border">
             this is observation list / add
+            <app-observation-list></app-observation-list>
           </div>
         </div>
       </div>

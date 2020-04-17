@@ -1,8 +1,8 @@
-import { SharedDataService } from '../../../core/services/shared-data.service';
+import { SharedDataService } from '../../../../core/services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { LivestockService } from 'src/app/core/services/livestock.service';
+import { LivestockService } from 'src/app/core/services/http-livestock.service';
 import { Livestock } from '../livestock.model';
 import { NGXLogger } from 'ngx-logger';
 

@@ -1,23 +1,23 @@
-import { NGXLogger } from "ngx-logger";
-import { SharedDataService } from "../../../core/services/shared-data.service";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { FormBuilder } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
-import { LivestockService } from "src/app/core/services/livestock.service";
-import { Livestock } from "../livestock.model";
-import { Subscription } from "rxjs";
+import { NGXLogger } from 'ngx-logger';
+import { SharedDataService } from '../../../../core/services/shared-data.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { LivestockService } from 'src/app/core/services/http-livestock.service';
+import { Livestock } from '../livestock.model';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "app-livestock-form",
-  templateUrl: "./livestock-form.component.html",
-  styleUrls: ["./livestock-form.component.scss"]
+  selector: 'app-livestock-form',
+  templateUrl: './livestock-form.component.html',
+  styleUrls: ['./livestock-form.component.scss']
 })
 export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
   form: FormGroup;
   updateMessage: boolean;
-  options = ["Male", "Female", "N/A"];
+  options = ['Male', 'Female', 'N/A'];
 
   constructor(
     private service: LivestockService,
@@ -35,7 +35,7 @@ export class LivestockFormComponent implements OnInit {
 
   getFkAquariumId() {
     this.route.paramMap.subscribe(params => {
-      let fkAquariumId = params.get("fkAquariumId");
+      let fkAquariumId = params.get('fkAquariumId');
       this.service.loadAllLivestock(fkAquariumId);
       let param = parseInt(fkAquariumId);
       this.createForm(param);
@@ -45,10 +45,10 @@ export class LivestockFormComponent implements OnInit {
   createForm(param) {
     this.form = this.fb.group({
       livestockId: null,
-      name: ["", [Validators.required]],
-      species: ["", [Validators.required]],
-      gender: ["", [Validators.required]],
-      notes: "",
+      name: ['', [Validators.required]],
+      species: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      notes: '',
       fkAquariumId: param
     });
     this.livestock = this.form.value;

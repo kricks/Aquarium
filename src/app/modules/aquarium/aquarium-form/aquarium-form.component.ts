@@ -1,7 +1,7 @@
 import { SharedDataService } from './../../../core/services/shared-data.service';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 import { Router } from '@angular/router';
-import { AquariumService } from '../../../core/services/aquarium.service';
+import { AquariumService } from '../../../core/services/http-aquarium.service';
 import { Aquarium } from '../aquarium.model';
 import { Component, OnInit } from '@angular/core';
 import {

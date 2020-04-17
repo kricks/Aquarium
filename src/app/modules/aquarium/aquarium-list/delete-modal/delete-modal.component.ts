@@ -1,4 +1,4 @@
-import { AquariumService } from "src/app/core/services/aquarium.service";
+import { AquariumService } from "src/app/core/services/http-aquarium.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Aquarium } from "../../aquarium.model";
 import { NGXLogger } from "ngx-logger";

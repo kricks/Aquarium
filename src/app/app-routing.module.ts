@@ -1,3 +1,6 @@
+import { ObservationFormComponent } from './modules/aquarium-dashboard/observation/observation-form/observation-form.component';
+import { ObservationListComponent } from './modules/aquarium-dashboard/observation/observation-list/observation-list.component';
+import { Observation } from './modules/aquarium-dashboard/observation/observation.model';
 import { ConfirmationComponent } from './modules/aquarium/confirmation/confirmation.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
@@ -14,7 +17,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'aquarium-list', component: AquariumComponent },
   { path: 'confirmation', component: ConfirmationComponent },
-  { path: 'aquarium-dashboard/:fkAquariumId', component: AquariumDashboardComponent },
+  {
+    path: 'aquarium-dashboard/:fkAquariumId',
+    component: AquariumDashboardComponent,
+  },
   {
     path: 'gallery',
     component: GalleryComponent,
@@ -23,6 +29,10 @@ const routes: Routes = [
       { path: 'list', component: GalleryListComponent },
     ],
   },
+  { path: 'observation', component: Observation, children: [
+    { path: 'list', component: ObservationListComponent},
+    { path: 'add', component: ObservationFormComponent}
+  ] },
 ];
 
 const routerOptions: ExtraOptions = {

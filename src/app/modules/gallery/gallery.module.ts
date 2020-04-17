@@ -1,3 +1,4 @@
+import { AquariumDashboardModule } from './../aquarium-dashboard/aquarium-dashboard.module';
 import { NgModule } from '@angular/core';
 import { GalleryComponent } from './gallery.component';
 import { ImageFormComponent } from './image-form/image-form.component';
@@ -8,6 +9,9 @@ import { environment } from 'src/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule.enablePersistence(),
+    RouterModule, CommonModule, ReactiveFormsModule, FormsModule
   ],
   providers: [],
 })

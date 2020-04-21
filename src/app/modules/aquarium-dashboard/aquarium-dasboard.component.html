@@ -1,53 +1,53 @@
-<div class="container-fluid">
-  <div class="row bg-blue">
-    <div class="container">
-      <div class="row">
-        <div class="col-4 p-0 mt-4">
-          <!-- <app-livestock-aq-details></app-livestock-aq-details> -->
-        </div>
-        <div class="col-8">
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#home">Livestock Form</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#menu1">Parameter Form</a>
-            </li>
-          </ul>
+<div class="row bg-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-4 p-0 mt-4">
+        <app-livestock-aq-details></app-livestock-aq-details>
+      </div>
+      <div class="col-8">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home"
+              >Livestock Form</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1"
+              >Parameter Form</a
+            >
+          </li>
+        </ul>
 
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div class="tab-pane container active" id="home"> <app-livestock-form></app-livestock-form></div>
-            <div class="tab-pane container fade" id="menu1">
-              <!-- <app-livestock-aq-details></app-livestock-aq-details> -->
-            </div>
-            <div class="tab-pane container fade" id="menu2">...</div>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <app-livestock-form></app-livestock-form>
           </div>
+          <div class="tab-pane fade" id="menu1">
+            <!-- <app-livestock-aq-details></app-livestock-aq-details> -->
+          </div>
+          <div class="tab-pane fade" id="menu2">...</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-4 border">
-        this is where param list goes
-      </div>
-      <div class="col-8">
-        <app-livestock-list></app-livestock-list>
-        <div class="row">
-          <div class="col-4 border">
-            this is add image area
-            <a href="image/add">
-              <button type="button" class="btn btn-info" id="toImage">
-                Add Image
-              </button>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-4 border">
+      this is where param list goes
+    </div>
+    <div class="col-8">
+      <app-livestock-list></app-livestock-list>
+      <div class="row mt-4">
+        <div class="col-4 border">
+            <a href="gallery/add">
+              <img class="image-add" src='../../../../assets/images/placeholder.png' alt="asdf">
             </a>
-          </div>
-          <div class="col-4 border">
-            this is observation list / add
-            <app-observation-list></app-observation-list>
-          </div>
+        </div>
+        <div class="col">
+          <app-observation-list></app-observation-list>
         </div>
       </div>
     </div>

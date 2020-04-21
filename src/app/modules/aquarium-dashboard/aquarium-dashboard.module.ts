@@ -1,4 +1,5 @@
-import { AquariumModule } from './../aquarium/aquarium.module';
+import { AquariumDashboardComponent } from './aquarium-dasboard.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -13,6 +14,7 @@ import { ObservationFormComponent } from './observation/observation-form/observa
 
 @NgModule({
     declarations: [
+        AquariumDashboardComponent,
         LivestockListComponent,
         LivestockFormComponent,
         LivestockAqDetailsComponent,
@@ -21,8 +23,8 @@ import { ObservationFormComponent } from './observation/observation-form/observa
         ObservationListComponent,
         ObservationFormComponent
     ],
-    imports: [RouterModule, CommonModule, ReactiveFormsModule, FormsModule],
+    imports: [RouterModule, CommonModule, ReactiveFormsModule, FormsModule, DashboardRoutingModule],
     providers: [],
-    exports: [LivestockAqDetailsComponent]
+    exports: [LivestockAqDetailsComponent, LivestockFormComponent, LivestockListComponent, ObservationListComponent]
 })
 export class AquariumDashboardModule {}

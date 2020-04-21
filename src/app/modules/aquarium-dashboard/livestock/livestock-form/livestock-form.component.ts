@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LivestockService } from 'src/app/core/services/http-livestock.service';
 import { Livestock } from '../livestock.model';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-livestock-form',
@@ -35,9 +34,9 @@ export class LivestockFormComponent implements OnInit {
 
   getFkAquariumId() {
     this.route.paramMap.subscribe(params => {
-      let fkAquariumId = params.get('fkAquariumId');
+      const fkAquariumId = params.get('fkAquariumId');
       this.service.loadAllLivestock(fkAquariumId);
-      let param = parseInt(fkAquariumId);
+      const param = parseInt(fkAquariumId);
       this.createForm(param);
     });
   }
@@ -109,7 +108,7 @@ export class LivestockFormComponent implements OnInit {
   isDelete() {
     this.shared.deleteAndClearForm$.subscribe(data => {
       this.shared.isDelete = data;
-      if (this.shared.isDelete == true) {
+      if (this.shared.isDelete === true) {
         this.clearForm();
       }
     });

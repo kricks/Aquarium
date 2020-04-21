@@ -1,6 +1,28 @@
-<p>observation-list works!</p>
-<ul *ngFor="let ob of observations">
-    <li >{{ob.title}}</li>
-    <li>{{ob.observation}}</li>
-    <li>{{ob.date}}</li>
-</ul>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Title</th>
+      <th scope="col">Observation</th>
+      <th class="float-right" scope="col">
+        Log
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ob of observations">
+      <th scope="row">{{ ob.date }}</th>
+      <td>{{ ob.title }}</td>
+      <td>{{ ob.observation }}</td>
+      <td class="float-right">
+        <button type="button" class="btn">
+          <i class="text-warning fas fa-edit"></i>
+        </button>
+        <button type="button" class="btn">
+          <i class="text-danger ml-2 fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

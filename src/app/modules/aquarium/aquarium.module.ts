@@ -1,3 +1,4 @@
+import { AquariumRoutingModule } from './aquarium-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,7 @@ import { CommonModule } from '@angular/common';
     AquariumFormComponent,
     DeleteModalComponent
   ],
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule, ReactiveFormsModule, AquariumRoutingModule],
   providers: [],
 })
 export class AquariumModule {}

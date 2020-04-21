@@ -1,3 +1,4 @@
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
 import { AquariumDashboardModule } from './modules/aquarium-dashboard/aquarium-dashboard.module';
 import { AquariumModule } from './modules/aquarium/aquarium.module';
 import { NgModule } from '@angular/core';
@@ -10,19 +11,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HomeComponent } from './modules/home/home.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { GalleryModule } from './modules/gallery/gallery.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
-    AquariumDashboardComponent,
+    HomeComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule.enablePersistence(),
     AquariumModule,
     AquariumDashboardModule,
-    GalleryModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

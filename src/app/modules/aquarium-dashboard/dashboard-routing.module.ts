@@ -7,7 +7,7 @@ import { AquariumDashboardComponent } from './aquarium-dasboard.component';
 
 const routes: Routes = [
   {
-    path: 'aquarium-dashboard/:fkAquariumId',
+    path: '',
     component: AquariumDashboardComponent,
   },
   { path: 'observation-add', component: ObservationFormComponent},
@@ -15,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class DashboardRoutingModule {}

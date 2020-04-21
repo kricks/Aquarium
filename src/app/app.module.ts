@@ -28,7 +28,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireDatabaseModule,
     AngularFirestoreModule.enablePersistence(),
     AquariumModule,
-    AquariumDashboardModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

@@ -10,12 +10,12 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'aquarium-list', component: AquariumComponent },
   { path: 'confirmation', component: ConfirmationComponent },
-  // {
-  //   path: 'aquarium-dashboard/:fkAquariumId',
-  //   loadChildren: () => import(
-  //     './modules/aquarium-dashboard/aquarium-dashboard.module'
-  //   ).then((m) => m.AquariumDashboardModule),
-  // },
+  {
+    path: 'aquarium-dashboard/:fkAquariumId',
+    loadChildren: () => import(
+      './modules/aquarium-dashboard/aquarium-dashboard.module'
+    ).then((m) => m.AquariumDashboardModule),
+  },
     {
     path: 'gallery',
     loadChildren: () => import(

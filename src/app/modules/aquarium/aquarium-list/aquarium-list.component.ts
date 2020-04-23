@@ -48,8 +48,8 @@ export class AquariumListComponent implements OnInit {
 
   onView(aquarium) {
     this.shared.sendData(aquarium);
-    let id = aquarium.aquariumId;
+    const id = aquarium.aquariumId;
     this.session.setItem(aquarium);
-    this.router.navigate(['aquarium-dashboard', id]);
+    this.router.navigate(['aquarium-dashboard']);
   }
 }

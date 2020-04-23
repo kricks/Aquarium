@@ -2,7 +2,6 @@ import { ConfirmationComponent } from './modules/aquarium/confirmation/confirmat
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { AquariumComponent } from './modules/aquarium/aquarium.component';
-
 import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
@@ -11,16 +10,16 @@ const routes: Routes = [
   { path: 'aquarium-list', component: AquariumComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   {
-    path: 'aquarium-dashboard/:fkAquariumId',
-    loadChildren: () => import(
-      './modules/aquarium-dashboard/aquarium-dashboard.module'
-    ).then((m) => m.AquariumDashboardModule),
+    path: 'aquarium-dashboard',
+    loadChildren: () =>
+      import('./modules/aquarium-dashboard/aquarium-dashboard.module').then(
+        (m) => m.AquariumDashboardModule
+      ),
   },
-    {
+  {
     path: 'gallery',
-    loadChildren: () => import(
-      './modules/gallery/gallery.module'
-    ).then((m) => m.GalleryModule),
+    loadChildren: () =>
+      import('./modules/gallery/gallery.module').then((m) => m.GalleryModule),
   },
 ];
 

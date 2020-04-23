@@ -1,10 +1,8 @@
-import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/storage';
-import { AquariumDashboardModule } from './modules/aquarium-dashboard/aquarium-dashboard.module';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AquariumModule } from './modules/aquarium/aquarium.module';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
-import { AquariumDashboardComponent } from './modules/aquarium-dashboard/aquarium-dasboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

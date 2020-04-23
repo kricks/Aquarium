@@ -1,0 +1,37 @@
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HttpLogService {
+  logs: Observable<any[]>;
+  logsList: any = [];
+  private baseUri = 'http://localhost:8080/log';
+  private all = 'all';
+  private create = 'create';
+  private update = 'update';
+  private delete = 'delete';
+  private logFk = 'logFk';
+
+  constructor(private http: HttpClient) {}
+
+  getAllLogs(): Observable<any> {
+    return this.http.get(`${this.baseUri}/${this.all}`);
+  }
+
+  getAllLogsByFk(logFk: number): Observable<any> {
+    return this.http.get(`${this.baseUri}/${this.logFk}`);
+  }
+
+  loadAllLivestock(logFk) {
+    return this.getAllLogsByFk(logFk).subscribe((data: {}) => {
+      this.logsList = data;
+    });
+  }
+  createLog(log: object): Observable<any> {
+    return this.http.post(`${this.baseUri}/${this.create}`, log);
+  }
+
+}

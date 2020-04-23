@@ -3,18 +3,20 @@
     <tr>
       <th scope="col">Date</th>
       <th scope="col">Title</th>
-      <th scope="col">Observation</th>
+      <th scope="col">Log</th>
       <th class="float-right" scope="col">
-        Log
-        <i class="fa fa-plus" aria-hidden="true"></i>
+        <a href="aquarium-dashboard/log-add">
+          Log
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let ob of observations">
-      <th scope="row">{{ ob.date }}</th>
-      <td>{{ ob.title }}</td>
-      <td>{{ ob.observation }}</td>
+    <tr *ngFor="let log of logs">
+      <th scope="row">{{ log.date }}</th>
+      <td>{{ log.title }}</td>
+      <td>{{ log.log }}</td>
       <td class="float-right">
         <button type="button" class="btn">
           <i class="text-warning fas fa-edit"></i>

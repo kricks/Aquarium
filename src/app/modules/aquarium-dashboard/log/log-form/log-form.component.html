@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="onAddLog()" name="logForm">
+  <div class="form-group col-6">
+    <input hidden name="logId" class="form-control" formControlName="logId" />
+    <label for="lTitle">Title</label>
+    <input
+      type="text"
+      name="title"
+      class="form-control"
+      formControlName="title"
+      placeholder="Enter Title"
+    />
+
+    <label for="lLog">Log</label>
+    <input
+      type="text"
+      name="log"
+      class="form-control"
+      formControlName="log"
+      placeholder="Enter Log"
+    />
+
+    <label for="lDate">Date</label>
+    <input
+      type="date"
+      name="date"
+      class="form-control"
+      formControlName="date"
+    />
+
+    <!-- <label for="lLogFk">LogFk</label>
+    <input
+      type="text"
+      name="logFk"
+      class="form-control"
+      formControlName="logFk"
+      placeholder="Enter logFk"
+    /> -->
+  </div>
+  <div class="buttons mb-3">
+    <div class="">
+      <input
+        type="submit"
+        id="submitButton"
+        value="Upload"
+        class="btn btn-primary"
+        [disabled]="!form.valid"
+      />
+      <button type="button" class="btn btn-danger ml-2" (click)="reset()">
+        Clear
+      </button>
+    </div>
+  </div>
+</form>

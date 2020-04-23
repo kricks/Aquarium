@@ -1,3 +1,4 @@
+import { LogFormComponent } from './log/log-form/log-form.component';
 import { AquariumDashboardComponent } from './aquarium-dasboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -9,8 +10,8 @@ import { LivestockFormComponent } from './livestock/livestock-form/livestock-for
 import { LivestockAqDetailsComponent } from './livestock/livestock-aq-details/livestock-aq-details.component';
 import { ParameterFormComponent } from './parameter/parameter-form/parameter-form.component';
 import { ParameterListComponent } from './parameter/parameter-list/parameter-list.component';
-import { ObservationListComponent } from './observation/observation-list/observation-list.component';
-import { ObservationFormComponent } from './observation/observation-form/observation-form.component';
+import { LogListComponent } from './log/log-list/log-list.component';
+
 
 @NgModule({
     declarations: [
@@ -20,11 +21,11 @@ import { ObservationFormComponent } from './observation/observation-form/observa
         LivestockAqDetailsComponent,
         ParameterFormComponent,
         ParameterListComponent,
-        ObservationListComponent,
-        ObservationFormComponent
+        LogListComponent,
+        LogFormComponent
     ],
     imports: [RouterModule, CommonModule, ReactiveFormsModule, FormsModule, DashboardRoutingModule],
     providers: [],
-    exports: [LivestockAqDetailsComponent, LivestockFormComponent, LivestockListComponent, ObservationListComponent]
+    exports: []
 })
 export class AquariumDashboardModule {}

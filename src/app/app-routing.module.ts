@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'aquarium-list', component: AquariumComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   {
-    path: 'aquarium-dashboard',
+    path: 'aquarium-dashboard/:fkAquariumId',
     loadChildren: () =>
       import('./modules/aquarium-dashboard/aquarium-dashboard.module').then(
         (m) => m.AquariumDashboardModule

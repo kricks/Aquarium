@@ -24,4 +24,8 @@ export class LogListComponent implements OnInit {
       this.logs = data;
     });
   }
+
+  addLog() {
+    this.router.navigate(['aquarium-dashboard']);
+  }
 }

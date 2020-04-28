@@ -7,6 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class SharedDataService {
   value;
   isDelete: boolean;
+  foreignKey;
 
   private deleteAndClearForm = new BehaviorSubject<any>(this.isDelete);
   deleteAndClearForm$ = this.deleteAndClearForm.asObservable();

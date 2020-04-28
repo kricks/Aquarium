@@ -1,3 +1,4 @@
+import { SessionStorageService } from './../../../../core/services/session-storage.service';
 import { SharedDataService } from '../../../../core/services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -20,14 +21,24 @@ export class LivestockListComponent implements OnInit {
     private service: LivestockService,
     private route: ActivatedRoute,
     private shared: SharedDataService,
-    private logger: NGXLogger
+    private logger: NGXLogger,
+    private session: SessionStorageService
   ) {}
 
   ngOnInit() {
+    // this.shared.details$.subscribe( data => {
+    //   let thing = data;
+    //   thing = this.session.getItem();
+    //   console.log("thing" + thing.aquariumId);
+    //   this.service.loadAllLivestock(thing.aquariumId);
+    //   this.displayLivestockList(thing.aquariumId);
+    // });
+
     this.route.paramMap.subscribe(params => {
       const fkAquariumId = params.get('fkAquariumId');
       this.service.loadAllLivestock(fkAquariumId);
       this.displayLivestockList(fkAquariumId);
+      console.log(name);
     });
   }
 

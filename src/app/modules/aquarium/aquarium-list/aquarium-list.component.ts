@@ -30,12 +30,6 @@ export class AquariumListComponent implements OnInit {
     this.service.loadAllAquariums();
   }
 
-  // display() {
-  //   this.service.getAllAquariums(data: {}) => {
-  //     this.aqariums.
-  //   }
-  // }
-
   onEdit(aquarium) {
     this.shared.editItem(aquarium);
   }
@@ -50,6 +44,6 @@ export class AquariumListComponent implements OnInit {
     this.shared.sendData(aquarium);
     const id = aquarium.aquariumId;
     this.session.setItem(aquarium);
-    this.router.navigate(['aquarium-dashboard']);
+    this.router.navigate(['aquarium-dashboard', id]);
   }
 }

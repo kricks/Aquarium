@@ -1,7 +1,8 @@
+import { SharedDataService } from './../../../../core/services/shared-data.service';
 import { HttpLogService } from './../../../../core/services/http-log.service';
 import { Component, OnInit } from '@angular/core';
 import { Log } from '../log.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-log-form',
@@ -12,10 +13,11 @@ export class LogFormComponent implements OnInit {
   log: Log = new Log();
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: HttpLogService) { }
+  constructor(private fb: FormBuilder, private service: HttpLogService, private shared: SharedDataService) { }
 
   ngOnInit() {
     this.createForm();
+    this.getEditObject();
   }
 
   createForm() {
@@ -33,6 +35,23 @@ export class LogFormComponent implements OnInit {
       console.log(data);
     }, error => {
       console.log(error);
+    });
+  }
+
+  // onUpdate(logId) {
+  // }
+
+  getEditObject() {
+    this.shared.editLog$.subscribe(data => {
+      console.log('log form');
+      console.log(data);
+      this.log = data;
+      this.form = new FormGroup({
+        logId: new FormControl(this.log.logId),
+        title: new FormControl(this.log.title),
+        species: new FormControl(this.log.log),
+        gender: new FormControl(this.log.date),
+      });
     });
   }
 

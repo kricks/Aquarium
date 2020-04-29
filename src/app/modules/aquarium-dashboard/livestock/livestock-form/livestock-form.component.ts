@@ -62,10 +62,12 @@ export class LivestockFormComponent implements OnInit {
     this.service.createLivestock(this.form.value).subscribe(
       data => {
         this.ngOnInit();
-        this.logger.info(data);
+        // this.logger.info(data);
+        console.log(data);
       },
       error => {
-        this.logger.error(error);
+        // this.logger.error(error);
+        console.log(error);
       }
     );
   }
@@ -85,6 +87,7 @@ export class LivestockFormComponent implements OnInit {
 
   getEditObject() {
     this.shared.editObject$.subscribe(data => {
+      console.log('hit 2');
       this.livestock = data;
       this.form = new FormGroup({
         livestockId: new FormControl(this.livestock.livestockId),

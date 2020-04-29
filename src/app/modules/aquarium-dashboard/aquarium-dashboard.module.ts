@@ -26,6 +26,6 @@ import { LogListComponent } from './log/log-list/log-list.component';
     ],
     imports: [RouterModule, CommonModule, ReactiveFormsModule, FormsModule, DashboardRoutingModule],
     providers: [],
-    exports: []
+    exports: [LivestockAqDetailsComponent]
 })
 export class AquariumDashboardModule {}

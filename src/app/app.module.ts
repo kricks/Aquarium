@@ -1,3 +1,5 @@
+import { AquariumDashboardModule } from './modules/aquarium-dashboard/aquarium-dashboard.module';
+import { LivestockAqDetailsComponent } from './modules/aquarium-dashboard/livestock/livestock-aq-details/livestock-aq-details.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AquariumModule } from './modules/aquarium/aquarium.module';
 import { NgModule } from '@angular/core';

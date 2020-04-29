@@ -15,6 +15,9 @@ export class SharedDataService {
   private editObject = new Subject<any>();
   editObject$ = this.editObject.asObservable();
 
+  private editLog = new Subject<any>();
+  editLog$ = this.editLog.asObservable();
+
   private details = new BehaviorSubject<any>(this.value);
   details$ = this.details.asObservable();
 
@@ -32,6 +35,10 @@ export class SharedDataService {
 
   editItem(item) {
     this.editObject.next(item);
+  }
+
+  editLogs(item) {
+    this.editLog.next(item);
   }
 
   isDeleting(value) {

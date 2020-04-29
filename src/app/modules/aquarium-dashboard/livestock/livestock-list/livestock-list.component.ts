@@ -38,7 +38,7 @@ export class LivestockListComponent implements OnInit {
       const fkAquariumId = params.get('fkAquariumId');
       this.service.loadAllLivestock(fkAquariumId);
       this.displayLivestockList(fkAquariumId);
-      console.log(name);
+      console.log(fkAquariumId);
     });
   }
 
@@ -52,6 +52,7 @@ export class LivestockListComponent implements OnInit {
 
   onEdit(livestock) {
     this.shared.editItem(livestock);
+    console.log('hit 1');
   }
 
   showMessage() {

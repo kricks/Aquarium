@@ -5,10 +5,14 @@
       <th scope="col">Title</th>
       <th scope="col">Log</th>
       <th class="float-right" scope="col">
-        <button type="button" (click)="addLog()">
+        <a  (click)="addLog()">
           Log
           <i class="fa fa-plus" aria-hidden="true"></i>
-        </button>
+        </a>
+        <a class="ml-3" href="log-list">
+          All
+         <i class="fa fa-list" aria-hidden="true"></i>
+        </a>
       </th>
     </tr>
   </thead>
@@ -18,10 +22,10 @@
       <td>{{ log.title }}</td>
       <td>{{ log.log }}</td>
       <td class="float-right">
-        <button type="button" class="btn">
+        <button type="button" class="btn" (click)="onUpdate(log)">
           <i class="text-warning fas fa-edit"></i>
         </button>
-        <button type="button" class="btn">
+        <button type="button" class="btn" (click)="onDelete(log.logId)">
           <i class="text-danger ml-2 fa fa-trash" aria-hidden="true"></i>
         </button>
       </td>

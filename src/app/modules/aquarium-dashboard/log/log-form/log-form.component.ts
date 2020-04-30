@@ -31,6 +31,11 @@ export class LogFormComponent implements OnInit {
   }
 
   onAddLog() {
+    this.saveLog();
+    this.service.getAllLogs();
+  }
+
+  saveLog() {
     this.service.createLog(this.form.value).subscribe(data => {
       console.log(data);
     }, error => {
@@ -38,8 +43,11 @@ export class LogFormComponent implements OnInit {
     });
   }
 
-  // onUpdate(logId) {
-  // }
+  onUpdate(logId) {
+    this.service.updateLog(logId, this.form.value).subscribe( () => {
+      this.ngOnInit();
+    });
+  }
 
   getEditObject() {
     this.shared.editLog$.subscribe(data => {
@@ -49,10 +57,14 @@ export class LogFormComponent implements OnInit {
       this.form = new FormGroup({
         logId: new FormControl(this.log.logId),
         title: new FormControl(this.log.title),
-        species: new FormControl(this.log.log),
-        gender: new FormControl(this.log.date),
+        log: new FormControl(this.log.log),
+        date: new FormControl(this.log.date),
       });
     });
+  }
+
+  reset() {
+    this.createForm();
   }
 
 }

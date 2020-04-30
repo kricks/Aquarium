@@ -26,15 +26,9 @@ export class LogListComponent implements OnInit {
     });
   }
 
-  addLog() {
-    const test = 1;
-    this.router.navigate(['log-add']);
-  }
-
   onUpdate(log) {
     this.shared.editLogs(log);
-    console.log('log list');
-    // this.router.navigate(['log-add']);
+    console.log('log list update hit');
   }
 
   onDelete(logId) {

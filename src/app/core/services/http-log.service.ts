@@ -34,6 +34,13 @@ export class HttpLogService {
     return this.http.post(`${this.baseUri}/${this.create}`, log);
   }
 
+  updateLog(logId: number, value: any): Observable<any> {
+    return this.http.put(
+      `${this.baseUri}/${this.update}/${logId}`,
+      value
+    );
+  }
+
   deleteLog(logId: number): Observable<any> {
     return this.http.delete(`${this.baseUri}/${this.delete}/${logId}`);
   }

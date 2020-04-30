@@ -1,33 +1,48 @@
 <form [formGroup]="form" (ngSubmit)="onAddLog()" name="logForm">
-  <div class="form-group col-6">
-    <input hidden name="logId" class="form-control" formControlName="logId" />
-    <label for="lTitle">Title</label>
-    <input
-      type="text"
-      name="title"
-      class="form-control"
-      formControlName="title"
-      placeholder="Enter Title"
-    />
+  <h3 class="text text-center pb-2 header">Add New Aquarium Log</h3>
+  <div class="form-row">
+    <div class="form-group col-6">
+      <input hidden name="logId" class="form-control" formControlName="logId" />
+      <label for="lTitle">Title</label>
+      <input
+        type="text"
+        name="title"
+        class="form-control"
+        formControlName="title"
+        placeholder="Enter Title"
+      />
+    </div>
+    <div class="form-group col-6">
+      <label for="lDate">Date</label>
+      <input
+        type="date"
+        name="date"
+        class="form-control"
+        formControlName="date"
+      />
+    </div>
+  </div>
 
-    <label for="lLog">Log</label>
-    <input
-      type="text"
-      name="log"
-      class="form-control"
-      formControlName="log"
-      placeholder="Enter Log"
-    />
-
-    <label for="lDate">Date</label>
-    <input
-      type="date"
-      name="date"
-      class="form-control"
-      formControlName="date"
-    />
-
-    <!-- <label for="lLogFk">LogFk</label>
+  <div class="form-row">
+    <div class="form-group col">
+      <!-- <label class="col-11" for="lLog">Log</label> -->
+      <!-- <input
+        type="text"
+        name="log"
+        class="form-control"
+        formControlName="log"
+        placeholder="Enter Log"
+      /> -->
+      <textarea
+        class="col-12"
+        formControlName="log"
+        name="log"
+        rows="5"
+        placeholder="Enter Log"
+      ></textarea>
+    </div>
+  </div>
+  <!-- <label for="lLogFk">LogFk</label>
     <input
       type="text"
       name="logFk"
@@ -35,14 +50,23 @@
       formControlName="logFk"
       placeholder="Enter logFk"
     /> -->
-  </div>
+
   <div class="buttons mb-3">
     <div class="">
       <input
         type="submit"
         id="submitButton"
-        value="Upload"
+        value="Add"
         class="btn btn-primary"
+        *ngIf="!log.logId"
+        [disabled]="!form.valid"
+      />
+      <input
+        (click)="onUpdate(logId)"
+        id="updateButton"
+        value="Update"
+        class="btn btn-primary"
+        *ngIf="log.logId"
         [disabled]="!form.valid"
       />
       <button type="button" class="btn btn-danger ml-2" (click)="reset()">

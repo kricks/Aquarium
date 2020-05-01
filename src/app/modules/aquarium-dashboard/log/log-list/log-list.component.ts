@@ -11,8 +11,8 @@ import { SharedDataService } from 'src/app/core/services/shared-data.service';
   styleUrls: ['./log-list.component.scss']
 })
 export class LogListComponent implements OnInit {
-
   logs: Observable<Log[]>;
+  newLog: any = [];
   constructor(private service: HttpLogService, private router: Router, private shared: SharedDataService) { }
 
   ngOnInit() {
@@ -23,6 +23,12 @@ export class LogListComponent implements OnInit {
     this.service.getAllLogs().subscribe(data => {
       console.log(data);
       this.logs = data;
+    });
+  }
+
+  loadAll() {
+    this.service.getAllLogs().subscribe( () => {
+      this.service.getAllLogs();
     });
   }
 

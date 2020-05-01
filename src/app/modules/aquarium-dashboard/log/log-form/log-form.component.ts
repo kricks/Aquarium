@@ -32,12 +32,13 @@ export class LogFormComponent implements OnInit {
 
   onAddLog() {
     this.saveLog();
-    this.service.getAllLogs();
+    this.reset();
   }
 
   saveLog() {
     this.service.createLog(this.form.value).subscribe(data => {
       console.log(data);
+      this.ngOnInit();
     }, error => {
       console.log(error);
     });

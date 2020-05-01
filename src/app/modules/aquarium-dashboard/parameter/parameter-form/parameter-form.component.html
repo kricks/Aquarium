@@ -1,1 +1,137 @@
-<p>parameter-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onAddParameter()" name="parameterForm">
+  <h3 class="text text-center pb-2 header">Add Parameters</h3>
+  <div class="form-row">
+    <div class="form-group col">
+        <input
+          hidden
+          name="parameterId"
+          class="form-control"
+          formControlName="parameterId"
+        />
+        <div class="form-group">
+          <label for="lDate">Date</label>
+          <input
+            type="date"
+            name="date"
+            class="form-control"
+            formControlName="date"
+          />
+        </div>
+      </div>
+    <div class="form-group col-3">
+      <label for="lNitrite">Nitrite</label>
+      <input
+        type="number"
+        name="nitrite"
+        class="form-control"
+        formControlName="nitrite"
+        placeholder="Enter Nitrite"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="lNitrate">Nitrate</label>
+      <input
+        type="number"
+        name="nitrate"
+        class="form-control"
+        formControlName="nitrate"
+        placeholder="Enter Nitrate"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="ammonia">ammonia</label>
+      <input
+        type="number"
+        name="ammonia"
+        class="form-control"
+        formControlName="ammonia"
+        placeholder="Enter ammonia"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="phosphate">phosphate</label>
+      <input
+        type="number"
+        name="phosphate"
+        class="form-control"
+        formControlName="phosphate"
+        placeholder="Enter phosphate"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="magnesium">magnesium</label>
+      <input
+        type="number"
+        name="magnesium"
+        class="form-control"
+        formControlName="magnesium"
+        placeholder="Enter magnesium"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="calcium">calcium</label>
+      <input
+        type="number"
+        name="calcium"
+        class="form-control"
+        formControlName="calcium"
+        placeholder="Enter calcium"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="potasium">potasium</label>
+      <input
+        type="number"
+        name="potasium"
+        class="form-control"
+        formControlName="potasium"
+        placeholder="Enter potasium"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="iodine">iodine</label>
+      <input
+        type="number"
+        name="iodine"
+        class="form-control"
+        formControlName="iodine"
+        placeholder="Enter iodine"
+      />
+    </div>
+    <div class="form-group col-3">
+      <label for="alkalinity">alkalinity</label>
+      <input
+        type="number"
+        name="alkalinity"
+        class="form-control"
+        formControlName="alkalinity"
+        placeholder="Enter alkalinity"
+      />
+    </div>
+
+  </div>
+
+  <div class="buttons mb-3">
+    <div class="">
+      <input
+        type="submit"
+        id="submitButton"
+        value="Add"
+        class="btn btn-primary"
+        *ngIf="!parameter.parameterId"
+        [disabled]="!form.valid"
+      />
+      <input
+        (click)="onUpdate(parameterId)"
+        id="updateButton"
+        value="Update"
+        class="btn btn-primary"
+        *ngIf="parameter.parameterId"
+        [disabled]="!form.valid"
+      />
+      <button type="button" class="btn btn-danger ml-2" (click)="reset()">
+        Clear
+      </button>
+    </div>
+  </div>
+</form>

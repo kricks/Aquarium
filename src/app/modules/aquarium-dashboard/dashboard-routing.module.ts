@@ -1,3 +1,4 @@
+import { ParameterListComponent } from './parameter/parameter-list/parameter-list.component';
 import { LogListComponent } from './log/log-list/log-list.component';
 import { ParameterFormComponent } from './parameter/parameter-form/parameter-form.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ const routes: Routes = [
     ]
   },
   { path: 'log-list', component: LogListComponent},
+  { path: 'parameters-list', component: ParameterListComponent},
   { path: 'parameter-add', component: ParameterFormComponent}
 ];
 

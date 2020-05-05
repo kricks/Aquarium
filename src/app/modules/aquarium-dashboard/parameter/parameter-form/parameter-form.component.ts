@@ -1,3 +1,4 @@
+import { HttpParameterService } from './../../../../core/services/http-parameter.service';
 import { Component, OnInit } from '@angular/core';
 import { Parameter } from '../parameter.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -13,7 +14,7 @@ export class ParameterFormComponent implements OnInit {
   parameter: Parameter = new Parameter();
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: HttpLogService, private shared: SharedDataService) { }
+  constructor(private fb: FormBuilder, private service: HttpParameterService, private shared: SharedDataService) { }
 
   ngOnInit() {
     this.createForm();
@@ -40,6 +41,9 @@ export class ParameterFormComponent implements OnInit {
 
   onAddParameter() {
     console.log(this.form.value);
+    this.service.createParameter(this.form.value).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

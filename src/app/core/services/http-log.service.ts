@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +21,12 @@ export class HttpLogService {
     return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
-  getAllLogsByFk(logFk: number): Observable<any> {
+  getAllLogsByFk(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.logFk}`);
   }
 
   loadAllLivestock(logFk) {
-    return this.getAllLogsByFk(logFk).subscribe((data: {}) => {
+    return this.getAllLogsByFk().subscribe((data: {}) => {
       this.logsList = data;
     });
   }

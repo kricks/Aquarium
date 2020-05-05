@@ -1,1 +1,126 @@
 <p>parameter-list works!</p>
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">ph</th>
+        <th scope="col">nitrate</th>
+        <th scope="col">nitrite</th>
+        <th scope="col">ammonia</th>
+        <th scope="col">phosphate</th>
+        <th scope="col">magnesium</th>
+        <th scope="col">calcium</th>
+        <th scope="col">potasium</th>
+        <th scope="col">iodine</th>
+        <th scope="col">alkalinity</th>
+
+        <th class="float-right" scope="col">
+          <a class="ml-3" href="parameters-list">
+            All
+           <i class="fa fa-list" aria-hidden="true"></i>
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let par of parameters">
+        <th scope="row">{{ par.date }}</th>
+        <td>{{ par.ph }}</td>
+        <td>{{ par.nitrate }}</td>
+        <td>{{ par.nitrite }}</td>
+        <td>{{ par.ammonia }}</td>
+        <td>{{ par.phosphate }}</td>
+        <td>{{ par.magnesium }}</td>
+        <td>{{ par.calcium }}</td>
+        <td>{{ par.potasium }}</td>
+        <td>{{ par.iodine }}</td>
+        <td>{{ par.alkalinity }}</td>
+        <td class="float-right">
+          <button type="button" class="btn" (click)="onUpdate(log)">
+            <i class="text-warning fas fa-edit"></i>
+          </button>
+          <button type="button" class="btn" (click)="onDelete(log.logId)">
+            <i class="text-danger ml-2 fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+
+
+   <!-- <table class="table table-borderless row">
+    <div class="ml-2 border" *ngFor="let par of parameters">
+      <tr>
+        <th scope="col">Date</th>
+        <td>{{ par.date }}</td>
+      </tr>
+      <tr>
+        <th scope="col">ph</th>
+        <td>{{ par.ph }}</td>
+      </tr>
+      <tr>
+        <th scope="col">nitrate</th>
+        <td>{{ par.nitrate }}</td>
+      </tr>
+      <tr>
+        <th scope="col">nitrite</th>
+        <td>{{ par.nitrite }}</td>
+      </tr>
+      <tr>
+        <th scope="col">ammonia</th>
+        <td>{{ par.ammonia }}</td>
+      </tr>
+      <tr>
+        <th scope="col">phosphate</th>
+        <td>{{ par.phosphate }}</td>
+      </tr>
+  
+      <tr>
+        <th scope="col">magnesium</th>
+        <td>{{ par.magnesium }}</td>
+      </tr>
+  
+      <tr>
+        <th scope="col">calcium</th>
+        <td>{{ par.calcium }}</td>
+      </tr>
+  
+      <tr>
+        <th scope="col">potasium</th>
+        <td>{{ par.potasium }}</td>
+      </tr>
+  
+      <tr>
+        <th scope="col">iodine</th>
+        <td>{{ par.iodine }}</td>
+      </tr>
+  
+      <tr>
+        <th scope="col">alkalinity</th>
+        <td>{{ par.alkalinity }}</td>
+      </tr>
+    </div>
+  
+    <th class="float-right" scope="col">
+      <a class="ml-3" href="parameters-list">
+        All
+        <i class="fa fa-list" aria-hidden="true"></i>
+      </a>
+    </th>
+    <tbody>
+      <tr>
+        <th scope="row"></th>
+  
+        <td class="float-right">
+          <button type="button" class="btn" (click)="onUpdate(log)">
+            <i class="text-warning fas fa-edit"></i>
+          </button>
+          <button type="button" class="btn" (click)="onDelete(log.logId)">
+            <i class="text-danger ml-2 fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  

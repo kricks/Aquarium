@@ -1,3 +1,4 @@
+import { ChartComponent } from './parameter/chart/chart.component';
 import { LogFormComponent } from './log/log-form/log-form.component';
 import { AquariumDashboardComponent } from './aquarium-dasboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -13,21 +14,27 @@ import { ParameterListComponent } from './parameter/parameter-list/parameter-lis
 import { LogListComponent } from './log/log-list/log-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-
 @NgModule({
-    declarations: [
-        NgxChartsModule,
-        AquariumDashboardComponent,
-        LivestockListComponent,
-        LivestockFormComponent,
-        LivestockAqDetailsComponent,
-        ParameterFormComponent,
-        ParameterListComponent,
-        LogListComponent,
-        LogFormComponent
-    ],
-    imports: [RouterModule, CommonModule, ReactiveFormsModule, FormsModule, DashboardRoutingModule],
-    providers: [],
-    exports: [LivestockAqDetailsComponent]
+  declarations: [
+    AquariumDashboardComponent,
+    LivestockListComponent,
+    LivestockFormComponent,
+    LivestockAqDetailsComponent,
+    ParameterFormComponent,
+    ParameterListComponent,
+    LogListComponent,
+    LogFormComponent,
+    ChartComponent
+  ],
+  imports: [
+    NgxChartsModule,
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DashboardRoutingModule,
+  ],
+  providers: [],
+  exports: [LivestockAqDetailsComponent],
 })
 export class AquariumDashboardModule {}

@@ -18,9 +18,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2"
-              >Log Form</a
-            >
+            <a class="nav-link" data-toggle="tab" href="#menu2">Log Form</a>
           </li>
         </ul>
 
@@ -42,21 +40,26 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-4">
-    <app-parameter-list></app-parameter-list>
+    <div class="col-2 border">
+      <a href="gallery/add">
+        <img
+          class="image-add"
+          src="../../../../assets/images/placeholder.png"
+          alt="asdf"
+        />
+      </a>
     </div>
-    <div class="col-8">
+    <div class="col-10">
+      <app-chart></app-chart>
+    </div>
+    
+  </div>
+  <div class="row">
+    <div class="class col-8">
       <app-livestock-list></app-livestock-list>
-      <div class="row mt-4">
-        <div class="col-4 border">
-            <a href="gallery/add">
-              <img class="image-add" src='../../../../assets/images/placeholder.png' alt="asdf">
-            </a>
-        </div>
-        <div class="col">
-          <app-log-list></app-log-list>
-        </div>
-      </div>
+    </div>
+    <div class="col-4">
+      <app-log-list></app-log-list>
     </div>
   </div>
 </div>

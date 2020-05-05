@@ -11,10 +11,12 @@ import { LivestockAqDetailsComponent } from './livestock/livestock-aq-details/li
 import { ParameterFormComponent } from './parameter/parameter-form/parameter-form.component';
 import { ParameterListComponent } from './parameter/parameter-list/parameter-list.component';
 import { LogListComponent } from './log/log-list/log-list.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
     declarations: [
+        NgxChartsModule,
         AquariumDashboardComponent,
         LivestockListComponent,
         LivestockFormComponent,

@@ -1,67 +1,67 @@
 export let multi = [
     {
-      "name": "Germany",
+      "name": "ph",
       "series": [
         {
           "name": "1990",
-          "value": 62000000
+          "value": 1 //parameter number
         },
         {
           "name": "2010",
-          "value": 73000000
+          "value": 2
         },
         {
           "name": "2011",
-          "value": 89400000
+          "value": 3
         }
       ]
     },
   
     {
-      "name": "USA",
+      "name": "nitrate",
       "series": [
         {
           "name": "1990",
-          "value": 250000000
+          "value": 4
         },
         {
           "name": "2010",
-          "value": 309000000
+          "value": 5
         },
         {
           "name": "2011",
-          "value": 311000000
+          "value": 6
         }
       ]
     },
   
     {
-      "name": "France",
+      "name": "alkalinity",
       "series": [
         {
           "name": "1990",
-          "value": 58000000
+          "value": 2
         },
         {
           "name": "2010",
-          "value": 50000020
+          "value": 1
         },
         {
           "name": "2011",
-          "value": 58000000
+          "value": 4
         }
       ]
     },
     {
-      "name": "UK",
+      "name": "phosphate",
       "series": [
         {
           "name": "1990",
-          "value": 57000000
+          "value": 8
         },
         {
           "name": "2010",
-          "value": 62000000
+          "value": 1
         }
       ]
     }

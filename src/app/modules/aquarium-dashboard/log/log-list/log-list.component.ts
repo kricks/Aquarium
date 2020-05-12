@@ -21,7 +21,6 @@ export class LogListComponent implements OnInit {
 
   getAll() {
     this.service.getAllLogs().subscribe(data => {
-      console.log(data);
       this.logs = data;
     });
   }
@@ -34,7 +33,6 @@ export class LogListComponent implements OnInit {
 
   onUpdate(log) {
     this.shared.editLogs(log);
-    console.log('log list update hit');
   }
 
   onDelete(logId) {

@@ -1,9 +1,9 @@
 import { HttpParameterService } from './../../../../core/services/http-parameter.service';
 import { Component, OnInit } from '@angular/core';
-import { multi } from './data';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Parameter } from '../parameter.model';
+import * as shape from 'd3-shape';
+
 
 @Component({
   selector: 'app-chart',
@@ -11,10 +11,7 @@ import { Parameter } from '../parameter.model';
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements OnInit {
-  multi: any[];
   wrapper: any[];
-  test: any = [];
-  thing: any = [];
   parameters: Observable<Parameter[]>;
   parameter: Parameter = new Parameter();
 
@@ -22,6 +19,8 @@ export class ChartComponent implements OnInit {
   legend = true;
   showLabels = true;
   animations = true;
+  view = [950, 500];
+  curve = shape.curveCardinal.tension(.25);
   xAxis = true;
   yAxis = true;
   showYAxisLabel = true;

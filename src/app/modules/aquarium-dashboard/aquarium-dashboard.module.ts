@@ -14,6 +14,7 @@ import { ParameterListComponent } from './parameter/parameter-list/parameter-lis
 import { LogListComponent } from './log/log-list/log-list.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+
 @NgModule({
   declarations: [
     AquariumDashboardComponent,
@@ -32,7 +33,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    DashboardRoutingModule,
+    DashboardRoutingModule
   ],
   providers: [],
   exports: [LivestockAqDetailsComponent],

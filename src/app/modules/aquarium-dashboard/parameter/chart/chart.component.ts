@@ -2,9 +2,8 @@ import { HttpParameterService } from './../../../../core/services/http-parameter
 import { Component, OnInit } from '@angular/core';
 import { multi } from './data';
 import { Observable } from 'rxjs';
-import { Parameter } from '../parameter.model';
 import { map } from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
+import { Parameter } from '../parameter.model';
 
 @Component({
   selector: 'app-chart',
@@ -15,6 +14,7 @@ export class ChartComponent implements OnInit {
   multi: any[];
   wrapper: any[];
   test: any = [];
+  thing: any = [];
   parameters: Observable<Parameter[]>;
   parameter: Parameter = new Parameter();
 
@@ -44,59 +44,130 @@ export class ChartComponent implements OnInit {
 
   getAll() {
     this.service.getAll().subscribe((data) => {
+      // this.parameters = data.map((datum) => [
+      //   {
+      //     ph: datum.ph,
+      //     nitrate: datum.nitrate,
+      //     nitrite: datum.nitrite,
+      //     ammonia: datum.ammonia,
+      //     phosphate: datum.phosphate,
+      //     magnesium: datum.magnesium,
+      //     calcium: datum.calcium,
+      //     potasium: datum.potasium,
+      //     iodine: datum.iodine,
+      //     alkalinity: datum.alkalinity,
+      //     date: datum.date
+      //   }
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.ph,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.nitrate,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.nitrite,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.ammonia,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.phosphate,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.magnesium,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.calcium,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.potasium,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.iodine,
+      //   // },
+      //   // {
+      //   //   name: datum.date,
+      //   //   value: datum.alkalinity,
+      //   // },
+      // ]);
 
-      this.parameters = data.map((datum) => ({
-          name: datum.date,
-          value: datum.ph,
-      }));
-      this.wrapper = [{
-        name: 'name',
-        series: this.parameters
-      }];
-      console.log(this.wrapper);
+      this.wrapper = [
+        {
+          name: 'ph',
+          series: data.map( (d) => (
+            {
+              name: d.date,
+              value: d.ph
+            }
+          ))
+        },
+        {
+          name: 'nitrate',
+          series: data.map( (d) => (
+            {
+              name: d.date,
+              value: d.nitrate
+            }
+          ))
+        }
+        // {
+        //   name: 'ph',
+        //   series: [],
+        // },
+        // {
+        //   name: 'nitrate',
+        //   series: [],
+        // },
+        // {
+        //   name: 'nitrite',
+        //   series: [],
+        // },
+        // {
+        //   name: 'ammonia',
+        //   series: [],
+        // },
+        // {
+        //   name: 'phosphate',
+        //   series: [],
+        // },
+        // {
+        //   name: 'magnesium',
+        //   series: [],
+        // },
+        // {
+        //   name: 'calcium',
+        //   series: [],
+        // },
+        // {
+        //   name: 'ammonia',
+        //   series: [],
+        // },
+        // {
+        //   name: 'potasium',
+        //   series: [],
+        // },
+        // {
+        //   name: 'iodine',
+        //   series: [],
+        // },
+        // {
+        //   name: 'alkalinity',
+        //   series: [],
+        // },
+      ];
+      console.log(this.parameters);
       console.log(JSON.stringify(this.wrapper));
     });
-    return this.wrapper;
   }
-
-  // getAll() {
-      // this.test = data.map( params => ({
-      //   ph: params.ph,
-      //   nitrate: params.nitrate,
-      //   nitrite: params.nitrite,
-      //   ammonia: params.ammonia,
-      //   phosphate: params.phosphate,
-      //   magnesium: params.magnesium,
-      //   calcium: params.calcium,
-      //   potasium: params.potasium,
-      //   iodine: params.iodine,
-      //   alkalinity: params.alkalinity,
-      // }));
-
-  //   this.service.getAll().subscribe((data) => {
-  //     this.parameters = data;
-  //     console.log(this.parameters);
-  //     data.forEach((item, index) => {
-  //       console.log(item);
-  //       console.log(index);
-  //     //   item.forEach((ele) => {
-  //     //   console.log(ele);
-  //     // });
-  //       // let obj;
-  //       // let nested;
-  //       // obj = {
-  //       //   name: item.parameterId,
-  //       //   series: nested = {
-  //       //     name: item.date,
-  //       //     value: item.ph
-  //       //   }
-  //       // };
-  //       // this.temp = nested;
-  //       // this.test = obj;
-  //       // console.log(this.test);
-  //     });
-  //   });
-  // }
 
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));

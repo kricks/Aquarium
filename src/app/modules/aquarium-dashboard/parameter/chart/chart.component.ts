@@ -26,10 +26,14 @@ export class ChartComponent implements OnInit {
   showXAxisLabel = true;
   xAxisLabel = 'Date';
   yAxisLabel = 'PPM';
-
+  gridLines = true;
+  gradient = true;
+ 
   colorScheme = {
-    domain: ['#1BBC9B', '#2A80B9', '#E77E23', '#9B58B5', '#4FC3F7',
-    '#F1C40F', '#C1392B', '#ECF0F1', '#ABBCF7', '#B51A62' ],
+    domain: ['#B51A62', '#C1392B', '#E77E23', '#F1C40F', '#1BBC9B',
+    '#4FC3F7', '#2A80B9', '#C4BBF0', '#9B58B5', '#ECF0F1' ],
+    // domain: ['#1BBC9B', '#2A80B9', '#E77E23', '#9B58B5', '#4FC3F7',
+    // '#F1C40F', '#C1392B', '#ECF0F1', '#C4BBF0', '#B51A62' ],
   };
 
   constructor(private service: HttpParameterService) {}

@@ -1,6 +1,5 @@
-  <div class="dark ngx-charts">
+  <div class="dark ngx-charts p-4">
     <ngx-charts-line-chart
-    [view]="view"
     [curve]="curve"
     [scheme]="colorScheme"
     [legend]="legend"
@@ -10,7 +9,6 @@
     [yAxis]="yAxis"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
-    [timeline]="timeline"
     [results]="wrapper"
     (select)="onSelect($event)"
     (activate)="onActivate($event)"

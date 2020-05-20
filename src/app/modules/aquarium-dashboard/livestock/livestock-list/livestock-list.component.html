@@ -1,12 +1,12 @@
-<div *ngIf="deleteMessage" class="container">
+<div *ngIf="deleteMessage">
   <div class="mt-3 col alert alert-success alert-dismissible fade show">
     <button type="button" class="close" (click)="showMessage()">&times;</button>
     <strong>Delete Successful!</strong>
   </div>
 </div>
 <div class="">
-  <h3 class="mt-4 text-center text header">{{ title }}</h3>
-  <table class=" table-hover table-striped table mt-4" id="table">
+  <!-- <h3 class="mt-4 text-center text header">{{ title }}</h3> -->
+  <table class=" table-hover table-striped table" id="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Name</th>

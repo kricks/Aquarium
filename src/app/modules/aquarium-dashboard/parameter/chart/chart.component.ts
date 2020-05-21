@@ -28,13 +28,10 @@ export class ChartComponent implements OnInit {
   yAxisLabel = 'PPM';
   gridLines = true;
   gradient = true;
- 
+
   colorScheme = {
     domain: ['#B51A62', '#C1392B', '#E77E23', '#F1C40F', '#1BBC9B',
-    '#4FC3F7', '#2A80B9', '#C4BBF0', '#9B58B5', '#ECF0F1' ],
-    // domain: ['#1BBC9B', '#2A80B9', '#E77E23', '#9B58B5', '#4FC3F7',
-    // '#F1C40F', '#C1392B', '#ECF0F1', '#C4BBF0', '#B51A62' ],
-  };
+    '#4FC3F7', '#2A80B9', '#C4BBF0', '#9B58B5', '#ECF0F1' ]};
 
   constructor(private service: HttpParameterService) {}
 
@@ -46,77 +43,70 @@ export class ChartComponent implements OnInit {
     this.service.getAll().subscribe((data) => {
       this.wrapper = [
         {
-          name: 'ph',
+          name: 'PH',
           series: data.map((d) => ({
             name: d.date,
             value: d.ph,
           })),
         },
         {
-          name: 'nitrate',
+          name: 'Nitrate',
           series: data.map((d) => ({
             name: d.date,
             value: d.nitrate,
           })),
         },
         {
-          name: 'nitrite',
+          name: 'Nitrite',
           series: data.map((d) => ({
             name: d.date,
             value: d.nitrite,
           })),
         },
         {
-          name: 'ammonia',
+          name: 'Ammonia',
           series: data.map((d) => ({
             name: d.date,
             value: d.ammonia,
           })),
         },
         {
-          name: 'phosphate',
+          name: 'Phosphate',
           series: data.map((d) => ({
             name: d.date,
             value: d.phosphate,
           })),
         },
         {
-          name: 'magnesium',
+          name: 'Magnesium',
           series: data.map((d) => ({
             name: d.date,
             value: d.magnesium,
           })),
         },
         {
-          name: 'calcium',
+          name: 'Calcium',
           series: data.map((d) => ({
             name: d.date,
             value: d.calcium,
           })),
         },
         {
-          name: 'ammonia',
-          series: data.map((d) => ({
-            name: d.date,
-            value: d.ammonia,
-          })),
-        },
-        {
-          name: 'potasium',
+          name: 'Potasium',
           series: data.map((d) => ({
             name: d.date,
             value: d.potasium,
           })),
         },
         {
-          name: 'iodine',
+          name: 'Iodine',
           series: data.map((d) => ({
             name: d.date,
             value: d.iodine,
           }))
         },
         {
-          name: 'alkalinity',
+          name: 'Alkalinity',
           series: data.map((d) => ({
             name: d.date,
             value: d.alkalinity,

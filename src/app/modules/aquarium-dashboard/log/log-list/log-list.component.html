@@ -4,8 +4,8 @@
       <th scope="col">Date</th>
       <th scope="col">Title</th>
       <th scope="col">Log</th>
-      <th class="mr-4" scope="col">
-        <a class="ml-3" href="log-list">
+      <th class="" scope="col">
+        <a class="float-right" href="log-list">
           All
          <i class="fa fa-list" aria-hidden="true"></i>
         </a>
@@ -17,14 +17,20 @@
       <th scope="row">{{ log.date }}</th>
       <td>{{ log.title }}</td>
       <td>{{ log.log }}</td>
+
       <td class="float-right">
-        <button type="button" class="btn" (click)="onUpdate(log)">
-          <i class="text-warning fas fa-edit"></i>
+
+        <button type="button" class="btn edit mr-4" (click)="onUpdate(log)" [routerLink]="['.']"
+        fragment="edit-livestock">
+          <i class="edit fas fa-edit"></i>
         </button>
-        <button type="button" class="btn" (click)="onDelete(log.logId)">
-          <i class="text-danger ml-2 fa fa-trash" aria-hidden="true"></i>
+
+        <button type="button" class="btn trash" (click)="onDelete(log.logId)">
+          <i class="trash fa fa-trash" aria-hidden="true"></i>
         </button>
+
       </td>
+
     </tr>
   </tbody>
 </table>

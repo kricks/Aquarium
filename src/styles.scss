@@ -6,12 +6,15 @@ $color-bg-darker: #1b1e27;
 $color-bg-med: #2f3646;
 $color-text-med: #a0aabe;
 $color-text-med-light: #d9dce1;
+$header-color: #2e9cca;
 
 .image {
   width: 100%;
 }
 .header {
-  color: #2e9cca;
+  color: $header-color;
+  text-align: center;
+  font-weight: bold;
 }
 .blue-strip {
   background-color: #31708e;
@@ -74,15 +77,31 @@ div {
   flex-direction: row-reverse;
 }
 
+.edit {
+  color:#ffc107;
+  :hover {
+    color: #ffda07;
+  }
+}
+
+.trash {
+  color: #dc3545;
+  :hover {
+    color: red;
+  }
+}
+
 .dark {
   background: $color-bg-darker;
   width: 100%;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   .ngx-charts {
     color: $color-text-med-light;
 
     text {
       fill: $color-text-med-light;
+      font-weight: bold;
     }
 
     .gridline-path {

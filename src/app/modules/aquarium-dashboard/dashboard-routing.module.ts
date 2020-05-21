@@ -1,3 +1,4 @@
+import { LivestockListComponent } from './livestock/livestock-list/livestock-list.component';
 import { ChartComponent } from './parameter/chart/chart.component';
 import { ParameterListComponent } from './parameter/parameter-list/parameter-list.component';
 import { LogListComponent } from './log/log-list/log-list.component';
@@ -13,9 +14,8 @@ const routes: Routes = [
     children: []
   },
   { path: 'log-list', component: LogListComponent},
+  { path: 'livestock-list', component: LivestockListComponent},
   { path: 'parameters-list', component: ParameterListComponent},
-  { path: 'parameter-add', component: ParameterFormComponent},
-  { path: 'chart', component: ChartComponent}
 ];
 
 @NgModule({

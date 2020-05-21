@@ -13,7 +13,12 @@
         <th scope="col">Species</th>
         <th scope="col">Gender</th>
         <th scope="col">Notes</th>
-        <th scope="col"></th>
+        <th class="" scope="col">
+          <a class="float-right" href="livestock-list">
+            All
+           <i class="fa fa-list" aria-hidden="true"></i>
+          </a>
+        </th>
       </tr>
     </thead>
     <tbody id="body">
@@ -26,22 +31,29 @@
         <td id="speciesValue">{{ ls.species }}</td>
         <td id="genderValue">{{ ls.gender }}</td>
         <td id="notesValue">{{ ls.notes }}</td>
+
         <td class="float-right">
+
           <button type="button"
           id="livestockEdit-{{ls.name}}" 
-          class="btn btn-success mr-1" 
-          (click)="onEdit(ls)">
-            <i class="fas fa-edit    "></i>
+          class="btn edit" 
+          (click)="onEdit(ls)"
+          [routerLink]="['.']"
+          fragment="edit-livestock">
+            <i class="edit fas fa-edit"></i>
           </button>
+
           <button
             type="button"
             id="livestockDelete-{{ls.name}}" 
-            class="btn btn-danger"
+            class="btn trash"
             (click)="onDelete(ls.livestockId)"
           >
-            <i class="fa fa-trash" aria-hidden="true"></i>
+            <i class="trash fa fa-trash" aria-hidden="true"></i>
           </button>
+
         </td>
+
       </tr>
     </tbody>
   </table>

@@ -4,7 +4,17 @@
 .image-add {
     width: 100%;
 }
-// .nav-tabs .nav-link {
-//     border: 1px solid lightsteelblue;
-//     background-color: lightgray;
-// }
+.nav-item {
+    background-image: linear-gradient(to bottom right, #5085a5, #687864);
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    
+    .nav-link {
+        color: white;
+        border-color: #dee2e6 #dee2e6 #fff;
+        &.active {
+            color: #2e9cca;
+            font-weight: bold;
+        }   
+    }
+}

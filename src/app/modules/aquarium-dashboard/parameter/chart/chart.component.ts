@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Parameter } from '../parameter.model';
 import * as shape from 'd3-shape';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -33,14 +34,22 @@ export class ChartComponent implements OnInit {
     domain: ['#B51A62', '#C1392B', '#E77E23', '#F1C40F', '#1BBC9B',
     '#4FC3F7', '#2A80B9', '#C4BBF0', '#9B58B5', '#ECF0F1' ]};
 
-  constructor(private service: HttpParameterService) {}
+  constructor(private route: ActivatedRoute, private service: HttpParameterService) {}
 
   ngOnInit() {
-    this.getAll();
+    this.getParamFk();
   }
 
-  getAll() {
-    this.service.getAll().subscribe((data) => {
+  getParamFk() {
+    this.route.paramMap.subscribe((params) => {
+      const paramFk = params.get('fkAquariumId');
+      this.service.getAllByFk(paramFk);
+      this.getAll(paramFk);
+    });
+  }
+
+  getAll(paramFk) {
+    this.service.getAllByFk(paramFk).subscribe((data) => {
       this.wrapper = [
         {
           name: 'PH',

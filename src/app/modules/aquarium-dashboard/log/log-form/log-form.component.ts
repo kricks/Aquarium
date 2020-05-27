@@ -3,29 +3,44 @@ import { HttpLogService } from './../../../../core/services/http-log.service';
 import { Component, OnInit } from '@angular/core';
 import { Log } from '../log.model';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-log-form',
   templateUrl: './log-form.component.html',
-  styleUrls: ['./log-form.component.scss']
+  styleUrls: ['./log-form.component.scss'],
 })
 export class LogFormComponent implements OnInit {
   log: Log = new Log();
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: HttpLogService, private shared: SharedDataService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private service: HttpLogService,
+    private shared: SharedDataService
+  ) {}
 
   ngOnInit() {
-    this.createForm();
+    this.getLogsFk();
     this.getEditObject();
   }
 
-  createForm() {
+  getLogsFk() {
+    this.route.paramMap.subscribe((params) => {
+      const logFk = params.get('fkAquariumId');
+      this.service.getAllLogsByFk(logFk);
+      this.createForm(logFk);
+    });
+  }
+
+  createForm(param) {
     this.form = this.fb.group({
       logId: null,
       title: null,
       log: null,
-      date: null
+      date: null,
+      logFk: param
     });
     this.log = this.form.value;
   }
@@ -36,22 +51,25 @@ export class LogFormComponent implements OnInit {
   }
 
   saveLog() {
-    this.service.createLog(this.form.value).subscribe(data => {
-      console.log(data);
-      this.ngOnInit();
-    }, error => {
-      console.log(error);
-    });
+    this.service.createLog(this.form.value).subscribe(
+      (data) => {
+        console.log(data);
+        this.ngOnInit();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   onUpdate(logId) {
-    this.service.updateLog(logId, this.form.value).subscribe( () => {
+    this.service.updateLog(logId, this.form.value).subscribe(() => {
       this.ngOnInit();
     });
   }
 
   getEditObject() {
-    this.shared.editLog$.subscribe(data => {
+    this.shared.editLog$.subscribe((data) => {
       console.log('log form');
       console.log(data);
       this.log = data;
@@ -60,12 +78,12 @@ export class LogFormComponent implements OnInit {
         title: new FormControl(this.log.title),
         log: new FormControl(this.log.log),
         date: new FormControl(this.log.date),
+        logFk: new FormControl(this.log.logFk),
       });
     });
   }
 
   reset() {
-    this.createForm();
+    this.getLogsFk();
   }
-
 }

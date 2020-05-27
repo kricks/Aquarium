@@ -23,7 +23,7 @@
     </thead>
     <tbody id="body">
       <tr
-        *ngFor="let ls of service.livestockList"
+        *ngFor="let ls of livestocks | async"
         name="repeat"
         id="livestockName-{{ ls.name }}"
       >

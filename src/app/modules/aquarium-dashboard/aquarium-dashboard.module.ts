@@ -1,3 +1,4 @@
+import { ShortenPipe } from './../../shared/shorten.pipe';
 import { ChartComponent } from './parameter/chart/chart.component';
 import { LogFormComponent } from './log/log-form/log-form.component';
 import { AquariumDashboardComponent } from './aquarium-dasboard.component';
@@ -25,7 +26,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ParameterListComponent,
     LogListComponent,
     LogFormComponent,
-    ChartComponent
+    ChartComponent,
+    ShortenPipe
   ],
   imports: [
     NgxChartsModule,

@@ -21,8 +21,8 @@ export class HttpParameterService {
     return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
-  getAllByFk(parameterFk: number): Observable<any> {
-    return this.http.get(`${this.baseUri}/${this.parameterFk}`);
+  getAllByFk(parameterFk): Observable<any> {
+    return this.http.get(`${this.baseUri}/${this.parameterFk}/${parameterFk}`);
   }
 
   loadAll(parameterFk) {

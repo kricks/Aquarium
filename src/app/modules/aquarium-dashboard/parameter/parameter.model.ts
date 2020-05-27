@@ -1,6 +1,6 @@
 export class Parameter {
     parameterId: number;
-    aqFk: number;
+    paramFk: number;
     date: Date;
     ph: number;
     nitrate: number;

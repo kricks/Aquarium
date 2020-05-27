@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LivestockService } from 'src/app/core/services/http-livestock.service';
 import { Livestock } from '../livestock.model';
 import { NGXLogger } from 'ngx-logger';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-livestock-list',
@@ -15,30 +16,20 @@ import { NGXLogger } from 'ngx-logger';
 export class LivestockListComponent implements OnInit {
   title = 'Livestock list';
   livestocks: Observable<Livestock[]>;
+  livestock: Livestock;
   deleteMessage: boolean;
 
   constructor(
     private service: LivestockService,
     private route: ActivatedRoute,
     private shared: SharedDataService,
-    private logger: NGXLogger,
-    private session: SessionStorageService
+    private logger: NGXLogger
   ) {}
 
   ngOnInit() {
-    // this.shared.details$.subscribe( data => {
-    //   let thing = data;
-    //   thing = this.session.getItem();
-    //   console.log("thing" + thing.aquariumId);
-    //   this.service.loadAllLivestock(thing.aquariumId);
-    //   this.displayLivestockList(thing.aquariumId);
-    // });
-
     this.route.paramMap.subscribe(params => {
       const fkAquariumId = params.get('fkAquariumId');
-      this.service.loadAllLivestock(fkAquariumId);
       this.displayLivestockList(fkAquariumId);
-      console.log(fkAquariumId);
     });
   }
 
@@ -52,7 +43,6 @@ export class LivestockListComponent implements OnInit {
 
   onEdit(livestock) {
     this.shared.editItem(livestock);
-    console.log('hit 1');
   }
 
   showMessage() {

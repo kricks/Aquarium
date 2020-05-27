@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Livestock } from 'src/app/modules/aquarium-dashboard/livestock/livestock.model';
 
 @Injectable({
   providedIn: 'root'

@@ -3,6 +3,7 @@ export class Log {
     title: string;
     log: string;
     date: Date;
+    logFk: number;
 
     constructor() {}
 }

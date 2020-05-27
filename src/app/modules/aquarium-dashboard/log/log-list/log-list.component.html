@@ -15,8 +15,8 @@
   <tbody>
     <tr *ngFor="let log of logs">
       <th scope="row">{{ log.date }}</th>
-      <td>{{ log.title }}</td>
-      <td>{{ log.log }}</td>
+      <td>{{ log.title | titlecase }}</td>
+      <td>{{log.log | shorten}}</td>
 
       <td class="float-right">
 

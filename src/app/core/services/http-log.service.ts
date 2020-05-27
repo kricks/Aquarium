@@ -21,15 +21,15 @@ export class HttpLogService {
     return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
-  getAllLogsByFk(): Observable<any> {
-    return this.http.get(`${this.baseUri}/${this.logFk}`);
+  getAllLogsByFk(logFk): Observable<any> {
+    return this.http.get(`${this.baseUri}/${this.logFk}/${logFk}`);
   }
 
-  loadAllLivestock(logFk) {
-    return this.getAllLogsByFk().subscribe((data: {}) => {
-      this.logsList = data;
-    });
-  }
+  // loadAllLog(logFk) {
+  //   return this.getAllLogsByFk(logFk).subscribe((data: {}) => {
+  //     this.logsList = data;
+  //   });
+  // }
   createLog(log: object): Observable<any> {
     return this.http.post(`${this.baseUri}/${this.create}`, log);
   }

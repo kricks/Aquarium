@@ -13,7 +13,7 @@ const routes: Routes = [
     component: AquariumDashboardComponent,
     children: []
   },
-  { path: 'log-list', component: LogListComponent},
+  { path: 'log-list/:fkAquariumId', component: LogListComponent},
   { path: 'livestock-list', component: LivestockListComponent},
   { path: 'parameters-list', component: ParameterListComponent},
 ];

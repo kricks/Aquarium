@@ -25,11 +25,11 @@ export class HttpLogService {
     return this.http.get(`${this.baseUri}/${this.logFk}/${logFk}`);
   }
 
-  // loadAllLog(logFk) {
-  //   return this.getAllLogsByFk(logFk).subscribe((data: {}) => {
-  //     this.logsList = data;
-  //   });
-  // }
+  loadAllLog(logFk) {
+    return this.getAllLogsByFk(logFk).subscribe((data: []) => {
+      this.logsList = data.splice(data.length - 3);
+    });
+  }
   createLog(log: object): Observable<any> {
     return this.http.post(`${this.baseUri}/${this.create}`, log);
   }

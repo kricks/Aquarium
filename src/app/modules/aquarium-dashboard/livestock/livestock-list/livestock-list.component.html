@@ -6,7 +6,7 @@
 </div>
 <div class="">
   <!-- <h3 class="mt-4 text-center text header">{{ title }}</h3> -->
-  <table class=" table-hover table-striped table" id="table">
+  <table class="table-hover table-striped table" id="table">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Name</th>
@@ -16,46 +16,69 @@
         <th class="" scope="col">
           <a class="float-right" href="livestock-list">
             All
-           <i class="fa fa-list" aria-hidden="true"></i>
+            <i class="fa fa-list" aria-hidden="true"></i>
           </a>
         </th>
       </tr>
     </thead>
     <tbody id="body">
-      <tr
-        *ngFor="let ls of livestocks | async"
-        name="repeat"
-        id="livestockName-{{ ls.name }}"
-      >
-        <th scope="row" id="nameValue">{{ ls.name }}</th>
-        <td id="speciesValue">{{ ls.species }}</td>
-        <td id="genderValue">{{ ls.gender }}</td>
-        <td id="notesValue">{{ ls.notes }}</td>
+      <ng-container *ngIf="isFk">
+        <tr *ngFor="let ls of service.livestockList" name="repeat">
+          <th scope="row" id="nameValue">{{ ls.name }}</th>
+          <td id="speciesValue">{{ ls.species }}</td>
+          <td id="genderValue">{{ ls.gender }}</td>
+          <td id="notesValue">{{ ls.notes }}</td>
+          <td class="float-right">
+            <button
+              type="button"
+              id="livestockEdit-{{ ls.name }}"
+              class="btn edit"
+              (click)="onEdit(ls)"
+              [routerLink]="['.']"
+              fragment="edit-livestock"
+            >
+              <i class="edit fas fa-edit"></i>
+            </button>
+            <button
+              type="button"
+              id="livestockDelete-{{ ls.name }}"
+              class="btn trash"
+              (click)="onDelete(ls.livestockId)"
+            >
+              <i class="trash fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="!isFk">
+        <tr *ngFor="let ls of livestocks | async">
+          <th scope="row" id="nameValue">{{ ls.name }}</th>
+          <td id="speciesValue">{{ ls.species }}</td>
+          <td id="genderValue">{{ ls.gender }}</td>
+          <td id="notesValue">{{ ls.notes }}</td>
+          <td class="float-right">
+            <button
+              type="button"
+              id="livestockEdit-{{ ls.name }}"
+              class="btn edit"
+              (click)="onEdit(ls)"
+              [routerLink]="['.']"
+              fragment="edit-livestock"
+            >
+              <i class="edit fas fa-edit"></i>
+            </button>
+            <button
+              type="button"
+              id="livestockDelete-{{ ls.name }}"
+              class="btn trash"
+              (click)="onDelete(ls.livestockId)"
+            >
+              <i class="trash fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
 
-        <td class="float-right">
-
-          <button type="button"
-          id="livestockEdit-{{ls.name}}" 
-          class="btn edit" 
-          (click)="onEdit(ls)"
-          [routerLink]="['.']"
-          fragment="edit-livestock">
-            <i class="edit fas fa-edit"></i>
-          </button>
-
-          <button
-            type="button"
-            id="livestockDelete-{{ls.name}}" 
-            class="btn trash"
-            (click)="onDelete(ls.livestockId)"
-          >
-            <i class="trash fa fa-trash" aria-hidden="true"></i>
-          </button>
-
-        </td>
-
-      </tr>
     </tbody>
   </table>
 </div>
-

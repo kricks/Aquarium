@@ -18,6 +18,8 @@ export class LivestockListComponent implements OnInit {
   livestocks: Observable<Livestock[]>;
   livestock: Livestock;
   deleteMessage: boolean;
+  livestockList: any = [];
+  isFk: boolean;
 
   constructor(
     private service: LivestockService,
@@ -29,7 +31,13 @@ export class LivestockListComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const fkAquariumId = params.get('fkAquariumId');
-      this.displayLivestockList(fkAquariumId);
+      if (!fkAquariumId) {
+        this.isFk = false;
+        this.getAllLivestock();
+      } else {
+        this.isFk = true;
+        this.displayLivestockList(fkAquariumId);
+      }
     });
   }
 
@@ -38,7 +46,7 @@ export class LivestockListComponent implements OnInit {
   }
 
   displayLivestockList(fkAquariumId) {
-    this.livestocks = this.service.getLivestockByFkId(fkAquariumId);
+    this.service.loadAllLivestock(fkAquariumId);
   }
 
   onEdit(livestock) {
@@ -53,10 +61,13 @@ export class LivestockListComponent implements OnInit {
     this.shared.isDeleting((this.shared.isDelete = true));
     this.service.deleteLivestock(livestockId).subscribe(
       () => {
-        this.ngOnInit();
+        console.log('ls delete hit');
         this.deleteMessage = true;
+        this.ngOnInit();
       },
-      error => this.logger.error(error)
+      (error) => {
+        console.log(error);
+      }
     );
   }
 }

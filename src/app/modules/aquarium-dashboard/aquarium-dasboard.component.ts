@@ -9,5 +9,6 @@ export class AquariumDashboardComponent implements OnInit {
   title = 'aquarium-dasboard component';
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

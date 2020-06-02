@@ -2,8 +2,14 @@ import { SharedDataService } from './../../../../core/services/shared-data.servi
 import { HttpLogService } from './../../../../core/services/http-log.service';
 import { Component, OnInit } from '@angular/core';
 import { Log } from '../log.model';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { DeprecatedDatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-log-form',
@@ -13,6 +19,8 @@ import { ActivatedRoute } from '@angular/router';
 export class LogFormComponent implements OnInit {
   log: Log = new Log();
   form: FormGroup;
+  updateMessage: boolean;
+  maxDate =  new Date(new Date().setDate(new Date().getDate()-1))
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +37,7 @@ export class LogFormComponent implements OnInit {
   getLogsFk() {
     this.route.paramMap.subscribe((params) => {
       const logFk = params.get('fkAquariumId');
-      this.service.getAllLogsByFk(logFk);
+      this.service.loadAllLog(logFk);
       this.createForm(logFk);
     });
   }
@@ -37,10 +45,10 @@ export class LogFormComponent implements OnInit {
   createForm(param) {
     this.form = this.fb.group({
       logId: null,
-      title: null,
-      log: null,
-      date: null,
-      logFk: param
+      title: [null, [Validators.required]],
+      log: [null, [Validators.required]],
+      date: [null, [Validators.required]],
+      logFk: param,
     });
     this.log = this.form.value;
   }
@@ -64,14 +72,17 @@ export class LogFormComponent implements OnInit {
 
   onUpdate(logId) {
     this.service.updateLog(logId, this.form.value).subscribe(() => {
+      this.updateMessage = true;
       this.ngOnInit();
     });
   }
 
+  closeMessage() {
+    this.updateMessage = false;
+  }
+
   getEditObject() {
     this.shared.editLog$.subscribe((data) => {
-      console.log('log form');
-      console.log(data);
       this.log = data;
       this.form = new FormGroup({
         logId: new FormControl(this.log.logId),

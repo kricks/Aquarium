@@ -1,36 +1,62 @@
-<table class="table table-borderless">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Title</th>
-      <th scope="col">Log</th>
-      <th class="" scope="col">
-        <a class="float-right" href="log-list">
-          All
-         <i class="fa fa-list" aria-hidden="true"></i>
-        </a>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let log of logs">
-      <th scope="row">{{ log.date }}</th>
-      <td>{{ log.title | titlecase }}</td>
-      <td>{{log.log | shorten}}</td>
+<div *ngIf="deleteMessage">
+  <div class="mt-3 col alert alert-success alert-dismissible fade show">
+    <button type="button" class="close" (click)="showMessage()">&times;</button>
+    <strong>Delete Successful!</strong>
+  </div>
+</div>
+<div class="">
+  <table class="table table-borderless">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Date | {{isDashboard}}</th>
+        <th scope="col">Title</th>
+        <th scope="col">Log</th>
+        <th class="" scope="col">
+          <button type="button" class="float-right" (click)="viewAll()">
+            All
+           <i class="fa fa-list" aria-hidden="true"></i>
+          </button>
+          <button *ngIf="!isDashboard" type="button" class="float-right" (click)="viewAll()">
+            Back to Dashboard
+           <i class="fa fa-list" aria-hidden="true"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="body">
+      <ng-container *ngIf="isDashboard">
+      <tr *ngFor="let log of service.logsList">
+        <th scope="row">{{ log.date }}</th>
+        <td>{{ log.title | titlecase }}</td>
+        <td>{{log.log | shorten}}</td>
+        <td class="float-right">
+          <button type="button" class="btn edit mr-4" (click)="onUpdate(log)" [routerLink]="['.']"
+          fragment="edit-livestock">
+            <i class="edit fas fa-edit"></i>
+          </button>
+          <button type="button" class="btn trash" (click)="onDelete(log.logId)">
+            <i class="trash fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="!isDashboard">
+      <tr *ngFor="let log of logs | async">
+        <th scope="row">{{ log.date }}</th>
+        <td>{{ log.title | titlecase }}</td>
+        <td>{{log.log | shorten}}</td>
+        <td class="float-right">
+          <button type="button" class="btn edit mr-4" (click)="onUpdate(log)" [routerLink]="['.']"
+          fragment="edit-livestock">
+            <i class="edit fas fa-edit"></i>
+          </button>
+          <button type="button" class="btn trash" (click)="onDelete(log.logId)">
+            <i class="trash fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
 
-      <td class="float-right">
-
-        <button type="button" class="btn edit mr-4" (click)="onUpdate(log)" [routerLink]="['.']"
-        fragment="edit-livestock">
-          <i class="edit fas fa-edit"></i>
-        </button>
-
-        <button type="button" class="btn trash" (click)="onDelete(log.logId)">
-          <i class="trash fa fa-trash" aria-hidden="true"></i>
-        </button>
-
-      </td>
-
-    </tr>
-  </tbody>
-</table>

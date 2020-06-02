@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { SharedDataService } from '../../../../core/services/shared-data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -14,6 +15,7 @@ import { Livestock } from '../livestock.model';
 })
 export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
+  livestocks: Observable<Livestock[]>;
   form: FormGroup;
   updateMessage: boolean;
   options = ['Male', 'Female', 'N/A'];
@@ -35,10 +37,16 @@ export class LivestockFormComponent implements OnInit {
   getFkAquariumId() {
     this.route.paramMap.subscribe(params => {
       const fkAquariumId = params.get('fkAquariumId');
-      this.service.loadAllLivestock(fkAquariumId);
-      const param = parseInt(fkAquariumId);
-      this.createForm(param);
+      this.displayData(fkAquariumId);
+      this.createForm(fkAquariumId);
     });
+  }
+
+  displayData(fkAquariumId) {
+    // this.service.getLivestockByFkId(fkAquariumId).subscribe(data => {
+    //   this.service.sendChangedList(data);
+    // });
+    this.service.loadAllLivestock(fkAquariumId);
   }
 
   createForm(param) {
@@ -63,6 +71,7 @@ export class LivestockFormComponent implements OnInit {
       data => {
         this.ngOnInit();
         // this.logger.info(data);
+        // this.service.sendChangedList(this.form.value);
         console.log(data);
       },
       error => {
@@ -75,9 +84,10 @@ export class LivestockFormComponent implements OnInit {
   onUpdate(livestockId) {
     this.service.updateLivestock(livestockId, this.form.value).subscribe(
       data => {
+        this.updateMessage = true;
         this.ngOnInit();
         this.logger.info(data);
-        this.updateMessage = true;
+        this.service.sendChangedList(this.form.value);
       },
       error => {
         this.logger.error(error);
@@ -87,7 +97,6 @@ export class LivestockFormComponent implements OnInit {
 
   getEditObject() {
     this.shared.editObject$.subscribe(data => {
-      console.log('hit 2');
       this.livestock = data;
       this.form = new FormGroup({
         livestockId: new FormControl(this.livestock.livestockId),

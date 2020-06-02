@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onAddParameter()" name="parameterForm">
+<form [formGroup]="form" (ngSubmit)="onAddParameter()" name="parameterForm" class="text">
   <h3 class="text text-center pb-2 header">Add Parameters</h3>
   <div class="form-row">
     <div class="form-group col">
@@ -16,17 +16,23 @@
           formControlName="parameterId"
         />
         <div class="form-group">
-          <label for="lDate">Date</label>
+          <label for="lDate">Date <strong class="text-danger">*</strong></label>
           <input
             type="date"
             name="date"
             class="form-control"
             formControlName="date"
           />
+          <div
+          *ngIf="!form.get('date').valid && form.get('date').touched"
+          class="ml-2 error"
+        >
+          Date is required
+        </div>
         </div>
       </div>
       <div class="form-group col-3">
-        <label for="lPh">PH</label>
+        <label for="lPh">PH <strong class="text-danger">*</strong></label>
         <input
           type="number"
           name="ph"
@@ -34,9 +40,15 @@
           formControlName="ph"
           placeholder="Enter PH"
         />
+        <div
+        *ngIf="!form.get('ph').valid && form.get('ph').touched"
+        class="ml-2 error"
+      >
+        PH is required
+      </div>
       </div>
     <div class="form-group col-3">
-      <label for="lNitrite">Nitrite</label>
+      <label for="lNitrite">Nitrite <strong class="text-danger">*</strong></label>
       <input
         type="number"
         name="nitrite"
@@ -44,9 +56,15 @@
         formControlName="nitrite"
         placeholder="Enter Nitrite"
       />
+      <div
+        *ngIf="!form.get('nitrite').valid && form.get('nitrite').touched"
+        class="ml-2 error"
+      >
+        Nitrite is required
+      </div>
     </div>
     <div class="form-group col-3">
-      <label for="lNitrate">Nitrate</label>
+      <label for="lNitrate">Nitrate <strong class="text-danger">*</strong></label>
       <input
         type="number"
         name="nitrate"
@@ -54,9 +72,15 @@
         formControlName="nitrate"
         placeholder="Enter Nitrate"
       />
+      <div
+        *ngIf="!form.get('nitrate').valid && form.get('nitrate').touched"
+        class="ml-2 error"
+      >
+        Nitrate is required
+      </div>
     </div>
     <div class="form-group col-3">
-      <label for="ammonia">Ammonia</label>
+      <label for="ammonia">Ammonia <strong class="text-danger">*</strong></label>
       <input
         type="number"
         name="ammonia"
@@ -64,6 +88,12 @@
         formControlName="ammonia"
         placeholder="Enter ammonia"
       />
+      <div
+        *ngIf="!form.get('ammonia').valid && form.get('ammonia').touched"
+        class="ml-2 error"
+      >
+        Ammonia is required
+      </div>
     </div>
     <div class="form-group col-3">
       <label for="phosphate">Phosphate</label>
@@ -125,7 +155,6 @@
         placeholder="Enter alkalinity"
       />
     </div>
-
   </div>
 
   <div class="buttons mb-3">

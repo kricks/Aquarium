@@ -1,9 +1,9 @@
-<form [formGroup]="form" (ngSubmit)="onAddLog()" name="logForm">
+<form [formGroup]="form" (ngSubmit)="onAddLog()" name="logForm" class="text">
   <h3 class="text text-center pb-2 header">Add New Log</h3>
   <div class="form-row">
     <div class="form-group col-6">
       <input hidden name="logId" class="form-control" formControlName="logId" />
-      <label for="lTitle">Title</label>
+      <label for="lTitle">Title <strong class="text-danger">*</strong></label>
       <input
         type="text"
         name="title"
@@ -11,20 +11,33 @@
         formControlName="title"
         placeholder="Enter Title"
       />
+      <div
+        *ngIf="!form.get('title').valid && form.get('title').touched"
+        class="ml-2 error"
+      >
+        Title is required
+      </div>
     </div>
     <div class="form-group col-6">
-      <label for="lDate">Date</label>
+      <label for="lDate">Date <strong class="text-danger">*</strong></label>
       <input
         type="date"
         name="date"
         class="form-control"
         formControlName="date"
       />
+      <div
+        *ngIf="!form.get('date').valid && form.get('date').touched"
+        class="ml-2 error"
+      >
+        Date is required
+      </div>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col">
+      <label for="lLog">Log Entry <strong class="text-danger">*</strong></label>
       <textarea
         class="col-12"
         formControlName="log"
@@ -32,6 +45,12 @@
         rows="5"
         placeholder="Enter Log"
       ></textarea>
+      <div
+        *ngIf="!form.get('log').valid && form.get('log').touched"
+        class="ml-2 error"
+      >
+        Log Entry is required
+      </div>
     </div>
   </div>
     <input
@@ -66,3 +85,11 @@
     </div>
   </div>
 </form>
+<div *ngIf="updateMessage" class="container">
+  <div class="mt-3 col alert alert-success alert-dismissible fade show">
+    <button type="button" class="close" (click)="closeMessage()">
+      &times;
+    </button>
+    <strong>Update Successful!</strong>
+  </div>
+</div>

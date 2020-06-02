@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { Livestock } from 'src/app/modules/aquarium-dashboard/livestock/livestock.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivestockService {
   livestockList: any = [];
+  
+  private changedList = new Subject<any>();
+  changedList$ = this.changedList.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -24,14 +26,12 @@ export class LivestockService {
   private delete = 'delete';
   private aquariumFkId = 'aqFk';
 
-  getAllLivestock(): Observable<any> {
-    return this.http.get(`${this.baseUri}/${this.all}`);
+  sendChangedList(data) {
+    this.changedList.next(data);
   }
 
-  loadAllLivestock(aquariumFkId) {
-    return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
-      this.livestockList = data;
-    });
+  getAllLivestock(): Observable<any> {
+    return this.http.get(`${this.baseUri}/${this.all}`);
   }
 
   getLivestockById(livestockId: number): Observable<any> {
@@ -45,7 +45,6 @@ export class LivestockService {
   }
 
   createLivestock(livestock: object): Observable<any> {
-    console.log(livestock);
     return this.http.post(`${this.baseUri}/${this.create}`, livestock);
   }
 
@@ -58,5 +57,14 @@ export class LivestockService {
 
   deleteLivestock(livestockId: number): Observable<any> {
     return this.http.delete(`${this.baseUri}/${this.delete}/${livestockId}`);
+  }
+
+  loadAllLivestock(aquariumFkId) {
+    // return this.getLivestockByFkId(aquariumFkId).subscribe((data) => {
+    //   this.sendChangedList(data);
+    // });
+    return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
+      this.livestockList = data;
+    });
   }
 }

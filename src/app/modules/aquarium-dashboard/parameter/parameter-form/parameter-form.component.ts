@@ -1,7 +1,7 @@
 import { HttpParameterService } from './../../../../core/services/http-parameter.service';
 import { Component, OnInit } from '@angular/core';
 import { Parameter } from '../parameter.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpLogService } from 'src/app/core/services/http-log.service';
 import { SharedDataService } from 'src/app/core/services/shared-data.service';
 import { ActivatedRoute } from '@angular/router';
@@ -18,8 +18,7 @@ export class ParameterFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private service: HttpParameterService,
-    private shared: SharedDataService
+    private service: HttpParameterService
   ) {}
 
   ngOnInit() {
@@ -30,7 +29,6 @@ export class ParameterFormComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const paramFk = params.get('fkAquariumId');
       this.service.getAllByFk(paramFk);
-      // const param = parseInt(paramFk);
       this.createForm(paramFk);
     });
   }
@@ -39,11 +37,11 @@ export class ParameterFormComponent implements OnInit {
     this.form = this.fb.group({
       parameterId: null,
       paramFk: param,
-      date: null,
-      ph: null,
-      nitrate: null,
-      nitrite: null,
-      ammonia: null,
+      date: [null, [Validators.required]],
+      ph: [null, [Validators.required]],
+      nitrate: [null, [Validators.required]],
+      nitrite: [null, [Validators.required]],
+      ammonia: [null, [Validators.required]],
       phosphate: null,
       magnesium: null,
       calcium: null,
@@ -58,6 +56,12 @@ export class ParameterFormComponent implements OnInit {
     console.log(this.form.value);
     this.service.createParameter(this.form.value).subscribe((data) => {
       console.log(data);
+      this.getParamFk();
     });
   }
+
+  reset() {
+    this.getParamFk();
+  }
+
 }

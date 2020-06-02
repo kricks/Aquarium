@@ -43,7 +43,7 @@ export class ChartComponent implements OnInit {
   getParamFk() {
     this.route.paramMap.subscribe((params) => {
       const paramFk = params.get('fkAquariumId');
-      this.service.getAllByFk(paramFk);
+      this.service.loadAll(paramFk);
       this.getAll(paramFk);
     });
   }
@@ -122,19 +122,19 @@ export class ChartComponent implements OnInit {
           }))
         },
       ];
-      console.log(this.wrapper);
+      // console.log(this.wrapper);
     });
   }
 
   onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
   onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
+    // console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }

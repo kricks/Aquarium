@@ -29,8 +29,6 @@ export class GalleryService {
   }
 
   postImage(image: object): Observable<any> {
-    console.log('service hit');
-    console.log(image);
     return this.http.post(`${this.baseUri}/${this.create}`, image);
   }
 

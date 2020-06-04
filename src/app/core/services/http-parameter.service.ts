@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpParameterService {
-  logs: Observable<any[]>;
-  paramList: any = [];
+
   private baseUri = 'http://localhost:8080/parameter';
   private all = 'all';
   private create = 'create';
@@ -17,6 +16,12 @@ export class HttpParameterService {
 
   constructor(private http: HttpClient) {}
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
   getAll(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);
   }
@@ -25,11 +30,6 @@ export class HttpParameterService {
     return this.http.get(`${this.baseUri}/${this.parameterFk}/${parameterFk}`);
   }
 
-  loadAll(parameterFk) {
-    return this.getAllByFk(parameterFk).subscribe((data: {}) => {
-      this.paramList = data;
-    });
-  }
   createParameter(parameter: object): Observable<any> {
     return this.http.post(`${this.baseUri}/${this.create}`, parameter);
   }
@@ -44,4 +44,5 @@ export class HttpParameterService {
   deleteParameter(parameterId: number): Observable<any> {
     return this.http.delete(`${this.baseUri}/${this.delete}/${parameterId}`);
   }
+
 }

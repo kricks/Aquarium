@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { DashboardService } from './../../dashboard.service';
 import { Observable } from 'rxjs';
 import { HttpParameterService } from './../../../../core/services/http-parameter.service';
@@ -7,28 +8,36 @@ import { Parameter } from '../parameter.model';
 @Component({
   selector: 'app-parameter-list',
   templateUrl: './parameter-list.component.html',
-  styleUrls: ['./parameter-list.component.scss']
+  styleUrls: ['./parameter-list.component.scss'],
 })
 export class ParameterListComponent implements OnInit {
   parameters: Observable<Parameter[]>;
   paramList: any = [];
 
-  constructor(private service: HttpParameterService,
-              private dash: DashboardService) { }
+  constructor(
+    private service: HttpParameterService,
+    private dash: DashboardService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getAll();
+    this.getParamFk();
   }
 
-  getAll() {
-    this.service.getAll().subscribe( data => {
-      this.parameters = data;
-      console.log(this.parameters);
+  getParamFk() {
+    this.route.paramMap.subscribe((params) => {
+      const paramFk = params.get('fkAquariumId');
+      this.displayParams(paramFk);
     });
   }
 
   displayParams(paramFk) {
-    this.dash.newParamList$.subscribe(data => this.paramList = data);
+    this.service.getAllByFk(paramFk).subscribe(data => this.paramList = data);
+    this.dash.newParamList$.subscribe((data) => (this.paramList = data));
   }
 
+  onDelete(parId) {
+    console.log(parId);
+    this.service.deleteParameter(parId).subscribe( () => this.ngOnInit());
+  }
 }

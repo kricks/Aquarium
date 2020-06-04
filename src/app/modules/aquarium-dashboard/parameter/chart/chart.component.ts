@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Parameter } from '../parameter.model';
 import * as shape from 'd3-shape';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -36,21 +36,20 @@ export class ChartComponent implements OnInit {
     '#4FC3F7', '#2A80B9', '#C4BBF0', '#9B58B5', '#ECF0F1' ]};
 
   constructor(private route: ActivatedRoute, private service: HttpParameterService,
-              private dash: DashboardService) {}
+              private dash: DashboardService, private router: Router) {}
 
   ngOnInit() {
-    this.getParamFk();
+    this.getAll();
   }
 
-  getParamFk() {
-    this.route.paramMap.subscribe((params) => {
+  viewAll() {
+    this.route.paramMap.subscribe(params => {
       const paramFk = params.get('fkAquariumId');
-      this.service.loadAll(paramFk);
-      this.getAll(paramFk);
+      this.router.navigate(['parameters-list', paramFk]);
     });
   }
 
-  getAll(paramFk) {
+  getAll() {
     this.dash.newParamList$.subscribe((data) => {
       this.wrapper = [
         {
@@ -129,14 +128,14 @@ export class ChartComponent implements OnInit {
   }
 
   onSelect(data): void {
-    // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
   onActivate(data): void {
-    // console.log('Activate', JSON.parse(JSON.stringify(data)));
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    // console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }

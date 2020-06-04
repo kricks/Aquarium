@@ -1,3 +1,4 @@
+import { DashboardService } from './../../dashboard.service';
 import { HttpParameterService } from './../../../../core/services/http-parameter.service';
 import { Component, OnInit } from '@angular/core';
 import { Parameter } from '../parameter.model';
@@ -13,13 +14,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ParameterFormComponent implements OnInit {
   parameter: Parameter = new Parameter();
+  paramList: any = [];
   form: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private service: HttpParameterService,
-    private shared: SharedDataService
+    private shared: SharedDataService,
+    private dash: DashboardService
   ) {}
 
   ngOnInit() {
@@ -29,8 +32,14 @@ export class ParameterFormComponent implements OnInit {
   getParamFk() {
     this.route.paramMap.subscribe((params) => {
       const paramFk = params.get('fkAquariumId');
-      this.service.getAllByFk(paramFk);
+      this.displayParamFk(paramFk);
       this.createForm(paramFk);
+    });
+  }
+
+  displayParamFk(paramFk) {
+    this.service.getAllByFk(paramFk).subscribe(res => {
+      this.dash.sendNewParamList(res);
     });
   }
 

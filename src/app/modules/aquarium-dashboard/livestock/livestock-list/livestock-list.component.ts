@@ -1,3 +1,4 @@
+import { DashboardService } from './../../dashboard.service';
 import { SessionStorageService } from './../../../../core/services/session-storage.service';
 import { SharedDataService } from '../../../../core/services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,6 +26,7 @@ export class LivestockListComponent implements OnInit {
     private service: LivestockService,
     private route: ActivatedRoute,
     private shared: SharedDataService,
+    private dash: DashboardService,
     private logger: NGXLogger
   ) {}
 
@@ -43,12 +45,13 @@ export class LivestockListComponent implements OnInit {
     });
   }
 
-  getAllLivestock(fkAquariumId) {
-    this.livestocks = this.service.getLivestockByFkId(fkAquariumId);
-  }
-
   displayLivestockList(fkAquariumId) {
-    this.service.loadAllLivestock(fkAquariumId);
+    this.service.getLivestockByFkId(fkAquariumId).subscribe(res => {
+      this.livestockList = res;
+    });
+    this.dash.newLsList$.subscribe((res: Livestock[]) => {
+      this.livestockList = res;
+    });
   }
 
   onEdit(livestock) {

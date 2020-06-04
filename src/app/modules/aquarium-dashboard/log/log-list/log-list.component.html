@@ -24,11 +24,10 @@
       </tr>
     </thead>
     <tbody id="body">
-      <ng-container *ngIf="isDashboard">
-      <tr *ngFor="let log of service.logsList">
+      <tr *ngFor="let log of logList">
         <th scope="row">{{ log.date }}</th>
         <td>{{ log.title | titlecase }}</td>
-        <td>{{log.log | shorten}}</td>
+        <td>{{log.log}}</td>
         <td class="float-right">
           <button type="button" class="btn edit mr-4" (click)="onUpdate(log)" [routerLink]="['.']"
           fragment="edit-livestock">
@@ -39,8 +38,7 @@
           </button>
         </td>
       </tr>
-    </ng-container>
-    <ng-container *ngIf="!isDashboard">
+    <!-- <ng-container *ngIf="!isDashboard">
       <tr *ngFor="let log of logs | async">
         <th scope="row">{{ log.date }}</th>
         <td>{{ log.title | titlecase }}</td>
@@ -55,7 +53,7 @@
           </button>
         </td>
       </tr>
-    </ng-container>
+    </ng-container> -->
     </tbody>
   </table>
 </div>

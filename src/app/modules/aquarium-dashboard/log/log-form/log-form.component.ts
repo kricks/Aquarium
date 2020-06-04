@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DeprecatedDatePipe } from '@angular/common';
+import { DashboardService } from '../../dashboard.service';
 
 @Component({
   selector: 'app-log-form',
@@ -26,7 +27,8 @@ export class LogFormComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private service: HttpLogService,
-    private shared: SharedDataService
+    private shared: SharedDataService,
+    private dash: DashboardService
   ) {}
 
   ngOnInit() {
@@ -37,8 +39,14 @@ export class LogFormComponent implements OnInit {
   getLogsFk() {
     this.route.paramMap.subscribe((params) => {
       const logFk = params.get('fkAquariumId');
-      this.service.loadAllLog(logFk);
+      this.displayLogs(logFk);
       this.createForm(logFk);
+    });
+  }
+
+  displayLogs(logFk) {
+    this.service.getAllLogsByFk(logFk).subscribe(data => {
+      this.dash.sendNewLogList(data);
     });
   }
 

@@ -1,3 +1,4 @@
+import { DashboardService } from './../../dashboard.service';
 import { Observable } from 'rxjs';
 import { HttpParameterService } from './../../../../core/services/http-parameter.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,8 +11,10 @@ import { Parameter } from '../parameter.model';
 })
 export class ParameterListComponent implements OnInit {
   parameters: Observable<Parameter[]>;
+  paramList: any = [];
 
-  constructor(private service: HttpParameterService) { }
+  constructor(private service: HttpParameterService,
+              private dash: DashboardService) { }
 
   ngOnInit() {
     this.getAll();
@@ -22,6 +25,10 @@ export class ParameterListComponent implements OnInit {
       this.parameters = data;
       console.log(this.parameters);
     });
+  }
+
+  displayParams(paramFk) {
+    this.dash.newParamList$.subscribe(data => this.paramList = data);
   }
 
 }

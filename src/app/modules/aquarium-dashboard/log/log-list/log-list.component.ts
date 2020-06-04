@@ -5,6 +5,8 @@ import { Log } from '../log.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SharedDataService } from 'src/app/core/services/shared-data.service';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { DashboardService } from '../../dashboard.service';
 
 @Component({
   selector: 'app-log-list',
@@ -13,7 +15,7 @@ import { SessionStorageService } from 'src/app/core/services/session-storage.ser
 })
 export class LogListComponent implements OnInit {
   logs: Observable<Log[]>;
-  list = this.service.logsList;
+  logList: any = [];
   log: Log = new Log();
   deleteMessage: boolean;
   isDashboard = true;
@@ -22,7 +24,8 @@ export class LogListComponent implements OnInit {
     private route: ActivatedRoute,
     private service: HttpLogService,
     private shared: SharedDataService,
-    private router: Router
+    private router: Router,
+    private dash: DashboardService
   ) {}
 
   ngOnInit() {
@@ -33,21 +36,25 @@ export class LogListComponent implements OnInit {
   }
 
   displayAllLogs(logFk) {
-    if (this.isDashboard) {
-      console.log('fk ' + this.isDashboard);
-      this.logs = this.service.getAllLogsByFk(logFk);
-      // this.service.loadAllLog(logFk);
-    } else {
-      // this.logs = this.service.getAllLogsByFk(logFk);
-      console.log('load');
-      console.log(this.isDashboard);
-      this.service.loadAllLog(logFk);
-    }
+    // if (this.isDashboard) {
+    //   console.log('fk ' + this.isDashboard);
+    //   this.logs = this.service.getAllLogsByFk(logFk);
+    //   // this.service.loadAllLog(logFk);
+    // } else {
+    //   // this.logs = this.service.getAllLogsByFk(logFk);
+    //   console.log('load');
+    //   console.log(this.isDashboard);
+    //   this.service.loadAllLog(logFk);
+    // }
+    this.service.getAllLogsByFk(logFk).subscribe(res => {
+      this.logList = res;
+    });
+    this.dash.newLogList$.subscribe(res => this.logList = res);
   }
 
-  switchMode() {
-    this.isDashboard = !this.isDashboard;
-  }
+  // switchMode() {
+  //   this.isDashboard = !this.isDashboard;
+  // }
 
   viewAll() {
     this.route.paramMap.subscribe((params) => {
@@ -55,7 +62,7 @@ export class LogListComponent implements OnInit {
       if (this.isDashboard) {
         this.router.navigate(['log-list', logFk]);
         console.log('load ' + this.isDashboard);
-        this.switchMode();
+        // this.switchMode();
       } else {
         console.log('view all ' + this.isDashboard);
         this.router.navigate(['aquarium-dashboard', logFk]);

@@ -1,3 +1,4 @@
+import { DashboardService } from './../../dashboard.service';
 import { Observable } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 import { SharedDataService } from '../../../../core/services/shared-data.service';
@@ -15,16 +16,16 @@ import { Livestock } from '../livestock.model';
 })
 export class LivestockFormComponent implements OnInit {
   livestock: Livestock = new Livestock();
-  livestocks: Observable<Livestock[]>;
   form: FormGroup;
   updateMessage: boolean;
-  options = ['Male', 'Female', 'N/A'];
+  options = ['Female', 'Male', 'N/A'];
 
   constructor(
     private service: LivestockService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private shared: SharedDataService,
+    private dash: DashboardService,
     private logger: NGXLogger
   ) {}
 
@@ -43,7 +44,9 @@ export class LivestockFormComponent implements OnInit {
   }
 
   displayData(fkAquariumId) {
-    this.service.loadAllLivestock(fkAquariumId);
+    this.service.getLivestockByFkId(fkAquariumId).subscribe((data) => {
+      this.dash.sendNewLsList(data);
+    });
   }
 
   createForm(param) {
@@ -67,12 +70,9 @@ export class LivestockFormComponent implements OnInit {
     this.service.createLivestock(this.form.value).subscribe(
       data => {
         this.ngOnInit();
-        // this.logger.info(data);
-        // this.service.sendChangedList(this.form.value);
         console.log(data);
       },
       error => {
-        // this.logger.error(error);
         console.log(error);
       }
     );
@@ -84,7 +84,6 @@ export class LivestockFormComponent implements OnInit {
         this.updateMessage = true;
         this.ngOnInit();
         this.logger.info(data);
-        this.service.sendChangedList(this.form.value);
       },
       error => {
         this.logger.error(error);

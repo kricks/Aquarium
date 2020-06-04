@@ -20,7 +20,7 @@ export class LogFormComponent implements OnInit {
   log: Log = new Log();
   form: FormGroup;
   updateMessage: boolean;
-  maxDate =  new Date(new Date().setDate(new Date().getDate()-1))
+  // maxDate =  new Date(new Date().setDate(new Date().getDate()-1))
 
   constructor(
     private route: ActivatedRoute,

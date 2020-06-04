@@ -1,7 +1,7 @@
 import { HttpParameterService } from './../../../../core/services/http-parameter.service';
 import { Component, OnInit } from '@angular/core';
 import { Parameter } from '../parameter.model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { HttpLogService } from 'src/app/core/services/http-log.service';
 import { SharedDataService } from 'src/app/core/services/shared-data.service';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +18,8 @@ export class ParameterFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private service: HttpParameterService
+    private service: HttpParameterService,
+    private shared: SharedDataService
   ) {}
 
   ngOnInit() {
@@ -59,6 +60,33 @@ export class ParameterFormComponent implements OnInit {
       this.getParamFk();
     });
   }
+
+  onUpdate(parameterId) {
+    this.service.updateParameter(parameterId, this.form.value).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+  // getEditObject() {
+  //   this.shared.editLog$.subscribe(data => {
+  //     this.parameter = data;
+  //     this.form = new FormGroup({
+  //       logId: new FormControl(this.parameter.parameterId),
+  //       logFk: new FormControl(this.parameter.paramFk),
+  //       logFk: new FormControl(this.parameter.ammonia),
+  //       title: new FormControl(this.parameter.ph),
+  //       log: new FormControl(this.parameter.nitrate),
+  //       date: new FormControl(this.parameter.nitrite),
+  //       logFk: new FormControl(this.parameter.ammonia),
+  //       logFk: new FormControl(this.parameter.calcium),
+  //       logFk: new FormControl(this.parameter.iodine),
+  //       logFk: new FormControl(this.parameter.magnesium),
+  //       logFk: new FormControl(this.parameter.phosphate),
+  //       logFk: new FormControl(this.parameter.potasium)
+  //       logFk: new FormControl(this.parameter.alkalinity),,
+  //     });
+  //   });
+  // }
 
   reset() {
     this.getParamFk();

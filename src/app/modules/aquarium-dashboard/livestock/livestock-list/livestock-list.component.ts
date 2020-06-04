@@ -15,10 +15,10 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class LivestockListComponent implements OnInit {
   title = 'Livestock list';
-  livestocks: Observable<Livestock[]>;
   livestock: Livestock;
   deleteMessage: boolean;
   livestockList: any = [];
+  livestocks: Observable<Livestock[]>;
   isFk: boolean;
 
   constructor(
@@ -31,18 +31,20 @@ export class LivestockListComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const fkAquariumId = params.get('fkAquariumId');
-      if (!fkAquariumId) {
-        this.isFk = false;
-        this.getAllLivestock();
-      } else {
-        this.isFk = true;
-        this.displayLivestockList(fkAquariumId);
-      }
+      this.displayLivestockList(fkAquariumId);
+      // this.getAllLivestock(fkAquariumId);
+      // if (!fkAquariumId) {
+      //   this.isFk = false;
+      //   this.getAllLivestock();
+      // } else {
+      //   this.isFk = true;
+      //   this.displayLivestockList(fkAquariumId);
+      // }
     });
   }
 
-  getAllLivestock() {
-    this.livestocks = this.service.getAllLivestock();
+  getAllLivestock(fkAquariumId) {
+    this.livestocks = this.service.getLivestockByFkId(fkAquariumId);
   }
 
   displayLivestockList(fkAquariumId) {

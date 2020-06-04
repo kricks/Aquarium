@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/internal/operators/tap';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LivestockService {
   livestockList: any = [];
-  
+
   private changedList = new Subject<any>();
   changedList$ = this.changedList.asObservable();
 
@@ -32,6 +33,15 @@ export class LivestockService {
 
   getAllLivestock(): Observable<any> {
     return this.http.get(`${this.baseUri}/${this.all}`);
+  }
+
+  loadAllLivestock(aquariumFkId) {
+    // return this.getLivestockByFkId(aquariumFkId).subscribe((data) => {
+    //   this.sendChangedList(data);
+    // });
+    return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
+      this.livestockList = data;
+    });
   }
 
   getLivestockById(livestockId: number): Observable<any> {
@@ -59,12 +69,4 @@ export class LivestockService {
     return this.http.delete(`${this.baseUri}/${this.delete}/${livestockId}`);
   }
 
-  loadAllLivestock(aquariumFkId) {
-    // return this.getLivestockByFkId(aquariumFkId).subscribe((data) => {
-    //   this.sendChangedList(data);
-    // });
-    return this.getLivestockByFkId(aquariumFkId).subscribe((data: {}) => {
-      this.livestockList = data;
-    });
-  }
 }

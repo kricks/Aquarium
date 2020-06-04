@@ -43,9 +43,6 @@ export class LivestockFormComponent implements OnInit {
   }
 
   displayData(fkAquariumId) {
-    // this.service.getLivestockByFkId(fkAquariumId).subscribe(data => {
-    //   this.service.sendChangedList(data);
-    // });
     this.service.loadAllLivestock(fkAquariumId);
   }
 

@@ -1,13 +1,11 @@
 import { DashboardService } from './../../dashboard.service';
-import { SessionStorageService } from './../../../../core/services/session-storage.service';
 import { SharedDataService } from '../../../../core/services/shared-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LivestockService } from 'src/app/core/services/http-livestock.service';
 import { Livestock } from '../livestock.model';
 import { NGXLogger } from 'ngx-logger';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-livestock-list',
@@ -25,23 +23,14 @@ export class LivestockListComponent implements OnInit {
   constructor(
     private service: LivestockService,
     private route: ActivatedRoute,
+    private router: Router,
     private shared: SharedDataService,
-    private dash: DashboardService,
-    private logger: NGXLogger
-  ) {}
+    private dash: DashboardService  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const fkAquariumId = params.get('fkAquariumId');
       this.displayLivestockList(fkAquariumId);
-      // this.getAllLivestock(fkAquariumId);
-      // if (!fkAquariumId) {
-      //   this.isFk = false;
-      //   this.getAllLivestock();
-      // } else {
-      //   this.isFk = true;
-      //   this.displayLivestockList(fkAquariumId);
-      // }
     });
   }
 
@@ -53,6 +42,14 @@ export class LivestockListComponent implements OnInit {
       this.livestockList = res;
     });
   }
+
+  viewAll() {
+    this.route.paramMap.subscribe((params) => {
+      const lsFk = params.get('fkAquariumId');
+      this.router.navigate(['livestock-list', lsFk]);
+    });
+  }
+
 
   onEdit(livestock) {
     this.shared.editItem(livestock);

@@ -68,9 +68,6 @@ export class LogListComponent implements OnInit {
         this.router.navigate(['aquarium-dashboard', logFk]);
       }
     });
-    // this.log = logsList.map(data => {
-    //   this.router.navigate(['logs-list', data.logFk]);
-    // });
   }
 
   onUpdate(log) {

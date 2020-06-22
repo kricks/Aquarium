@@ -35,9 +35,9 @@ export class LivestockListComponent implements OnInit {
   }
 
   displayLivestockList(fkAquariumId) {
-    this.service.getLivestockByFkId(fkAquariumId).subscribe(res => {
-      this.livestockList = res;
-    });
+    // this.service.getLivestockByFkId(fkAquariumId).subscribe(res => {
+    //   this.livestockList = res;
+    // });
     this.dash.newLsList$.subscribe((res: Livestock[]) => {
       this.livestockList = res;
     });

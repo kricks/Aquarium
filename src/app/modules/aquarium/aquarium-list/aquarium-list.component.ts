@@ -20,7 +20,7 @@ export class AquariumListComponent implements OnInit {
   showAq;
 
   constructor(
-    private service: AquariumService,
+    public service: AquariumService,
     private router: Router,
     private shared: SharedDataService,
     private session: SessionStorageService

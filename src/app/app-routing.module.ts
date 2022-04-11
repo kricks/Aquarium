@@ -21,11 +21,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/gallery/gallery.module').then((m) => m.GalleryModule),
   },
-  {
-    path: 'contact',
-    loadChildren: () =>
-      import('./modules/contact/contact.module').then((m) => m.ContactModule),
-  },
 ];
 
 const routerOptions: ExtraOptions = {

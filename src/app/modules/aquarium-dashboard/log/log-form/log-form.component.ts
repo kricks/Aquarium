@@ -1,5 +1,5 @@
-import { SharedDataService } from './../../../../core/services/shared-data.service';
-import { HttpLogService } from './../../../../core/services/http-log.service';
+import { SharedDataService } from '../../../../core/services/shared-data.service';
+import { HttpLogService } from '../../../../core/services/http-log.service';
 import { Component, OnInit } from '@angular/core';
 import { Log } from '../log.model';
 import {
@@ -9,7 +9,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { DeprecatedDatePipe } from '@angular/common';
 import { DashboardService } from '../../dashboard.service';
 
 @Component({

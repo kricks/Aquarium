@@ -10,7 +10,7 @@ import {environment} from "../../../environments/environment.prod";
 export class AquariumService {
   aquariumList: any = [];
   aquarium: Aquarium = new Aquarium();
-  private baseUri = environment.production ? '' : 'http://localhost:8080/aquarium';
+  private baseUri = 'http://localhost:8080/aquarium';
   private all = 'all';
   private create = 'create';
   private update = 'update';

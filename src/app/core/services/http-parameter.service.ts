@@ -8,7 +8,7 @@ import {environment} from "../../../environments/environment.prod";
 })
 export class HttpParameterService {
 
-  private baseUri = environment.production ? '' : 'http://localhost:8080/parameter';
+  private baseUri = 'http://localhost:8080/parameter';
   private all = 'all';
   private create = 'create';
   private update = 'update';

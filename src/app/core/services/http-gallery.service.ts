@@ -10,7 +10,7 @@ import {environment} from "../../../environments/environment.prod";
 })
 export class GalleryService {
   images: Observable<any[]>;
-  private baseUri = environment.production ? '' : 'http://localhost:8080/image';
+  private baseUri = 'http://localhost:8080/image';
   private all = 'all';
   private create = 'create';
   private delete = 'delete';

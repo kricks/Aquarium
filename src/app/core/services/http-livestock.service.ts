@@ -19,7 +19,7 @@ export class LivestockService {
     }),
   };
 
-  private baseUri = environment.production ? '' : 'http://localhost:8080/livestock';
+  private baseUri = 'http://localhost:8080/livestock';
   private all = 'all';
   private create = 'create';
   private update = 'update';

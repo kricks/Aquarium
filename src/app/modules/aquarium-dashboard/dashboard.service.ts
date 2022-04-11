@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DashboardService {
 
-  value: any;
+  value: any = '';
 
   private newLsList = new BehaviorSubject<any>(this.value);
   newLsList$ = this.newLsList.asObservable();

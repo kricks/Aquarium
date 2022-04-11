@@ -9,7 +9,7 @@ import {environment} from "../../../environments/environment.prod";
 export class HttpLogService {
   logs: Observable<any[]>;
   logsList: any = [];
-  private baseUri = environment.production ? '' : 'http://localhost:8080/log';
+  private baseUri = 'http://localhost:8080/log';
   private all = 'all';
   private create = 'create';
   private update = 'update';

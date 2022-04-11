@@ -5,8 +5,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedDataService {
-  value;
-  isDelete: boolean;
+  value = '';
+  isDelete: boolean = false;
   foreignKey;
 
   private deleteAndClearForm = new BehaviorSubject<any>(this.isDelete);

@@ -3,13 +3,14 @@ import { Image } from '../../modules/gallery/image.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import {environment} from "../../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GalleryService {
   images: Observable<any[]>;
-  private baseUri = 'http://localhost:8080/image';
+  private baseUri = environment.production ? '' : 'http://localhost:8080/image';
   private all = 'all';
   private create = 'create';
   private delete = 'delete';

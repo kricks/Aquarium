@@ -2,6 +2,7 @@ import { Aquarium } from '../../modules/aquarium/aquarium.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {environment} from "../../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ import { Observable } from 'rxjs';
 export class AquariumService {
   aquariumList: any = [];
   aquarium: Aquarium = new Aquarium();
-  private baseUri = 'http://localhost:8080/aquarium';
+  private baseUri = environment.production ? '' : 'http://localhost:8080/aquarium';
   private all = 'all';
   private create = 'create';
   private update = 'update';
   private delete = 'delete';
-  
+
   constructor(private http: HttpClient) {}
 
   getAllAquariums(): Observable<any> {

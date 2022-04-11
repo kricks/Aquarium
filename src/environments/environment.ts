@@ -2,8 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const baseUri = 'http://localhost:8080/';
+
 export const environment = {
   production: false,
+  baseUri: baseUri,
   firebase: {
     apiKey: 'AIzaSyB_SpBHe6kFvKp7TMrTSOu-aRQRfyhm-B8',
     authDomain: 'aquarium-builder.firebaseapp.com',

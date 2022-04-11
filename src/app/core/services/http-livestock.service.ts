@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/internal/operators/tap';
 import { map } from 'rxjs/operators';
+import {environment} from "../../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class LivestockService {
     }),
   };
 
-  private baseUri = 'http://localhost:8080/livestock';
+  private baseUri = environment.production ? '' : 'http://localhost:8080/livestock';
   private all = 'all';
   private create = 'create';
   private update = 'update';

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {environment} from "../../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpParameterService {
 
-  private baseUri = 'http://localhost:8080/parameter';
+  private baseUri = environment.production ? '' : 'http://localhost:8080/parameter';
   private all = 'all';
   private create = 'create';
   private update = 'update';

@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from "../../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class HttpLogService {
   logs: Observable<any[]>;
   logsList: any = [];
-  private baseUri = 'http://localhost:8080/log';
+  private baseUri = environment.production ? '' : 'http://localhost:8080/log';
   private all = 'all';
   private create = 'create';
   private update = 'update';

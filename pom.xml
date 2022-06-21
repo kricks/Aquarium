@@ -31,7 +31,7 @@
 		<javaxjstl.version>1.2</javaxjstl.version>
 		<taglibs.version>1.2.5</taglibs.version>
 		<hibernate.version>5.1.17.Final</hibernate.version>
-		<mysql.version>8.0.18</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 	</properties>
 
 	<dependencies>

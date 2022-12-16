@@ -25,7 +25,7 @@
 		</plugins>
 	</build>
 	<properties>
-		<springframework.version>4.3.1.RELEASE</springframework.version>
+		<springframework.version>5.2.20.RELEASE</springframework.version>
 		<jacksoncore.version>2.10.1</jacksoncore.version>
 		<javaxservletapi.version>4.0.1</javaxservletapi.version>
 		<javaxjstl.version>1.2</javaxjstl.version>

@@ -28,7 +28,7 @@
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "firebase": "^7.24.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-logger": "^4.1.2",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.7",
